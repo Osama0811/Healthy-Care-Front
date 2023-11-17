@@ -4,13 +4,6 @@ import { CommonModule } from '@angular/common';
 import { AdminRoutingModule } from './Admin.Routing.Module';
 import { ProfileComponent } from './profile/profile.component';
 
-const routes: Routes = [
-  
-  {
-    path: 'Profile',
-    component: ProfileComponent
-  }
-];
 
 
 @NgModule({
@@ -19,7 +12,6 @@ const routes: Routes = [
   ],
   imports: [
     CommonModule,
-    RouterModule.forChild(routes)
     AdminRoutingModule
   ]
 })
