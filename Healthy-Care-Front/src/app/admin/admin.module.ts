@@ -12,6 +12,7 @@ const routes: Routes = [
   }
 ];
 
+
 @NgModule({
   declarations: [
     ProfileComponent
@@ -19,6 +20,7 @@ const routes: Routes = [
   imports: [
     CommonModule,
     RouterModule.forChild(routes)
+    AdminRoutingModule
   ]
 })
 export class AdminModule { }

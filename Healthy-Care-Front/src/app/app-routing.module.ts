@@ -10,6 +10,7 @@ const routes: Routes = [
     //canLoad: [adminGuard]
   },
    //{ path: '**', component: PageNotFoundComponent }
+   {path: '**', component: PageNotFoundComponent }
 ];
 
 @NgModule({
