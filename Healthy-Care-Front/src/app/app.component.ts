@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+
+import { TranslateService } from '@ngx-translate/core';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -6,4 +8,12 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Healthy-Care-Front';
+  /**
+   *
+   */
+  constructor( private readonly translateService: TranslateService) {
+
+    
+    translateService.use('ar');
+  }
 }
