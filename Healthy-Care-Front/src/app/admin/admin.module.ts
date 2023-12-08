@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { AdminRoutingModule } from './Admin.Routing.Module';
-import { ProfileComponent } from './profile/profile.component';
+import { ProfileComponent } from './Component/profile/profile.component';
 
 
 

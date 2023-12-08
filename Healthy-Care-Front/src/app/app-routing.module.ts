@@ -6,14 +6,20 @@ import { AppComponent } from './app.component';
 const routes: Routes = [
    { path: '', redirectTo: '/app', pathMatch: 'full' },
    {
-    path: 'UserAdmin',
-    loadChildren:()=>import('src/app/admin/Admin.module').then(m=>m.AdminModule) ,
+    path: 'admin',
+    loadChildren:()=>import('src/app/admin/admin.module').then(m=>m.AdminModule) ,
     //canActivate: [adminGuard],
     //canLoad: [adminGuard]
   },
   {
     path: 'HomeSite',
     loadChildren:()=>import('src/app/Home/home.module').then(m=>m.HomeModule) ,
+    //canActivate: [adminGuard],
+    //canLoad: [adminGuard]
+  },
+  {
+    path: 'Authentication',
+    loadChildren:()=>import('src/app/Auth/auth.module').then(m=>m.AuthModule) ,
     //canActivate: [adminGuard],
     //canLoad: [adminGuard]
   },
