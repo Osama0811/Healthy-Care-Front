@@ -5,6 +5,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { IndexComponent } from './Pages/index/index.component';
 import { NavBarComponent } from './Components/nav-bar/nav-bar.component';
 import { SlideShowComponent } from './Components/slide-show/slide-show.component';
+import { WhoWeAreComponent } from './Components/who-we-are/who-we-are.component';
+import { HelpingComponent } from './Components/helping/helping.component';
+import { HealthyComponent } from './Components/healthy/healthy.component';
+import { FooterComponent } from './Components/footer/footer.component';
 
 
 
@@ -12,7 +16,11 @@ import { SlideShowComponent } from './Components/slide-show/slide-show.component
   declarations: [
     IndexComponent,
     NavBarComponent,
-    SlideShowComponent],
+    SlideShowComponent,
+    WhoWeAreComponent,
+    HelpingComponent,
+    HealthyComponent,
+    FooterComponent],
   imports: [
     CommonModule,
     HomeRoutingModule,

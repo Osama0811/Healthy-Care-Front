@@ -7,12 +7,12 @@ const routes: Routes = [
    { path: '', redirectTo: '/app', pathMatch: 'full' },
    {
     path: 'UserAdmin',
-    loadChildren:()=>import('src/app/admin/Admin.module').then(m=>m.AdminModule) ,
+    loadChildren:()=>import('src/app/admin/admin.module').then(m=>m.AdminModule) ,
     //canActivate: [adminGuard],
     //canLoad: [adminGuard]
   },
   {
-    path: 'HomeSite',
+    path: 'Home',
     loadChildren:()=>import('src/app/Home/home.module').then(m=>m.HomeModule) ,
     //canActivate: [adminGuard],
     //canLoad: [adminGuard]

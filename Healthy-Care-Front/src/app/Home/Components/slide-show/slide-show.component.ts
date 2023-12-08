@@ -6,8 +6,8 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
   styleUrls: ['./slide-show.component.css']
 })
 export class SlideShowComponent implements OnInit {
-  
-  @ViewChild('useThisTemplateVar') elRef!: ElementRef; 
+
+  @ViewChild('useThisTemplateVar') elRef!: ElementRef;
   ngOnInit(): void {
     setInterval(() => {
     const last: Element | null = this.elRef?.nativeElement.firstElementChild;
@@ -17,10 +17,5 @@ export class SlideShowComponent implements OnInit {
     }
 }, 2500);
   }
-   
-
-
-  
-  
 
 }

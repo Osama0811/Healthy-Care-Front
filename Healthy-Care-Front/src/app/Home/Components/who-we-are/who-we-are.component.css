@@ -1,0 +1,13 @@
+.Whoweare {
+    background-color: var(--dark-color);
+}
+
+.who {
+    color: var(--yello-color);
+    font-weight: bold;
+}
+
+.button {
+    display: flex;
+    justify-content: center;
+}

@@ -1,0 +1,28 @@
+.footer {
+    background-color: var(--dark-color);
+}
+
+.ffoter {
+    display: flex;
+    align-items: flex-start;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.display-4 {
+    font-weight: bold;
+    color: var(--yello-color);
+}
+
+.h-footer {
+    font-weight: 200px;
+    color: var(--green-color)
+}
+
+.p-footer {
+    color: white;
+}
