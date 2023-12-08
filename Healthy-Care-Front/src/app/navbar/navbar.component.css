@@ -1,0 +1,167 @@
+ body {
+     margin: 0;
+     padding: 0;
+     box-sizing: border-box;
+     display: flex;
+ }
+ 
+ .navbar {
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+     padding: 10px 15px;
+     background-color: #19283F;
+     font-size: large;
+ }
+ 
+ .navbar button {
+     background-color: #33D1CC;
+     color: white;
+     border-radius: 25px;
+     font-weight: bold;
+     border: 1px solid #19283F;
+     padding: 5px;
+     width: 150px;
+ }
+ 
+ .logo img {
+     height: 75px;
+     width: 75px;
+     display: inline-block;
+     position: relative;
+ }
+ 
+ .navbar ul {
+     list-style-type: none;
+     margin: 0;
+     padding: 0;
+     justify-content: space-between;
+ }
+ 
+ .navbar a {
+     color: white;
+     text-decoration: none;
+     /* padding: 8px 50px; */
+ }
+ 
+ .navbar a:hover {
+     color: #33D1CC;
+ }
+ 
+ .navbar a {
+     color: white;
+     position: relative;
+     text-decoration: none;
+ }
+ 
+ .nav-links::before,
+ .nav-links::after {
+     content: '';
+     position: absolute;
+     left: 0;
+     width: 100%;
+     height: 2px;
+     background-color: #33D1CC;
+     color: #33D1CC;
+     transform: scaleX(0);
+     transition: transform 0.25s;
+ }
+ 
+ .nav-links::after {
+     color: #33D1CC;
+     bottom: -3px;
+     transform-origin: right;
+ }
+ 
+ .nav-links:hover::before,
+ .nav-links:hover::after,
+ .active::before,
+ .active::after {
+     color: #33D1CC;
+     transform: scaleX(1);
+ }
+ 
+ :root {
+     --dark-color: #19283f;
+     --green-color: #33d1cc;
+     --yello-color: #ffc400;
+     --section-color: #dafff4;
+ }
+ 
+ body {
+     font-family: "Robot", sans-serif;
+ }
+ 
+ .main-btn {
+     background-color: var(--green-color);
+ }
+ 
+ .main-title::after {
+     content: '';
+     width: 120px;
+     height: 2px;
+     background-color: var(--green-color);
+     position: absolute;
+     bottom: -20px;
+     left: 50%;
+     transform: translateX(-50%);
+ }
+ 
+ .navbar {
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+     padding: 10px 15px;
+     font-size: large;
+ }
+ 
+ .nav-item .nav-link {
+     color: white;
+ }
+ 
+ .navbar-toggler {
+     color: var(--green-color);
+ }
+ 
+ .navbar .navbar-nav .nav-link.active,
+ .navbar .navbar-nav .nav-link:focus,
+ .navbar .navbar-nav .nav-link:hover {
+     color: var(--green-color);
+ }
+ 
+ .navbar .navbar-nav .nav-link:hover::before,
+ .navbar .navbar-nav .nav-link:hover::after,
+ .active::before,
+ .active::after {
+     color: #33D1CC;
+     transform: scaleX(1);
+ }
+ 
+ .logo img {
+     height: 75px;
+     width: 75px;
+     display: inline-block;
+     position: relative;
+ }
+ 
+ .navbar-nav .search {
+     border-left: 1px solid var(--green-color);
+     height: 25px;
+ }
+ 
+ .navbar-nav .search svg {
+     color: var(--green-color);
+ }
+ 
+ .navbar img {
+     color: #ffc400;
+ }
+ 
+ .navbar-brand {
+     color: var(--yello-color);
+ }
+ 
+ .EN {
+     color: white;
+     margin-top: 16px;
+ }

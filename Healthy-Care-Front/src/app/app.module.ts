@@ -6,15 +6,16 @@ import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ButtonModule } from 'primeng/button';
+import { NavbarComponent } from './navbar/navbar.component';
 
 import { LangService } from './lang/services/lang.service';
 import { CommonModule } from '@angular/common';
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent
   ],
   imports: [
-    
+
     CommonModule,
     BrowserModule,
     AppRoutingModule,
