@@ -14,7 +14,7 @@ import { CommonModule } from '@angular/common';
     AppComponent,
   ],
   imports: [
-    
+
     CommonModule,
     BrowserModule,
     AppRoutingModule,

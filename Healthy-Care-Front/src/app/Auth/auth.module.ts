@@ -6,8 +6,9 @@ import { ButtonModule } from 'primeng/button';
 import { AuthRoutingModule } from './auth-routing.module';
 import { LoginComponent } from './Component/login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ToastModule } from 'primeng/toast';
 
-
+import { MessageService } from 'primeng/api';
 @NgModule({
   declarations: [
     LoginComponent
@@ -17,7 +18,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     AuthRoutingModule,
     DividerModule,
     ButtonModule,
-    ReactiveFormsModule
-  ]
+    ReactiveFormsModule,
+    ToastModule
+  ],
+  providers: [MessageService]
 })
 export class AuthModule { }
