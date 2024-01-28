@@ -9,6 +9,8 @@ import { ButtonModule } from 'primeng/button';
 
 import { LangService } from './lang/services/lang.service';
 import { CommonModule } from '@angular/common';
+import { ToastModule } from 'primeng/toast';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,6 +22,8 @@ import { CommonModule } from '@angular/common';
     AppRoutingModule,
     ButtonModule,
     HttpClientModule,
+    ToastModule,
+    BrowserAnimationsModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

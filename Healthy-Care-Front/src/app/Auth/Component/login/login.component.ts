@@ -51,20 +51,20 @@ export class LoginComponent {
     this.authService.login(this.loginForm.value).subscribe(
       (data) => {
          if (data.success) {
-        //   this.messageService.add({
-        //     severity: 'success',
-        //     summary: 'Success',
-        //     detail: data.message,
-        //   });
+          // this.messageService.add({
+          //   severity: 'success',
+          //   summary: 'Success',
+          //   detail: data.message,
+          // });
           this.router.navigateByUrl('admin/Profile');
          }
-        //else {
-        //   // this.messageService.add({
-        //   //   severity: 'error',
-        //   //   summary: 'Error',
-        //   //   detail: data.message,
-        //   // });
-        // }
+        else {
+          this.messageService.add({
+            severity: 'error',
+            summary: 'Error',
+            detail: data.message,
+          });
+        }
         console.log(data);
       },
       (error) => {
