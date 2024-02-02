@@ -51,14 +51,15 @@ export class LoginComponent {
     this.authService.login(this.loginForm.value).subscribe(
       (data) => {
          if (data.success) {
-          // this.messageService.add({
-          //   severity: 'success',
-          //   summary: 'Success',
-          //   detail: data.message,
-          // });
+          this.messageService.add({
+            severity: 'success',
+            summary: 'Success',
+            detail: data.message,
+          });
           this.router.navigateByUrl('admin/Profile');
          }
         else {
+          console.log("Error");
           this.messageService.add({
             severity: 'error',
             summary: 'Error',

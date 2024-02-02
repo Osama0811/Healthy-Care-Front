@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 
 import { TranslateService } from '@ngx-translate/core';
+
+import { PrimeNGConfig } from 'primeng/api';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -11,9 +13,12 @@ export class AppComponent {
   /**
    *
    */
-  constructor( private readonly translateService: TranslateService) {
+  constructor( private readonly translateService: TranslateService,private primengConfig: PrimeNGConfig) {
 
-    
+
     translateService.use('ar');
   }
+  ngOnInit() {
+    this.primengConfig.ripple = true;
+}
 }
