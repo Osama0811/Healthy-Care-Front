@@ -36,3 +36,15 @@ export interface LoginResponse {
     nationalNum: string | undefined;
     password: string | undefined;
   }
+
+
+  export interface IDept {
+    Id: string | undefined;
+    Name: string | undefined;
+    Description: string | undefined;
+  }
+  export class Dept implements IDept {
+    Id: string | undefined;
+    Name: string | undefined;
+    Description: string | undefined;
+  }

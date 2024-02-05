@@ -1,122 +1,145 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Type } from '@angular/core';
 import { MessageService } from 'primeng/api';
 import { Table } from 'primeng/table';
+import { GlobalService } from 'src/app/admin/Services/global-service.service';
 
+interface ColsType {
+  field?: string;
+  header?: string;
+};
 @Component({
   selector:"app-data-table",
     templateUrl: './crud.component.html',
     providers: [MessageService]
 })
-export class CrudComponent implements OnInit {
+export class CrudComponent<T extends any[]> implements OnInit {
 
-    productDialog: boolean = false;
 
-    deleteProductDialog: boolean = false;
 
-    deleteProductsDialog: boolean = false;
+  @Input() ItemsList: T[] = [];
+  @Input()  cols: ColsType[] = [];
+    Item: object={} ;
+    ItemsDialog: boolean = false;
 
-    //products: Product[] = [];
+    deleteItemDialog: boolean = false;
 
-    //product: Product = {};
+    deleteItemsDialog: boolean = false;
 
-    //selectedProducts: Product[] = [];
+
+
+    selectedItems: T[] = [];
 
     submitted: boolean = false;
 
-    cols: any[] = [];
+
 
     statuses: any[] = [];
 
     rowsPerPageOptions = [5, 10, 20];
 
-    constructor(private messageService: MessageService) { }
+    constructor(private globalService: GlobalService<T>, private messageService: MessageService) {
+
+     }
 
     ngOnInit() {
-        //this.productService.getProducts().then(data => this.products = data);
 
-        this.cols = [
-            { field: 'product', header: 'Product' },
-            { field: 'price', header: 'Price' },
-            { field: 'category', header: 'Category' },
-            { field: 'rating', header: 'Reviews' },
-            { field: 'inventoryStatus', header: 'Status' }
-        ];
-
-        this.statuses = [
-            { label: 'INSTOCK', value: 'instock' },
-            { label: 'LOWSTOCK', value: 'lowstock' },
-            { label: 'OUTOFSTOCK', value: 'outofstock' }
-        ];
+this.Item=  this.ItemsList;
+      console.log(this.ItemsList);
+      console.log("lkmlml");
+        // this.statuses = [
+        //     { label: 'INSTOCK', value: 'instock' },
+        //     { label: 'LOWSTOCK', value: 'lowstock' },
+        //     { label: 'OUTOFSTOCK', value: 'outofstock' }
+        // ];
     }
 
     openNew() {
-        //this.product = {};
+        this.Item = {} as T;
         this.submitted = false;
-        this.productDialog = true;
+        this.ItemsDialog = true;
     }
 
-    deleteSelectedProducts() {
-        this.deleteProductsDialog = true;
+    deleteSelectedItems() {
+        this.deleteItemsDialog = true;
     }
 
-    // editProduct(product: Product) {
-    //     this.product = { ...product };
-    //     this.productDialog = true;
-    // }
+    editItem(Item: T) {
+      console.log(Item);
+      console.log("Item");
+        this.Item = { ...Item };
+        this.ItemsDialog = true;
+    }
 
-    // deleteProduct(product: Product) {
-    //     this.deleteProductDialog = true;
-    //     this.product = { ...product };
-    // }
+    deleteItem(Item: T) {
+        this.deleteItemDialog = true;
+        this.Item = { ...Item };
+    }
 
     // confirmDeleteSelected() {
-    //     this.deleteProductsDialog = false;
-    //     this.products = this.products.filter(val => !this.selectedProducts.includes(val));
-    //     this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Products Deleted', life: 3000 });
-    //     this.selectedProducts = [];
+    //     this.deleteItemsDialog = false;
+    //     this.globalService.GetAll().subscribe(d=>d.resource.map(d=>this.DeptList.push(d)));
+    //     this.ItemsList = this.Item.filter(val => !this.selectedItems.includes(val));
+    //     this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Items Deleted', life: 3000 });
+    //     this.selectedItems = [];
     // }
 
-    // confirmDelete() {
-    //     this.deleteProductDialog = false;
-    //     this.products = this.products.filter(val => val.id !== this.product.id);
-    //     this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Product Deleted', life: 3000 });
-    //     this.product = {};
-    // }
+    confirmDelete() {
+        this.deleteItemDialog = false;
+        const id = (this.Item as any)?.id;
+        this.globalService.delete(id ?? undefined).subscribe((data) => {
+          if(data.success){
+            this.messageService.add({
+              severity: 'success',
+              summary: 'Success',
+              detail: data.message,
+            });
+          }else{
+            console.log("Error");
+            this.messageService.add({
+              severity: 'error',
+              summary: 'Error',
+              detail: data.message,
+            });
+          }
+        }
+        );
+        this.Item = {} as T;
+    }
 
     hideDialog() {
-        this.productDialog = false;
+        this.ItemsDialog = false;
         this.submitted = false;
     }
 
-    // saveProduct() {
-    //     this.submitted = true;
+    saveItem() {
+        this.submitted = true;
 
-    //     if (this.product.name?.trim()) {
-    //         if (this.product.id) {
-    //             // @ts-ignore
-    //             this.product.inventoryStatus = this.product.inventoryStatus.value ? this.product.inventoryStatus.value : this.product.inventoryStatus;
-    //             this.products[this.findIndexById(this.product.id)] = this.product;
-    //             this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Product Updated', life: 3000 });
-    //         } else {
-    //             this.product.id = this.createId();
-    //             this.product.code = this.createId();
-    //             this.product.image = 'product-placeholder.svg';
-    //             // @ts-ignore
-    //             this.product.inventoryStatus = this.product.inventoryStatus ? this.product.inventoryStatus.value : 'INSTOCK';
-    //             this.products.push(this.product);
-    //             this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Product Created', life: 3000 });
-    //         }
+        // if (this.Item.name?.trim()) {
+        //     if (this.Item.id) {
+        //         // @ts-ignore
+        //         this.Item.inventoryStatus = this.Item.inventoryStatus.value ? this.Item.inventoryStatus.value : this.Item.inventoryStatus;
+        //         this.ItemsList[this.findIndexById(this.Item.id)] = this.Item;
+        //         this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Item Updated', life: 3000 });
+        //     } else {
+        //         this.Item.id = this.createId();
+        //         this.Item.code = this.createId();
+        //         this.Item.image = 'Item-placeholder.svg';
+        //         // @ts-ignore
+        //         this.Item.inventoryStatus = this.Item.inventoryStatus ? this.Item.inventoryStatus.value : 'INSTOCK';
+        //         this.ItemsList.push(this.Item);
+        //         this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Item Created', life: 3000 });
+        //     }
 
-    //         this.products = [...this.products];
-    //         this.productDialog = false;
-    //         this.product = {};
-    //     }
-    // }
+        //     this.Items = [...this.Items];
+            this.ItemsDialog = false;
+            this.Item = {} as T;
+        //}
+    }
 
     // findIndexById(id: string): number {
     //     let index = -1;
-    //     for (let i = 0; i < this.products.length; i++) {
-    //         if (this.products[i].id === id) {
+    //     for (let i = 0; i < this.Items.length; i++) {
+    //         if (this.Items[i].id === id) {
     //             index = i;
     //             break;
     //         }
@@ -129,5 +152,8 @@ export class CrudComponent implements OnInit {
 
     onGlobalFilter(table: Table, event: Event) {
         table.filterGlobal((event.target as HTMLInputElement).value, 'contains');
+    }
+    getObjectProperties(obj: any): any[] {
+      return Object.keys(obj).map((name) => ({ name }));
     }
 }

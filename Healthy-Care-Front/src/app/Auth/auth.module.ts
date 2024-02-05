@@ -9,6 +9,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ToastModule } from 'primeng/toast';
 
 import { MessageService } from 'primeng/api';
+import { AuthService } from './Service/auth.service';
 @NgModule({
   declarations: [
     LoginComponent
@@ -21,6 +22,6 @@ import { MessageService } from 'primeng/api';
     ReactiveFormsModule,
     ToastModule
   ],
-  providers: [MessageService]
+  providers: [MessageService,AuthService]
 })
 export class AuthModule { }

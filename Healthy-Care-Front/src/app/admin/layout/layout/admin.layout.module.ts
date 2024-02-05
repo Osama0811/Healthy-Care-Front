@@ -23,6 +23,7 @@ import { LangService } from 'src/app/lang/services/lang.service';
 import { CommonModule } from '@angular/common';
 import { AdminModule } from '../../admin.module';
 import { BrowserModule } from '@angular/platform-browser';
+import { GlobalService } from '../../Services/global-service.service';
 @NgModule({
     declarations: [
         AppMenuitemComponent,
@@ -54,6 +55,7 @@ import { BrowserModule } from '@angular/platform-browser';
           }
         })
     ],
-    exports: [AppLayoutComponent]
+    exports: [AppLayoutComponent],
+    providers:[GlobalService]
 })
 export class AppLayoutModule { }

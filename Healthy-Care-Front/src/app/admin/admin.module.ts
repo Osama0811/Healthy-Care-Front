@@ -10,11 +10,10 @@ import { LangService } from '../lang/services/lang.service';
 import { TranslateLoaderFactory } from '../app.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
+import { GlobalService } from './Services/global-service.service';
 
 @NgModule({
-  declarations: [
-    IndexComponent
-  ],
+
   imports: [
     CommonModule,
     AdminRoutingModule,
@@ -27,6 +26,6 @@ import { FormsModule } from '@angular/forms';
       }
     }),
   ],
-  providers: [MessageService]
+  providers: [MessageService,GlobalService]
 })
 export class AdminModule { }

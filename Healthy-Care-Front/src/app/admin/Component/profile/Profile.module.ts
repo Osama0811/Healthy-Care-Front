@@ -1,5 +1,5 @@
+import { BASE_URL, Controller, GlobalService } from 'src/app/admin/Services/global-service.service';
 import { MenuItem } from 'primeng/api';
-import { CrudComponent } from '../../../Shared/crud/crud.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -15,6 +15,9 @@ import { ProfilesRoutingModule } from './Profile-routing.module';
 import { Sub1Component } from './Sub-Comp/sub1/sub1.component';
 import { TabMenuModule } from 'primeng/tabmenu';
 import { BadgeModule } from 'primeng/badge';
+import { HttpClient } from '@angular/common/http';
+import { Dept } from 'src/app/Auth/Interfaces/auth';
+
 @NgModule({
     imports: [
       TabMenuModule,
@@ -30,6 +33,9 @@ import { BadgeModule } from 'primeng/badge';
         ProfilesRoutingModule,
         CrudModule,
     ],
-    declarations: [ProfileComponent, Sub1Component]
+    providers:[
+      GlobalService, { provide: Controller, useValue: 'Category' },
+    ],
+    declarations: [ProfileComponent, Sub1Component],
 })
 export class ProfileModule { }
