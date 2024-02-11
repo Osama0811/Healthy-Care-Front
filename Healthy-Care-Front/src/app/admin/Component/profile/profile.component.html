@@ -1,4 +1,4 @@
-
+<!--
 <div class="card">
   <p-tabMenu [model]="items" [activeItem]="activeItem">
       <ng-template pTemplate="item" let-item>
@@ -11,5 +11,9 @@
           </a>
       </ng-template>
   </p-tabMenu>
-</div>
+</div> -->
+
+<app-data-table  [ItemsList]="DeptList" [cols]="cols" ></app-data-table>
+
+
 <router-outlet></router-outlet>

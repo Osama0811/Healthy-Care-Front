@@ -32,6 +32,18 @@ export class AppMenuComponent implements OnInit {
 
                 ]
             },
+            {
+              label: 'Blood',
+              items: [
+                  { label: 'Blood1', icon: 'pi pi-fw pi-id-card', routerLink: ['/admin/Blood'] },
+                  { label: 'Blood2', icon: 'pi pi-fw pi-id-card', routerLink: ['/admin/Blood2'] },
+
+                  //{ label: 'Invalid State', icon: 'pi pi-fw pi-exclamation-circle', routerLink: ['/uikit/invalidstate'] },
+
+                  //{ label: 'Menu', icon: 'pi pi-fw pi-bars', routerLink: ['/uikit/menu'], routerLinkActiveOptions: { paths: 'subset', queryParams: 'ignored', matrixParams: 'ignored', fragment: 'ignored' } },
+
+              ]
+          },
             // {
             //     label: 'Prime Blocks',
             //     items: [
@@ -103,7 +115,7 @@ export class AppMenuComponent implements OnInit {
             //         },
             //     ]
             // },
-            // {
+            //  ,{
             //     label: 'Hierarchy',
             //     items: [
             //         {

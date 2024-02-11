@@ -47,7 +47,6 @@ export class LoginComponent {
     if (this.loginForm.invalid) {
       return;
     }
-
     this.authService.login(this.loginForm.value).subscribe(
       (data) => {
          if (data.success) {
@@ -56,10 +55,10 @@ export class LoginComponent {
             summary: 'Success',
             detail: data.message,
           });
+          localStorage.setItem("Token",data.resource.token)
           this.router.navigateByUrl('admin/Profile');
          }
         else {
-          console.log("Error");
           this.messageService.add({
             severity: 'error',
             summary: 'Error',

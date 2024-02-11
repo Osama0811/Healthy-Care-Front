@@ -11,6 +11,7 @@ import { TranslateLoaderFactory } from '../app.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { GlobalService } from './Services/global-service.service';
+import { BloodComponent } from './Component/blood/blood.component';
 
 @NgModule({
 
@@ -26,6 +27,8 @@ import { GlobalService } from './Services/global-service.service';
       }
     }),
   ],
-  providers: [MessageService,GlobalService]
+  providers: [MessageService,GlobalService],
+  declarations: [
+  ]
 })
 export class AdminModule { }

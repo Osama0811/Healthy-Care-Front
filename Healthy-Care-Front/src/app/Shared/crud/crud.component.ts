@@ -7,12 +7,16 @@ interface ColsType {
   field?: string;
   header?: string;
 };
+interface WithId {
+  id: string|undefined;
+};
 @Component({
   selector:"app-data-table",
     templateUrl: './crud.component.html',
     providers: [MessageService]
 })
-export class CrudComponent<T extends any[]> implements OnInit {
+
+export class CrudComponent<T extends WithId> implements OnInit {
 
 
 
@@ -28,6 +32,7 @@ export class CrudComponent<T extends any[]> implements OnInit {
 
 
     selectedItems: T[] = [];
+    selectedId: (string|undefined)[] = [];
 
     submitted: boolean = false;
 
@@ -75,18 +80,12 @@ this.Item=  this.ItemsList;
         this.Item = { ...Item };
     }
 
-    // confirmDeleteSelected() {
-    //     this.deleteItemsDialog = false;
-    //     this.globalService.GetAll().subscribe(d=>d.resource.map(d=>this.DeptList.push(d)));
-    //     this.ItemsList = this.Item.filter(val => !this.selectedItems.includes(val));
-    //     this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Items Deleted', life: 3000 });
-    //     this.selectedItems = [];
-    // }
-
-    confirmDelete() {
-        this.deleteItemDialog = false;
-        const id = (this.Item as any)?.id;
-        this.globalService.delete(id ?? undefined).subscribe((data) => {
+    confirmDeleteSelected() {
+        this.deleteItemsDialog = false;
+        console.log(this.selectedItems);
+        this.selectedId =  this.selectedItems.map(obj => obj.id);
+        console.log(this.selectedId);
+        this.globalService.Rangedelete<string,(string|undefined)[]>(this.selectedId).subscribe((data) => {
           if(data.success){
             this.messageService.add({
               severity: 'success',
@@ -94,13 +93,48 @@ this.Item=  this.ItemsList;
               detail: data.message,
             });
           }else{
-            console.log("Error");
             this.messageService.add({
               severity: 'error',
               summary: 'Error',
               detail: data.message,
             });
           }
+        },
+        (error)=>{
+          this.messageService.add({
+            severity: 'error',
+            summary: 'Error',
+            detail: error.message,
+          });
+        }
+        );
+        this.selectedItems = [];
+    }
+
+    confirmDelete() {
+        this.deleteItemDialog = false;
+        const id = (this.Item as any)?.id;
+        this.globalService.delete<string>(id).subscribe((data) => {
+          if(data.success){
+            this.messageService.add({
+              severity: 'success',
+              summary: 'Success',
+              detail: data.message,
+            });
+          }else{
+            this.messageService.add({
+              severity: 'error',
+              summary: 'Error',
+              detail: data.message,
+            });
+          }
+        },
+        (error)=>{
+          this.messageService.add({
+            severity: 'error',
+            summary: 'Error',
+            detail: error.message,
+          });
         }
         );
         this.Item = {} as T;

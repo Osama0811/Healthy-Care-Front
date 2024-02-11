@@ -41,7 +41,7 @@
                       <td>
                           <p-tableCheckbox [value]="Item"></p-tableCheckbox>
                       </td>
-                      <td  style="width:14%; min-width:10rem;" *ngFor="let property of getObjectProperties(Item)" ><span class="p-column-title"></span>
+                      <td  style="width:14%; min-width:10rem;" *ngFor="let property of getObjectProperties(Item)" ><span class="p-column-title"> {{ Item[property.name]}}</span>
                        {{ Item[property.name]}}
                       </td >
 
@@ -56,7 +56,7 @@
           </p-table>
       </div>
 
-      <!-- <p-dialog [(visible)]="ItemsDialog" [style]="{width: '450px'}" header="Item Details" [modal]="true" class="p-fluid">
+       <!-- <p-dialog [(visible)]="ItemsDialog" [style]="{width: '450px'}" header="Item Details" [modal]="true" class="p-fluid">
           <ng-template pTemplate="content">
               <img [src]="'assets/demo/images/Item/' + Item.image" [alt]="Item.image" width="150" class="mt-0 mx-auto mb-5 block shadow-2" *ngIf="Item.image">
               <div class="field">
@@ -118,20 +118,20 @@
               <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="hideDialog()"></button>
               <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" (click)="saveItem()"></button>
           </ng-template>
-      </p-dialog> -->
+      </p-dialog>  -->
 
-      <!-- <p-dialog [(visible)]="deleteItemDialog" header="Confirm" [modal]="true" [style]="{width:'450px'}">
+       <p-dialog [(visible)]="deleteItemDialog" header="Confirm" [modal]="true" [style]="{width:'450px'}">
           <div class="flex align-items-center justify-content-center">
               <i class="pi pi-exclamation-triangle mr-3" style="font-size: 2rem"></i>
-              <span *ngIf="Item">Are you sure you want to delete <b>{{Item.name}}</b>?</span>
+              <span *ngIf="Item">Are you sure you want to delete ?</span>
           </div>
           <ng-template pTemplate="footer">
               <button pButton pRipple icon="pi pi-times" class="p-button-text" label="No" (click)="deleteItemDialog = false"></button>
               <button pButton pRipple icon="pi pi-check" class="p-button-text" label="Yes" (click)="confirmDelete()"></button>
           </ng-template>
-      </p-dialog> -->
+      </p-dialog>
 
-      <!-- <p-dialog [(visible)]="deleteItemsDialog" header="Confirm" [modal]="true" [style]="{width:'450px'}">
+     <p-dialog [(visible)]="deleteItemsDialog" header="Confirm" [modal]="true" [style]="{width:'450px'}">
           <div class="flex align-items-center justify-content-center">
               <i class="pi pi-exclamation-triangle mr-3" style="font-size: 2rem"></i>
               <span>Are you sure you want to delete selected Items?</span>
@@ -140,7 +140,7 @@
               <button pButton pRipple icon="pi pi-times" class="p-button-text" label="No" (click)="deleteItemsDialog = false"></button>
               <button pButton pRipple icon="pi pi-check" class="p-button-text" label="Yes" (click)="confirmDeleteSelected()"></button>
           </ng-template>
-      </p-dialog> -->
+      </p-dialog>
   </div>
 </div>
 

@@ -13,6 +13,7 @@ const routes: Routes = [
         { path: '', loadChildren: () => import('./Component/dashboard/dashboard.module').then(m => m.DashboardModule) },
         { path: 'Profile', loadChildren: () => import('./Component/profile/Profile.module').then(m => m.ProfileModule) },
         { path: 'Index', loadChildren: () => import('./Component/index/index.module').then(m => m.IndexModule) },
+        { path: 'Blood', loadChildren: () => import('./Component/blood/blood/Blood.module').then(m => m.BloodModule) },
 
 
     ]

@@ -97,7 +97,7 @@ export class AppLayoutComponent implements OnDestroy {
     }
 
     get containerClass() {
-      console.log(this.layoutService.config());
+      //console.log(this.layoutService.config());
         return {
             'layout-theme-light': this.layoutService.config().colorScheme === 'light',
             'layout-theme-dark': this.layoutService.config().colorScheme === 'dark',

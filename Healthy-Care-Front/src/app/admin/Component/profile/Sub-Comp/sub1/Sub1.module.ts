@@ -10,17 +10,19 @@ import { ButtonModule } from 'primeng/button';
 import { StyleClassModule } from 'primeng/styleclass';
 import { PanelMenuModule } from 'primeng/panelmenu';
 import { CrudModule } from 'src/app/Shared/crud/crud.module';
-import { ProfileComponent } from './profile.component';
-import { ProfilesRoutingModule } from './Profile-routing.module';
-import { Sub1Component } from './Sub-Comp/sub1/sub1.component';
 import { TabMenuModule } from 'primeng/tabmenu';
 import { BadgeModule } from 'primeng/badge';
 import { HttpClient } from '@angular/common/http';
 import { Dept } from 'src/app/Auth/Interfaces/auth';
+import { Sub1Component } from './sub1.component';
+import { ProfilesRoutingModule } from '../../Profile-routing.module';
+import { RouterModule, Routes } from '@angular/router';
 
+const routes: Routes = [
+  { path: '', component:Sub1Component },
+]
 @NgModule({
     imports: [
-      TabMenuModule,
         CommonModule,
         FormsModule,
         ChartModule,
@@ -29,13 +31,16 @@ import { Dept } from 'src/app/Auth/Interfaces/auth';
         BadgeModule,
         StyleClassModule,
         PanelMenuModule,
+
+       RouterModule.forRoot(routes),
         ButtonModule,
         ProfilesRoutingModule,
-        CrudModule
+        CrudModule,
     ],
     providers:[
       GlobalService, { provide: Controller, useValue: 'User' },MessageService
     ],
-    declarations: [ProfileComponent],
+    declarations: [Sub1Component],
+    bootstrap: [Sub1Component]
 })
-export class ProfileModule { }
+export class Sub1Module { }

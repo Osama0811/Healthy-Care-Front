@@ -2,7 +2,7 @@
 
 import { HttpClient, HttpHeaders, HttpParams, HttpResponseBase } from '@angular/common/http';
 import { CrudOperations } from './crud-operations.interface';
-import { Injectable, Inject } from '@angular/core';
+import { Injectable, Inject, Input } from '@angular/core';
 import { environment } from 'src/app/environments/environment.prod';
 import { GeneralResponse } from 'src/app/Shared/GeneralResponse';
 import {
@@ -29,7 +29,7 @@ export  class GlobalService<T> implements CrudOperations<T> {
     protected _http: HttpClient,
   ) {  _base=BASE_URL+"/"+_Controller;}
 
-  Add(t: T): Observable<GeneralResponse<T>> {
+  Add<res,request>(t: request): Observable<GeneralResponse<res>> {
 
     let url_ = _base + '/Add';
     url_ = url_.replace(/[?&]$/, '');
@@ -37,6 +37,8 @@ export  class GlobalService<T> implements CrudOperations<T> {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
+        Accept: 'text/plain',
+        'Authorization': 'Bearer ' + localStorage.getItem('Token'),
       },
       body: JSON.stringify(t),
     };
@@ -44,13 +46,15 @@ export  class GlobalService<T> implements CrudOperations<T> {
     return this.sendRequest(url_, options);
   }
 
-  update(t: T): Observable<GeneralResponse<T>> {
+  update<res,request>(t: request): Observable<GeneralResponse<res>> {
     let url_ = _base + '/Update';
     url_ = url_.replace(/[?&]$/, '');
     const options: RequestInit = {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
+        Accept: 'text/plain',
+        'Authorization': 'Bearer ' + localStorage.getItem('Token'),
       },
       body: JSON.stringify(t),
     };
@@ -58,8 +62,8 @@ export  class GlobalService<T> implements CrudOperations<T> {
     return this.sendRequest(url_, options);
   }
 
-  GetById(id: string): Observable<GeneralResponse<T>> {
-    let url_ = _base + '/Update';
+  GetById<res>(id: string): Observable<GeneralResponse<res>> {
+    let url_ = _base + '/Update?id=${id}`';
     url_ = url_.replace(/[?&]$/, '');
     const options: any = {
       method: 'GET',
@@ -68,8 +72,9 @@ export  class GlobalService<T> implements CrudOperations<T> {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
         Accept: 'text/plain',
+        'Authorization': 'Bearer ' + localStorage.getItem('Token'),
       }),
-      params: new HttpParams().set('id', id),
+      //params: new HttpParams().set('id', id),
     };
 
     return this.sendRequest(url_, options);
@@ -78,33 +83,60 @@ export  class GlobalService<T> implements CrudOperations<T> {
   // GetAll(): Observable<T[]> {
   //   return this._http.get<T[]>(_base)
   // }
-  GetAll(t?: T): Observable<GeneralResponse<T[]>> {
+  GetAll<res,request>(t?: request): Observable<GeneralResponse<res[]>> {
     let url_ = _base + '/GetAll';
     url_ = url_.replace(/[?&]$/, '');
     const options: RequestInit = {
       method: 'GET',
+
       headers: {
         'Content-Type': 'application/json',
+        Accept: 'text/plain',
+        'Authorization': 'Bearer ' + localStorage.getItem('Token'),
       },
      body: JSON.stringify(t),
     };
-console.log(options);
     return this.sendRequest(url_, options);
   }
-  delete(id: string): Observable<GeneralResponse<T>> {
-    let url_ = _base + '/Delete';
+  delete<res>(id: string): Observable<GeneralResponse<res>> {
+    let url_ = _base + `/SoftDelete?id=${id}`;
 
     url_ = url_.replace(/[?&]$/, '');
     const options: any = {
       method: 'Post',
+      observe: 'response',
+      responseType: 'blob',
       headers: {
         'Content-Type': 'application/json',
+        Accept: 'text/plain',
+        Authorization: 'Bearer ' + localStorage.getItem('Token'),
       },
-      params: new HttpParams().set('id', id),
-    };
+     // params: new HttpParams().set('id', id),
 
+    };
+    console.log(options );
+    //return this._http.post<GeneralResponse<T>>(url_, options);
     return this.sendRequest(url_, options);
 	}
+  Rangedelete<res,request>(t: request): Observable<GeneralResponse<res>> {
+    let url_ = _base + `/SoftRangeDelete`;
+console.log(t);
+    url_ = url_.replace(/[?&]$/, '');
+    const options: any = {
+       method: 'Post',
+      // observe: 'response',
+      // responseType: 'blob',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'text/plain',
+        Authorization: 'Bearer ' + localStorage.getItem('Token'),
+      },
+      body: JSON.stringify(t),
+
+    };
+    return this.sendRequest(url_, options);
+	}
+
   private sendRequest(url: string, options: RequestInit): Observable<GeneralResponse<any>> {
     return new Observable<GeneralResponse<T>>(observer => {
       fetch(url, options)

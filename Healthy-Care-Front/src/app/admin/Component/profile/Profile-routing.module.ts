@@ -8,7 +8,7 @@ import { Sub1Component } from './Sub-Comp/sub1/sub1.component';
     imports: [RouterModule.forChild( [{
       path: '', component: ProfileComponent,
       children: [
-          { path: 'Sub1Component', component:Sub1Component},
+        { path: 'Sub1', loadChildren: () => import('./Sub-Comp/sub1/Sub1.module').then(m => m.Sub1Module) },
       ]
 
   }

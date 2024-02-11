@@ -10,13 +10,13 @@ import { ButtonModule } from 'primeng/button';
 import { StyleClassModule } from 'primeng/styleclass';
 import { PanelMenuModule } from 'primeng/panelmenu';
 import { CrudModule } from 'src/app/Shared/crud/crud.module';
-import { ProfileComponent } from './profile.component';
-import { ProfilesRoutingModule } from './Profile-routing.module';
-import { Sub1Component } from './Sub-Comp/sub1/sub1.component';
 import { TabMenuModule } from 'primeng/tabmenu';
 import { BadgeModule } from 'primeng/badge';
 import { HttpClient } from '@angular/common/http';
 import { Dept } from 'src/app/Auth/Interfaces/auth';
+import { BloodComponent } from '../blood.component';
+import { BloodRoutingModule } from './Blood-routing.module';
+import { ToastModule } from 'primeng/toast';
 
 @NgModule({
     imports: [
@@ -30,12 +30,13 @@ import { Dept } from 'src/app/Auth/Interfaces/auth';
         StyleClassModule,
         PanelMenuModule,
         ButtonModule,
-        ProfilesRoutingModule,
-        CrudModule
+        BloodRoutingModule,
+        CrudModule,
+        ToastModule,
     ],
     providers:[
-      GlobalService, { provide: Controller, useValue: 'User' },MessageService
+      GlobalService, { provide: Controller, useValue: 'Category' },MessageService
     ],
-    declarations: [ProfileComponent],
+    declarations: [BloodComponent],
 })
-export class ProfileModule { }
+export class BloodModule { }
