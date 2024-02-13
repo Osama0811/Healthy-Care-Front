@@ -19,7 +19,8 @@ export class UserDtoClass implements IUserDto{
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.css']
+  styleUrls: ['./profile.component.css'],
+  
 })
 export class ProfileComponent  implements OnInit,OnDestroy  {
   items: MenuItem[] | undefined;
@@ -35,14 +36,14 @@ constructor( private globalService: GlobalService<any>,
 }
 
   ngOnInit() {
-  //   this.items = [
-  //     { label: 'Home', icon: 'pi pi-fw pi-home' ,routerLink:"Sub1"},
-  //     { label: 'Calendar', icon: 'pi pi-fw pi-calendar',routerLink:"Sub1" },
-  //     { label: 'Edit', icon: 'pi pi-fw pi-pencil' ,routerLink:"Sub1" },
-  //     { label: 'Documentation', icon: 'pi pi-fw pi-file' ,routerLink:"Sub1"},
-  //     { label: 'Settings', icon: 'pi pi-fw pi-cog',routerLink:"Sub1" }
-  // ];
-  //     this.activeItem = this.items[0];
+    this.items = [
+      { label: 'Home', icon: 'pi pi-fw pi-home' ,routerLink:"Sub1"},
+      { label: 'Calendar', icon: 'pi pi-fw pi-calendar',routerLink:"Sub1" },
+      { label: 'Edit', icon: 'pi pi-fw pi-pencil' ,routerLink:"Sub1" },
+      { label: 'Documentation', icon: 'pi pi-fw pi-file' ,routerLink:"Sub1"},
+      { label: 'Settings', icon: 'pi pi-fw pi-cog',routerLink:"Sub1" }
+  ];
+      this.activeItem = this.items[0];
   this.SubscriptionList.push( this.globalService.GetAll<UserDtoClass,null>().subscribe(
     (data) => {
       if (data.success) {
