@@ -92,6 +92,10 @@ this.Item=  this.ItemsList;
               summary: 'Success',
               detail: data.message,
             });
+          //  this.globalService.GetAll<T,null>().subscribe((data)=>{
+          //   this.ItemsList=data.resource
+          //  }
+          //  );
           }else{
             this.messageService.add({
               severity: 'error',
@@ -121,6 +125,10 @@ this.Item=  this.ItemsList;
               summary: 'Success',
               detail: data.message,
             });
+            // this.globalService.GetAll<T,null>().subscribe((data)=>{
+            //   this.ItemsList=data.resource
+            //  }
+            // )
           }else{
             this.messageService.add({
               severity: 'error',

@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { GlobalService } from '../../Services/global-service.service';
 import { MessageService } from 'primeng/api';
+import { Subscription } from 'rxjs';
 export interface IBloodDto{
   id: string | undefined;
   name: string | undefined;
@@ -16,12 +17,10 @@ export class BloodDtoClass implements IBloodDto{
   templateUrl: './blood.component.html',
   styleUrls: ['./blood.component.css']
 })
-export class BloodComponent  implements OnInit  {
+export class BloodComponent  implements OnInit ,OnDestroy {
 
-  // items: MenuItem[] | undefined;
-  // //BloodList: GeneralResponse<Dept[]> | undefined;
 
-  // activeItem: MenuItem | undefined;
+  SubscriptionList:Subscription[]=[];
 
  BloodList: IBloodDto[] = [];
   cols: any[] = [];
@@ -31,7 +30,7 @@ export class BloodComponent  implements OnInit  {
   }
   ngOnInit() {
 
-    this.globalService.GetAll<BloodDtoClass,null>().subscribe(
+   this.SubscriptionList.push( this.globalService.GetAll<BloodDtoClass,null>().subscribe(
       (data) => {
         if (data.success) {
           console.log("hello"+data);
@@ -67,12 +66,18 @@ console.log("done");
           detail: error.message,
         });
       }
-    );
+    ));
 
   this.cols = [
     { field: 'id', header: 'Id' },
     { field: 'name', header: 'Blood Name' },
     { field: 'hospitalCount', header: 'Hospital Count' }
   ];
+}
+ngOnDestroy(): void {
+  if (this.SubscriptionList) {
+    this.SubscriptionList.forEach(subscription => subscription.unsubscribe());
+    this.SubscriptionList = [];
+  }
 }
 }

@@ -16,11 +16,11 @@ import { HttpClient } from '@angular/common/http';
 import { Dept } from 'src/app/Auth/Interfaces/auth';
 import { BloodComponent } from '../blood.component';
 import { BloodRoutingModule } from './Blood-routing.module';
-import { ToastModule } from 'primeng/toast';
+
 
 @NgModule({
-    imports: [
-      TabMenuModule,
+  declarations: [BloodComponent],
+  imports: [
         CommonModule,
         FormsModule,
         ChartModule,
@@ -31,12 +31,12 @@ import { ToastModule } from 'primeng/toast';
         PanelMenuModule,
         ButtonModule,
         BloodRoutingModule,
-        CrudModule,
-        ToastModule,
-    ],
-    providers:[
-      GlobalService, { provide: Controller, useValue: 'Category' },MessageService
-    ],
-    declarations: [BloodComponent],
+        CrudModule
+  ],
+  providers:[
+    GlobalService, { provide: Controller, useValue: 'Category' },MessageService
+  ],
 })
-export class BloodModule { }
+export class BloodModule {
+
+}

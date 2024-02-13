@@ -1,8 +1,9 @@
+import { Subscription } from 'rxjs';
 import { UserDto } from './Sub-Comp/sub1/sub1.component';
 import { GeneralResponse } from './../../../Shared/GeneralResponse';
 import { Dept, IDept } from './../../../Auth/Interfaces/auth';
 import { GlobalService } from 'src/app/admin/Services/global-service.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MenuItem, MessageService } from 'primeng/api';
 import { LoginRequest } from 'src/app/Auth/Interfaces/auth';
 export interface IUserDto{
@@ -20,10 +21,10 @@ export class UserDtoClass implements IUserDto{
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.css']
 })
-export class ProfileComponent  implements OnInit {
+export class ProfileComponent  implements OnInit,OnDestroy  {
   items: MenuItem[] | undefined;
   //DeptList: GeneralResponse<Dept[]> | undefined;
-
+ SubscriptionList:Subscription[]=[];
   activeItem: MenuItem | undefined;
 
   DeptList: UserDtoClass[] = [];
@@ -32,6 +33,7 @@ constructor( private globalService: GlobalService<any>,
   private messageService: MessageService){
 
 }
+
   ngOnInit() {
   //   this.items = [
   //     { label: 'Home', icon: 'pi pi-fw pi-home' ,routerLink:"Sub1"},
@@ -41,7 +43,7 @@ constructor( private globalService: GlobalService<any>,
   //     { label: 'Settings', icon: 'pi pi-fw pi-cog',routerLink:"Sub1" }
   // ];
   //     this.activeItem = this.items[0];
-  this.globalService.GetAll<UserDtoClass,null>().subscribe(
+  this.SubscriptionList.push( this.globalService.GetAll<UserDtoClass,null>().subscribe(
     (data) => {
       if (data.success) {
         console.log("hello"+data);
@@ -77,12 +79,18 @@ constructor( private globalService: GlobalService<any>,
         detail: error.message,
       });
     }
-  );
+  ));
 
   this.cols = [
     { field: 'id', header: 'Id' },
     { field: 'userName', header: 'userName' },
     { field: 'password', header: 'password' },
   ];
+  }
+  ngOnDestroy(): void {
+    if (this.SubscriptionList) {
+      this.SubscriptionList.forEach(subscription => subscription.unsubscribe());
+      this.SubscriptionList = [];
+    }
   }
 }
