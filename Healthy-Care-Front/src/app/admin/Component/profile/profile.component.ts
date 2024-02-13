@@ -22,7 +22,7 @@ export class UserDtoClass implements IUserDto{
   styleUrls: ['./profile.component.css'],
   providers:[ GlobalService, { provide: Controller, useValue: 'User' }]
 })
-export class ProfileComponent  implements OnInit,OnDestroy  {
+export class ProfileComponent  implements OnInit  {
   items: MenuItem[] | undefined;
   //DeptList: GeneralResponse<Dept[]> | undefined;
  SubscriptionList:Subscription[]=[];
@@ -43,54 +43,13 @@ constructor( private globalService: GlobalService<any>,
       { label: 'Blood4', icon: 'pi pi-fw pi-file' ,routerLink:"Sub1"},
   ];
       this.activeItem = this.items[0];
-  this.SubscriptionList.push( this.globalService.GetAll<UserDtoClass,null>().subscribe(
-    (data) => {
-      if (data.success) {
-        console.log("hello"+data);
-        if (data.resourceCount == 0) {
-          this.messageService.add({
-            severity: 'success',
-            summary: 'Success',
-            detail: 'No Data found',
-          });
-        } else {
-          this.DeptList = data.resource.map(({ id, userName, password }) => ({ id, userName, password }));
 
-          //this.DeptList = data.resource as UserDtoClass[];
-          this.DeptList.map(d=>console.log(d+"hhjj"));
-          this.messageService.add({
-            severity: 'success',
-            summary: 'Success',
-            detail: data.message,
-          });
-        }
-      } else {
-        this.messageService.add({
-          severity: 'error',
-          summary: 'Error',
-          detail: data.message,
-        });
-      }
-    },
-    (error) => {
-      this.messageService.add({
-        severity: 'error',
-        summary: 'Error',
-        detail: error.message,
-      });
-    }
-  ));
 
-  this.cols = [
-    { field: 'id', header: 'Id' },
-    { field: 'userName', header: 'userName' },
-    { field: 'password', header: 'password' },
-  ];
   }
-  ngOnDestroy(): void {
-    if (this.SubscriptionList) {
-      this.SubscriptionList.forEach(subscription => subscription.unsubscribe());
-      this.SubscriptionList = [];
-    }
-  }
+  // ngOnDestroy(): void {
+  //   if (this.SubscriptionList) {
+  //     this.SubscriptionList.forEach(subscription => subscription.unsubscribe());
+  //     this.SubscriptionList = [];
+  //   }
+  // }
 }

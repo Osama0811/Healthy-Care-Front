@@ -3,6 +3,7 @@ import { Controller, GlobalService } from 'src/app/admin/Services/global-service
 import { Component, OnInit } from '@angular/core';
 import { GeneralResponse } from 'src/app/Shared/GeneralResponse';
 import { Dept } from 'src/app/Auth/Interfaces/auth';
+import { IUserDto, UserDtoClass } from '../../profile.component';
 export interface UserDto{
   id: string | undefined;
   userName: string | undefined;
@@ -12,7 +13,7 @@ export interface UserDto{
   selector: 'app-sub1',
   templateUrl: './sub1.component.html',
   styleUrls: ['./sub1.component.css'],
-  providers:[ GlobalService, { provide: Controller, useValue: 'Category' }]
+  providers:[ GlobalService, { provide: Controller, useValue: 'User' }]
 })
 export class Sub1Component implements OnInit {
   //let body:Dept;
@@ -29,7 +30,6 @@ export class Sub1Component implements OnInit {
     this.globalService.GetAll<UserDto,null>().subscribe(
       (data) => {
         if (data.success) {
-          console.log("hello"+data);
           if (data.resourceCount == 0) {
             this.messageService.add({
               severity: 'success',
@@ -37,7 +37,15 @@ export class Sub1Component implements OnInit {
               detail: 'No Data found',
             });
           } else {
-            data.resource.map((d) => this.DeptList.push(d));
+            let newBloodList:IUserDto[]=[];
+            this.DeptList=data.resource.reduce((acc: IUserDto[], el) => {
+              let obj = { id: el.id, userName: el.userName ,password:el.password} as IUserDto;
+              acc.push(obj);
+              return acc;
+          }, []);
+
+           // this.DeptList = data.resource as IUserDto[];
+            //this.DeptList.map(d=>console.log(d ));
             this.messageService.add({
               severity: 'success',
               summary: 'Success',
