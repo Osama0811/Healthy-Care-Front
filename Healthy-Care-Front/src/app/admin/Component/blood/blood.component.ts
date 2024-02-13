@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { GlobalService } from '../../Services/global-service.service';
+import { Controller, GlobalService } from '../../Services/global-service.service';
 import { MessageService } from 'primeng/api';
 import { Subscription } from 'rxjs';
 export interface IBloodDto{
@@ -15,7 +15,8 @@ export class BloodDtoClass implements IBloodDto{
 @Component({
   selector: 'app-blood',
   templateUrl: './blood.component.html',
-  styleUrls: ['./blood.component.css']
+  styleUrls: ['./blood.component.css'],
+providers:[ GlobalService, { provide: Controller, useValue: 'Category' }]
 })
 export class BloodComponent  implements OnInit ,OnDestroy {
 
@@ -29,10 +30,21 @@ export class BloodComponent  implements OnInit ,OnDestroy {
 
   }
   ngOnInit() {
-
+    this.messageService.add({
+      severity: 'success',
+      summary: 'Success',
+      detail: 'No Data found',
+    });
    this.SubscriptionList.push( this.globalService.GetAll<BloodDtoClass,null>().subscribe(
       (data) => {
+        console.log(data);
+        let newBloodList:IBloodDto[]=[];
+             data.resource.map(el=>{
+              let obj ={...newBloodList}
+              console.log(obj);
+            });
         if (data.success) {
+
           console.log("hello"+data);
           if (data.resourceCount == 0) {
             this.messageService.add({
@@ -41,7 +53,8 @@ export class BloodComponent  implements OnInit ,OnDestroy {
               detail: 'No Data found',
             });
           } else {
-            this.BloodList = data.resource.map(({ id, name ,hospitalCount}) => ({ id, name ,hospitalCount}));
+
+
 
             //this.DeptList = data.resource as UserDtoClass[];
 console.log("done");

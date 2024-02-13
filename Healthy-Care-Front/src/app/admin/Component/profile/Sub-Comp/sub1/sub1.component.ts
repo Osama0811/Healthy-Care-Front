@@ -1,5 +1,5 @@
 import { MessageService } from 'primeng/api';
-import { GlobalService } from 'src/app/admin/Services/global-service.service';
+import { Controller, GlobalService } from 'src/app/admin/Services/global-service.service';
 import { Component, OnInit } from '@angular/core';
 import { GeneralResponse } from 'src/app/Shared/GeneralResponse';
 import { Dept } from 'src/app/Auth/Interfaces/auth';
@@ -12,6 +12,7 @@ export interface UserDto{
   selector: 'app-sub1',
   templateUrl: './sub1.component.html',
   styleUrls: ['./sub1.component.css'],
+  providers:[ GlobalService, { provide: Controller, useValue: 'Category' }]
 })
 export class Sub1Component implements OnInit {
   //let body:Dept;

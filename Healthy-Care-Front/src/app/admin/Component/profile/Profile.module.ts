@@ -36,6 +36,6 @@ import { Dept } from 'src/app/Auth/Interfaces/auth';
     providers:[
       GlobalService, { provide: Controller, useValue: 'User' },MessageService
     ],
-    declarations: [ProfileComponent],
+    declarations: [ProfileComponent,Sub1Component],
 })
 export class ProfileModule { }

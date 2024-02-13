@@ -12,6 +12,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { GlobalService } from './Services/global-service.service';
 import { BloodComponent } from './Component/blood/blood.component';
+import { CrudModule } from '../Shared/crud/crud.module';
 
 @NgModule({
 
@@ -19,6 +20,7 @@ import { BloodComponent } from './Component/blood/blood.component';
     CommonModule,
     AdminRoutingModule,
     FormsModule,
+    CrudModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -28,7 +30,6 @@ import { BloodComponent } from './Component/blood/blood.component';
     }),
   ],
   providers: [MessageService,GlobalService],
-  declarations: [
-  ]
+  declarations: [BloodComponent]
 })
 export class AdminModule { }

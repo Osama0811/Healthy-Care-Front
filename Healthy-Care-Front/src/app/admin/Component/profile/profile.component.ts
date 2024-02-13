@@ -2,7 +2,7 @@ import { Subscription } from 'rxjs';
 import { UserDto } from './Sub-Comp/sub1/sub1.component';
 import { GeneralResponse } from './../../../Shared/GeneralResponse';
 import { Dept, IDept } from './../../../Auth/Interfaces/auth';
-import { GlobalService } from 'src/app/admin/Services/global-service.service';
+import { Controller, GlobalService } from 'src/app/admin/Services/global-service.service';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MenuItem, MessageService } from 'primeng/api';
 import { LoginRequest } from 'src/app/Auth/Interfaces/auth';
@@ -20,7 +20,7 @@ export class UserDtoClass implements IUserDto{
   selector: 'app-profile',
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.css'],
-  
+  providers:[ GlobalService, { provide: Controller, useValue: 'User' }]
 })
 export class ProfileComponent  implements OnInit,OnDestroy  {
   items: MenuItem[] | undefined;
@@ -37,11 +37,10 @@ constructor( private globalService: GlobalService<any>,
 
   ngOnInit() {
     this.items = [
-      { label: 'Home', icon: 'pi pi-fw pi-home' ,routerLink:"Sub1"},
-      { label: 'Calendar', icon: 'pi pi-fw pi-calendar',routerLink:"Sub1" },
-      { label: 'Edit', icon: 'pi pi-fw pi-pencil' ,routerLink:"Sub1" },
-      { label: 'Documentation', icon: 'pi pi-fw pi-file' ,routerLink:"Sub1"},
-      { label: 'Settings', icon: 'pi pi-fw pi-cog',routerLink:"Sub1" }
+      { label: 'Blood1', icon: 'pi pi-fw pi-home' ,routerLink:"Sub1"},
+      { label: 'Blood2', icon: 'pi pi-fw pi-calendar',routerLink:"Sub1" },
+      { label: 'Blood3', icon: 'pi pi-fw pi-pencil' ,routerLink:"Sub1" },
+      { label: 'Blood4', icon: 'pi pi-fw pi-file' ,routerLink:"Sub1"},
   ];
       this.activeItem = this.items[0];
   this.SubscriptionList.push( this.globalService.GetAll<UserDtoClass,null>().subscribe(
