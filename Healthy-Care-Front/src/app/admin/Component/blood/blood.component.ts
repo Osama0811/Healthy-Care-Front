@@ -5,12 +5,10 @@ import { Subscription } from 'rxjs';
 export interface IBloodDto{
   id: string | undefined;
   name: string | undefined;
-  hospitalCount: number | undefined;
 }
 export class BloodDtoClass implements IBloodDto{
   id: string | undefined;
   name: string | undefined;
-  hospitalCount: number | undefined;
 }
 @Component({
   selector: 'app-blood',
@@ -55,7 +53,12 @@ export class BloodComponent  implements OnInit ,OnDestroy {
           } else {
 
 
-
+            let newBloodList:IBloodDto[]=[];
+            this.BloodList=data.resource.reduce((acc: IBloodDto[], el) => {
+              let obj = { id: el.id, name: el.name } as IBloodDto;
+              acc.push(obj);
+              return acc;
+          }, []);
             //this.DeptList = data.resource as UserDtoClass[];
 console.log("done");
             this.messageService.add({
@@ -84,7 +87,6 @@ console.log("done");
   this.cols = [
     { field: 'id', header: 'Id' },
     { field: 'name', header: 'Blood Name' },
-    { field: 'hospitalCount', header: 'Hospital Count' }
   ];
 }
 ngOnDestroy(): void {

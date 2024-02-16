@@ -74,18 +74,17 @@ export  class GlobalService<T> implements CrudOperations<T>  {
 
   GetById<res>(id: string): Observable<GeneralResponse<res>> {
     _base=BASE_URL+"/"+this.parameterValueSubject.getValue().toString();
-    let url_ = _base + '/Update?id=${id}`';
+    let url_ = _base + `/GetById?id=${id}`;
     url_ = url_.replace(/[?&]$/, '');
-    const options: any = {
+    const options: RequestInit = {
       method: 'GET',
-      observe: 'response',
-      responseType: 'blob',
-      headers: new HttpHeaders({
+
+      headers: {
         'Content-Type': 'application/json',
         Accept: 'text/plain',
         'Authorization': 'Bearer ' + localStorage.getItem('Token'),
-      }),
-      //params: new HttpParams().set('id', id),
+      },
+     //body: JSON.stringify(t),
     };
 
     return this.sendRequest(url_, options);
@@ -133,7 +132,7 @@ export  class GlobalService<T> implements CrudOperations<T>  {
     return this.sendRequest(url_, options);
 	}
   Rangedelete<res,request>(t: request): Observable<GeneralResponse<res>> {
-    _base=BASE_URL+"/"+this.parameterValueSubject.getValue().toString(); 
+    _base=BASE_URL+"/"+this.parameterValueSubject.getValue().toString();
     let url_ = _base + `/SoftRangeDelete`;
 console.log(t);
     url_ = url_.replace(/[?&]$/, '');
@@ -153,6 +152,7 @@ console.log(t);
 	}
 
   private sendRequest(url: string, options: RequestInit): Observable<GeneralResponse<any>> {
+    console.log(url);
     return new Observable<GeneralResponse<T>>(observer => {
       fetch(url, options)
         .then(response => response.json())

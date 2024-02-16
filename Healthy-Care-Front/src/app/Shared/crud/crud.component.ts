@@ -1,3 +1,4 @@
+import { map } from 'rxjs/operators';
 import { Component, Input, OnInit, Type } from '@angular/core';
 import { MessageService } from 'primeng/api';
 import { Table } from 'primeng/table';
@@ -32,6 +33,8 @@ export class CrudComponent<T extends WithId> implements OnInit {
 
 
     selectedItems: T[] = [];
+    selectedItem: object={} ;
+
     selectedId: (string|undefined)[] = [];
 
     submitted: boolean = false;
@@ -68,10 +71,39 @@ this.Item=  this.ItemsList;
         this.deleteItemsDialog = true;
     }
 
-    editItem(Item: T) {
-      console.log(Item);
-      console.log("Item");
-        this.Item = { ...Item };
+    editItem(id: string) {
+      console.log(id);
+      this.globalService.GetById<T>(id).subscribe((data) => {
+        if(data.success){
+          this.messageService.add({
+            severity: 'success',
+            summary: 'Success',
+            detail: data.message,
+          });
+
+        this.selectedItem  = data.resource ;console.log(this.selectedItem);
+        }else{
+          this.messageService.add({
+            severity: 'error',
+            summary: 'Error',
+            detail: data.message,
+          });
+        }
+      },
+      (error)=>{
+        this.messageService.add({
+          severity: 'error',
+          summary: 'Error',
+          detail: error.message,
+        });
+      },
+      ()=>{
+        this.selectedItem =  this.selectedItem;
+        console.log(this.selectedItem);
+      }
+      );
+      console.log(this.selectedItem);
+
         this.ItemsDialog = true;
     }
 

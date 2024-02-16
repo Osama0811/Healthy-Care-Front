@@ -47,7 +47,7 @@
 
                       <td>
                           <div class="flex">
-                              <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success mr-2" (click)="editItem(Item)"></button>
+                              <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success mr-2" (click)="editItem( Item.id)"></button>
                               <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning" (click)="deleteItem(Item)"></button>
                           </div>
                       </td>
@@ -56,8 +56,9 @@
           </p-table>
       </div>
 
-       <!-- <p-dialog [(visible)]="ItemsDialog" [style]="{width: '450px'}" header="Item Details" [modal]="true" class="p-fluid">
-          <ng-template pTemplate="content">
+       <p-dialog [(visible)]="ItemsDialog" [style]="{width: '450px'}" header="Item Details" [modal]="true" class="p-fluid">
+        {{selectedItem|json}}
+          <!-- <ng-template pTemplate="content">
               <img [src]="'assets/demo/images/Item/' + Item.image" [alt]="Item.image" width="150" class="mt-0 mx-auto mb-5 block shadow-2" *ngIf="Item.image">
               <div class="field">
                   <label for="name">Name</label>
@@ -112,13 +113,13 @@
                       <p-inputNumber id="quantity" [(ngModel)]="Item.quantity"></p-inputNumber>
                   </div>
               </div>
-          </ng-template>
+          </ng-template> -->
 
           <ng-template pTemplate="footer">
               <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="hideDialog()"></button>
               <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" (click)="saveItem()"></button>
           </ng-template>
-      </p-dialog>  -->
+      </p-dialog>
 
        <p-dialog [(visible)]="deleteItemDialog" header="Confirm" [modal]="true" [style]="{width:'450px'}">
           <div class="flex align-items-center justify-content-center">
