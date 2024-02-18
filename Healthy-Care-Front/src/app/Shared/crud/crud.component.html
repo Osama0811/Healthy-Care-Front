@@ -55,71 +55,28 @@
               </ng-template>
           </p-table>
       </div>
+      <p-dialog [(visible)]="AddDialog||UpdateDialog" [style]="{width: '450px'}" header="Item Details" [modal]="true" class="p-fluid">
+        <!-- {{selectedItem|json}} -->
+<ng-template [(visible)]="AddDialog">Add</ng-template>
+<ng-template [(visible)]="UpdateDialog">Update</ng-template>
+        <div class="app">
+          <dynamic-form
+            [config]="configInput"
+            #form="dynamicForm"
+            (submit)="submit($event)">
+          </dynamic-form>
+          {{ form.valid }}
+          {{ form.value | json }}
+        </div>
 
-       <p-dialog [(visible)]="ItemsDialog" [style]="{width: '450px'}" header="Item Details" [modal]="true" class="p-fluid">
-        {{selectedItem|json}}
-          <!-- <ng-template pTemplate="content">
-              <img [src]="'assets/demo/images/Item/' + Item.image" [alt]="Item.image" width="150" class="mt-0 mx-auto mb-5 block shadow-2" *ngIf="Item.image">
-              <div class="field">
-                  <label for="name">Name</label>
-                  <input type="text" pInputText id="name" [(ngModel)]="Item.name" required autofocus [ngClass]="{'ng-invalid ng-dirty' : submitted && !Item.name}"/>
-                  <small class="ng-dirty ng-invalid" *ngIf="submitted && !Item.name">Name is required.</small>
-              </div>
-              <div class="field">
-                  <label for="description">Description</label>
-                  <textarea id="description" pInputTextarea [(ngModel)]="Item.description" required rows="3" cols="20"></textarea>
-              </div>
-              <div class="field">
-                  <label for="status">Inventory Status</label>
-                  <p-dropdown [(ngModel)]="Item.inventoryStatus" inputId="inventoryStatus" optionValue="label" [options]="statuses" placeholder="Select">
-                      <ng-template pTemplate="selectedItem">
-                          <span *ngIf="Item && Item.inventoryStatus" [class]="'Item-badge status-' + Item.inventoryStatus.toString().toLowerCase()">{{Item.inventoryStatus}}</span>
-                      </ng-template>
-                      <ng-template let-option pTemplate="item">
-                          <span [class]="'Item-badge status-' + option.value">{{option.label}}</span>
-                      </ng-template>
-                  </p-dropdown>
-              </div>
-
-              <div class="field">
-                  <label class="mb-3">Category</label>
-                  <div class="formgrid grid">
-                      <div class="field-radiobutton col-6">
-                          <p-radioButton id="category1" name="category" value="Accessories" [(ngModel)]="Item.category"></p-radioButton>
-                          <label for="category1">Accessories</label>
-                      </div>
-                      <div class="field-radiobutton col-6">
-                          <p-radioButton id="category2" name="category" value="Clothing" [(ngModel)]="Item.category"></p-radioButton>
-                          <label for="category2">Clothing</label>
-                      </div>
-                      <div class="field-radiobutton col-6">
-                          <p-radioButton id="category3" name="category" value="Electronics" [(ngModel)]="Item.category"></p-radioButton>
-                          <label for="category3">Electronics</label>
-                      </div>
-                      <div class="field-radiobutton col-6">
-                          <p-radioButton id="category4" name="category" value="Fitness" [(ngModel)]="Item.category"></p-radioButton>
-                          <label for="category4">Fitness</label>
-                      </div>
-                  </div>
-              </div>
-
-              <div class="formgrid grid">
-                  <div class="field col">
-                      <label for="price">Price</label>
-                      <p-inputNumber id="price" [(ngModel)]="Item.price" mode="currency" currency="USD" locale="en-US"></p-inputNumber>
-                  </div>
-                  <div class="field col">
-                      <label for="quantity">Quantity</label>
-                      <p-inputNumber id="quantity" [(ngModel)]="Item.quantity"></p-inputNumber>
-                  </div>
-              </div>
-          </ng-template> -->
 
           <ng-template pTemplate="footer">
               <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="hideDialog()"></button>
-              <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" (click)="saveItem()"></button>
+              <button pButton pRipple label="Add" icon="pi pi-check" class="p-button-text" *ngIf="AddDialog" (click)="saveItem( form.value)"></button>
+              <button pButton pRipple label="Edit" icon="pi pi-check" class="p-button-text" *ngIf="UpdateDialog" (click)="UpdateItem( form.value)"></button>
           </ng-template>
       </p-dialog>
+
 
        <p-dialog [(visible)]="deleteItemDialog" header="Confirm" [modal]="true" [style]="{width:'450px'}">
           <div class="flex align-items-center justify-content-center">

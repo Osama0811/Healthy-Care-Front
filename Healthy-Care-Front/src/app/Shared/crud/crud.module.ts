@@ -17,6 +17,7 @@ import { RadioButtonModule } from 'primeng/radiobutton';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { DialogModule } from 'primeng/dialog';
 import { GlobalService } from 'src/app/admin/Services/global-service.service';
+import { DynamicFormModule } from '../dynamic-form/dynamic-form.module';
 
 @NgModule({
     imports: [
@@ -35,7 +36,8 @@ import { GlobalService } from 'src/app/admin/Services/global-service.service';
         DropdownModule,
         RadioButtonModule,
         InputNumberModule,
-        DialogModule
+        DialogModule,
+        DynamicFormModule
     ],
     declarations: [CrudComponent],
     exports: [CrudComponent],

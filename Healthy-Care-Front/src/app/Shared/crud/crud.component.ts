@@ -1,8 +1,11 @@
 import { map } from 'rxjs/operators';
-import { Component, Input, OnInit, Type } from '@angular/core';
+import { AfterViewInit, Component, Input, OnInit, Type, ViewChild } from '@angular/core';
 import { MessageService } from 'primeng/api';
 import { Table } from 'primeng/table';
 import { GlobalService } from 'src/app/admin/Services/global-service.service';
+import { DynamicFormComponent } from '../dynamic-form/containers/dynamic-form/dynamic-form.component';
+import { FieldConfig } from '../dynamic-form/models/field-config.interface';
+import { Validators } from '@angular/forms';
 
 interface ColsType {
   field?: string;
@@ -17,14 +20,18 @@ interface WithId {
     providers: [MessageService]
 })
 
-export class CrudComponent<T extends WithId> implements OnInit {
+export class CrudComponent<T extends WithId> implements OnInit , AfterViewInit {
 
 
 
   @Input() ItemsList: T[] = [];
   @Input()  cols: ColsType[] = [];
+  @Input()  configInput: FieldConfig[] = [];
+  //@Input()  configUpdateInput: FieldConfig[] = [];
+
     Item: object={} ;
-    ItemsDialog: boolean = false;
+    AddDialog: boolean = false;
+    UpdateDialog: boolean = false;
 
     deleteItemDialog: boolean = false;
 
@@ -45,10 +52,30 @@ export class CrudComponent<T extends WithId> implements OnInit {
 
     rowsPerPageOptions = [5, 10, 20];
 
+    @ViewChild(DynamicFormComponent) form!: DynamicFormComponent;
+
+
+
     constructor(private globalService: GlobalService<T>, private messageService: MessageService) {
 
      }
 
+     ngAfterViewInit() {
+       let previousValid = this.form.valid;
+       this.form.changes.subscribe(() => {
+         if (this.form.valid !== previousValid) {
+           previousValid = this.form.valid;
+           this.form.setDisabled('submit', !previousValid);
+         }
+       });
+
+       this.form.setDisabled('submit', true);
+     }
+
+     submit(value: {[name: string]: any}) {
+      //dynamic method
+       console.log(value);
+     }
     ngOnInit() {
 
 this.Item=  this.ItemsList;
@@ -62,9 +89,12 @@ this.Item=  this.ItemsList;
     }
 
     openNew() {
+      this.selectedItem={};
+      this.form.form.patchValue(this.selectedItem);
+
         this.Item = {} as T;
         this.submitted = false;
-        this.ItemsDialog = true;
+        this.AddDialog = true;
     }
 
     deleteSelectedItems() {
@@ -81,7 +111,9 @@ this.Item=  this.ItemsList;
             detail: data.message,
           });
 
-        this.selectedItem  = data.resource ;console.log(this.selectedItem);
+        this.selectedItem  = data.resource ;
+        this.form.form.patchValue(this.selectedItem);
+        console.log(this.form.value);
         }else{
           this.messageService.add({
             severity: 'error',
@@ -99,12 +131,12 @@ this.Item=  this.ItemsList;
       },
       ()=>{
         this.selectedItem =  this.selectedItem;
-        console.log(this.selectedItem);
+        this.form.form.patchValue(this.selectedItem);
+
       }
       );
-      console.log(this.selectedItem);
 
-        this.ItemsDialog = true;
+        this.UpdateDialog = true;
     }
 
     deleteItem(Item: T) {
@@ -181,34 +213,29 @@ this.Item=  this.ItemsList;
     }
 
     hideDialog() {
-        this.ItemsDialog = false;
+        this.AddDialog = false;
+        this.UpdateDialog = false;
         this.submitted = false;
     }
 
-    saveItem() {
+    saveItem(Input:any) {
         this.submitted = true;
-
-        // if (this.Item.name?.trim()) {
-        //     if (this.Item.id) {
-        //         // @ts-ignore
-        //         this.Item.inventoryStatus = this.Item.inventoryStatus.value ? this.Item.inventoryStatus.value : this.Item.inventoryStatus;
-        //         this.ItemsList[this.findIndexById(this.Item.id)] = this.Item;
-        //         this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Item Updated', life: 3000 });
-        //     } else {
-        //         this.Item.id = this.createId();
-        //         this.Item.code = this.createId();
-        //         this.Item.image = 'Item-placeholder.svg';
-        //         // @ts-ignore
-        //         this.Item.inventoryStatus = this.Item.inventoryStatus ? this.Item.inventoryStatus.value : 'INSTOCK';
-        //         this.ItemsList.push(this.Item);
-        //         this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Item Created', life: 3000 });
-        //     }
-
-        //     this.Items = [...this.Items];
-            this.ItemsDialog = false;
+console.log(Input);
+this.globalService.Add(Input).subscribe(data=>console.log(data.message));
+            this.AddDialog = false;
             this.Item = {} as T;
         //}
     }
+    UpdateItem(Input:any) {
+      this.submitted = true;
+
+      console.log(Input);
+      //{{ this.form.value  }}
+      this.globalService.update(Input).subscribe(data=>console.log(data.message));
+          this.AddDialog = false;
+          this.Item = {} as T;
+      //}
+  }
 
     // findIndexById(id: string): number {
     //     let index = -1;

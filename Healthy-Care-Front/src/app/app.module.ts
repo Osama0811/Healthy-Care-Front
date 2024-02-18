@@ -12,6 +12,7 @@ import { LangService } from './lang/services/lang.service';
 import { CommonModule } from '@angular/common';
 import { ToastModule } from 'primeng/toast';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DynamicFormModule } from './Shared/dynamic-form/dynamic-form.module';
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,7 +23,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     CommonModule,
     AppRoutingModule,
     ButtonModule,
-
+    DynamicFormModule,
     HttpClientModule,
     ToastModule,
     BrowserAnimationsModule,
