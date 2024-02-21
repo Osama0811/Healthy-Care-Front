@@ -5,15 +5,18 @@ import { Table } from 'primeng/table';
 import { GlobalService } from 'src/app/admin/Services/global-service.service';
 import { DynamicFormComponent } from '../dynamic-form/containers/dynamic-form/dynamic-form.component';
 import { FieldConfig } from '../dynamic-form/models/field-config.interface';
-import { Validators } from '@angular/forms';
+import { AbstractControl, FormGroup, Validators } from '@angular/forms';
 
 interface ColsType {
-  field?: string;
-  header?: string;
+  field: string;
+  header: string;
 };
 interface WithId {
   id: string|undefined;
 };
+interface FormControls {
+  [key: string]: AbstractControl;
+}
 @Component({
   selector:"app-data-table",
     templateUrl: './crud.component.html',
@@ -50,7 +53,7 @@ export class CrudComponent<T extends WithId> implements OnInit , AfterViewInit {
 
     statuses: any[] = [];
 
-    rowsPerPageOptions = [5, 10, 20];
+    rowsPerPageOptions = [10, 15, 30];
 
     @ViewChild(DynamicFormComponent) form!: DynamicFormComponent;
 
@@ -72,15 +75,11 @@ export class CrudComponent<T extends WithId> implements OnInit , AfterViewInit {
        this.form.setDisabled('submit', true);
      }
 
-     submit(value: {[name: string]: any}) {
-      //dynamic method
-       console.log(value);
-     }
+
     ngOnInit() {
 
 this.Item=  this.ItemsList;
-      console.log(this.ItemsList);
-      console.log("lkmlml");
+
         // this.statuses = [
         //     { label: 'INSTOCK', value: 'instock' },
         //     { label: 'LOWSTOCK', value: 'lowstock' },
@@ -88,10 +87,18 @@ this.Item=  this.ItemsList;
         // ];
     }
 
+   patchFormValuesToNull(form: FormGroup<FormControls>): void {
+    Object.keys(form.controls).forEach((key) => {
+        const control = form.get(key);
+        if (control) {
+            control.patchValue(null);
+        }
+    });
+}
     openNew() {
       this.selectedItem={};
-      this.form.form.patchValue(this.selectedItem);
-
+      this.patchFormValuesToNull(this.form.form);
+console.log(this.form.form.value);
         this.Item = {} as T;
         this.submitted = false;
         this.AddDialog = true;
@@ -102,7 +109,6 @@ this.Item=  this.ItemsList;
     }
 
     editItem(id: string) {
-      console.log(id);
       this.globalService.GetById<T>(id).subscribe((data) => {
         if(data.success){
           this.messageService.add({
@@ -113,7 +119,6 @@ this.Item=  this.ItemsList;
 
         this.selectedItem  = data.resource ;
         this.form.form.patchValue(this.selectedItem);
-        console.log(this.form.value);
         }else{
           this.messageService.add({
             severity: 'error',
@@ -146,9 +151,7 @@ this.Item=  this.ItemsList;
 
     confirmDeleteSelected() {
         this.deleteItemsDialog = false;
-        console.log(this.selectedItems);
         this.selectedId =  this.selectedItems.map(obj => obj.id);
-        console.log(this.selectedId);
         this.globalService.Rangedelete<string,(string|undefined)[]>(this.selectedId).subscribe((data) => {
           if(data.success){
             this.messageService.add({
@@ -156,10 +159,46 @@ this.Item=  this.ItemsList;
               summary: 'Success',
               detail: data.message,
             });
-          //  this.globalService.GetAll<T,null>().subscribe((data)=>{
-          //   this.ItemsList=data.resource
-          //  }
-          //  );
+            this.globalService.GetAll<T, null>().subscribe(
+              (data) => {
+
+                if (data.success) {
+                  if (data.resourceCount == 0) {
+                    this.messageService.add({
+                      severity: 'success',
+                      summary: 'Success',
+                      detail: 'No Data found',
+                    });
+                  } else {
+                    this.ItemsList = data.resource.reduce((acc: T[], el) => {
+                      let obj = el as T;
+                      acc.push(obj);
+                      return acc;
+                    }, []);
+                    //this.DeptList = data.resource as UserDtoClass[];
+                    console.log('done');
+                    this.messageService.add({
+                      severity: 'success',
+                      summary: 'Success',
+                      detail: data.message,
+                    });
+                  }
+                } else {
+                  this.messageService.add({
+                    severity: 'error',
+                    summary: 'Error',
+                    detail: data.message,
+                  });
+                }
+              },
+              (error) => {
+                this.messageService.add({
+                  severity: 'error',
+                  summary: 'Error',
+                  detail: error.message,
+                });
+              }
+            )
           }else{
             this.messageService.add({
               severity: 'error',
@@ -189,10 +228,46 @@ this.Item=  this.ItemsList;
               summary: 'Success',
               detail: data.message,
             });
-            // this.globalService.GetAll<T,null>().subscribe((data)=>{
-            //   this.ItemsList=data.resource
-            //  }
-            // )
+            this.globalService.GetAll<T, null>().subscribe(
+              (data) => {
+
+                if (data.success) {
+                  if (data.resourceCount == 0) {
+                    this.messageService.add({
+                      severity: 'success',
+                      summary: 'Success',
+                      detail: 'No Data found',
+                    });
+                  } else {
+                    this.ItemsList = data.resource.reduce((acc: T[], el) => {
+                      let obj = el as T;
+                      acc.push(obj);
+                      return acc;
+                    }, []);
+                    //this.DeptList = data.resource as UserDtoClass[];
+                    console.log('done');
+                    this.messageService.add({
+                      severity: 'success',
+                      summary: 'Success',
+                      detail: data.message,
+                    });
+                  }
+                } else {
+                  this.messageService.add({
+                    severity: 'error',
+                    summary: 'Error',
+                    detail: data.message,
+                  });
+                }
+              },
+              (error) => {
+                this.messageService.add({
+                  severity: 'error',
+                  summary: 'Error',
+                  detail: error.message,
+                });
+              }
+            )
           }else{
             this.messageService.add({
               severity: 'error',
@@ -220,8 +295,70 @@ this.Item=  this.ItemsList;
 
     saveItem(Input:any) {
         this.submitted = true;
-console.log(Input);
-this.globalService.Add(Input).subscribe(data=>console.log(data.message));
+this.globalService.Add(Input).subscribe((data) => {
+  if(data.success){
+    this.messageService.add({
+      severity: 'success',
+      summary: 'Success',
+      detail: data.message,
+    });
+    this.globalService.GetAll<T, null>().subscribe(
+      (data) => {
+
+        if (data.success) {
+          if (data.resourceCount == 0) {
+            this.messageService.add({
+              severity: 'success',
+              summary: 'Success',
+              detail: 'No Data found',
+            });
+          } else {
+            this.ItemsList = data.resource.reduce((acc: T[], el) => {
+              let obj = el as T;
+              acc.push(obj);
+              return acc;
+            }, []);
+            //this.DeptList = data.resource as UserDtoClass[];
+            console.log('done');
+            this.messageService.add({
+              severity: 'success',
+              summary: 'Success',
+              detail: data.message,
+            });
+          }
+        } else {
+          this.messageService.add({
+            severity: 'error',
+            summary: 'Error',
+            detail: data.message,
+          });
+        }
+      },
+      (error) => {
+        this.messageService.add({
+          severity: 'error',
+          summary: 'Error',
+          detail: error.message,
+        });
+      }
+    )
+  }else{
+    this.messageService.add({
+      severity: 'error',
+      summary: 'Error',
+      detail: data.message,
+    });
+  }
+},
+(error)=>{
+  this.messageService.add({
+    severity: 'error',
+    summary: 'Error',
+    detail: error.message,
+  });
+}
+);
+
             this.AddDialog = false;
             this.Item = {} as T;
         //}
@@ -229,10 +366,71 @@ this.globalService.Add(Input).subscribe(data=>console.log(data.message));
     UpdateItem(Input:any) {
       this.submitted = true;
 
-      console.log(Input);
-      //{{ this.form.value  }}
-      this.globalService.update(Input).subscribe(data=>console.log(data.message));
-          this.AddDialog = false;
+      this.globalService.update(Input).subscribe((data) => {
+        if(data.success){
+          this.messageService.add({
+            severity: 'success',
+            summary: 'Success',
+            detail: data.message,
+          });
+          this.globalService.GetAll<T, null>().subscribe(
+            (data) => {
+
+              if (data.success) {
+                if (data.resourceCount == 0) {
+                  this.messageService.add({
+                    severity: 'success',
+                    summary: 'Success',
+                    detail: 'No Data found',
+                  });
+                } else {
+                  this.ItemsList = data.resource.reduce((acc: T[], el) => {
+                    let obj = el as T;
+                    acc.push(obj);
+                    return acc;
+                  }, []);
+                  //this.DeptList = data.resource as UserDtoClass[];
+                  console.log('done');
+                  this.messageService.add({
+                    severity: 'success',
+                    summary: 'Success',
+                    detail: data.message,
+                  });
+                }
+              } else {
+                this.messageService.add({
+                  severity: 'error',
+                  summary: 'Error',
+                  detail: data.message,
+                });
+              }
+            },
+            (error) => {
+              this.messageService.add({
+                severity: 'error',
+                summary: 'Error',
+                detail: error.message,
+              });
+            }
+          )
+        }else{
+          this.messageService.add({
+            severity: 'error',
+            summary: 'Error',
+            detail: data.message,
+          });
+        }
+      },
+      (error)=>{
+        this.messageService.add({
+          severity: 'error',
+          summary: 'Error',
+          detail: error.message,
+        });
+      }
+      );
+
+      this.UpdateDialog = false;
           this.Item = {} as T;
       //}
   }
@@ -255,6 +453,6 @@ this.globalService.Add(Input).subscribe(data=>console.log(data.message));
         table.filterGlobal((event.target as HTMLInputElement).value, 'contains');
     }
     getObjectProperties(obj: any): any[] {
-      return Object.keys(obj).map((name) => ({ name }));
+      return Object.keys(obj).map((name) => ({ name: name }));
     }
 }

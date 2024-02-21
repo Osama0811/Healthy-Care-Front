@@ -13,6 +13,7 @@ import { FormsModule } from '@angular/forms';
 import { GlobalService } from './Services/global-service.service';
 import { BloodComponent } from './Component/blood/blood.component';
 import { CrudModule } from '../Shared/crud/crud.module';
+import { QuestionHistoryComponent } from './Component/QuestionHistory/QuestionHistory.component';
 
 @NgModule({
 
@@ -30,6 +31,6 @@ import { CrudModule } from '../Shared/crud/crud.module';
     }),
   ],
   providers: [MessageService,GlobalService],
-  declarations: [BloodComponent]
+  declarations: [BloodComponent,QuestionHistoryComponent]
 })
 export class AdminModule { }

@@ -7,21 +7,28 @@ import { MessageService } from 'primeng/api';
 import { Subscription } from 'rxjs';
 import { Validators } from '@angular/forms';
 import { FieldConfig } from 'src/app/Shared/dynamic-form/models/field-config.interface';
-export interface IBloodDto {
+export interface IQuestionHistoryDto {
   id: string | undefined;
-  name: string | undefined;
+  titleAr: string | undefined;
+  titleEn: string | undefined;
+  title: string | undefined;
+  questionAr: string | undefined;
+  questionEn: string | undefined;
+  question: string | undefined;
+  ageGroup: number | undefined;
+  ageGroupTitle: string | undefined;
 }
 
 @Component({
-  selector: 'app-blood',
-  templateUrl: './blood.component.html',
-  styleUrls: ['./blood.component.css'],
-  providers: [GlobalService, { provide: Controller, useValue: 'Category' }],
+  selector: 'app-QuestionHistory',
+  templateUrl: './QuestionHistory.component.html',
+  styleUrls: ['./QuestionHistory.component.css'],
+  providers: [GlobalService, { provide: Controller, useValue: 'QuestionHistory' }],
 })
-export class BloodComponent implements OnInit, OnDestroy {
+export class QuestionHistoryComponent implements OnInit, OnDestroy {
   SubscriptionList: Subscription[] = [];
 
-  BloodList: IBloodDto[] = [];
+  QuestionHistoryList: IQuestionHistoryDto[] = [];
   cols: any[] = [];
   configInput: FieldConfig[] = [];
 
@@ -43,27 +50,43 @@ export class BloodComponent implements OnInit, OnDestroy {
       },
       {
         type: 'input',
-        label: 'Blood name',
-        name: 'name',
-        placeholder: 'Enter Blood Name',
+        label: ' titleAr',
+        name: 'titleAr',
+        placeholder: 'Enter title in arabic',
         validation: [Validators.required, Validators.minLength(4)],
 
       },
       {
         type: 'input',
-        label: 'hospital Count',
-        name: 'hospitalCount',
-        placeholder: 'Enter hospital Count',
+        label: ' titleEn',
+        name: 'titleEn',
+        placeholder: 'Enter title in english',
+        validation: [Validators.required, Validators.minLength(4)],
+
       },
-      // {
-      //   type: 'select',
-      //   label: 'Favourite ',
-      //   name: 'food',
-      //   options: [],
-      //   value:[1,2,3,4],
-      //   placeholder: 'Select an option',
-      //   validation: [Validators.required]
-      // },
+      {
+        type: 'input',
+        label: ' questionAr',
+        name: 'questionAr',
+        placeholder: 'Enter title question in arabic',
+        validation: [Validators.required, Validators.minLength(4)],
+
+      },
+      {
+        type: 'input',
+        label: ' questionEn',
+        name: 'questionEn',
+        placeholder: 'Enter title question in English',
+        validation: [Validators.required, Validators.minLength(4)],
+
+      },
+      {
+        type: 'input',
+        label: 'age Group',
+        name: 'ageGroup',
+        placeholder: 'Enter age Group'
+      },
+
     ];
     this.messageService.add({
       severity: 'success',
@@ -71,7 +94,7 @@ export class BloodComponent implements OnInit, OnDestroy {
       detail: 'No Data found',
     });
     this.SubscriptionList.push(
-      this.globalService.GetAll<IBloodDto, null>().subscribe(
+      this.globalService.GetAll<IQuestionHistoryDto, null>().subscribe(
         (data) => {
 
           if (data.success) {
@@ -82,9 +105,9 @@ export class BloodComponent implements OnInit, OnDestroy {
                 detail: 'No Data found',
               });
             } else {
-              let newBloodList: IBloodDto[] = [];
-              this.BloodList = data.resource.reduce((acc: IBloodDto[], el) => {
-                let obj = el as IBloodDto;
+              let newQuestionHistoryList: IQuestionHistoryDto[] = [];
+              this.QuestionHistoryList = data.resource.reduce((acc: IQuestionHistoryDto[], el) => {
+                let obj = el as IQuestionHistoryDto;
                 acc.push(obj);
                 return acc;
               }, []);
@@ -116,7 +139,11 @@ export class BloodComponent implements OnInit, OnDestroy {
 
     this.cols = [
       { field: 'id', header: 'Id' },
-      { field: 'name', header: 'Blood Name' },
+      { field: 'title', header: ' Title' },
+      { field: 'question', header: ' Question' },
+      { field: 'ageGroupTitle', header: ' Age Group Title' },
+
+
     ];
   }
   ngOnDestroy(): void {

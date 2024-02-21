@@ -46,7 +46,7 @@ export class AppMenuComponent implements OnInit {
           },
 
             {
-                label: 'Pages',
+                label: 'Blood',
                 icon: 'pi pi-fw pi-briefcase',
                 items: [
 
@@ -74,6 +74,17 @@ export class AppMenuComponent implements OnInit {
 
                 ]
             },
+            {
+              label: 'History',
+              items: [
+                  { label: 'History', icon: 'pi pi-question-circle', routerLink: ['/admin/QuestionHistory'] }
+
+                  //{ label: 'Invalid State', icon: 'pi pi-fw pi-exclamation-circle', routerLink: ['/uikit/invalidstate'] },
+
+                  //{ label: 'Menu', icon: 'pi pi-fw pi-bars', routerLink: ['/uikit/menu'], routerLinkActiveOptions: { paths: 'subset', queryParams: 'ignored', matrixParams: 'ignored', fragment: 'ignored' } },
+
+              ]
+          },
 
         ];
     }

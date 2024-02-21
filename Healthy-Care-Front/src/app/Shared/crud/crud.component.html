@@ -17,7 +17,7 @@
               </ng-template>
           </p-toolbar>
 
-          <p-table #dt [value]="ItemsList" [columns]="cols" responsiveLayout="scroll" [rows]="10" [globalFilterFields]="['name','country.name','representative.name','status']" [paginator]="true" [rowsPerPageOptions]="[10,20,30]" [showCurrentPageReport]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [(selection)]="selectedItems" selectionMode="multiple" [rowHover]="true" dataKey="id">
+          <p-table #dt [value]="ItemsList" [columns]="cols" responsiveLayout="scroll" [rows]="10" [globalFilterFields]="['name','country.name','representative.name','status']" [paginator]="true" [rowsPerPageOptions]="rowsPerPageOptions" [showCurrentPageReport]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [(selection)]="selectedItems" selectionMode="multiple" [rowHover]="true" dataKey="id">
               <ng-template pTemplate="caption">
                   <div class="flex flex-column md:flex-row md:justify-content-between md:align-items-center">
                       <h5 class="m-0">Manage Items</h5>
@@ -32,7 +32,7 @@
                       <th style="width: 3rem">
                           <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
                       </th>
-                      <th *ngFor="let col of cols" pSortableColumn="{{col.field}}">{{col.header}} <p-sortIcon field="{{col.field}}"></p-sortIcon></th>
+                      <th *ngFor="let col of cols" pSortableColumn="{{col.field}}">{{col.header}}  <p-sortIcon field="{{col.field}}"></p-sortIcon></th>
                       <th></th>
                   </tr>
               </ng-template>
@@ -41,8 +41,9 @@
                       <td>
                           <p-tableCheckbox [value]="Item"></p-tableCheckbox>
                       </td>
-                      <td  style="width:14%; min-width:10rem;" *ngFor="let property of getObjectProperties(Item)" ><span class="p-column-title"> {{ Item[property.name]}}</span>
-                       {{ Item[property.name]}}
+                      <td  style="width:14%; min-width:10rem;" *ngFor="let col of cols" ><span class="p-column-title"> {{ Item[col.field]}}</span>
+
+                        {{ Item[col.field]}}
                       </td >
 
                       <td>
@@ -63,7 +64,7 @@
           <dynamic-form
             [config]="configInput"
             #form="dynamicForm"
-            (submit)="submit($event)">
+          >
           </dynamic-form>
           {{ form.valid }}
           {{ form.value | json }}
