@@ -7,7 +7,7 @@ import { MessageService } from 'primeng/api';
 import { Subscription } from 'rxjs';
 import { Validators } from '@angular/forms';
 import { FieldConfig } from 'src/app/Shared/dynamic-form/models/field-config.interface';
-export interface IBloodDto {
+export interface IBloodDto {//get all data table
   id: string | undefined;
   name: string | undefined;
 }
@@ -16,22 +16,19 @@ export interface IBloodDto {
   selector: 'app-blood',
   templateUrl: './blood.component.html',
   styleUrls: ['./blood.component.css'],
-  providers: [GlobalService, { provide: Controller, useValue: 'Category' }],
+  providers: [GlobalService, { provide: Controller, useValue: 'Category' }], //controller name
 })
 export class BloodComponent implements OnInit, OnDestroy {
-  SubscriptionList: Subscription[] = [];
+  SubscriptionList: Subscription[] = []; // for me
 
-  BloodList: IBloodDto[] = [];
-  cols: any[] = [];
-  configInput: FieldConfig[] = [];
+  BloodList: IBloodDto[] = []; // dto for data table
+  cols: any[] = []; // colims in data table
+  configInput: FieldConfig[] = []; // input add update
 
   constructor(
     private globalService: GlobalService<any>,
     private messageService: MessageService
-  ) {
-
-
-  }
+  ) {}
   ngOnInit() {
     this.configInput = [
       {
@@ -55,15 +52,15 @@ export class BloodComponent implements OnInit, OnDestroy {
         name: 'hospitalCount',
         placeholder: 'Enter hospital Count',
       },
-      // {
-      //   type: 'select',
-      //   label: 'Favourite ',
-      //   name: 'food',
-      //   options: [],
-      //   value:[1,2,3,4],
-      //   placeholder: 'Select an option',
-      //   validation: [Validators.required]
-      // },
+      {
+        type: 'select',
+        label: 'select ',
+        name: 'option',
+        options: ["jkkj","knl","kn","hbj"],
+        value:[1,2,3,4],
+        placeholder: 'Select an option',
+        validation: [Validators.required]
+      },
     ];
     this.messageService.add({
       severity: 'success',
@@ -82,7 +79,7 @@ export class BloodComponent implements OnInit, OnDestroy {
                 detail: 'No Data found',
               });
             } else {
-              let newBloodList: IBloodDto[] = [];
+
               this.BloodList = data.resource.reduce((acc: IBloodDto[], el) => {
                 let obj = el as IBloodDto;
                 acc.push(obj);
@@ -115,7 +112,6 @@ export class BloodComponent implements OnInit, OnDestroy {
     );
 
     this.cols = [
-      { field: 'id', header: 'Id' },
       { field: 'name', header: 'Blood Name' },
     ];
   }

@@ -138,7 +138,6 @@ export class QuestionHistoryComponent implements OnInit, OnDestroy {
     );
 
     this.cols = [
-      { field: 'id', header: 'Id' },
       { field: 'title', header: ' Title' },
       { field: 'question', header: ' Question' },
       { field: 'ageGroupTitle', header: ' Age Group Title' },
