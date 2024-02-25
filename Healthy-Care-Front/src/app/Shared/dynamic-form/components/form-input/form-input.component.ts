@@ -1,4 +1,4 @@
-import { Component, ViewContainerRef } from '@angular/core';
+import { Component, ViewContainerRef, Type } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 
 import { Field } from '../../models/field.interface';
@@ -12,7 +12,8 @@ import { FieldConfig } from '../../models/field-config.interface';
       [formGroup]="group">
       <label>{{ config.label }}</label>
       <input
-        type="text"
+      pInputText
+        [type]="config.textType"
         [attr.placeholder]="config.placeholder"
         [formControlName]="config.name"
         >
