@@ -52,7 +52,6 @@ export class QuestionHistoryComponent implements OnInit, OnDestroy {
         type: 'input',
         label: ' titleAr',
         name: 'titleAr',
-        textType:"text",
         placeholder: 'Enter title in arabic',
         validation: [Validators.required, Validators.minLength(4)],
 
@@ -61,7 +60,6 @@ export class QuestionHistoryComponent implements OnInit, OnDestroy {
         type: 'input',
         label: ' titleEn',
         name: 'titleEn',
-        textType:"text",
         placeholder: 'Enter title in english',
         validation: [Validators.required, Validators.minLength(4)],
 
@@ -70,7 +68,6 @@ export class QuestionHistoryComponent implements OnInit, OnDestroy {
         type: 'input',
         label: ' questionAr',
         name: 'questionAr',
-        textType:"text",
         placeholder: 'Enter title question in arabic',
         validation: [Validators.required, Validators.minLength(4)],
 
@@ -79,7 +76,6 @@ export class QuestionHistoryComponent implements OnInit, OnDestroy {
         type: 'input',
         label: ' questionEn',
         name: 'questionEn',
-        textType:"text",
         placeholder: 'Enter title question in English',
         validation: [Validators.required, Validators.minLength(4)],
 
@@ -88,7 +84,6 @@ export class QuestionHistoryComponent implements OnInit, OnDestroy {
         type: 'input',
         label: 'age Group',
         name: 'ageGroup',
-        textType:"number",
         placeholder: 'Enter age Group'
       },
 

@@ -32,6 +32,8 @@ export class CrudComponent<T extends WithId> implements OnInit , AfterViewInit {
   @Input()  configInput: FieldConfig[] = [];
   //@Input()  configUpdateInput: FieldConfig[] = [];
 
+
+
     Item: object={} ;
     AddDialog: boolean = false;
     UpdateDialog: boolean = false;
