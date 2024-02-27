@@ -17,7 +17,8 @@ import { QuestionHistoryComponent } from './Component/QuestionHistory/QuestionHi
 
 @NgModule({
 
-  imports: [ 
+  imports: [
+    
     CommonModule,
     AdminRoutingModule,
     FormsModule,
