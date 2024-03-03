@@ -44,6 +44,27 @@ export class AppMenuComponent implements OnInit {
 
               ]
           },
+          {
+            label: 'BloodBank',
+            items: [
+                { label: 'BloodBank', icon: 'pi pi-fw pi-id-card', routerLink: ['/admin/BloodBank'] },
+
+                //{ label: 'Invalid State', icon: 'pi pi-fw pi-exclamation-circle', routerLink: ['/uikit/invalidstate'] },
+
+                //{ label: 'Menu', icon: 'pi pi-fw pi-bars', routerLink: ['/uikit/menu'], routerLinkActiveOptions: { paths: 'subset', queryParams: 'ignored', matrixParams: 'ignored', fragment: 'ignored' } },
+
+            ]
+        },{
+          label: 'Category',
+          items: [
+              { label: 'Category', icon: 'pi pi-list', routerLink: ['/admin/Category'] },
+
+              //{ label: 'Invalid State', icon: 'pi pi-fw pi-exclamation-circle', routerLink: ['/uikit/invalidstate'] },
+
+              //{ label: 'Menu', icon: 'pi pi-fw pi-bars', routerLink: ['/uikit/menu'], routerLinkActiveOptions: { paths: 'subset', queryParams: 'ignored', matrixParams: 'ignored', fragment: 'ignored' } },
+
+          ]
+      },
 
             {
                 label: 'Blood',
