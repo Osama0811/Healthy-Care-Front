@@ -53,15 +53,7 @@ export class CategoryComponent implements OnInit, OnDestroy {
         name: 'hospitalCount',
         placeholder: 'Enter hospital Count',
       },
-      {
-        type: 'select',
-        label: 'select ',
-        name: 'option',
-        options: ["jkkj","knl","kn","hbj"],
-        value:[1,2,3,4],
-        placeholder: 'Select an option',
-        validation: [Validators.required]
-      },
+
     ];
     this.messageService.add({
       severity: 'success',

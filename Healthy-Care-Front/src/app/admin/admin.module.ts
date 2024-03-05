@@ -14,6 +14,7 @@ import { GlobalService } from './Services/global-service.service';
 import { BloodComponent } from './Component/blood/blood.component';
 import { CrudModule } from '../Shared/crud/crud.module';
 import { QuestionHistoryComponent } from './Component/QuestionHistory/QuestionHistory.component';
+import { CategoryComponent } from './Component/Category/category.component';
 
 @NgModule({
 
@@ -31,6 +32,6 @@ import { QuestionHistoryComponent } from './Component/QuestionHistory/QuestionHi
     }),
   ],
   providers: [MessageService,GlobalService],
-  declarations: [BloodComponent,QuestionHistoryComponent]
+  declarations: [BloodComponent,QuestionHistoryComponent,CategoryComponent]
 })
 export class AdminModule { }

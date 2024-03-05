@@ -85,6 +85,18 @@ export class AppMenuComponent implements OnInit {
 
               ]
           },
+          {
+            label: 'Categories',
+            items: [
+                { label: 'category', icon: 'pi pi-copy', routerLink: ['/admin/Category'] }
+
+                //{ label: 'Invalid State', icon: 'pi pi-fw pi-exclamation-circle', routerLink: ['/uikit/invalidstate'] },
+
+                //{ label: 'Menu', icon: 'pi pi-fw pi-bars', routerLink: ['/uikit/menu'], routerLinkActiveOptions: { paths: 'subset', queryParams: 'ignored', matrixParams: 'ignored', fragment: 'ignored' } },
+
+            ]
+        },
+
 
         ];
     }

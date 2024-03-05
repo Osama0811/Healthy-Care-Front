@@ -6,6 +6,7 @@ import { ProfileComponent } from './Component/profile/profile.component';
 import { AppLayoutComponent } from './layout/layout/admin.layout.component';
 import { BloodComponent } from './Component/blood/blood.component';
 import { QuestionHistoryComponent } from './Component/QuestionHistory/QuestionHistory.component';
+import { CategoryComponent } from './Component/Category/category.component';
 
 const routes: Routes = [
 
@@ -18,6 +19,7 @@ const routes: Routes = [
         { path: 'Index', loadChildren: () => import('./Component/index/index.module').then(m => m.IndexModule) },
         { path: 'Blood', component: BloodComponent },
         { path: 'QuestionHistory', component: QuestionHistoryComponent },
+        { path: 'Category', component: CategoryComponent },
 
 
     ]
