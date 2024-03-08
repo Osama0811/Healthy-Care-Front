@@ -64,7 +64,40 @@ export class AppMenuComponent implements OnInit {
               //{ label: 'Menu', icon: 'pi pi-fw pi-bars', routerLink: ['/uikit/menu'], routerLinkActiveOptions: { paths: 'subset', queryParams: 'ignored', matrixParams: 'ignored', fragment: 'ignored' } },
 
           ]
-      },
+      }
+      ,{
+        label: 'Doctor',
+        items: [
+            { label: 'Doctor', icon: 'pi pi-list', routerLink: ['/admin/Doctor'] },
+
+            //{ label: 'Invalid State', icon: 'pi pi-fw pi-exclamation-circle', routerLink: ['/uikit/invalidstate'] },
+
+            //{ label: 'Menu', icon: 'pi pi-fw pi-bars', routerLink: ['/uikit/menu'], routerLinkActiveOptions: { paths: 'subset', queryParams: 'ignored', matrixParams: 'ignored', fragment: 'ignored' } },
+
+        ]
+    }
+    ,{
+      label: 'Tools',
+      items: [
+          { label: 'Tools', icon: 'pi pi-list', routerLink: ['/admin/Tools'] },
+
+          //{ label: 'Invalid State', icon: 'pi pi-fw pi-exclamation-circle', routerLink: ['/uikit/invalidstate'] },
+
+          //{ label: 'Menu', icon: 'pi pi-fw pi-bars', routerLink: ['/uikit/menu'], routerLinkActiveOptions: { paths: 'subset', queryParams: 'ignored', matrixParams: 'ignored', fragment: 'ignored' } },
+
+      ]
+  }
+  ,{
+    label: 'Tools_Department',
+    items: [
+        { label: 'Tools_Department', icon: 'pi pi-list', routerLink: ['/admin/Tools_Department'] },
+
+        //{ label: 'Invalid State', icon: 'pi pi-fw pi-exclamation-circle', routerLink: ['/uikit/invalidstate'] },
+
+        //{ label: 'Menu', icon: 'pi pi-fw pi-bars', routerLink: ['/uikit/menu'], routerLinkActiveOptions: { paths: 'subset', queryParams: 'ignored', matrixParams: 'ignored', fragment: 'ignored' } },
+
+    ]
+},
 
             {
                 label: 'Blood',

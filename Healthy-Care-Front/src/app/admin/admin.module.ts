@@ -16,6 +16,9 @@ import { CrudModule } from '../Shared/crud/crud.module';
 import { QuestionHistoryComponent } from './Component/QuestionHistory/QuestionHistory.component';
 import { CategoryComponent } from './Component/Category/Category.component';
 import { BloodBankComponent } from './Component/BloodBank/BloodBank.component';
+import { DoctorComponent } from './Component/Doctor/Doctor.component';
+import { ToolsComponent } from './Component/Tools/Tools.component';
+import { Tools_DepartmentComponent } from './Component/Tools_Department/Tools_Department.component';
 
 @NgModule({
 
@@ -33,6 +36,6 @@ import { BloodBankComponent } from './Component/BloodBank/BloodBank.component';
     }),
   ],
   providers: [MessageService,GlobalService],
-  declarations: [BloodComponent,QuestionHistoryComponent,BloodBankComponent,CategoryComponent]
+  declarations: [BloodComponent,QuestionHistoryComponent,BloodBankComponent,CategoryComponent,DoctorComponent,ToolsComponent,Tools_DepartmentComponent]
 })
 export class AdminModule { }

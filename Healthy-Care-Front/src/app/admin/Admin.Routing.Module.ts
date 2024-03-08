@@ -8,6 +8,9 @@ import { BloodComponent } from './Component/blood/blood.component';
 import { QuestionHistoryComponent } from './Component/QuestionHistory/QuestionHistory.component';
 import { CategoryComponent } from './Component/Category/Category.component';
 import { BloodBankComponent } from './Component/BloodBank/BloodBank.component';
+import { DoctorComponent } from './Component/Doctor/Doctor.component';
+import { ToolsComponent } from './Component/Tools/Tools.component';
+import { Tools_DepartmentComponent } from './Component/Tools_Department/Tools_Department.component';
 
 const routes: Routes = [
 
@@ -22,6 +25,11 @@ const routes: Routes = [
         { path: 'BloodBank', component: BloodBankComponent },
         { path: 'Category', component: CategoryComponent },
         { path: 'QuestionHistory', component: QuestionHistoryComponent },
+        { path: 'Doctor', component: DoctorComponent },
+        { path: 'Tools', component: ToolsComponent },
+        { path: 'Tools_Department', component: Tools_DepartmentComponent },
+
+
 
 
     ]
