@@ -15,6 +15,7 @@ import { BloodComponent } from './Component/blood/blood.component';
 import { CrudModule } from '../Shared/crud/crud.module';
 import { QuestionHistoryComponent } from './Component/QuestionHistory/QuestionHistory.component';
 import { CategoryComponent } from './Component/Category/category.component';
+import { PatientComponent } from './Component/Patient/Patient.component';
 
 @NgModule({
 
@@ -32,6 +33,6 @@ import { CategoryComponent } from './Component/Category/category.component';
     }),
   ],
   providers: [MessageService,GlobalService],
-  declarations: [BloodComponent,QuestionHistoryComponent,CategoryComponent]
+  declarations: [BloodComponent,QuestionHistoryComponent,CategoryComponent,PatientComponent]
 })
 export class AdminModule { }

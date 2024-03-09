@@ -7,6 +7,7 @@ import { AppLayoutComponent } from './layout/layout/admin.layout.component';
 import { BloodComponent } from './Component/blood/blood.component';
 import { QuestionHistoryComponent } from './Component/QuestionHistory/QuestionHistory.component';
 import { CategoryComponent } from './Component/Category/category.component';
+import { PatientComponent } from './Component/Patient/Patient.component';
 
 const routes: Routes = [
 
@@ -20,6 +21,7 @@ const routes: Routes = [
         { path: 'Blood', component: BloodComponent },
         { path: 'QuestionHistory', component: QuestionHistoryComponent },
         { path: 'Category', component: CategoryComponent },
+        { path: 'Patient', component: PatientComponent },
 
 
     ]
