@@ -20,6 +20,8 @@ import { DoctorComponent } from './Component/Doctor/Doctor.component';
 import { ToolsComponent } from './Component/Tools/Tools.component';
 import { Tools_DepartmentComponent } from './Component/Tools_Department/Tools_Department.component';
 import { Tools_HospitalComponent } from './Component/Tools_Hospital/Tools_Hospital.component';
+import { Doctor_DepartmentComponent } from './Component/Doctor_Department/Doctor_Department.component';
+import { Doctor_HospitalComponent } from './Component/Doctor_Hospital/Doctor_Hospital.component';
 
 @NgModule({
 
@@ -37,6 +39,6 @@ import { Tools_HospitalComponent } from './Component/Tools_Hospital/Tools_Hospit
     }),
   ],
   providers: [MessageService,GlobalService],
-  declarations: [BloodComponent,QuestionHistoryComponent,BloodBankComponent,CategoryComponent,DoctorComponent,ToolsComponent,Tools_DepartmentComponent,Tools_HospitalComponent]
+  declarations: [BloodComponent,QuestionHistoryComponent,BloodBankComponent,CategoryComponent,DoctorComponent,ToolsComponent,Tools_DepartmentComponent,Tools_HospitalComponent,Doctor_DepartmentComponent,Doctor_HospitalComponent]
 })
 export class AdminModule { }

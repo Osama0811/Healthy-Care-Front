@@ -12,6 +12,8 @@ import { DoctorComponent } from './Component/Doctor/Doctor.component';
 import { ToolsComponent } from './Component/Tools/Tools.component';
 import { Tools_DepartmentComponent } from './Component/Tools_Department/Tools_Department.component';
 import { Tools_HospitalComponent } from './Component/Tools_Hospital/Tools_Hospital.component';
+import { Doctor_DepartmentComponent } from './Component/Doctor_Department/Doctor_Department.component';
+import { Doctor_HospitalComponent } from './Component/Doctor_Hospital/Doctor_Hospital.component';
 
 const routes: Routes = [
 
@@ -30,6 +32,10 @@ const routes: Routes = [
         { path: 'Tools', component: ToolsComponent },
         { path: 'Tools_Department', component: Tools_DepartmentComponent },
         { path: 'Tools_Hospital', component: Tools_HospitalComponent },
+        { path: 'Doctor_Department', component: Doctor_DepartmentComponent },
+        { path: 'Doctor_Hospital', component: Doctor_HospitalComponent },
+
+
 
 
 
