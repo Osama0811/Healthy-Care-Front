@@ -11,6 +11,7 @@ import { BloodBankComponent } from './Component/BloodBank/BloodBank.component';
 import { DoctorComponent } from './Component/Doctor/Doctor.component';
 import { ToolsComponent } from './Component/Tools/Tools.component';
 import { Tools_DepartmentComponent } from './Component/Tools_Department/Tools_Department.component';
+import { Tools_HospitalComponent } from './Component/Tools_Hospital/Tools_Hospital.component';
 
 const routes: Routes = [
 
@@ -28,6 +29,8 @@ const routes: Routes = [
         { path: 'Doctor', component: DoctorComponent },
         { path: 'Tools', component: ToolsComponent },
         { path: 'Tools_Department', component: Tools_DepartmentComponent },
+        { path: 'Tools_Hospital', component: Tools_HospitalComponent },
+
 
 
 

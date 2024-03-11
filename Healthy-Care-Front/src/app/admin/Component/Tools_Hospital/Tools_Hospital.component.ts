@@ -7,23 +7,24 @@ import { MessageService } from 'primeng/api';
 import { Subscription } from 'rxjs';
 import { Validators } from '@angular/forms';
 import { FieldConfig } from 'src/app/Shared/dynamic-form/models/field-config.interface';
-export interface ITools_DepartmentDto {
+export interface ITools_HospitalDto {
   id: string | undefined;
   toolsId: string | undefined;
-  departmentId: string | undefined;
+  hospitalId: string | undefined;
+  quantity:number | undefined;
 
 }
 
 @Component({
-  selector: 'app-Tools_Department',
-  templateUrl: './Tools_Department.component.html',
-  styleUrls: ['./Tools_Department.component.css'],
-  providers: [GlobalService, { provide: Controller, useValue: 'Tools_Department' }],
+  selector: 'app-Tools_Hospital',
+  templateUrl: './Tools_Hospital.component.html',
+  styleUrls: ['./Tools_Hospital.component.css'],
+  providers: [GlobalService, { provide: Controller, useValue: 'Tools_Hospital' }],
 })
-export class Tools_DepartmentComponent implements OnInit, OnDestroy {
+export class Tools_HospitalComponent implements OnInit, OnDestroy {
   SubscriptionList: Subscription[] = [];
 
-  Tools_DepartmentList: ITools_DepartmentDto[] = [];
+  Tools_HospitalList: ITools_HospitalDto[] = [];
   cols: any[] = [];
   configInput: FieldConfig[] = [];
 
@@ -53,9 +54,16 @@ export class Tools_DepartmentComponent implements OnInit, OnDestroy {
       },
       {
         type: 'input',
-        label: 'Department Id',
-        name: 'departmentId',
-        placeholder: 'Enter Department Id ',
+        label: 'Hospital Id',
+        name: 'hospitalId',
+        placeholder: 'Enter Hospital Id ',
+
+      },
+      {
+        type: 'input',
+        label: 'Quantity',
+        name: 'quantity',
+        placeholder: 'Enter Quantity ',
 
       },
 
@@ -68,7 +76,7 @@ export class Tools_DepartmentComponent implements OnInit, OnDestroy {
       detail: 'No Data found',
     });
     this.SubscriptionList.push(
-      this.globalService.GetAll<ITools_DepartmentDto, null>().subscribe(
+      this.globalService.GetAll<ITools_HospitalDto, null>().subscribe(
         (data) => {
 
           if (data.success) {
@@ -79,9 +87,9 @@ export class Tools_DepartmentComponent implements OnInit, OnDestroy {
                 detail: 'No Data found',
               });
             } else {
-              let newTools_DepartmentList: ITools_DepartmentDto[] = [];
-              this.Tools_DepartmentList = data.resource.reduce((acc: ITools_DepartmentDto[], el) => {
-                let obj = el as ITools_DepartmentDto;
+              let newTools_HospitalList: ITools_HospitalDto[] = [];
+              this.Tools_HospitalList = data.resource.reduce((acc: ITools_HospitalDto[], el) => {
+                let obj = el as ITools_HospitalDto;
                 acc.push(obj);
                 return acc;
               }, []);
@@ -113,7 +121,9 @@ export class Tools_DepartmentComponent implements OnInit, OnDestroy {
 
     this.cols = [
       { field: 'toolsName', header: 'Tools Name' },
-      { field: 'departmentName', header: 'Department Name' },
+      { field: 'hospitalName', header: 'Department Name' },
+      { field: 'quantity', header: 'Quantity' },
+
 
 
     ];
