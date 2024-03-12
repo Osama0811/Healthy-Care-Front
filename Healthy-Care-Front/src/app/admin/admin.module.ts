@@ -14,11 +14,15 @@ import { GlobalService } from './Services/global-service.service';
 import { BloodComponent } from './Component/blood/blood.component';
 import { CrudModule } from '../Shared/crud/crud.module';
 import { QuestionHistoryComponent } from './Component/QuestionHistory/QuestionHistory.component';
+import { BloodEquationComponent } from './Component/BloodEquation/BloodEquation.component';
+import { Hospital_CategoryComponent } from './Component/Hospital_Category/Hospital_Category.component';
+import { DepartmentComponent } from './Component/Department/Department.component';
+import { Department_HospitalComponent } from './Component/Department_Hospital/Department_Hospital.component';
 
 @NgModule({
 
   imports: [
-    
+
     CommonModule,
     AdminRoutingModule,
     FormsModule,
@@ -32,6 +36,6 @@ import { QuestionHistoryComponent } from './Component/QuestionHistory/QuestionHi
     }),
   ],
   providers: [MessageService,GlobalService],
-  declarations: [BloodComponent,QuestionHistoryComponent]
+  declarations: [BloodComponent,QuestionHistoryComponent,BloodEquationComponent,Hospital_CategoryComponent,DepartmentComponent,Department_HospitalComponent]
 })
 export class AdminModule { }

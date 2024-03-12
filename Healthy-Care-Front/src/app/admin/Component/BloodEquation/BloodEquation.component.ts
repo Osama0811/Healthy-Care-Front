@@ -7,21 +7,25 @@ import { MessageService } from 'primeng/api';
 import { Subscription } from 'rxjs';
 import { Validators } from '@angular/forms';
 import { FieldConfig } from 'src/app/Shared/dynamic-form/models/field-config.interface';
-export interface IBloodDto {//get all data table
+export interface IBloodEquationDto {//get all data table
   id: string | undefined;
-  name: string | undefined;
+  bloodFK1: string | undefined;
+  fK1Name: string | undefined;
+  bloodFK2: string | undefined;
+  fK2Name: string | undefined;
+  eqution: string | undefined;
 }
 
 @Component({
-  selector: 'app-blood',
-  templateUrl: './blood.component.html',
-  styleUrls: ['./blood.component.css'],
-  providers: [GlobalService, { provide: Controller, useValue: 'blood' }], //controller name
+  selector: 'app-BloodEquation',
+  templateUrl: './BloodEquation.component.html',
+  styleUrls: ['./BloodEquation.component.css'],
+  providers: [GlobalService, { provide: Controller, useValue: 'BloodEquation' }], //controller name
 })
-export class BloodComponent implements OnInit, OnDestroy {
+export class BloodEquationComponent implements OnInit, OnDestroy {
   SubscriptionList: Subscription[] = []; // for me
 
-  BloodList: IBloodDto[] = []; // dto for data table
+  BloodEquationList: IBloodEquationDto[] = []; // dto for data table
   cols: any[] = []; // colims in data table
   configInput: FieldConfig[] = []; // input add update
 
@@ -40,9 +44,41 @@ export class BloodComponent implements OnInit, OnDestroy {
       },
       {
         type: 'input',
-        label: 'Blood name',
-        name: 'name',
-        placeholder: 'Enter Blood Name',
+        label: 'BloodEquation bloodFK1',
+        name: 'bloodFK1',
+        placeholder: 'Enter BloodEquation bloodFK1',
+        validation: [Validators.required, Validators.minLength(4)],
+
+      },
+      {
+        type: 'input',
+        label: 'BloodEquation fK1Name',
+        name: 'fK1Name',
+        placeholder: 'Enter BloodEquation fK1Name',
+        validation: [Validators.required, Validators.minLength(4)],
+
+      },
+      {
+        type: 'input',
+        label: 'BloodEquation bloodFK2',
+        name: 'bloodFK2',
+        placeholder: 'Enter BloodEquation bloodFK2',
+        validation: [Validators.required, Validators.minLength(4)],
+
+      },
+      {
+        type: 'input',
+        label: 'BloodEquation fK2Name',
+        name: 'fK2Name',
+        placeholder: 'Enter BloodEquation fK2Name',
+        validation: [Validators.required, Validators.minLength(4)],
+
+      },
+      {
+        type: 'input',
+        label: 'BloodEquation eqution',
+        name: 'eqution',
+        placeholder: 'Enter BloodEquation eqution',
         validation: [Validators.required, Validators.minLength(4)],
 
       },
@@ -68,7 +104,7 @@ export class BloodComponent implements OnInit, OnDestroy {
       detail: 'No Data found',
     });
     this.SubscriptionList.push(
-      this.globalService.GetAll<IBloodDto, null>().subscribe(
+      this.globalService.GetAll<IBloodEquationDto, null>().subscribe(
         (data) => {
 
           if (data.success) {
@@ -80,8 +116,8 @@ export class BloodComponent implements OnInit, OnDestroy {
               });
             } else {
 
-              this.BloodList = data.resource.reduce((acc: IBloodDto[], el) => {
-                let obj = el as IBloodDto;
+              this.BloodEquationList = data.resource.reduce((acc: IBloodEquationDto[], el) => {
+                let obj = { id: el.id, bloodFK1: el.bloodFK1, fK1Name: el.fK1Name, bloodFK2: el.bloodFK2, fK2Name: el.fK2Name, eqution: el.eqution} as IBloodEquationDto;
                 acc.push(obj);
                 return acc;
               }, []);
@@ -112,7 +148,12 @@ export class BloodComponent implements OnInit, OnDestroy {
     );
 
     this.cols = [
-      { field: 'name', header: 'Blood Name' },
+      { field: 'id', header: 'id' },
+      { field: 'bloodFK1', header: 'bloodFK1' },
+      { field: 'fK1Name', header: 'fK1Name' },
+      { field: 'bloodFK2', header: 'bloodFK2' },
+      { field: 'fK2Name', header: 'fK2Name' },
+      { field: 'eqution', header: 'eqution' },
     ];
   }
   ngOnDestroy(): void {

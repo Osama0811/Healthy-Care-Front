@@ -85,6 +85,51 @@ export class AppMenuComponent implements OnInit {
 
               ]
           },
+          {
+            label: 'Blood Equation',
+            items: [
+                { label: 'BloodEquation', icon: 'pi pi-arrow-right-arrow-left', routerLink: ['/admin/BloodEquation'] }
+
+                //{ label: 'Invalid State', icon: 'pi pi-fw pi-exclamation-circle', routerLink: ['/uikit/invalidstate'] },
+
+                //{ label: 'Menu', icon: 'pi pi-fw pi-bars', routerLink: ['/uikit/menu'], routerLinkActiveOptions: { paths: 'subset', queryParams: 'ignored', matrixParams: 'ignored', fragment: 'ignored' } },
+
+            ]
+        },
+        {
+            label: 'Department',
+            items: [
+                { label: 'Department', icon: 'pi pi-search', routerLink: ['/admin/Department'] }
+
+                //{ label: 'Invalid State', icon: 'pi pi-fw pi-exclamation-circle', routerLink: ['/uikit/invalidstate'] },
+
+                //{ label: 'Menu', icon: 'pi pi-fw pi-bars', routerLink: ['/uikit/menu'], routerLinkActiveOptions: { paths: 'subset', queryParams: 'ignored', matrixParams: 'ignored', fragment: 'ignored' } },
+
+            ]
+        },
+        {
+            label: 'Department Hospital',
+            items: [
+                { label: 'Department_Hospital', icon: 'pi pi-search', routerLink: ['/admin/Department_Hospital'] }
+
+                //{ label: 'Invalid State', icon: 'pi pi-fw pi-exclamation-circle', routerLink: ['/uikit/invalidstate'] },
+
+                //{ label: 'Menu', icon: 'pi pi-fw pi-bars', routerLink: ['/uikit/menu'], routerLinkActiveOptions: { paths: 'subset', queryParams: 'ignored', matrixParams: 'ignored', fragment: 'ignored' } },
+
+            ]
+        },
+        {
+            label: 'Hospital Category',
+            items: [
+                { label: 'Hospital_Category', icon: 'pi pi-search', routerLink: ['/admin/Hospital_Category'] }
+
+                //{ label: 'Invalid State', icon: 'pi pi-fw pi-exclamation-circle', routerLink: ['/uikit/invalidstate'] },
+
+                //{ label: 'Menu', icon: 'pi pi-fw pi-bars', routerLink: ['/uikit/menu'], routerLinkActiveOptions: { paths: 'subset', queryParams: 'ignored', matrixParams: 'ignored', fragment: 'ignored' } },
+
+            ]
+        },
+
 
         ];
     }
