@@ -8,6 +8,7 @@ import { BloodComponent } from './Component/blood/blood.component';
 import { QuestionHistoryComponent } from './Component/QuestionHistory/QuestionHistory.component';
 import { CategoryComponent } from './Component/Category/category.component';
 import { PatientComponent } from './Component/Patient/Patient.component';
+import { AddressComponent } from './Component/Address/Address.component';
 
 const routes: Routes = [
 
@@ -22,6 +23,7 @@ const routes: Routes = [
         { path: 'QuestionHistory', component: QuestionHistoryComponent },
         { path: 'Category', component: CategoryComponent },
         { path: 'Patient', component: PatientComponent },
+        { path: 'Address', component: AddressComponent },
 
 
     ]

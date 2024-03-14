@@ -107,6 +107,17 @@ export class AppMenuComponent implements OnInit {
 
           ]
       },
+      {
+        label: 'Address',
+        items: [
+            { label: 'Address', icon: 'pi pi-flag', routerLink: ['/admin/Address'] }
+
+            //{ label: 'Invalid State', icon: 'pi pi-fw pi-exclamation-circle', routerLink: ['/uikit/invalidstate'] },
+
+            //{ label: 'Menu', icon: 'pi pi-fw pi-bars', routerLink: ['/uikit/menu'], routerLinkActiveOptions: { paths: 'subset', queryParams: 'ignored', matrixParams: 'ignored', fragment: 'ignored' } },
+
+        ]
+    },
 
 
         ];
