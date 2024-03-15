@@ -1,4 +1,6 @@
-import { Component, OnDestroy, OnInit, Type } from '@angular/core';
+import { map } from 'rxjs/operators';
+import { BloodService } from './../../Services/blood.service';
+import { AfterViewInit, Component, OnDestroy, OnInit, Type } from '@angular/core';
 import {
   Controller,
   GlobalService,
@@ -9,31 +11,131 @@ import { Validators } from '@angular/forms';
 import { FieldConfig } from 'src/app/Shared/dynamic-form/models/field-config.interface';
 export interface IBloodEquationDto {//get all data table
   id: string | undefined;
-  bloodFK1: string | undefined;
+  //bloodFK1: string | undefined;
   fK1Name: string | undefined;
-  bloodFK2: string | undefined;
+  //bloodFK2: string | undefined;
   fK2Name: string | undefined;
   eqution: string | undefined;
 }
-
+export interface IBloodDropDown {//get all data table
+  id: string | undefined;
+  name: string | undefined;
+}
 @Component({
   selector: 'app-BloodEquation',
   templateUrl: './BloodEquation.component.html',
   styleUrls: ['./BloodEquation.component.css'],
   providers: [GlobalService, { provide: Controller, useValue: 'BloodEquation' }], //controller name
 })
-export class BloodEquationComponent implements OnInit, OnDestroy {
+export class BloodEquationComponent implements OnInit, OnDestroy,AfterViewInit  {
   SubscriptionList: Subscription[] = []; // for me
 
   BloodEquationList: IBloodEquationDto[] = []; // dto for data table
+  BloodDropDown: IBloodDropDown[] = []; // dto for DropDown
   cols: any[] = []; // colims in data table
   configInput: FieldConfig[] = []; // input add update
 
   constructor(
     private globalService: GlobalService<any>,
-    private messageService: MessageService
-  ) {}
+    private messageService: MessageService,
+    private bloodService:BloodService
+  ) {
+
+
+  }
+  ngAfterViewInit(): void {
+    this.SubscriptionList.push(
+      this.bloodService.BloodDropDown().subscribe(
+        (data) => {
+
+          if (data.success) {
+            if (data.resourceCount == 0) {
+              this.messageService.add({
+                severity: 'success',
+                summary: 'Success',
+                detail: 'No Data found',
+              });
+            } else {
+
+              // this.BloodDropDown = data.resource.reduce((acc: IBloodDropDown[], el:IBloodDropDown) => {
+              //   let obj = { id: el.id, name: el.name} as IBloodDropDown;
+              //   acc.push(obj);
+              //   return acc;
+              // }, []);
+
+              //this.DeptList = data.resource as UserDtoClass[];
+              this.BloodDropDown = data.resource.reduce((acc: IBloodDropDown[], el) => {
+                let obj = el as IBloodDropDown;
+                acc.push(obj);
+                return acc;
+              }, []);
+              console.log(this.BloodDropDown);
+              console.log('done');
+              this.messageService.add({
+                severity: 'success',
+                summary: 'Success',
+                detail: data.message,
+              });
+              this.initConfigInput();
+            }
+          } else {
+            this.messageService.add({
+              severity: 'error',
+              summary: 'Error',
+              detail: data.message,
+            });
+          }
+        },
+        (error) => {
+          this.messageService.add({
+            severity: 'error',
+            summary: 'Error',
+            detail: error.message,
+          });
+        }
+      )
+    );
+
+  }
+  initConfigInput(): void {
+    this.configInput = [
+        {
+            type: 'input',
+            label: 'Id',
+            name: 'id',
+            placeholder: 'Id',
+            NonVisible: true
+        },
+        {
+            type: 'select',
+            label: 'blood 1',
+            name: 'bloodFK1',
+            options: this.BloodDropDown.map(el => el.name),
+            value: this.BloodDropDown.map(el => el.id),
+            placeholder: 'Enter  bloodFK1',
+            validation: [Validators.required],
+        },
+        {
+            type: 'select',
+            label: 'Blood 2',
+            name: 'bloodFK2',
+            options: this.BloodDropDown.map(el => el.name),
+            value: this.BloodDropDown.map(el => el.id),
+            placeholder: 'Enter  blood2',
+            validation: [Validators.required],
+        },
+        {
+            type: 'input',
+            label: 'Percentage',
+            name: 'percentage',
+            textType: 'number',
+            placeholder: 'Enter Percentage',
+            validation: [Validators.required],
+        },
+    ];
+}
   ngOnInit() {
+    console.log(this.BloodDropDown);
     this.configInput = [
       {
         type: 'input',
@@ -43,61 +145,36 @@ export class BloodEquationComponent implements OnInit, OnDestroy {
         NonVisible:true
       },
       {
-        type: 'input',
-        label: 'BloodEquation bloodFK1',
+        type: 'select',
+        label: 'blood 1',
         name: 'bloodFK1',
-        placeholder: 'Enter BloodEquation bloodFK1',
+        options: this.BloodDropDown.map(el=>el.name),
+        value:this.BloodDropDown.map(el=>el.id),
+        placeholder: 'Enter  bloodFK1',
         validation: [Validators.required, Validators.minLength(4)],
 
-      },
-      {
-        type: 'input',
-        label: 'BloodEquation fK1Name',
-        name: 'fK1Name',
-        placeholder: 'Enter BloodEquation fK1Name',
-        validation: [Validators.required, Validators.minLength(4)],
-
-      },
-      {
-        type: 'input',
-        label: 'BloodEquation bloodFK2',
-        name: 'bloodFK2',
-        placeholder: 'Enter BloodEquation bloodFK2',
-        validation: [Validators.required, Validators.minLength(4)],
-
-      },
-      {
-        type: 'input',
-        label: 'BloodEquation fK2Name',
-        name: 'fK2Name',
-        placeholder: 'Enter BloodEquation fK2Name',
-        validation: [Validators.required, Validators.minLength(4)],
-
-      },
-      {
-        type: 'input',
-        label: 'BloodEquation eqution',
-        name: 'eqution',
-        placeholder: 'Enter BloodEquation eqution',
-        validation: [Validators.required, Validators.minLength(4)],
-
-      },
-      {
-        type: 'input',
-        label: 'hospital Count',
-        name: 'hospitalCount',
-        placeholder: 'Enter hospital Count',
       },
       {
         type: 'select',
-        label: 'select ',
-        name: 'option',
-        options: ["jkkj","knl","kn","hbj"],
-        value:[1,2,3,4],
-        placeholder: 'Select an option',
-        validation: [Validators.required]
+        label: 'Blood 2',
+        name: 'bloodFK2',
+        options: this.BloodDropDown.map(el=>el.name),
+        value:this.BloodDropDown.map(el=>el.id),
+        placeholder: 'Enter  blood2',
+        validation: [Validators.required, Validators.minLength(4)],
+
+      },
+      {
+        type: 'input',
+        label: 'Percentage',
+        name: 'percentage',
+        textType:'number',
+        placeholder: 'Enter Percentage',
+        validation: [Validators.required, Validators.minLength(4)],
+
       },
     ];
+
     this.messageService.add({
       severity: 'success',
       summary: 'Success',
@@ -117,7 +194,7 @@ export class BloodEquationComponent implements OnInit, OnDestroy {
             } else {
 
               this.BloodEquationList = data.resource.reduce((acc: IBloodEquationDto[], el) => {
-                let obj = { id: el.id, bloodFK1: el.bloodFK1, fK1Name: el.fK1Name, bloodFK2: el.bloodFK2, fK2Name: el.fK2Name, eqution: el.eqution} as IBloodEquationDto;
+                let obj = { id: el.id, fK1Name: el.fK1Name, fK2Name: el.fK2Name, eqution: el.eqution} as IBloodEquationDto;
                 acc.push(obj);
                 return acc;
               }, []);
@@ -148,14 +225,13 @@ export class BloodEquationComponent implements OnInit, OnDestroy {
     );
 
     this.cols = [
-      { field: 'id', header: 'id' },
-      { field: 'bloodFK1', header: 'bloodFK1' },
       { field: 'fK1Name', header: 'fK1Name' },
-      { field: 'bloodFK2', header: 'bloodFK2' },
       { field: 'fK2Name', header: 'fK2Name' },
       { field: 'eqution', header: 'eqution' },
     ];
+
   }
+
   ngOnDestroy(): void {
     if (this.SubscriptionList) {
       this.SubscriptionList.forEach((subscription) =>

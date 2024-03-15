@@ -64,29 +64,19 @@ export class DepartmentComponent implements OnInit, OnDestroy {
         placeholder: 'Enter Department description',
         validation: [Validators.required, Validators.minLength(4)],
 
+      },{
+        type: 'input',
+        label: 'Imagebase64',
+        name: 'imageBase64',
+        NonVisible:true
       },
       {
         type: 'input',
-        label: 'Department imagePath',
-        name: 'imagePath',
-        placeholder: 'Enter Department imagePath',
-        validation: [Validators.required, Validators.minLength(4)],
-
-      },
-      {
-        type: 'input',
-        label: 'hospital Count',
-        name: 'hospitalCount',
-        placeholder: 'Enter hospital Count',
-      },
-      {
-        type: 'select',
-        label: 'select ',
-        name: 'option',
-        options: ["jkkj","knl","kn","hbj"],
-        value:[1,2,3,4],
-        placeholder: 'Select an option',
-        validation: [Validators.required]
+        label: ' FileName',
+        name: 'fileName',
+        textType:'file',
+        placeholder: 'Enter Image',
+        //validation: [Validators.required],
       },
     ];
     this.messageService.add({
@@ -139,11 +129,9 @@ export class DepartmentComponent implements OnInit, OnDestroy {
     );
 
     this.cols = [
-      { field: 'id', header: 'id' },
       { field: 'name', header: 'Name' },
       { field: 'specialFlag', header: 'SpecialFlag' },
-      { field: 'description', header: 'Description' },
-      { field: 'imagePath', header: 'ImagePath' },
+      { field: 'description', header: 'Description' }
     ];
   }
   ngOnDestroy(): void {
