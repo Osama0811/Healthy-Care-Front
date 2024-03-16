@@ -58,13 +58,7 @@ export class PatientComponent implements OnInit, OnDestroy {
         placeholder: 'Enter Patient Name',
         validation: [Validators.required, Validators.minLength(4)],
 
-      },
-      {
-        type: 'input',
-        label: 'hospital Count',
-        name: 'hospitalCount',
-        placeholder: 'Enter hospital Count',
-      },
+      }
       // {
       //   type: 'select',
       //   label: 'select ',
