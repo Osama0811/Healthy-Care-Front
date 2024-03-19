@@ -7,21 +7,24 @@ import { MessageService } from 'primeng/api';
 import { Subscription } from 'rxjs';
 import { Validators } from '@angular/forms';
 import { FieldConfig } from 'src/app/Shared/dynamic-form/models/field-config.interface';
-export interface IBloodDto {//get all data table
+export interface IHospital_CategoryDto {//get all data table
   id: string | undefined;
-  name: string | undefined;
+  hospitalId: string | undefined;
+  categoryId: string | undefined;
+  hospitalName: string | undefined;
+  categoryName: string | undefined;
 }
 
 @Component({
-  selector: 'app-blood',
-  templateUrl: './blood.component.html',
-  styleUrls: ['./blood.component.css'],
-  providers: [GlobalService, { provide: Controller, useValue: 'blood' }], //controller name
+  selector: 'app-Hospital_Category',
+  templateUrl: './Hospital_Category.component.html',
+  styleUrls: ['./Hospital_Category.component.css'],
+  providers: [GlobalService, { provide: Controller, useValue: 'Hospital_Category' }], //controller name
 })
-export class BloodComponent implements OnInit, OnDestroy {
+export class Hospital_CategoryComponent implements OnInit, OnDestroy {
   SubscriptionList: Subscription[] = []; // for me
 
-  BloodList: IBloodDto[] = []; // dto for data table
+  Hospital_CategoryList: IHospital_CategoryDto[] = []; // dto for data table
   cols: any[] = []; // colims in data table
   configInput: FieldConfig[] = []; // input add update
 
@@ -40,9 +43,33 @@ export class BloodComponent implements OnInit, OnDestroy {
       },
       {
         type: 'input',
-        label: 'Blood name',
-        name: 'name',
-        placeholder: 'Enter Blood Name',
+        label: 'Hospital_Category hospitalId',
+        name: 'hospitalId',
+        placeholder: 'Enter Hospital_Category hospitalId',
+        validation: [Validators.required, Validators.minLength(4)],
+
+      },
+      {
+        type: 'input',
+        label: 'Hospital_Category categoryId',
+        name: 'categoryId',
+        placeholder: 'Enter Hospital_Category categoryId',
+        validation: [Validators.required, Validators.minLength(4)],
+
+      },
+      {
+        type: 'input',
+        label: 'Hospital_Category hospitalName',
+        name: 'hospitalName',
+        placeholder: 'Enter Hospital_Category hospitalName',
+        validation: [Validators.required, Validators.minLength(4)],
+
+      },
+      {
+        type: 'input',
+        label: 'Hospital_Category categoryName',
+        name: 'categoryName',
+        placeholder: 'Enter Hospital_Category categoryName',
         validation: [Validators.required, Validators.minLength(4)],
 
       },
@@ -68,7 +95,7 @@ export class BloodComponent implements OnInit, OnDestroy {
       detail: 'No Data found',
     });
     this.SubscriptionList.push(
-      this.globalService.GetAll<IBloodDto, null>().subscribe(
+      this.globalService.GetAll<IHospital_CategoryDto, null>().subscribe(
         (data) => {
 
           if (data.success) {
@@ -80,8 +107,8 @@ export class BloodComponent implements OnInit, OnDestroy {
               });
             } else {
 
-              this.BloodList = data.resource.reduce((acc: IBloodDto[], el) => {
-                let obj = el as IBloodDto;
+              this.Hospital_CategoryList = data.resource.reduce((acc: IHospital_CategoryDto[], el) => {
+                let obj = { id: el.id, hospitalId: el.hospitalId, categoryId: el.categoryId, hospitalName: el.hospitalName, categoryName: el.categoryName} as IHospital_CategoryDto;
                 acc.push(obj);
                 return acc;
               }, []);
@@ -112,7 +139,11 @@ export class BloodComponent implements OnInit, OnDestroy {
     );
 
     this.cols = [
-      { field: 'name', header: 'Blood Name' },
+      { field: 'id', header: 'id' },
+      { field: 'hospitalId', header: 'hospitalId' },
+      { field: 'categoryId', header: 'categoryId' },
+      { field: 'hospitalName', header: 'hospitalName' },
+      { field: 'categoryName', header: 'categoryName' },
     ];
   }
   ngOnDestroy(): void {

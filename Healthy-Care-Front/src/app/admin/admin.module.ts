@@ -17,10 +17,15 @@ import { QuestionHistoryComponent } from './Component/QuestionHistory/QuestionHi
 import { CategoryComponent } from './Component/Category/category.component';
 import { PatientComponent } from './Component/Patient/Patient.component';
 import { AddressComponent } from './Component/Address/Address.component';
+import { BloodEquationComponent } from './Component/BloodEquation/BloodEquation.component';
+import { Hospital_CategoryComponent } from './Component/Hospital_Category/Hospital_Category.component';
+import { DepartmentComponent } from './Component/Department/Department.component';
+import { Department_HospitalComponent } from './Component/Department_Hospital/Department_Hospital.component';
 
 @NgModule({
 
   imports: [
+
     CommonModule,
     AdminRoutingModule,
     FormsModule,
@@ -34,6 +39,6 @@ import { AddressComponent } from './Component/Address/Address.component';
     }),
   ],
   providers: [MessageService,GlobalService],
-  declarations: [BloodComponent,QuestionHistoryComponent,CategoryComponent,PatientComponent,AddressComponent]
+  declarations: [BloodComponent,QuestionHistoryComponent,BloodEquationComponent,Hospital_CategoryComponent,DepartmentComponent,Department_HospitalComponent,CategoryComponent,PatientComponent,AddressComponent]
 })
 export class AdminModule { }

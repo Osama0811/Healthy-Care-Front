@@ -1,3 +1,4 @@
+import { BloodEquationComponent } from './Component/BloodEquation/BloodEquation.component';
 import { IndexModule } from './Component/index/index.module';
 import { RouterModule, Routes } from '@angular/router';
 import { NgModule, Component } from '@angular/core';
@@ -9,6 +10,9 @@ import { QuestionHistoryComponent } from './Component/QuestionHistory/QuestionHi
 import { CategoryComponent } from './Component/Category/category.component';
 import { PatientComponent } from './Component/Patient/Patient.component';
 import { AddressComponent } from './Component/Address/Address.component';
+import { Hospital_CategoryComponent } from './Component/Hospital_Category/Hospital_Category.component';
+import { DepartmentComponent } from './Component/Department/Department.component';
+import { Department_HospitalComponent } from './Component/Department_Hospital/Department_Hospital.component';
 
 const routes: Routes = [
 
@@ -24,6 +28,10 @@ const routes: Routes = [
         { path: 'Category', component: CategoryComponent },
         { path: 'Patient', component: PatientComponent },
         { path: 'Address', component: AddressComponent },
+        { path: 'BloodEquation', component: BloodEquationComponent },
+        { path: 'Hospital_Category', component: Hospital_CategoryComponent },
+        { path: 'Department', component: DepartmentComponent },
+        { path: 'Department_Hospital', component: Department_HospitalComponent },
 
 
     ]

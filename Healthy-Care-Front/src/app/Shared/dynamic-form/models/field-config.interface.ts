@@ -5,7 +5,7 @@ export interface FieldConfig {
   NonVisible?: boolean,
   label?: string,
   name: string,
-  options?: string[],
+  options?: (string|undefined)[],
   placeholder?: string,
   type: string,
   validation?: ValidatorFn[],
