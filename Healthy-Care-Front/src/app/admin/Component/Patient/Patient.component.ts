@@ -46,19 +46,42 @@ export class PatientComponent implements OnInit, OnDestroy {
     this.configInput = [
       {
         type: 'input',
-        label: 'Id',
-        name: 'id',
-        placeholder: 'Id',
+        label: 'user Id',
+        name: 'userId',
+        placeholder: 'userId',
         NonVisible:true
       },
       {
         type: 'input',
-        label: 'Patient name',
-        name: 'name',
-        placeholder: 'Enter Patient Name',
+        label: 'hospital Id',
+        name: 'hospitalId',
+        placeholder: 'Enter hospital Id',
+        validation: [Validators.required],
+
+      },
+      {
+        type: 'input',
+        label: 'Patient blood Id',
+        name: 'bloodId',
+        placeholder: 'Enter blood Id',
         validation: [Validators.required, Validators.minLength(4)],
 
+      },
+      {
+        type: 'input',
+        label: 'Patient imageBase',
+        name: 'imageBase64',
+        placeholder: 'Enter your image',
+
+      },
+      {
+        type: 'input',
+        label: 'Patient file Name',
+        name: 'fileName',
+        placeholder: 'Enter file Name',
+
       }
+
       // {
       //   type: 'select',
       //   label: 'select ',
