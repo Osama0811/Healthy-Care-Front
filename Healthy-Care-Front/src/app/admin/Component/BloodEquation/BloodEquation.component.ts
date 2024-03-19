@@ -136,44 +136,44 @@ export class BloodEquationComponent implements OnInit, OnDestroy,AfterViewInit  
 }
   ngOnInit() {
     console.log(this.BloodDropDown);
-    this.configInput = [
-      {
-        type: 'input',
-        label: 'Id',
-        name: 'id',
-        placeholder: 'Id',
-        NonVisible:true
-      },
-      {
-        type: 'select',
-        label: 'blood 1',
-        name: 'bloodFK1',
-        options: this.BloodDropDown.map(el=>el.name),
-        value:this.BloodDropDown.map(el=>el.id),
-        placeholder: 'Enter  bloodFK1',
-        validation: [Validators.required, Validators.minLength(4)],
+    // this.configInput = [
+    //   {
+    //     type: 'input',
+    //     label: 'Id',
+    //     name: 'id',
+    //     placeholder: 'Id',
+    //     NonVisible:true
+    //   },
+    //   {
+    //     type: 'select',
+    //     label: 'blood 1',
+    //     name: 'bloodFK1',
+    //     options: this.BloodDropDown.map(el=>el.name),
+    //     value:this.BloodDropDown.map(el=>el.id),
+    //     placeholder: 'Enter  bloodFK1',
+    //     validation: [Validators.required, Validators.minLength(4)],
 
-      },
-      {
-        type: 'select',
-        label: 'Blood 2',
-        name: 'bloodFK2',
-        options: this.BloodDropDown.map(el=>el.name),
-        value:this.BloodDropDown.map(el=>el.id),
-        placeholder: 'Enter  blood2',
-        validation: [Validators.required, Validators.minLength(4)],
+    //   },
+    //   {
+    //     type: 'select',
+    //     label: 'Blood 2',
+    //     name: 'bloodFK2',
+    //     options: this.BloodDropDown.map(el=>el.name),
+    //     value:this.BloodDropDown.map(el=>el.id),
+    //     placeholder: 'Enter  blood2',
+    //     validation: [Validators.required, Validators.minLength(4)],
 
-      },
-      {
-        type: 'input',
-        label: 'Percentage',
-        name: 'percentage',
-        textType:'number',
-        placeholder: 'Enter Percentage',
-        validation: [Validators.required, Validators.minLength(4)],
+    //   },
+    //   {
+    //     type: 'input',
+    //     label: 'Percentage',
+    //     name: 'percentage',
+    //     textType:'number',
+    //     placeholder: 'Enter Percentage',
+    //     validation: [Validators.required, Validators.minLength(4)],
 
-      },
-    ];
+    //   },
+    // ];
 
     this.messageService.add({
       severity: 'success',

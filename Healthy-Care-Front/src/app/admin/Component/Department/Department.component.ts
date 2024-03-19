@@ -1,4 +1,5 @@
-import { Component, OnDestroy, OnInit, Type } from '@angular/core';
+import { EnumService } from './../../Services/enum.service';
+import { AfterViewInit, Component, OnDestroy, OnInit, Type } from '@angular/core';
 import {
   Controller,
   GlobalService,
@@ -7,6 +8,7 @@ import { MessageService } from 'primeng/api';
 import { Subscription } from 'rxjs';
 import { Validators } from '@angular/forms';
 import { FieldConfig } from 'src/app/Shared/dynamic-form/models/field-config.interface';
+import { IEnumDropDown } from '../../Model/DropDown';
 export interface IDepartmentDto {//get all data table
   id: string | undefined;
   name: string | undefined;
@@ -21,18 +23,42 @@ export interface IDepartmentDto {//get all data table
   styleUrls: ['./Department.component.css'],
   providers: [GlobalService, { provide: Controller, useValue: 'Department' }], //controller name
 })
-export class DepartmentComponent implements OnInit, OnDestroy {
+export class DepartmentComponent implements OnInit, OnDestroy ,AfterViewInit {
   SubscriptionList: Subscription[] = []; // for me
-
+  DepartmentTypeDropDown: IEnumDropDown[] = []; // dto for DropDown
   DepartmentList: IDepartmentDto[] = []; // dto for data table
   cols: any[] = []; // colims in data table
   configInput: FieldConfig[] = []; // input add update
 
   constructor(
     private globalService: GlobalService<any>,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private enumService:EnumService
   ) {}
-  ngOnInit() {
+  ngAfterViewInit(): void { //This Will return my drop data from service
+    this.SubscriptionList.push(
+      this.enumService.GetEnumDropDown("GetDepartmentType").subscribe(
+        (data) => {
+
+          this.DepartmentTypeDropDown = data.reduce((acc: IEnumDropDown[], el) => {
+            let obj = el as IEnumDropDown;
+            acc.push(obj);
+            return acc;
+          }, []);
+          this.initConfigInput();
+        },
+        (error) => {
+          this.messageService.add({
+            severity: 'error',
+            summary: 'Error',
+            detail: error.message,
+          });
+        }
+      )
+    );
+
+  }
+  initConfigInput(): void {
     this.configInput = [
       {
         type: 'input',
@@ -49,21 +75,28 @@ export class DepartmentComponent implements OnInit, OnDestroy {
         validation: [Validators.required, Validators.minLength(4)],
 
       },
+      // {
+      //   type: 'input',
+      //   label: 'Department specialFlag',
+      //   name: 'specialFlag',
+      //   placeholder: 'Enter Department specialFlag',
+      //   validation: [Validators.required, Validators.minLength(4)],
+      // },
       {
-        type: 'input',
-        label: 'Department specialFlag',
+        type: 'select',
+        label: 'specialFlag',
         name: 'specialFlag',
-        placeholder: 'Enter Department specialFlag',
-        validation: [Validators.required, Validators.minLength(4)],
-
-      },
+        options: this.DepartmentTypeDropDown.map(el => el.key),
+        value: this.DepartmentTypeDropDown.map(el => el.value),
+        placeholder: 'Enter  special Flag',
+        validation: [Validators.required],
+    },
       {
         type: 'input',
         label: 'Department description',
         name: 'description',
         placeholder: 'Enter Department description',
         validation: [Validators.required, Validators.minLength(4)],
-
       },{
         type: 'input',
         label: 'Imagebase64',
@@ -78,7 +111,10 @@ export class DepartmentComponent implements OnInit, OnDestroy {
         placeholder: 'Enter Image',
         //validation: [Validators.required],
       },
-    ];
+    ]
+}
+  ngOnInit() {
+
     this.messageService.add({
       severity: 'success',
       summary: 'Success',

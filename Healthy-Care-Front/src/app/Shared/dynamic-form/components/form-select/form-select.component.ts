@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Type } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 
 import { Field } from '../../models/field.interface';
@@ -13,7 +13,7 @@ import { FieldConfig } from '../../models/field-config.interface';
       <label class="form-label" >{{ config.label }}</label>
       <select class="form-select" [formControlName]="config.name" >
         <option value="">{{ config.placeholder }}</option>
-        <option *ngFor="let option of config.options; let i = index" [value]="config.value[i]">
+        <option *ngFor="let option of config.options; let i = index" [value]="config.value[i]" >
           {{ option }}
         </option>
       </select>
