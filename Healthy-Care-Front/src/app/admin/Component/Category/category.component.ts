@@ -7,21 +7,22 @@ import { MessageService } from 'primeng/api';
 import { Subscription } from 'rxjs';
 import { Validators } from '@angular/forms';
 import { FieldConfig } from 'src/app/Shared/dynamic-form/models/field-config.interface';
-export interface IBloodDto {//get all data table
+export interface ICategoryDto {//get all data table
   id: string | undefined;
   name: string | undefined;
+  hospitalCount: number | undefined;
 }
 
 @Component({
-  selector: 'app-blood',
-  templateUrl: './blood.component.html',
-  styleUrls: ['./blood.component.css'],
-  providers: [GlobalService, { provide: Controller, useValue: 'blood' }], //controller name
+  selector: 'app-Category',
+  templateUrl: './Category.component.html',
+  styleUrls: ['./Category.component.css'],
+  providers: [GlobalService, { provide: Controller, useValue: 'Category' }], //controller name
 })
-export class BloodComponent implements OnInit, OnDestroy {
+export class CategoryComponent implements OnInit, OnDestroy {
   SubscriptionList: Subscription[] = []; // for me
 
-  BloodList: IBloodDto[] = []; // dto for data table
+  CategoryList: ICategoryDto[] = []; // dto for data table
   cols: any[] = []; // colims in data table
   configInput: FieldConfig[] = []; // input add update
 
@@ -40,9 +41,9 @@ export class BloodComponent implements OnInit, OnDestroy {
       },
       {
         type: 'input',
-        label: 'Blood name',
+        label: 'Category name',
         name: 'name',
-        placeholder: 'Enter Blood Name',
+        placeholder: 'Enter Category Name',
         validation: [Validators.required, Validators.minLength(4)],
 
       },
@@ -52,15 +53,7 @@ export class BloodComponent implements OnInit, OnDestroy {
         name: 'hospitalCount',
         placeholder: 'Enter hospital Count',
       },
-      {
-        type: 'select',
-        label: 'select ',
-        name: 'option',
-        options: ["jkkj","knl","kn","hbj"],
-        value:[1,2,3,4],
-        placeholder: 'Select an option',
-        validation: [Validators.required]
-      },
+
     ];
     this.messageService.add({
       severity: 'success',
@@ -68,7 +61,7 @@ export class BloodComponent implements OnInit, OnDestroy {
       detail: 'No Data found',
     });
     this.SubscriptionList.push(
-      this.globalService.GetAll<IBloodDto, null>().subscribe(
+      this.globalService.GetAll<ICategoryDto, null>().subscribe(
         (data) => {
 
           if (data.success) {
@@ -80,8 +73,8 @@ export class BloodComponent implements OnInit, OnDestroy {
               });
             } else {
 
-              this.BloodList = data.resource.reduce((acc: IBloodDto[], el) => {
-                let obj = el as IBloodDto;
+              this.CategoryList = data.resource.reduce((acc: ICategoryDto[], el) => {
+                let obj = el as ICategoryDto;
                 acc.push(obj);
                 return acc;
               }, []);
@@ -112,7 +105,10 @@ export class BloodComponent implements OnInit, OnDestroy {
     );
 
     this.cols = [
-      { field: 'name', header: 'Blood Name' },
+      { field: 'id', header: 'ID' },
+      { field: 'name', header: 'Category Name' },
+      { field: 'hospitalCount', header: 'hospital Count' },
+
     ];
   }
   ngOnDestroy(): void {

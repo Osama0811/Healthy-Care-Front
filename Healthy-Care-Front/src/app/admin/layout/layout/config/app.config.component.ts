@@ -1,3 +1,4 @@
+import { ThemeServiceService } from './../service/theme-service.service';
 import { Component, Input } from '@angular/core';
 import { LayoutService } from '../service/admin.layout.service';
 import { MenuService } from '../app.menu.service';
@@ -13,7 +14,8 @@ export class AppConfigComponent {
 
     constructor(
         public layoutService: LayoutService,
-        public menuService: MenuService
+        public menuService: MenuService,
+        public ThemeServiceService: ThemeServiceService,
     ) {}
 
     get visible(): boolean {
@@ -84,11 +86,12 @@ export class AppConfigComponent {
         this.layoutService.showConfigSidebar();
     }
 
-    changeTheme(theme: string, colorScheme: string) {
-        this.theme = theme;
-        this.colorScheme = colorScheme;
-    }
 
+    ChangeTheme(theme: string, colorScheme: string) {
+
+      this.ThemeServiceService.setTheme(theme);
+      this.colorScheme = colorScheme;
+    }
     decrementScale() {
         this.scale--;
     }

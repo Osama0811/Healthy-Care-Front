@@ -7,21 +7,30 @@ import { MessageService } from 'primeng/api';
 import { Subscription } from 'rxjs';
 import { Validators } from '@angular/forms';
 import { FieldConfig } from 'src/app/Shared/dynamic-form/models/field-config.interface';
-export interface IBloodDto {//get all data table
+export interface IAddressDto {//get all data table
   id: string | undefined;
-  name: string | undefined;
+  title: string | undefined;
+  countryId: string | undefined;
+  countryName: string | undefined;
+  cityId: string | undefined;
+  cityName: string | undefined;
+  areaId: string | undefined;
+  areaName: string | undefined;
+  latitude: number | undefined;
+  longitude: number | undefined;
+  notes: string | undefined;
 }
 
 @Component({
-  selector: 'app-blood',
-  templateUrl: './blood.component.html',
-  styleUrls: ['./blood.component.css'],
-  providers: [GlobalService, { provide: Controller, useValue: 'blood' }], //controller name
+  selector: 'app-Address',
+  templateUrl: './Address.component.html',
+  styleUrls: ['./Address.component.css'],
+  providers: [GlobalService, { provide: Controller, useValue: 'Address' }], //controller name
 })
-export class BloodComponent implements OnInit, OnDestroy {
+export class AddressComponent implements OnInit, OnDestroy {
   SubscriptionList: Subscription[] = []; // for me
 
-  BloodList: IBloodDto[] = []; // dto for data table
+  AddressList: IAddressDto[] = []; // dto for data table
   cols: any[] = []; // colims in data table
   configInput: FieldConfig[] = []; // input add update
 
@@ -40,18 +49,54 @@ export class BloodComponent implements OnInit, OnDestroy {
       },
       {
         type: 'input',
-        label: 'Blood name',
-        name: 'name',
-        placeholder: 'Enter Blood Name',
+        label: 'Add title',
+        name: 'title',
+        placeholder: 'Enter address title',
         validation: [Validators.required, Validators.minLength(4)],
-
       },
       {
         type: 'input',
-        label: 'hospital Count',
-        name: 'hospitalCount',
-        placeholder: 'Enter hospital Count',
+        label: 'Add country Id',
+        name: 'countryId',
+        placeholder: 'Enter address country Id',
+        validation: [Validators.required, Validators.minLength(4)],
       },
+      {
+        type: 'input',
+        label: 'Add city Id',
+        name: 'cityId',
+        placeholder: 'Enter address city Id',
+        validation: [Validators.required, Validators.minLength(4)],
+      },
+      {
+        type: 'input',
+        label: 'Add area Id',
+        name: 'areaId',
+        placeholder: 'Enter address area Id',
+        validation: [Validators.required, Validators.minLength(4)],
+      },
+      {
+        type: 'input',
+        label: 'Add latitude',
+        name: 'latitude',
+        placeholder: 'Enter address latitude',
+        validation: [Validators.required, Validators.minLength(4)],
+      },
+      {
+        type: 'input',
+        label: 'Add longitude',
+        name: 'longitude',
+        placeholder: 'Enter address longitude',
+        validation: [Validators.required, Validators.minLength(4)],
+      },
+      {
+        type: 'input',
+        label: 'Add notes',
+        name: 'notes',
+        placeholder: 'Enter address notes',
+        validation: [Validators.required, Validators.minLength(4)],
+      },
+
       {
         type: 'select',
         label: 'select ',
@@ -68,7 +113,7 @@ export class BloodComponent implements OnInit, OnDestroy {
       detail: 'No Data found',
     });
     this.SubscriptionList.push(
-      this.globalService.GetAll<IBloodDto, null>().subscribe(
+      this.globalService.GetAll<IAddressDto, null>().subscribe(
         (data) => {
 
           if (data.success) {
@@ -80,8 +125,8 @@ export class BloodComponent implements OnInit, OnDestroy {
               });
             } else {
 
-              this.BloodList = data.resource.reduce((acc: IBloodDto[], el) => {
-                let obj = el as IBloodDto;
+              this.AddressList = data.resource.reduce((acc: IAddressDto[], el) => {
+                let obj = el as IAddressDto;
                 acc.push(obj);
                 return acc;
               }, []);
@@ -112,7 +157,13 @@ export class BloodComponent implements OnInit, OnDestroy {
     );
 
     this.cols = [
-      { field: 'name', header: 'Blood Name' },
+      { field: 'title', header: 'Address title' },
+      { field: 'countryId', header: 'Address country-id' },
+      { field: 'cityId', header: 'Address city-id' },
+      { field: 'areaId', header: 'Address area-id' },
+      { field: 'latitude', header: 'Address latitude' },
+      { field: 'longitude', header: 'Address longtude' },
+      { field: 'notes', header: 'Address note' },
     ];
   }
   ngOnDestroy(): void {

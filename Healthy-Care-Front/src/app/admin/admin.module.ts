@@ -22,10 +22,17 @@ import { Tools_DepartmentComponent } from './Component/Tools_Department/Tools_De
 import { Tools_HospitalComponent } from './Component/Tools_Hospital/Tools_Hospital.component';
 import { Doctor_DepartmentComponent } from './Component/Doctor_Department/Doctor_Department.component';
 import { Doctor_HospitalComponent } from './Component/Doctor_Hospital/Doctor_Hospital.component';
+import { PatientComponent } from './Component/Patient/Patient.component';
+import { AddressComponent } from './Component/Address/Address.component';
+import { BloodEquationComponent } from './Component/BloodEquation/BloodEquation.component';
+import { Hospital_CategoryComponent } from './Component/Hospital_Category/Hospital_Category.component';
+import { DepartmentComponent } from './Component/Department/Department.component';
+import { Department_HospitalComponent } from './Component/Department_Hospital/Department_Hospital.component';
 
 @NgModule({
 
   imports: [
+
     CommonModule,
     AdminRoutingModule,
     FormsModule,
@@ -39,6 +46,6 @@ import { Doctor_HospitalComponent } from './Component/Doctor_Hospital/Doctor_Hos
     }),
   ],
   providers: [MessageService,GlobalService],
-  declarations: [BloodComponent,QuestionHistoryComponent,BloodBankComponent,CategoryComponent,DoctorComponent,ToolsComponent,Tools_DepartmentComponent,Tools_HospitalComponent,Doctor_DepartmentComponent,Doctor_HospitalComponent]
+  declarations: [BloodComponent,QuestionHistoryComponent,BloodEquationComponent,Hospital_CategoryComponent,DepartmentComponent,Department_HospitalComponent,CategoryComponent,PatientComponent,AddressComponent,BloodBankComponent,CategoryComponent,DoctorComponent,ToolsComponent,Tools_DepartmentComponent,Tools_HospitalComponent,Doctor_DepartmentComponent,Doctor_HospitalComponent]
 })
 export class AdminModule { }
