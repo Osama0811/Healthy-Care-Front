@@ -7,7 +7,7 @@ import { MessageService } from 'primeng/api';
 import { Subscription } from 'rxjs';
 import { Validators } from '@angular/forms';
 import { FieldConfig } from 'src/app/Shared/dynamic-form/models/field-config.interface';
-export interface ICategoryDto {
+export interface ICategoryDto {//get all data table
   id: string | undefined;
   name: string | undefined;
   hospitalCount: number | undefined;
@@ -17,22 +17,19 @@ export interface ICategoryDto {
   selector: 'app-Category',
   templateUrl: './Category.component.html',
   styleUrls: ['./Category.component.css'],
-  providers: [GlobalService, { provide: Controller, useValue: 'Category' }],
+  providers: [GlobalService, { provide: Controller, useValue: 'Category' }], //controller name
 })
 export class CategoryComponent implements OnInit, OnDestroy {
-  SubscriptionList: Subscription[] = [];
+  SubscriptionList: Subscription[] = []; // for me
 
-  CategoryList: ICategoryDto[] = [];
-  cols: any[] = [];
-  configInput: FieldConfig[] = [];
+  CategoryList: ICategoryDto[] = []; // dto for data table
+  cols: any[] = []; // colims in data table
+  configInput: FieldConfig[] = []; // input add update
 
   constructor(
     private globalService: GlobalService<any>,
     private messageService: MessageService
-  ) {
-
-
-  }
+  ) {}
   ngOnInit() {
     this.configInput = [
       {
@@ -44,20 +41,17 @@ export class CategoryComponent implements OnInit, OnDestroy {
       },
       {
         type: 'input',
-        label: ' name',
+        label: 'Category name',
         name: 'name',
-        placeholder: 'Enter category name ',
-        validation: [Validators.required],
+        placeholder: 'Enter Category Name',
+        validation: [Validators.required, Validators.minLength(4)],
 
       },
       {
         type: 'input',
-        label: ' hospital Count',
+        label: 'hospital Count',
         name: 'hospitalCount',
-        placeholder: 'Enter Hospital Count',
-        validation: [Validators.required],
-        textType:'number',
-
+        placeholder: 'Enter hospital Count',
       },
 
     ];
@@ -78,7 +72,7 @@ export class CategoryComponent implements OnInit, OnDestroy {
                 detail: 'No Data found',
               });
             } else {
-              let newCategoryList: ICategoryDto[] = [];
+
               this.CategoryList = data.resource.reduce((acc: ICategoryDto[], el) => {
                 let obj = el as ICategoryDto;
                 acc.push(obj);
@@ -111,9 +105,9 @@ export class CategoryComponent implements OnInit, OnDestroy {
     );
 
     this.cols = [
+      { field: 'id', header: 'ID' },
       { field: 'name', header: 'Category Name' },
-      { field: 'hospitalCount', header: 'Hospital Count' },
-
+      { field: 'hospitalCount', header: 'hospital Count' },
 
     ];
   }
