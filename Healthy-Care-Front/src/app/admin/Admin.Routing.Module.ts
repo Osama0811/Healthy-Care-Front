@@ -7,7 +7,6 @@ import { ProfileComponent } from './Component/profile/profile.component';
 import { AppLayoutComponent } from './layout/layout/admin.layout.component';
 import { BloodComponent } from './Component/blood/blood.component';
 import { QuestionHistoryComponent } from './Component/QuestionHistory/QuestionHistory.component';
-import { CategoryComponent } from './Component/Category/Category.component';
 import { BloodBankComponent } from './Component/BloodBank/BloodBank.component';
 import { DoctorComponent } from './Component/Doctor/Doctor.component';
 import { ToolsComponent } from './Component/Tools/Tools.component';
@@ -21,6 +20,8 @@ import { Hospital_CategoryComponent } from './Component/Hospital_Category/Hospit
 import { DepartmentComponent } from './Component/Department/Department.component';
 import { Department_HospitalComponent } from './Component/Department_Hospital/Department_Hospital.component';
 
+import { CategoryComponent } from './Component/Category/Category.component';
+
 const routes: Routes = [
 
   {
@@ -32,7 +33,6 @@ const routes: Routes = [
         { path: 'Index', loadChildren: () => import('./Component/index/index.module').then(m => m.IndexModule) },
         { path: 'Blood', component: BloodComponent },
         { path: 'BloodBank', component: BloodBankComponent },
-        { path: 'Category', component: CategoryComponent },
         { path: 'QuestionHistory', component: QuestionHistoryComponent },
         { path: 'Doctor', component: DoctorComponent },
         { path: 'Tools', component: ToolsComponent },

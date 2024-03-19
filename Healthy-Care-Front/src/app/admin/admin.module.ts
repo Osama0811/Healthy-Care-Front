@@ -14,7 +14,6 @@ import { GlobalService } from './Services/global-service.service';
 import { BloodComponent } from './Component/blood/blood.component';
 import { CrudModule } from '../Shared/crud/crud.module';
 import { QuestionHistoryComponent } from './Component/QuestionHistory/QuestionHistory.component';
-import { CategoryComponent } from './Component/Category/Category.component';
 import { BloodBankComponent } from './Component/BloodBank/BloodBank.component';
 import { DoctorComponent } from './Component/Doctor/Doctor.component';
 import { ToolsComponent } from './Component/Tools/Tools.component';
@@ -28,6 +27,7 @@ import { BloodEquationComponent } from './Component/BloodEquation/BloodEquation.
 import { Hospital_CategoryComponent } from './Component/Hospital_Category/Hospital_Category.component';
 import { DepartmentComponent } from './Component/Department/Department.component';
 import { Department_HospitalComponent } from './Component/Department_Hospital/Department_Hospital.component';
+import { CategoryComponent } from './Component/Category/Category.component';
 
 @NgModule({
 
