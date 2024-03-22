@@ -8,16 +8,18 @@ import { Subscription } from 'rxjs';
 import { Validators } from '@angular/forms';
 import { FieldConfig } from 'src/app/Shared/dynamic-form/models/field-config.interface';
 import { DoctorService } from '../../Services/doctor.service';
+import { EnumService } from '../../Services/enum.service';
+import { IEnumDropDown } from '../../Model/DropDown';
 export interface IDoctorDto {
   id: string | undefined;
   userId: string | undefined;
   hospitalId: string | undefined;
   type: number | undefined;
 }
-export interface IDoctorDropDown {//get all data table
-  id: string | undefined;
-  name: string | undefined;
-}
+// export interface IDoctorTypeDropDown {//get all data table
+//   key: string | undefined;
+//   value: string | undefined;
+// }
 
 @Component({
   selector: 'app-Doctor',
@@ -29,7 +31,7 @@ export class DoctorComponent implements OnInit, OnDestroy {
   SubscriptionList: Subscription[] = [];
 
   DoctorList: IDoctorDto[] = [];
-  DoctorDropDown: IDoctorDropDown[] = []; // dto for DropDown
+  DoctorTypeDropDown: IEnumDropDown[] = []; // dto for DropDown
 
   cols: any[] = [];
   configInput: FieldConfig[] = [];
@@ -37,53 +39,22 @@ export class DoctorComponent implements OnInit, OnDestroy {
   constructor(
     private globalService: GlobalService<any>,
     private messageService: MessageService,
-    private doctorService: DoctorService
+    private enumService: EnumService
   ) {
 
 
   }
-  ngAfterViewInit(): void {
+  ngAfterViewInit(): void { //This Will return my drop data from service
     this.SubscriptionList.push(
-      this.doctorService.DoctorDropDown().subscribe(
+      this.enumService.GetEnumDropDown("GetDepartmentType").subscribe(
         (data) => {
 
-          if (data.success) {
-            if (data.resourceCount == 0) {
-              this.messageService.add({
-                severity: 'success',
-                summary: 'Success',
-                detail: 'No Data found',
-              });
-            } else {
-
-              // this.DoctorDropDown = data.resource.reduce((acc: IDoctorDropDown[], el:IDoctorDropDown) => {
-              //   let obj = { id: el.id, name: el.name} as IDoctorDropDown;
-              //   acc.push(obj);
-              //   return acc;
-              // }, []);
-
-              //this.DeptList = data.resource as UserDtoClass[];
-              this.DoctorDropDown = data.resource.reduce((acc: IDoctorDropDown[], el) => {
-                let obj = el as IDoctorDropDown;
-                acc.push(obj);
-                return acc;
-              }, []);
-              console.log(this.DoctorDropDown);
-              console.log('done');
-              this.messageService.add({
-                severity: 'success',
-                summary: 'Success',
-                detail: data.message,
-              });
-              this.initConfigInput();
-            }
-          } else {
-            this.messageService.add({
-              severity: 'error',
-              summary: 'Error',
-              detail: data.message,
-            });
-          }
+          this.DoctorTypeDropDown = data.reduce((acc: IEnumDropDown[], el) => {
+            let obj = el as IEnumDropDown;
+            acc.push(obj);
+            return acc;
+          }, []);
+          this.initConfigInput();
         },
         (error) => {
           this.messageService.add({
@@ -121,25 +92,17 @@ export class DoctorComponent implements OnInit, OnDestroy {
 
         },
         {
-          type: 'input',
-          label: ' Type',
-          name: 'type',
-          placeholder: 'Enter Type',
-
-        },
-        {
           type: 'select',
           label: 'Type',
           name: 'type',
-          options: this.DoctorDropDown.map(el => el.name),
-          value: this.DoctorDropDown.map(el => el.id),
+          options: this.DoctorTypeDropDown.map(el => el.key),
+          value: this.DoctorTypeDropDown.map(el => el.value),
           placeholder: 'Enter Type',
           validation: [Validators.required],
       },
     ];
 }
   ngOnInit() {
-    console.log(this.DoctorDropDown);
     // this.configInput = [
     //   {
     //     type: 'input',

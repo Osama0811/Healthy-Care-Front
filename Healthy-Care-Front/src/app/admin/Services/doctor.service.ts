@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { GeneralResponse } from 'src/app/Shared/GeneralResponse';
 import { environment } from 'src/app/environments/environment.prod';
-import { DropDownModel } from '../Model/DropDown';
+import { DropDownModel, UserDDL } from '../Model/DropDown';
 
 export const BASE_URL = environment.BaseUrl;
 export const Controller ="";
@@ -17,7 +17,7 @@ export class DoctorService {
   constructor(
     protected _http: HttpClient,
   ) {}
-  DoctorDropDown(): Observable<GeneralResponse<DropDownModel[]>> {
+  DoctorDropDown(): Observable<GeneralResponse<UserDDL[]>> {
     _base=BASE_URL+"/Doctor";
     let url_ = _base + '/GetAll';
 
@@ -34,9 +34,9 @@ export class DoctorService {
     };
     return this.sendRequest(url_, options);
   }
-  private sendRequest(url: string, options: RequestInit): Observable<GeneralResponse<DropDownModel[]>> {
+  private sendRequest(url: string, options: RequestInit): Observable<GeneralResponse<UserDDL[]>> {
     console.log(url);
-    return new Observable<GeneralResponse<DropDownModel[]>>(observer => {
+    return new Observable<GeneralResponse<UserDDL[]>>(observer => {
       fetch(url, options)
         .then(response => response.json())
         .then(data => {
