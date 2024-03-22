@@ -105,7 +105,6 @@ export class CategoryComponent implements OnInit, OnDestroy {
     );
 
     this.cols = [
-      { field: 'id', header: 'ID' },
       { field: 'name', header: 'Category Name' },
       { field: 'hospitalCount', header: 'hospital Count' },
 
