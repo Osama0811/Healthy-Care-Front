@@ -7,29 +7,40 @@ import { MessageService } from 'primeng/api';
 import { Subscription } from 'rxjs';
 import { Validators } from '@angular/forms';
 import { FieldConfig } from 'src/app/Shared/dynamic-form/models/field-config.interface';
-export interface ICategoryDto {//get all data table
+export interface IBloodBankDto {
   id: string | undefined;
-  name: string | undefined;
-  hospitalCount: number | undefined;
+  senderId: string | undefined;
+  senderName: string | undefined;
+  receiverId: string | undefined;
+  receiverName: string | undefined;
+  bloodtypeId: string | undefined;
+  bloodtypeName: string | undefined;
+  appointmentId: string | undefined;
+  quantity: number | undefined;
+  status: number | undefined;
+  statusName: string | undefined;
 }
 
 @Component({
-  selector: 'app-Category',
-  templateUrl: './Category.component.html',
-  styleUrls: ['./Category.component.css'],
-  providers: [GlobalService, { provide: Controller, useValue: 'Category' }], //controller name
+  selector: 'app-BloodBank',
+  templateUrl: './BloodBank.component.html',
+  styleUrls: ['./BloodBank.component.css'],
+  providers: [GlobalService, { provide: Controller, useValue: 'BloodBank' }],
 })
-export class CategoryComponent implements OnInit, OnDestroy {
-  SubscriptionList: Subscription[] = []; // for me
+export class BloodBankComponent implements OnInit, OnDestroy {
+  SubscriptionList: Subscription[] = [];
 
-  CategoryList: ICategoryDto[] = []; // dto for data table
-  cols: any[] = []; // colims in data table
-  configInput: FieldConfig[] = []; // input add update
+  BloodBankList: IBloodBankDto[] = [];
+  cols: any[] = [];
+  configInput: FieldConfig[] = [];
 
   constructor(
     private globalService: GlobalService<any>,
     private messageService: MessageService
-  ) {}
+  ) {
+
+
+  }
   ngOnInit() {
     this.configInput = [
       {
@@ -38,20 +49,12 @@ export class CategoryComponent implements OnInit, OnDestroy {
         name: 'id',
         placeholder: 'Id',
         NonVisible:true
-      },
-      {
+      }
+      ,{
         type: 'input',
-        label: 'Category name',
-        name: 'name',
-        placeholder: 'Enter Category Name',
-        validation: [Validators.required, Validators.minLength(4)],
-
-      },
-      {
-        type: 'input',
-        label: 'hospital Count',
-        name: 'hospitalCount',
-        placeholder: 'Enter hospital Count',
+        label: 'National Number',
+        name: 'nationalNumber',
+        placeholder: 'National Number',
       },
 
     ];
@@ -61,7 +64,7 @@ export class CategoryComponent implements OnInit, OnDestroy {
       detail: 'No Data found',
     });
     this.SubscriptionList.push(
-      this.globalService.GetAll<ICategoryDto, null>().subscribe(
+      this.globalService.GetAll<IBloodBankDto, null>().subscribe(
         (data) => {
 
           if (data.success) {
@@ -72,9 +75,9 @@ export class CategoryComponent implements OnInit, OnDestroy {
                 detail: 'No Data found',
               });
             } else {
-
-              this.CategoryList = data.resource.reduce((acc: ICategoryDto[], el) => {
-                let obj = el as ICategoryDto;
+              let newBloodBankList: IBloodBankDto[] = [];
+              this.BloodBankList = data.resource.reduce((acc: IBloodBankDto[], el) => {
+                let obj = el as IBloodBankDto;
                 acc.push(obj);
                 return acc;
               }, []);
@@ -105,8 +108,11 @@ export class CategoryComponent implements OnInit, OnDestroy {
     );
 
     this.cols = [
-      { field: 'name', header: 'Category Name' },
-      { field: 'hospitalCount', header: 'hospital Count' },
+      { field: 'senderName', header: 'Sender Name' },
+      { field: 'receiverName', header: 'Receiver Name' },
+      { field: 'bloodtypeName', header: 'Blood Type' },
+      { field: 'statusName', header: 'Status' },
+
 
     ];
   }

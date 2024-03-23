@@ -7,29 +7,36 @@ import { MessageService } from 'primeng/api';
 import { Subscription } from 'rxjs';
 import { Validators } from '@angular/forms';
 import { FieldConfig } from 'src/app/Shared/dynamic-form/models/field-config.interface';
-export interface ICategoryDto {//get all data table
+export interface IDoctor_DepartmentDto {
   id: string | undefined;
-  name: string | undefined;
-  hospitalCount: number | undefined;
+  doctorId: string | undefined;
+  departmentId: string | undefined;
+  isActive:     boolean|undefined;
+  dateStart:  string | undefined;
+  dateEnd:  string |undefined;
+
 }
 
 @Component({
-  selector: 'app-Category',
-  templateUrl: './Category.component.html',
-  styleUrls: ['./Category.component.css'],
-  providers: [GlobalService, { provide: Controller, useValue: 'Category' }], //controller name
+  selector: 'app-Doctor_Department',
+  templateUrl: './Doctor_Department.component.html',
+  styleUrls: ['./Doctor_Department.component.css'],
+  providers: [GlobalService, { provide: Controller, useValue: 'Doctor_Department' }],
 })
-export class CategoryComponent implements OnInit, OnDestroy {
-  SubscriptionList: Subscription[] = []; // for me
+export class Doctor_DepartmentComponent implements OnInit, OnDestroy {
+  SubscriptionList: Subscription[] = [];
 
-  CategoryList: ICategoryDto[] = []; // dto for data table
-  cols: any[] = []; // colims in data table
-  configInput: FieldConfig[] = []; // input add update
+  Doctor_DepartmentList: IDoctor_DepartmentDto[] = [];
+  cols: any[] = [];
+  configInput: FieldConfig[] = [];
 
   constructor(
     private globalService: GlobalService<any>,
     private messageService: MessageService
-  ) {}
+  ) {
+
+
+  }
   ngOnInit() {
     this.configInput = [
       {
@@ -41,18 +48,47 @@ export class CategoryComponent implements OnInit, OnDestroy {
       },
       {
         type: 'input',
-        label: 'Category name',
-        name: 'name',
-        placeholder: 'Enter Category Name',
-        validation: [Validators.required, Validators.minLength(4)],
+        label: 'Doctor Id',
+        name: 'doctorId',
+        placeholder: 'Enter Doctor Id ',
+        validation: [Validators.required],
 
       },
       {
         type: 'input',
-        label: 'hospital Count',
-        name: 'hospitalCount',
-        placeholder: 'Enter hospital Count',
+        label: 'Department Id',
+        name: 'departmentId',
+        placeholder: 'Enter Department Id ',
+        validation: [Validators.required],
+
+
       },
+      {
+        type: 'input',
+        label: 'Is Active',
+        name: 'isActive',
+        placeholder: 'Enter true/false ',
+        validation: [Validators.required],
+
+
+      },{
+        type: 'input',
+        label: 'Date Start',
+        name: 'dateStart',
+        placeholder: 'Enter Date Start ',
+        validation: [Validators.required],
+
+
+      },{
+        type: 'input',
+        label: 'Date End',
+        name: 'dateEnd',
+        placeholder: 'Enter Date End ',
+
+
+      },
+
+
 
     ];
     this.messageService.add({
@@ -61,7 +97,7 @@ export class CategoryComponent implements OnInit, OnDestroy {
       detail: 'No Data found',
     });
     this.SubscriptionList.push(
-      this.globalService.GetAll<ICategoryDto, null>().subscribe(
+      this.globalService.GetAll<IDoctor_DepartmentDto, null>().subscribe(
         (data) => {
 
           if (data.success) {
@@ -72,9 +108,9 @@ export class CategoryComponent implements OnInit, OnDestroy {
                 detail: 'No Data found',
               });
             } else {
-
-              this.CategoryList = data.resource.reduce((acc: ICategoryDto[], el) => {
-                let obj = el as ICategoryDto;
+              let newDoctor_DepartmentList: IDoctor_DepartmentDto[] = [];
+              this.Doctor_DepartmentList = data.resource.reduce((acc: IDoctor_DepartmentDto[], el) => {
+                let obj = el as IDoctor_DepartmentDto;
                 acc.push(obj);
                 return acc;
               }, []);
@@ -105,8 +141,13 @@ export class CategoryComponent implements OnInit, OnDestroy {
     );
 
     this.cols = [
-      { field: 'name', header: 'Category Name' },
-      { field: 'hospitalCount', header: 'hospital Count' },
+      { field: 'doctorName', header: 'Doctor Name' },
+      { field: 'departmentName', header: 'Department Name' },
+      { field: 'isActive', header: 'Is Active' },
+      { field: 'dateStart', header: 'Date Start' },
+      { field: 'dateEnd', header: 'Date End' },
+
+
 
     ];
   }

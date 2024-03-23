@@ -7,12 +7,20 @@ import { ProfileComponent } from './Component/profile/profile.component';
 import { AppLayoutComponent } from './layout/layout/admin.layout.component';
 import { BloodComponent } from './Component/blood/blood.component';
 import { QuestionHistoryComponent } from './Component/QuestionHistory/QuestionHistory.component';
-import { CategoryComponent } from './Component/Category/category.component';
+import { BloodBankComponent } from './Component/BloodBank/BloodBank.component';
+import { DoctorComponent } from './Component/Doctor/Doctor.component';
+import { ToolsComponent } from './Component/Tools/Tools.component';
+import { Tools_DepartmentComponent } from './Component/Tools_Department/Tools_Department.component';
+import { Tools_HospitalComponent } from './Component/Tools_Hospital/Tools_Hospital.component';
+import { Doctor_DepartmentComponent } from './Component/Doctor_Department/Doctor_Department.component';
+import { Doctor_HospitalComponent } from './Component/Doctor_Hospital/Doctor_Hospital.component';
 import { PatientComponent } from './Component/Patient/Patient.component';
 import { AddressComponent } from './Component/Address/Address.component';
 import { Hospital_CategoryComponent } from './Component/Hospital_Category/Hospital_Category.component';
 import { DepartmentComponent } from './Component/Department/Department.component';
 import { Department_HospitalComponent } from './Component/Department_Hospital/Department_Hospital.component';
+
+import { CategoryComponent } from './Component/Category/Category.component';
 
 const routes: Routes = [
 
@@ -24,7 +32,19 @@ const routes: Routes = [
         { path: 'Profile', loadChildren: () => import('./Component/profile/Profile.module').then(m => m.ProfileModule) },
         { path: 'Index', loadChildren: () => import('./Component/index/index.module').then(m => m.IndexModule) },
         { path: 'Blood', component: BloodComponent },
+        { path: 'BloodBank', component: BloodBankComponent },
         { path: 'QuestionHistory', component: QuestionHistoryComponent },
+        { path: 'Doctor', component: DoctorComponent },
+        { path: 'Tools', component: ToolsComponent },
+        { path: 'Tools_Department', component: Tools_DepartmentComponent },
+        { path: 'Tools_Hospital', component: Tools_HospitalComponent },
+        { path: 'Doctor_Department', component: Doctor_DepartmentComponent },
+        { path: 'Doctor_Hospital', component: Doctor_HospitalComponent },
+
+
+
+
+
         { path: 'Category', component: CategoryComponent },
         { path: 'Patient', component: PatientComponent },
         { path: 'Address', component: AddressComponent },

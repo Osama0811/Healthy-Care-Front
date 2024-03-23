@@ -7,29 +7,33 @@ import { MessageService } from 'primeng/api';
 import { Subscription } from 'rxjs';
 import { Validators } from '@angular/forms';
 import { FieldConfig } from 'src/app/Shared/dynamic-form/models/field-config.interface';
-export interface ICategoryDto {//get all data table
+export interface IToolsDto {
   id: string | undefined;
-  name: string | undefined;
-  hospitalCount: number | undefined;
+  userId: string | undefined;
+  hospitalId: string | undefined;
+  type: number | undefined;
 }
 
 @Component({
-  selector: 'app-Category',
-  templateUrl: './Category.component.html',
-  styleUrls: ['./Category.component.css'],
-  providers: [GlobalService, { provide: Controller, useValue: 'Category' }], //controller name
+  selector: 'app-Tools',
+  templateUrl: './Tools.component.html',
+  styleUrls: ['./Tools.component.css'],
+  providers: [GlobalService, { provide: Controller, useValue: 'Tools' }],
 })
-export class CategoryComponent implements OnInit, OnDestroy {
-  SubscriptionList: Subscription[] = []; // for me
+export class ToolsComponent implements OnInit, OnDestroy {
+  SubscriptionList: Subscription[] = [];
 
-  CategoryList: ICategoryDto[] = []; // dto for data table
-  cols: any[] = []; // colims in data table
-  configInput: FieldConfig[] = []; // input add update
+  ToolsList: IToolsDto[] = [];
+  cols: any[] = [];
+  configInput: FieldConfig[] = [];
 
   constructor(
     private globalService: GlobalService<any>,
     private messageService: MessageService
-  ) {}
+  ) {
+
+
+  }
   ngOnInit() {
     this.configInput = [
       {
@@ -41,17 +45,11 @@ export class CategoryComponent implements OnInit, OnDestroy {
       },
       {
         type: 'input',
-        label: 'Category name',
+        label: 'Name',
         name: 'name',
-        placeholder: 'Enter Category Name',
-        validation: [Validators.required, Validators.minLength(4)],
+        placeholder: 'Enter Tools Name ',
+        validation: [Validators.required],
 
-      },
-      {
-        type: 'input',
-        label: 'hospital Count',
-        name: 'hospitalCount',
-        placeholder: 'Enter hospital Count',
       },
 
     ];
@@ -61,7 +59,7 @@ export class CategoryComponent implements OnInit, OnDestroy {
       detail: 'No Data found',
     });
     this.SubscriptionList.push(
-      this.globalService.GetAll<ICategoryDto, null>().subscribe(
+      this.globalService.GetAll<IToolsDto, null>().subscribe(
         (data) => {
 
           if (data.success) {
@@ -72,9 +70,9 @@ export class CategoryComponent implements OnInit, OnDestroy {
                 detail: 'No Data found',
               });
             } else {
-
-              this.CategoryList = data.resource.reduce((acc: ICategoryDto[], el) => {
-                let obj = el as ICategoryDto;
+              let newToolsList: IToolsDto[] = [];
+              this.ToolsList = data.resource.reduce((acc: IToolsDto[], el) => {
+                let obj = el as IToolsDto;
                 acc.push(obj);
                 return acc;
               }, []);
@@ -105,8 +103,9 @@ export class CategoryComponent implements OnInit, OnDestroy {
     );
 
     this.cols = [
-      { field: 'name', header: 'Category Name' },
-      { field: 'hospitalCount', header: 'hospital Count' },
+      { field: 'id', header: 'Tools Id' },
+      { field: 'name', header: 'Tools Name' },
+
 
     ];
   }
