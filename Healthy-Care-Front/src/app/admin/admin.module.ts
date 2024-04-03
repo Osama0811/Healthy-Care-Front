@@ -28,6 +28,7 @@ import { Hospital_CategoryComponent } from './Component/Hospital_Category/Hospit
 import { DepartmentComponent } from './Component/Department/Department.component';
 import { Department_HospitalComponent } from './Component/Department_Hospital/Department_Hospital.component';
 import { CategoryComponent } from './Component/Category/Category.component';
+import { AppointmentComponent } from './Component/Appointment/Appointment.component';
 
 @NgModule({
 
@@ -46,6 +47,6 @@ import { CategoryComponent } from './Component/Category/Category.component';
     }),
   ],
   providers: [MessageService,GlobalService],
-  declarations: [BloodComponent,QuestionHistoryComponent,BloodEquationComponent,Hospital_CategoryComponent,DepartmentComponent,Department_HospitalComponent,CategoryComponent,PatientComponent,AddressComponent,BloodBankComponent,CategoryComponent,DoctorComponent,ToolsComponent,Tools_DepartmentComponent,Tools_HospitalComponent,Doctor_DepartmentComponent,Doctor_HospitalComponent]
+  declarations: [BloodComponent,QuestionHistoryComponent,BloodEquationComponent,Hospital_CategoryComponent,DepartmentComponent,Department_HospitalComponent,CategoryComponent,PatientComponent,AddressComponent,BloodBankComponent,CategoryComponent,DoctorComponent,ToolsComponent,Tools_DepartmentComponent,Tools_HospitalComponent,Doctor_DepartmentComponent,Doctor_HospitalComponent,AppointmentComponent]
 })
 export class AdminModule { }

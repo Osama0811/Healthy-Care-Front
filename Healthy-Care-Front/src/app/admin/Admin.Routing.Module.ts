@@ -21,6 +21,7 @@ import { DepartmentComponent } from './Component/Department/Department.component
 import { Department_HospitalComponent } from './Component/Department_Hospital/Department_Hospital.component';
 
 import { CategoryComponent } from './Component/Category/Category.component';
+import { AppointmentComponent } from './Component/Appointment/Appointment.component';
 
 const routes: Routes = [
 
@@ -52,6 +53,8 @@ const routes: Routes = [
         { path: 'Hospital_Category', component: Hospital_CategoryComponent },
         { path: 'Department', component: DepartmentComponent },
         { path: 'Department_Hospital', component: Department_HospitalComponent },
+        { path: 'Appointment', component: AppointmentComponent },
+
 
 
     ]
