@@ -30,4 +30,12 @@ export interface IhospitalDownModel {
   id: string | undefined;
   hospitalName: string | undefined;
 }
+export interface CategoryDropDown {
+  id: string | undefined;
+  name: string | undefined;
+}
+export interface ICategoryDownModel {
+  id: string | undefined;
+  name: string | undefined;
+}
 

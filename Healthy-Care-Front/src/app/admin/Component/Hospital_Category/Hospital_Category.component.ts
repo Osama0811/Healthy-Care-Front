@@ -1,4 +1,6 @@
-import { Component, OnDestroy, OnInit, Type } from '@angular/core';
+import { CategoryService } from './../../Services/Category.service';
+import { hospitalService } from './../../Services/hospital.service';
+import { AfterViewInit, Component, OnDestroy, OnInit, Type } from '@angular/core';
 import {
   Controller,
   GlobalService,
@@ -7,6 +9,7 @@ import { MessageService } from 'primeng/api';
 import { Subscription } from 'rxjs';
 import { Validators } from '@angular/forms';
 import { FieldConfig } from 'src/app/Shared/dynamic-form/models/field-config.interface';
+import { ICategoryDownModel, IhospitalDownModel } from '../../Model/DropDown';
 export interface IHospital_CategoryDto {//get all data table
   id: string | undefined;
   hospitalId: string | undefined;
@@ -21,18 +24,122 @@ export interface IHospital_CategoryDto {//get all data table
   styleUrls: ['./Hospital_Category.component.css'],
   providers: [GlobalService, { provide: Controller, useValue: 'Hospital_Category' }], //controller name
 })
-export class Hospital_CategoryComponent implements OnInit, OnDestroy {
+export class Hospital_CategoryComponent implements OnInit, OnDestroy,AfterViewInit {
   SubscriptionList: Subscription[] = []; // for me
-
+  categoryDropDown: ICategoryDownModel[] = [];
+  hospitalDropDown: IhospitalDownModel[] = [];
   Hospital_CategoryList: IHospital_CategoryDto[] = []; // dto for data table
   cols: any[] = []; // colims in data table
   configInput: FieldConfig[] = []; // input add update
 
   constructor(
     private globalService: GlobalService<any>,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private hospitalService: hospitalService,
+    private CategoryService: CategoryService
   ) {}
-  ngOnInit() {
+  ngAfterViewInit(): void {
+    this.SubscriptionList.push(
+      this.CategoryService.CategoryDropDown().subscribe(
+        (data) => {
+
+          if (data.success) {
+            if (data.resourceCount == 0) {
+              this.messageService.add({
+                severity: 'success',
+                summary: 'Success',
+                detail: 'No Data found',
+              });
+            } else {
+
+              // this.BloodDropDown = data.resource.reduce((acc: IBloodDropDown[], el:IBloodDropDown) => {
+              //   let obj = { id: el.id, name: el.name} as IBloodDropDown;
+              //   acc.push(obj);
+              //   return acc;
+              // }, []);
+
+              //this.DeptList = data.resource as UserDtoClass[];
+              this.categoryDropDown = data.resource.reduce((acc: ICategoryDownModel[], el) => {
+                let obj = el as ICategoryDownModel;
+                acc.push(obj);
+                return acc;
+              }, []);
+              this.messageService.add({
+                severity: 'success',
+                summary: 'Success',
+                detail: data.message,
+              });
+              this.initConfigInput();
+            }
+          } else {
+            this.messageService.add({
+              severity: 'error',
+              summary: 'Error',
+              detail: data.message,
+            });
+          }
+        },
+        (error) => {
+          this.messageService.add({
+            severity: 'error',
+            summary: 'Error',
+            detail: error.message,
+          });
+        }
+      )
+    );
+    this.SubscriptionList.push(
+      this.hospitalService.hospitalDropDown().subscribe(
+        (data) => {
+
+          if (data.success) {
+            if (data.resourceCount == 0) {
+              this.messageService.add({
+                severity: 'success',
+                summary: 'Success',
+                detail: 'No Data found',
+              });
+            } else {
+
+              // this.BloodDropDown = data.resource.reduce((acc: IBloodDropDown[], el:IBloodDropDown) => {
+              //   let obj = { id: el.id, name: el.name} as IBloodDropDown;
+              //   acc.push(obj);
+              //   return acc;
+              // }, []);
+
+              //this.DeptList = data.resource as UserDtoClass[];
+              this.hospitalDropDown = data.resource.reduce((acc: IhospitalDownModel[], el) => {
+                let obj = el as IhospitalDownModel;
+                acc.push(obj);
+                return acc;
+              }, []);
+              this.messageService.add({
+                severity: 'success',
+                summary: 'Success',
+                detail: data.message,
+              });
+              this.initConfigInput();
+            }
+          } else {
+            this.messageService.add({
+              severity: 'error',
+              summary: 'Error',
+              detail: data.message,
+            });
+          }
+        },
+        (error) => {
+          this.messageService.add({
+            severity: 'error',
+            summary: 'Error',
+            detail: error.message,
+          });
+        }
+      )
+    );
+
+  }
+  initConfigInput(): void {
     this.configInput = [
       {
         type: 'input',
@@ -41,54 +148,29 @@ export class Hospital_CategoryComponent implements OnInit, OnDestroy {
         placeholder: 'Id',
         NonVisible:true
       },
-      {
-        type: 'input',
-        label: 'Hospital_Category hospitalId',
-        name: 'hospitalId',
-        placeholder: 'Enter Hospital_Category hospitalId',
-        validation: [Validators.required, Validators.minLength(4)],
 
-      },
-      {
-        type: 'input',
-        label: 'Hospital_Category categoryId',
-        name: 'categoryId',
-        placeholder: 'Enter Hospital_Category categoryId',
-        validation: [Validators.required, Validators.minLength(4)],
-
-      },
-      {
-        type: 'input',
-        label: 'Hospital_Category hospitalName',
-        name: 'hospitalName',
-        placeholder: 'Enter Hospital_Category hospitalName',
-        validation: [Validators.required, Validators.minLength(4)],
-
-      },
-      {
-        type: 'input',
-        label: 'Hospital_Category categoryName',
-        name: 'categoryName',
-        placeholder: 'Enter Hospital_Category categoryName',
-        validation: [Validators.required, Validators.minLength(4)],
-
-      },
-      {
-        type: 'input',
-        label: 'hospital Count',
-        name: 'hospitalCount',
-        placeholder: 'Enter hospital Count',
-      },
       {
         type: 'select',
-        label: 'select ',
-        name: 'option',
-        options: ["jkkj","knl","kn","hbj"],
-        value:[1,2,3,4],
-        placeholder: 'Select an option',
-        validation: [Validators.required]
-      },
+        label: 'categoryId',
+        name: 'categoryId',
+        options: this.categoryDropDown.map(el => el.name),
+        value: this.categoryDropDown.map(el => el.id),
+        //placeholder: 'Enter  category',
+        validation: [Validators.required],
+    },
+    {
+      type: 'select',
+      label: 'hospitalId',
+      name: 'hospitalId',
+      options: this.hospitalDropDown.map(el => el.hospitalName),
+      value: this.hospitalDropDown.map(el => el.id),
+      //placeholder: 'Enter  hospital name',
+      validation: [Validators.required],
+  },
     ];
+}
+  ngOnInit() {
+
     this.messageService.add({
       severity: 'success',
       summary: 'Success',
