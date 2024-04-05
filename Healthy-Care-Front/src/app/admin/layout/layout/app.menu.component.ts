@@ -260,6 +260,18 @@ export class AppMenuComponent implements OnInit {
 
         ]
     },
+    {
+      label: 'Historys',
+      items: [
+          { label: 'History', icon: 'pi pi-hourglass', routerLink: ['/admin/History'] }
+
+          //{ label: 'Invalid State', icon: 'pi pi-fw pi-exclamation-circle', routerLink: ['/uikit/invalidstate'] },
+
+          //{ label: 'Menu', icon: 'pi pi-fw pi-bars', routerLink: ['/uikit/menu'], routerLinkActiveOptions: { paths: 'subset', queryParams: 'ignored', matrixParams: 'ignored', fragment: 'ignored' } },
+
+      ]
+  },
+
 
 
         ];

@@ -38,4 +38,12 @@ export interface ICategoryDownModel {
   id: string | undefined;
   name: string | undefined;
 }
+export interface DepartmentDropDown {
+  id: string | undefined;
+  name: string | undefined;
+}
+export interface IDepartmentDownModel {
+  id: string | undefined;
+  name: string | undefined;
+}
 
