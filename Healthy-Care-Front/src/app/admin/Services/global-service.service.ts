@@ -105,9 +105,11 @@ export  class GlobalService<T> implements CrudOperations<T>  {
         'Content-Type': 'application/json',
         Accept: 'text/plain',
         'Authorization': 'Bearer ' + localStorage.getItem('Token'),
+
+        "Accept-Language":localStorage.getItem("Lang")??"en-us",
       },
      body: JSON.stringify(t),
-     
+
     };
     return this.sendRequest(url_, options);
   }

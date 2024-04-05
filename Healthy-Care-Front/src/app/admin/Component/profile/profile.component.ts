@@ -6,6 +6,7 @@ import { Controller, GlobalService } from 'src/app/admin/Services/global-service
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MenuItem, MessageService } from 'primeng/api';
 import { LoginRequest } from 'src/app/Auth/Interfaces/auth';
+import { TranslateService } from '@ngx-translate/core';
 export interface IUserDto{
   id: string | undefined;
   userName: string | undefined;
@@ -31,8 +32,8 @@ export class ProfileComponent  implements OnInit  {
   DeptList: UserDtoClass[] = [];
   cols: any[] = [];
 constructor( private globalService: GlobalService<any>,
-  private messageService: MessageService){
-
+  private messageService: MessageService,private readonly translateService: TranslateService){
+    translateService.use(localStorage.getItem("Lang")??"en_us");
 }
 
   ngOnInit() {

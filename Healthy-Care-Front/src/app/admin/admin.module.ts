@@ -7,13 +7,13 @@ import { MessageService } from 'primeng/api';
 import { IndexComponent } from './Component/index/index.component';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { LangService } from '../lang/services/lang.service';
-import { TranslateLoaderFactory } from '../app.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { GlobalService } from './Services/global-service.service';
 import { BloodComponent } from './Component/blood/blood.component';
 import { CrudModule } from '../Shared/crud/crud.module';
 import { QuestionHistoryComponent } from './Component/QuestionHistory/QuestionHistory.component';
+import { CustomTranslateLoader } from '../lang/custom-translate-loader';
 
 @NgModule({
 
@@ -34,3 +34,6 @@ import { QuestionHistoryComponent } from './Component/QuestionHistory/QuestionHi
   declarations: [BloodComponent,QuestionHistoryComponent]
 })
 export class AdminModule { }
+export function TranslateLoaderFactory(langService: LangService): CustomTranslateLoader {
+  return new CustomTranslateLoader(langService);
+}

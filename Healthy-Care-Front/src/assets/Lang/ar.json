@@ -6,6 +6,12 @@
        "Layout":
        {
            "Profile":"الملف الشخصي",
+           "Settings":"الاعدادات",
+           "Lang":"EN"
+       },
+        "Admin":
+       {
+           "Profile":"الملف الشخصي",
            "Settings":"الاعدادات"
        }
 }

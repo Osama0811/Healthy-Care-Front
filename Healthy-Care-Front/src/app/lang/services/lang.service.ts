@@ -8,7 +8,7 @@ import { Injectable } from "@angular/core";
 export class LangService {
 
   constructor(private http: HttpClient) { }
-  
+
    /**
    * Get label object representing list of labels by language : {labelKey: labelValue}.
    * @param lang The current translate selected language.

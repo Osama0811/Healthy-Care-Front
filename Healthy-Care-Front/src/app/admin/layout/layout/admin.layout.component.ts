@@ -5,6 +5,7 @@ import { LayoutService } from "./service/admin.layout.service";
 import { AppSidebarComponent } from "./app.sidebar.component";
 import { AppTopBarComponent } from './app.topbar.component';
 import { AppLayoutModule } from './admin.layout.module'; // Adjust the path
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
     selector: 'app-layout',
@@ -22,7 +23,8 @@ export class AppLayoutComponent implements OnDestroy {
 
     @ViewChild(AppTopBarComponent) appTopbar!: AppTopBarComponent;
 
-    constructor(public layoutService: LayoutService, public renderer: Renderer2, public router: Router) {
+    constructor(public layoutService: LayoutService, public renderer: Renderer2, public router: Router,private readonly translateService: TranslateService) {
+      translateService.use(localStorage.getItem("Lang")??"en_us");
         this.overlayMenuOpenSubscription = this.layoutService.overlayOpen$.subscribe(() => {
             if (!this.menuOutsideClickListener) {
                 this.menuOutsideClickListener = this.renderer.listen('document', 'click', event => {

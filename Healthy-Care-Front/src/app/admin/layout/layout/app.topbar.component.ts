@@ -17,4 +17,13 @@ export class AppTopBarComponent {
     @ViewChild('topbarmenu') menu!: ElementRef;
 
     constructor(public layoutService: LayoutService) { }
+    ChangeLang():void{
+      debugger
+      if(localStorage.getItem("Lang")=="ar"){
+        localStorage.setItem("Lang","en_us")
+      }else{
+        localStorage.setItem("Lang","ar")
+      }
+      window.location.reload();
+    }
 }

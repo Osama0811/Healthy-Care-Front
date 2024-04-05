@@ -17,6 +17,9 @@ import { TabMenuModule } from 'primeng/tabmenu';
 import { BadgeModule } from 'primeng/badge';
 import { HttpClient } from '@angular/common/http';
 import { Dept } from 'src/app/Auth/Interfaces/auth';
+import { LangService } from 'src/app/lang/services/lang.service';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { CustomTranslateLoader } from 'src/app/lang/custom-translate-loader';
 
 @NgModule({
     imports: [
@@ -31,7 +34,14 @@ import { Dept } from 'src/app/Auth/Interfaces/auth';
         PanelMenuModule,
         ButtonModule,
         ProfilesRoutingModule,
-        CrudModule
+        CrudModule,
+        TranslateModule.forRoot({
+          loader: {
+            provide: TranslateLoader,
+            useFactory: TranslateLoaderFactory,
+            deps: [LangService]
+          }
+        }),
     ],
     providers:[
       GlobalService, { provide: Controller, useValue: 'User' },MessageService
@@ -39,3 +49,6 @@ import { Dept } from 'src/app/Auth/Interfaces/auth';
     declarations: [ProfileComponent,Sub1Component],
 })
 export class ProfileModule { }
+export function TranslateLoaderFactory(langService: LangService): CustomTranslateLoader {
+  return new CustomTranslateLoader(langService);
+}
