@@ -75,17 +75,17 @@ initConfigInput(): void {
     },
     {
       type: 'input',
-      label: ' titleAr',
+      label: 'Title Ar',
       name: 'titleAr',
-      placeholder: 'Enter title in arabic',
+      placeholder: 'Enter title in Arabic',
       validation: [Validators.required, Validators.minLength(4)],
 
     },
     {
       type: 'input',
-      label: ' titleEn',
+      label: 'Title En',
       name: 'titleEn',
-      placeholder: 'Enter title in english',
+      placeholder: 'Enter title in English',
       validation: [Validators.required, Validators.minLength(4)],
 
     },

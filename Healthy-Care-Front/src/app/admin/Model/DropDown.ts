@@ -24,11 +24,11 @@ export interface IuserDownModel {
 }
 export interface hospitalDropDown {
   id: string | undefined;
-  hospitalName: string | undefined;
+  name: string | undefined;
 }
 export interface IhospitalDownModel {
   id: string | undefined;
-  hospitalName: string | undefined;
+  name: string | undefined;
 }
 export interface CategoryDropDown {
   id: string | undefined;
@@ -43,6 +43,14 @@ export interface DepartmentDropDown {
   name: string | undefined;
 }
 export interface IDepartmentDownModel {
+  id: string | undefined;
+  name: string | undefined;
+}
+export interface MenusMainDetailsDropDown {
+  id: string | undefined;
+  name: string | undefined;
+}
+export interface IMenusMainDetailsDownModel {
   id: string | undefined;
   name: string | undefined;
 }

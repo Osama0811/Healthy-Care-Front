@@ -31,6 +31,7 @@ export class FormInputComponent implements Field {
 
   onFileSelected(event: any): void {
     if(this.config.textType === 'file' ){
+
     this.selectedFile = event.target.files[0];
     this.uploadImage();
     }
@@ -39,10 +40,12 @@ export class FormInputComponent implements Field {
   uploadImage(): void {
     debugger
     if (this.selectedFile) {
+
       const reader = new FileReader();
       reader.onload = () => {
-        const base64String: string = reader.result as string;
+        const dataUri: string = reader.result as string;
 
+        let base64String: string = dataUri.split(',')[1];
         console.log(base64String);
         const control = this.group.get("imageBase64");
         console.log(control);
@@ -57,3 +60,29 @@ export class FormInputComponent implements Field {
     }
   }
 }
+//   export function convertBlobToBinary(blobUrl: string): Promise<Uint8Array> {
+//     return new Promise<Uint8Array>((resolve, reject) => {
+//       const xhr = new XMLHttpRequest();
+//       xhr.open('GET', blobUrl);
+//       xhr.responseType = 'arraybuffer';
+//       xhr.onload = () => {
+//         if (xhr.status === 200) {
+//           const binaryData = new Uint8Array(xhr.response);
+//           resolve(binaryData);
+//         } else {
+
+//         }
+//       };
+//       xhr.onerror = () => {
+
+//       };
+//       xhr.send();
+//     });
+//   }
+//   export function convertBinaryToBase64(binaryData: Uint8Array) {
+//     let base64Data = btoa(
+//       String.fromCharCode.apply(null, Array.from(binaryData))
+//     );
+//     return base64Data;
+
+// }
