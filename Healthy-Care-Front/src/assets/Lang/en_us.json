@@ -12,6 +12,9 @@
          "Admin":
        {
            "Profile":"الملف الشخصي",
-           "Settings":"الاعدادات"
+           "Settings":"الاعدادات",
+           "lsdmlkms":"kdckls",
+           "Title":"Title",
+           "TitleAr":"TitleAr"
        }
 }

@@ -8,11 +8,21 @@ import { FormButtonComponent } from './components/form-button/form-button.compon
 import { FormInputComponent } from './components/form-input/form-input.component';
 import { FormSelectComponent } from './components/form-select/form-select.component';
 import { InputTextModule } from 'primeng/inputtext';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TranslateLoaderFactory } from 'src/app/app.module';
+import { LangService } from 'src/app/lang/services/lang.service';
 @NgModule({
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    InputTextModule
+    InputTextModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: TranslateLoaderFactory,
+        deps: [LangService]
+      }
+    })
   ],
   declarations: [
     DynamicFieldDirective,

@@ -18,6 +18,9 @@ import { InputNumberModule } from 'primeng/inputnumber';
 import { DialogModule } from 'primeng/dialog';
 import { GlobalService } from 'src/app/admin/Services/global-service.service';
 import { DynamicFormModule } from '../dynamic-form/dynamic-form.module';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TranslateLoaderFactory } from 'src/app/app.module';
+import { LangService } from 'src/app/lang/services/lang.service';
 
 @NgModule({
     imports: [
@@ -37,7 +40,14 @@ import { DynamicFormModule } from '../dynamic-form/dynamic-form.module';
         RadioButtonModule,
         InputNumberModule,
         DialogModule,
-        DynamicFormModule
+        DynamicFormModule,
+        TranslateModule.forRoot({
+          loader: {
+            provide: TranslateLoader,
+            useFactory: TranslateLoaderFactory,
+            deps: [LangService]
+          }
+        })
     ],
     declarations: [CrudComponent],
     exports: [CrudComponent],

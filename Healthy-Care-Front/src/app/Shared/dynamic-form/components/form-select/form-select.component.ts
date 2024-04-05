@@ -10,7 +10,7 @@ import { FieldConfig } from '../../models/field-config.interface';
     <div
     class="dynamic-field "
       [formGroup]="group">
-      <label class="form-label" >{{ config.label }}</label>
+      <label class="form-label" >{{ config.label|translate }}</label>
       <select class="form-select" [formControlName]="config.name" >
         <option value="">{{ config.placeholder }}</option>
         <option *ngFor="let option of config.options; let i = index" [value]="config.value[i]">

@@ -6,6 +6,7 @@ import { GlobalService } from 'src/app/admin/Services/global-service.service';
 import { DynamicFormComponent } from '../dynamic-form/containers/dynamic-form/dynamic-form.component';
 import { FieldConfig } from '../dynamic-form/models/field-config.interface';
 import { AbstractControl, FormGroup, Validators } from '@angular/forms';
+import { TranslateService } from '@ngx-translate/core';
 
 interface ColsType {
   field: string;
@@ -61,8 +62,8 @@ export class CrudComponent<T extends WithId> implements OnInit , AfterViewInit {
 
 
 
-    constructor(private globalService: GlobalService<T>, private messageService: MessageService) {
-
+    constructor(private globalService: GlobalService<T>, private messageService: MessageService,private readonly translateService: TranslateService) {
+      translateService.use(localStorage.getItem("Lang")??"en_us");
      }
 
      ngAfterViewInit() {

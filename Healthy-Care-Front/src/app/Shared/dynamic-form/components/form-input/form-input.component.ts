@@ -12,7 +12,7 @@ import { FieldConfig } from '../../models/field-config.interface';
     <div *ngIf="!config.NonVisible"
       class="dynamic-field form-input"
       [formGroup]="group">
-      <label>{{ config.label }}</label>
+      <label>{{ config.label|translate }}</label>
       <input
       pInputText
         [type]="config.textType"
