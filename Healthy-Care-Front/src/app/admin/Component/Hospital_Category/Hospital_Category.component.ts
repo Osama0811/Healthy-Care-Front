@@ -162,7 +162,7 @@ export class Hospital_CategoryComponent implements OnInit, OnDestroy,AfterViewIn
       type: 'select',
       label: 'hospitalId',
       name: 'hospitalId',
-      options: this.hospitalDropDown.map(el => el.hospitalName),
+      options: this.hospitalDropDown.map(el => el.name),
       value: this.hospitalDropDown.map(el => el.id),
       //placeholder: 'Enter  hospital name',
       validation: [Validators.required],

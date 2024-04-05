@@ -218,45 +218,6 @@ export class PatientComponent implements OnInit, OnDestroy , AfterViewInit {
         NonVisible:true
       },
       {
-        type: 'input',
-        label: 'hospital Id',
-        name: 'hospitalId',
-        placeholder: 'Enter hospital Id',
-        validation: [Validators.required],
-
-      },
-      // {
-      //   type: 'input',
-      //   label: 'Patient blood Id',
-      //   name: 'bloodId',
-      //   placeholder: 'Enter blood Id',
-      //   validation: [Validators.required, Validators.minLength(4)],
-
-      // },
-      {
-        type: 'select',
-        label: ' blood ',
-        name: 'bloodId',
-        options: this.BloodDropDown.map(el => el.name),
-        value: this.BloodDropDown.map(el => el.id),
-        placeholder: 'Enter blood Id',
-        validation: [Validators.required],
-    },
-      {
-        type: 'input',
-        label: 'Patient imageBase',
-        name: 'imageBase64',
-        placeholder: 'Enter your image',
-
-      },
-      {
-        type: 'input',
-        label: 'Patient file Name',
-        name: 'fileName',
-        placeholder: 'Enter file Name',
-
-      },
-      {
         type: 'select',
         label: 'National number',
         name: 'userId',
@@ -265,6 +226,37 @@ export class PatientComponent implements OnInit, OnDestroy , AfterViewInit {
         placeholder: 'Enter  national number',
         validation: [Validators.required],
     },
+      {
+        type: 'select',
+        label: 'Hospital',
+        name: 'hospitalId',
+        placeholder: 'Chosse hospital',
+        options: this.hospitalDropDown.map(el => el.name),
+        value: this.hospitalDropDown.map(el => el.id),
+    },
+      {
+        type: 'select',
+        label: ' blood ',
+        name: 'bloodId',
+        options: this.BloodDropDown.map(el => el.name),
+        value: this.BloodDropDown.map(el => el.id),
+        placeholder: 'Enter blood Id',
+    }
+    ,{
+      type: 'input',
+      label: 'Imagebase64',
+      name: 'imageBase64',
+      NonVisible:true
+    },
+    {
+      type: 'input',
+      label: ' FileName',
+      name: 'fileName',
+      textType:'file',
+      placeholder: 'Enter Image',
+      //validation: [Validators.required],
+    },
+
 
       // {
       //   type: 'select',
@@ -325,20 +317,16 @@ export class PatientComponent implements OnInit, OnDestroy , AfterViewInit {
     );
 
     this.cols = [
-      { field: 'id', header: 'Patient ID' },
-      { field: 'userId', header: 'Patient Id of User' },
-      { field: 'userName', header: 'Patient Name of User' },
-      { field: 'birthDate', header: 'Patient Birth date' },
-      { field: 'age', header: 'Patient Age' },
-      { field: 'nationalNum', header: 'Patient National number' },
-      { field: 'email', header: 'Patient Email' },
-      { field: 'phone', header: 'Patient Phone' },
-      { field: 'alterPhone', header: 'Patient Alter Phone' },
-      { field: 'bloodId', header: 'Patient Blood Id' },
-      { field: 'bloodType', header: 'Patient Blood Type' },
-      { field: 'hospitalId', header: 'Patient Hospital Id' },
-      { field: 'hospitalName', header: 'Patient Hospital Name' },
-      { field: 'joinedDate', header: 'the date of join' },
+      { field: 'id', header: 'ID' },
+      { field: 'userName', header: ' Name of User' },
+      { field: 'birthDate', header: 'Birth date' },
+      { field: 'age', header: 'Age' },
+      { field: 'nationalNum', header: 'National number' },
+      { field: 'email', header: 'Email' },
+      { field: 'phone', header: 'Phone' },
+      { field: 'alterPhone', header: 'Alter Phone' },
+      { field: 'bloodType', header: 'Blood Type' },
+      { field: 'hospitalName', header: 'Hospital' },
 
     ];
   }

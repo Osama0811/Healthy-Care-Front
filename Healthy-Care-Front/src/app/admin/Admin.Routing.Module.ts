@@ -20,7 +20,6 @@ import { Hospital_CategoryComponent } from './Component/Hospital_Category/Hospit
 import { DepartmentComponent } from './Component/Department/Department.component';
 import { Department_HospitalComponent } from './Component/Department_Hospital/Department_Hospital.component';
 
-import { CategoryComponent } from './Component/Category/Category.component';
 import { AppointmentComponent } from './Component/Appointment/Appointment.component';
 
 const routes: Routes = [
@@ -46,7 +45,6 @@ const routes: Routes = [
 
 
 
-        { path: 'Category', component: CategoryComponent },
         { path: 'Patient', component: PatientComponent },
         { path: 'Address', component: AddressComponent },
         { path: 'BloodEquation', component: BloodEquationComponent },
