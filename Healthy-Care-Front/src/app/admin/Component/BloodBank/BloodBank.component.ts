@@ -55,6 +55,8 @@ export class BloodBankComponent implements OnInit, OnDestroy {
         label: 'National Number',
         name: 'nationalNumber',
         placeholder: 'National Number',
+        textType:'number',
+        validation: [ Validators.minLength(14)],
       },
 
     ];
