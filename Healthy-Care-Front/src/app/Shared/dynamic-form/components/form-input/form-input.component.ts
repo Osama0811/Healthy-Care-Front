@@ -12,11 +12,11 @@ import { FieldConfig } from '../../models/field-config.interface';
     <div *ngIf="!config.NonVisible"
       class="dynamic-field form-input"
       [formGroup]="group">
-      <label>{{ config.label|translate }}</label>
+      <label>{{ config.label==undefined?"":config.label|translate}}</label>
       <input
       pInputText
         [type]="config.textType"
-        [attr.placeholder]="config.placeholder|translate"
+        [attr.placeholder]="config.placeholder==undefined?'':config.placeholder|translate"
         [formControlName]="config.name"
         [type]="config.textType === 'file' ? 'file' : config.textType"
   (change)="onFileSelected($event)" >

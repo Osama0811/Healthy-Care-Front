@@ -159,6 +159,7 @@ export class UserComponent implements OnInit, OnDestroy,AfterViewInit {
         label: 'Imagebase64',
         name: 'imageBase64',
         NonVisible:true
+
       },
       {
         type: 'input',

@@ -13,7 +13,7 @@ import { FieldConfig } from '../../models/field-config.interface';
       <button
         [disabled]="config.disabled"
         type="submit">
-        {{ config.label|translate }}
+        {{ config.label==undefined?"":config.label|translate}}
       </button>
     </div>
   `
