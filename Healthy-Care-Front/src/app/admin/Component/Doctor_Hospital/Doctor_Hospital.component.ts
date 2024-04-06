@@ -7,28 +7,35 @@ import { MessageService } from 'primeng/api';
 import { Subscription } from 'rxjs';
 import { Validators } from '@angular/forms';
 import { FieldConfig } from 'src/app/Shared/dynamic-form/models/field-config.interface';
-export interface IBloodDto {//get all data table
+export interface IDoctor_HospitalDto {
   id: string | undefined;
-  name: string | undefined;
+  doctorId: string | undefined;
+  hospitalId: string | undefined;
+  dateStart:  string | undefined;
+  dateEnd:  string |undefined;
+
 }
 
 @Component({
-  selector: 'app-blood',
-  templateUrl: './blood.component.html',
-  styleUrls: ['./blood.component.css'],
-  providers: [GlobalService, { provide: Controller, useValue: 'blood' }], //controller name
+  selector: 'app-Doctor_Hospital',
+  templateUrl: './Doctor_Hospital.component.html',
+  styleUrls: ['./Doctor_Hospital.component.css'],
+  providers: [GlobalService, { provide: Controller, useValue: 'Doctor_Hospital' }],
 })
-export class BloodComponent implements OnInit, OnDestroy {
-  SubscriptionList: Subscription[] = []; // for me
+export class Doctor_HospitalComponent implements OnInit, OnDestroy {
+  SubscriptionList: Subscription[] = [];
 
-  BloodList: IBloodDto[] = []; // dto for data table
-  cols: any[] = []; // colims in data table
-  configInput: FieldConfig[] = []; // input add update
+  Doctor_HospitalList: IDoctor_HospitalDto[] = [];
+  cols: any[] = [];
+  configInput: FieldConfig[] = [];
 
   constructor(
     private globalService: GlobalService<any>,
     private messageService: MessageService
-  ) {}
+  ) {
+
+
+  }
   ngOnInit() {
     this.configInput = [
       {
@@ -40,27 +47,39 @@ export class BloodComponent implements OnInit, OnDestroy {
       },
       {
         type: 'input',
-        label: 'Blood name',
-        name: 'name',
-        placeholder: 'Enter Blood Name',
-        validation: [Validators.required, Validators.minLength(4)],
+        label: 'Doctor Id',
+        name: 'doctorId',
+        placeholder: 'Enter Doctor Id ',
+        validation: [Validators.required],
 
       },
       {
         type: 'input',
-        label: 'hospital Count',
-        name: 'hospitalCount',
-        placeholder: 'Enter hospital Count',
+        label: 'Hospital Id',
+        name: 'hospitalId',
+        placeholder: 'Enter Hospital Id ',
+        validation: [Validators.required],
+
+
+      },{
+        type: 'input',
+        label: 'Date Start',
+        name: 'dateStart',
+        placeholder: 'Enter Date Start ',
+        validation: [Validators.required],
+
+
+      },{
+        type: 'input',
+        label: 'Date End',
+        name: 'dateEnd',
+        placeholder: 'Enter Date End ',
+
+
       },
-      {
-        type: 'select',
-        label: 'select ',
-        name: 'option',
-        options: ["jkkj","knl","kn","hbj"],
-        value:[1,2,3,4],
-        placeholder: 'Select an option',
-        validation: [Validators.required]
-      },
+
+
+
     ];
     this.messageService.add({
       severity: 'success',
@@ -68,7 +87,7 @@ export class BloodComponent implements OnInit, OnDestroy {
       detail: 'No Data found',
     });
     this.SubscriptionList.push(
-      this.globalService.GetAll<IBloodDto, null>().subscribe(
+      this.globalService.GetAll<IDoctor_HospitalDto, null>().subscribe(
         (data) => {
 
           if (data.success) {
@@ -79,9 +98,9 @@ export class BloodComponent implements OnInit, OnDestroy {
                 detail: 'No Data found',
               });
             } else {
-
-              this.BloodList = data.resource.reduce((acc: IBloodDto[], el) => {
-                let obj = el as IBloodDto;
+              let newDoctor_HospitalList: IDoctor_HospitalDto[] = [];
+              this.Doctor_HospitalList = data.resource.reduce((acc: IDoctor_HospitalDto[], el) => {
+                let obj = el as IDoctor_HospitalDto;
                 acc.push(obj);
                 return acc;
               }, []);
@@ -112,7 +131,13 @@ export class BloodComponent implements OnInit, OnDestroy {
     );
 
     this.cols = [
-      { field: 'name', header: 'Blood Name' },
+      { field: 'doctorName', header: 'Doctor Name' },
+      { field: 'hospitalName', header: 'Hospital Name' },
+      { field: 'dateStart', header: 'Date Start' },
+      { field: 'dateEnd', header: 'Date End' },
+
+
+
     ];
   }
   ngOnDestroy(): void {

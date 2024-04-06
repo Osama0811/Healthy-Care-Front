@@ -7,6 +7,8 @@ export interface FieldConfig {
   name: string,
   options?: string[],
   placeholder: string,
+  options?: (string|undefined)[],
+  placeholder?: string,
   type: string,
   validation?: ValidatorFn[],
   value?: any,

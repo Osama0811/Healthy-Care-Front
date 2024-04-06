@@ -7,28 +7,33 @@ import { MessageService } from 'primeng/api';
 import { Subscription } from 'rxjs';
 import { Validators } from '@angular/forms';
 import { FieldConfig } from 'src/app/Shared/dynamic-form/models/field-config.interface';
-export interface IBloodDto {//get all data table
+export interface IToolsDto {
   id: string | undefined;
-  name: string | undefined;
+  userId: string | undefined;
+  hospitalId: string | undefined;
+  type: number | undefined;
 }
 
 @Component({
-  selector: 'app-blood',
-  templateUrl: './blood.component.html',
-  styleUrls: ['./blood.component.css'],
-  providers: [GlobalService, { provide: Controller, useValue: 'blood' }], //controller name
+  selector: 'app-Tools',
+  templateUrl: './Tools.component.html',
+  styleUrls: ['./Tools.component.css'],
+  providers: [GlobalService, { provide: Controller, useValue: 'Tools' }],
 })
-export class BloodComponent implements OnInit, OnDestroy {
-  SubscriptionList: Subscription[] = []; // for me
+export class ToolsComponent implements OnInit, OnDestroy {
+  SubscriptionList: Subscription[] = [];
 
-  BloodList: IBloodDto[] = []; // dto for data table
-  cols: any[] = []; // colims in data table
-  configInput: FieldConfig[] = []; // input add update
+  ToolsList: IToolsDto[] = [];
+  cols: any[] = [];
+  configInput: FieldConfig[] = [];
 
   constructor(
     private globalService: GlobalService<any>,
     private messageService: MessageService
-  ) {}
+  ) {
+
+
+  }
   ngOnInit() {
     this.configInput = [
       {
@@ -40,27 +45,13 @@ export class BloodComponent implements OnInit, OnDestroy {
       },
       {
         type: 'input',
-        label: 'Blood name',
+        label: 'Name',
         name: 'name',
-        placeholder: 'Enter Blood Name',
-        validation: [Validators.required, Validators.minLength(4)],
+        placeholder: 'Enter Tools Name ',
+        validation: [Validators.required],
 
       },
-      {
-        type: 'input',
-        label: 'hospital Count',
-        name: 'hospitalCount',
-        placeholder: 'Enter hospital Count',
-      },
-      {
-        type: 'select',
-        label: 'select ',
-        name: 'option',
-        options: ["jkkj","knl","kn","hbj"],
-        value:[1,2,3,4],
-        placeholder: 'Select an option',
-        validation: [Validators.required]
-      },
+
     ];
     this.messageService.add({
       severity: 'success',
@@ -68,7 +59,7 @@ export class BloodComponent implements OnInit, OnDestroy {
       detail: 'No Data found',
     });
     this.SubscriptionList.push(
-      this.globalService.GetAll<IBloodDto, null>().subscribe(
+      this.globalService.GetAll<IToolsDto, null>().subscribe(
         (data) => {
 
           if (data.success) {
@@ -79,9 +70,9 @@ export class BloodComponent implements OnInit, OnDestroy {
                 detail: 'No Data found',
               });
             } else {
-
-              this.BloodList = data.resource.reduce((acc: IBloodDto[], el) => {
-                let obj = el as IBloodDto;
+              let newToolsList: IToolsDto[] = [];
+              this.ToolsList = data.resource.reduce((acc: IToolsDto[], el) => {
+                let obj = el as IToolsDto;
                 acc.push(obj);
                 return acc;
               }, []);
@@ -112,7 +103,10 @@ export class BloodComponent implements OnInit, OnDestroy {
     );
 
     this.cols = [
-      { field: 'name', header: 'Blood Name' },
+      { field: 'id', header: 'Tools Id' },
+      { field: 'name', header: 'Tools Name' },
+
+
     ];
   }
   ngOnDestroy(): void {

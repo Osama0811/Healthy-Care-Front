@@ -7,28 +7,40 @@ import { MessageService } from 'primeng/api';
 import { Subscription } from 'rxjs';
 import { Validators } from '@angular/forms';
 import { FieldConfig } from 'src/app/Shared/dynamic-form/models/field-config.interface';
-export interface IBloodDto {//get all data table
+export interface IBloodBankDto {
   id: string | undefined;
-  name: string | undefined;
+  senderId: string | undefined;
+  senderName: string | undefined;
+  receiverId: string | undefined;
+  receiverName: string | undefined;
+  bloodtypeId: string | undefined;
+  bloodtypeName: string | undefined;
+  appointmentId: string | undefined;
+  quantity: number | undefined;
+  status: number | undefined;
+  statusName: string | undefined;
 }
 
 @Component({
-  selector: 'app-blood',
-  templateUrl: './blood.component.html',
-  styleUrls: ['./blood.component.css'],
-  providers: [GlobalService, { provide: Controller, useValue: 'blood' }], //controller name
+  selector: 'app-BloodBank',
+  templateUrl: './BloodBank.component.html',
+  styleUrls: ['./BloodBank.component.css'],
+  providers: [GlobalService, { provide: Controller, useValue: 'BloodBank' }],
 })
-export class BloodComponent implements OnInit, OnDestroy {
-  SubscriptionList: Subscription[] = []; // for me
+export class BloodBankComponent implements OnInit, OnDestroy {
+  SubscriptionList: Subscription[] = [];
 
-  BloodList: IBloodDto[] = []; // dto for data table
-  cols: any[] = []; // colims in data table
-  configInput: FieldConfig[] = []; // input add update
+  BloodBankList: IBloodBankDto[] = [];
+  cols: any[] = [];
+  configInput: FieldConfig[] = [];
 
   constructor(
     private globalService: GlobalService<any>,
     private messageService: MessageService
-  ) {}
+  ) {
+
+
+  }
   ngOnInit() {
     this.configInput = [
       {
@@ -37,30 +49,14 @@ export class BloodComponent implements OnInit, OnDestroy {
         name: 'id',
         placeholder: 'Id',
         NonVisible:true
-      },
-      {
+      }
+      ,{
         type: 'input',
-        label: 'Blood name',
-        name: 'name',
-        placeholder: 'Enter Blood Name',
-        validation: [Validators.required, Validators.minLength(4)],
+        label: 'National Number',
+        name: 'nationalNumber',
+        placeholder: 'National Number',
+      },
 
-      },
-      {
-        type: 'input',
-        label: 'hospital Count',
-        name: 'hospitalCount',
-        placeholder: 'Enter hospital Count',
-      },
-      {
-        type: 'select',
-        label: 'select ',
-        name: 'option',
-        options: ["jkkj","knl","kn","hbj"],
-        value:[1,2,3,4],
-        placeholder: 'Select an option',
-        validation: [Validators.required]
-      },
     ];
     this.messageService.add({
       severity: 'success',
@@ -68,7 +64,7 @@ export class BloodComponent implements OnInit, OnDestroy {
       detail: 'No Data found',
     });
     this.SubscriptionList.push(
-      this.globalService.GetAll<IBloodDto, null>().subscribe(
+      this.globalService.GetAll<IBloodBankDto, null>().subscribe(
         (data) => {
 
           if (data.success) {
@@ -79,9 +75,9 @@ export class BloodComponent implements OnInit, OnDestroy {
                 detail: 'No Data found',
               });
             } else {
-
-              this.BloodList = data.resource.reduce((acc: IBloodDto[], el) => {
-                let obj = el as IBloodDto;
+              let newBloodBankList: IBloodBankDto[] = [];
+              this.BloodBankList = data.resource.reduce((acc: IBloodBankDto[], el) => {
+                let obj = el as IBloodBankDto;
                 acc.push(obj);
                 return acc;
               }, []);
@@ -112,7 +108,12 @@ export class BloodComponent implements OnInit, OnDestroy {
     );
 
     this.cols = [
-      { field: 'name', header: 'Blood Name' },
+      { field: 'senderName', header: 'Sender Name' },
+      { field: 'receiverName', header: 'Receiver Name' },
+      { field: 'bloodtypeName', header: 'Blood Type' },
+      { field: 'statusName', header: 'Status' },
+
+
     ];
   }
   ngOnDestroy(): void {

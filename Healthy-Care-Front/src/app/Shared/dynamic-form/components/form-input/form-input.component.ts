@@ -18,7 +18,7 @@ import { FieldConfig } from '../../models/field-config.interface';
         [type]="config.textType"
         [attr.placeholder]="config.placeholder|translate"
         [formControlName]="config.name"
-        [type]="config.textType === 'file' ? 'file' : 'text'"
+        [type]="config.textType === 'file' ? 'file' : config.textType"
   (change)="onFileSelected($event)" >
     </div>
   `
@@ -43,10 +43,12 @@ export class FormInputComponent implements Field {
       reader.onload = () => {
         const base64String: string = reader.result as string;
 
-
+        console.log(base64String);
         const control = this.group.get("imageBase64");
+        console.log(control);
         if (control) {
             control.patchValue(base64String);
+            debugger
         }
 
           };
