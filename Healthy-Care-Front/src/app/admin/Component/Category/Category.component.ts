@@ -16,7 +16,6 @@ export interface ICategoryDto {//get all data table
 @Component({
   selector: 'app-Category',
   templateUrl: './Category.component.html',
-  styleUrls: ['./Category.component.css'],
   providers: [GlobalService, { provide: Controller, useValue: 'Category' }], //controller name
 })
 export class CategoryComponent implements OnInit, OnDestroy {

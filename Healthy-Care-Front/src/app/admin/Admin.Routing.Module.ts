@@ -20,11 +20,11 @@ import { Hospital_CategoryComponent } from './Component/Hospital_Category/Hospit
 import { DepartmentComponent } from './Component/Department/Department.component';
 import { Department_HospitalComponent } from './Component/Department_Hospital/Department_Hospital.component';
 
-import { CategoryComponent } from './Component/Category/Category.component';
 import { UserComponent } from './Component/User/User.component';
 import { AppointmentComponent } from './Component/Appointment/Appointment.component';
 import { HistoryComponent } from './Component/History/History.component';
 import { HospitalComponent } from './Component/Hospital/Hospital.component';
+import { CategoryComponent } from './Component/Category/Category.component';
 
 const routes: Routes = [
 
@@ -51,6 +51,7 @@ const routes: Routes = [
 
 
         { path: 'Patient', component: PatientComponent },
+        { path: 'Category', component: CategoryComponent },
         { path: 'Address', component: AddressComponent },
         { path: 'BloodEquation', component: BloodEquationComponent },
         { path: 'Hospital_Category', component: Hospital_CategoryComponent },
