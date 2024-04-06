@@ -1,6 +1,7 @@
 import { CategoryService } from './../../Services/Category.service';
-import { hospitalService } from './../../Services/hospital.service';
-import { AfterViewInit, Component, OnDestroy, OnInit, Type } from '@angular/core';
+import { AddressService } from './../../Services/Address.service copy';
+import { AddressDropDown, CategoryDropDown, IAddressDownModel, ICategoryDownModel } from './../../Model/DropDown';
+import { Component, OnDestroy, OnInit, Type, AfterViewInit } from '@angular/core';
 import {
   Controller,
   GlobalService,
@@ -9,38 +10,42 @@ import { MessageService } from 'primeng/api';
 import { Subscription } from 'rxjs';
 import { Validators } from '@angular/forms';
 import { FieldConfig } from 'src/app/Shared/dynamic-form/models/field-config.interface';
-import { ICategoryDownModel, IhospitalDownModel } from '../../Model/DropDown';
-export interface IHospital_CategoryDto {//get all data table
+export interface IHospitalDto {//get all data table
   id: string | undefined;
-  hospitalId: string | undefined;
+  name: string | undefined;
+  description: string | undefined;
   categoryId: string | undefined;
-  hospitalName: string | undefined;
   categoryName: string | undefined;
+  addressId: string | undefined;
+  addressTitle: string | undefined;
+  imagePath: string | undefined;
+
+
 }
 
 @Component({
-  selector: 'app-Hospital_Category',
-  templateUrl: './Hospital_Category.component.html',
-  styleUrls: ['./Hospital_Category.component.css'],
-  providers: [GlobalService, { provide: Controller, useValue: 'Hospital_Category' }], //controller name
+  selector: 'app-Hospital',
+  templateUrl: './Hospital.component.html',
+  styleUrls: ['./Hospital.component.css'],
+  providers: [GlobalService, { provide: Controller, useValue: 'Hospital' }], //controller name
 })
-export class Hospital_CategoryComponent implements OnInit, OnDestroy,AfterViewInit {
+export class HospitalComponent implements OnInit, OnDestroy,AfterViewInit {
   SubscriptionList: Subscription[] = []; // for me
-  categoryDropDown: ICategoryDownModel[] = [];
-  hospitalDropDown: IhospitalDownModel[] = [];
-  Hospital_CategoryList: IHospital_CategoryDto[] = []; // dto for data table
+  AddressDropDown: IAddressDownModel[] = [];
+  CategoryDropDown: ICategoryDownModel[] = [];
+  HospitalList: IHospitalDto[] = []; // dto for data table
   cols: any[] = []; // colims in data table
   configInput: FieldConfig[] = []; // input add update
 
   constructor(
     private globalService: GlobalService<any>,
     private messageService: MessageService,
-    private hospitalService: hospitalService,
+    private AddressService: AddressService,
     private CategoryService: CategoryService
   ) {}
   ngAfterViewInit(): void {
     this.SubscriptionList.push(
-      this.CategoryService.CategoryDropDown().subscribe(
+      this.AddressService.AddressDropDown().subscribe(
         (data) => {
 
           if (data.success) {
@@ -59,8 +64,8 @@ export class Hospital_CategoryComponent implements OnInit, OnDestroy,AfterViewIn
               // }, []);
 
               //this.DeptList = data.resource as UserDtoClass[];
-              this.categoryDropDown = data.resource.reduce((acc: ICategoryDownModel[], el) => {
-                let obj = el as ICategoryDownModel;
+              this.AddressDropDown = data.resource.reduce((acc: IAddressDownModel[], el) => {
+                let obj = el as IAddressDownModel;
                 acc.push(obj);
                 return acc;
               }, []);
@@ -89,7 +94,7 @@ export class Hospital_CategoryComponent implements OnInit, OnDestroy,AfterViewIn
       )
     );
     this.SubscriptionList.push(
-      this.hospitalService.hospitalDropDown().subscribe(
+      this.CategoryService.CategoryDropDown().subscribe(
         (data) => {
 
           if (data.success) {
@@ -108,8 +113,8 @@ export class Hospital_CategoryComponent implements OnInit, OnDestroy,AfterViewIn
               // }, []);
 
               //this.DeptList = data.resource as UserDtoClass[];
-              this.hospitalDropDown = data.resource.reduce((acc: IhospitalDownModel[], el) => {
-                let obj = el as IhospitalDownModel;
+              this.CategoryDropDown = data.resource.reduce((acc: ICategoryDownModel[], el) => {
+                let obj = el as ICategoryDownModel;
                 acc.push(obj);
                 return acc;
               }, []);
@@ -148,25 +153,67 @@ export class Hospital_CategoryComponent implements OnInit, OnDestroy,AfterViewIn
         placeholder: 'Id',
         NonVisible:true
       },
+      {
+        type: 'input',
+        label: 'Hospital description',
+        name: 'description',
+        placeholder: 'Enter Hospital description',
+        validation: [Validators.required, Validators.minLength(4)],
 
+      }
+      // {
+      //   type: 'input',
+      //   label: 'hospital category Id',
+      //   name: 'categoryId',
+      //   placeholder: 'Enter hospital category Id',
+      // },
+      // {
+      //   type: 'input',
+      //   label: 'hospital address Id',
+      //   name: 'addressId',
+      //   placeholder: 'Enter hospital address Id',
+      // },
+      ,{
+        type: 'input',
+        label: 'Imagebase64',
+        name: 'imageBase64',
+        NonVisible:true
+      },
+      {
+        type: 'input',
+        label: ' FileName',
+        name: 'fileName',
+        textType:'file',
+        placeholder: 'Enter Image',
+        //validation: [Validators.required],
+      },
+
+      // {
+      //   type: 'select',
+      //   label: 'select ',
+      //   name: 'option',
+      //   options: ["jkkj","knl","kn","hbj"],
+      //   value:[1,2,3,4],
+      //   placeholder: 'Select an option',
+      //   validation: [Validators.required]
+      // },
       {
         type: 'select',
-        label: 'categoryId',
-        name: 'categoryId',
-        options: this.categoryDropDown.map(el => el.name),
-        value: this.categoryDropDown.map(el => el.id),
-        //placeholder: 'Enter  category',
+        label: 'address Id',
+        name: 'addressId',
+        options: this.AddressDropDown.map(el => el.title),
+        value: this.AddressDropDown.map(el => el.id),
+        placeholder: 'Enter  national number',
         validation: [Validators.required],
     },
-    {
-      type: 'select',
-      label: 'hospitalId',
-      name: 'hospitalId',
-      options: this.hospitalDropDown.map(el => el.name),
-      value: this.hospitalDropDown.map(el => el.id),
-      //placeholder: 'Enter  hospital name',
-      validation: [Validators.required],
-  },
+      {
+        type: 'select',
+        label: 'category Id',
+        name: 'categoryId',
+        placeholder: 'Chosse hospital',
+        options: this.CategoryDropDown.map(el => el.name),
+        value: this.CategoryDropDown.map(el => el.id),
+    },
     ];
 }
   ngOnInit() {
@@ -177,7 +224,7 @@ export class Hospital_CategoryComponent implements OnInit, OnDestroy,AfterViewIn
       detail: 'No Data found',
     });
     this.SubscriptionList.push(
-      this.globalService.GetAll<IHospital_CategoryDto, null>().subscribe(
+      this.globalService.GetAll<IHospitalDto, null>().subscribe(
         (data) => {
 
           if (data.success) {
@@ -189,8 +236,8 @@ export class Hospital_CategoryComponent implements OnInit, OnDestroy,AfterViewIn
               });
             } else {
 
-              this.Hospital_CategoryList = data.resource.reduce((acc: IHospital_CategoryDto[], el) => {
-                let obj = { id: el.id, hospitalId: el.hospitalId, categoryId: el.categoryId, hospitalName: el.hospitalName, categoryName: el.categoryName} as IHospital_CategoryDto;
+              this.HospitalList = data.resource.reduce((acc: IHospitalDto[], el) => {
+                let obj = el as IHospitalDto;
                 acc.push(obj);
                 return acc;
               }, []);
@@ -221,11 +268,13 @@ export class Hospital_CategoryComponent implements OnInit, OnDestroy,AfterViewIn
     );
 
     this.cols = [
-      { field: 'id', header: 'id' },
-      { field: 'hospitalId', header: 'hospitalId' },
-      { field: 'categoryId', header: 'categoryId' },
-      { field: 'hospitalName', header: 'hospitalName' },
-      { field: 'categoryName', header: 'categoryName' },
+      { field: 'name', header: 'Hospital Name' },
+      { field: 'description', header: 'Hospital des' },
+
+      { field: 'categoryName', header: 'Hospital category name' },
+      { field: 'addressTitle', header: 'Hospital address title' },
+      { field: 'imagePath', header: 'Hospital image' },
+
     ];
   }
   ngOnDestroy(): void {
