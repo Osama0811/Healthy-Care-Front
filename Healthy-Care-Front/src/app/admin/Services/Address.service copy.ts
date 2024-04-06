@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { GeneralResponse } from 'src/app/Shared/GeneralResponse';
 import { environment } from 'src/app/environments/environment.prod';
-import { DropDownModel, PatientDropDown } from '../Model/DropDown';
+import { DropDownModel, AddressDropDown } from '../Model/DropDown';
 
 export const BASE_URL = environment.BaseUrl;
 export const Controller ="";
@@ -11,14 +11,14 @@ let _base="";
 @Injectable({
   providedIn: 'root'
 })
-export class PatientService {
+export class AddressService {
 
 
   constructor(
     protected _http: HttpClient,
   ) {}
-  PatientDropDown(): Observable<GeneralResponse<PatientDropDown[]>> {
-    _base=BASE_URL+"/Patient";
+  AddressDropDown(): Observable<GeneralResponse<AddressDropDown[]>> {
+    _base=BASE_URL+"/hospital";
     let url_ = _base + '/GetAll';
 
     url_ = url_.replace(/[?&]$/, '');
@@ -34,9 +34,9 @@ export class PatientService {
     };
     return this.sendRequest(url_, options);
   }
-  private sendRequest(url: string, options: RequestInit): Observable<GeneralResponse<PatientDropDown[]>> {
+  private sendRequest(url: string, options: RequestInit): Observable<GeneralResponse<AddressDropDown[]>> {
     console.log(url);
-    return new Observable<GeneralResponse<PatientDropDown[]>>(observer => {
+    return new Observable<GeneralResponse<AddressDropDown[]>>(observer => {
       fetch(url, options)
         .then(response => response.json())
         .then(data => {

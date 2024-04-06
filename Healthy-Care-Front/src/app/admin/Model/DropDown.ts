@@ -54,4 +54,28 @@ export interface IMenusMainDetailsDownModel {
   id: string | undefined;
   name: string | undefined;
 }
+export interface AddressDropDown {
+  id: string | undefined;
+  title: string | undefined;
+}
+export interface IAddressDownModel {
+  id: string | undefined;
+  title: string | undefined;
+}
+export interface DoctorDropDown {
+  id: string | undefined;
+  typeName: string | undefined;
+}
+export interface IDoctorDownModel {
+  id: string | undefined;
+  typeName: string | undefined;
+}
+export interface PatientDropDown {
+  id: string | undefined;
+  userName: string | undefined;
+}
+export interface IPatientDownModel {
+  id: string | undefined;
+  userName: string | undefined;
+};
 

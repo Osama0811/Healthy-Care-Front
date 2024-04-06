@@ -1,8 +1,6 @@
-import { DoctorService } from './../../Services/doctor.service';
-import { DepartmentService } from './../../Services/department.service copy';
-import { hospitalService } from './../../Services/hospital.service';
-import { patientService } from './../../Services/patient.service';
-import { IPatientDownModel, patientDropDown, hospitalDropDown, IhospitalDownModel, DepartmentDropDown, IDepartmentDownModel, DoctorDropDown, IDoctorDownModel } from './../../Model/DropDown';
+import { CategoryService } from './../../Services/Category.service';
+import { AddressService } from './../../Services/Address.service copy';
+import { AddressDropDown, CategoryDropDown, IAddressDownModel, ICategoryDownModel } from './../../Model/DropDown';
 import { Component, OnDestroy, OnInit, Type, AfterViewInit } from '@angular/core';
 import {
   Controller,
@@ -12,54 +10,42 @@ import { MessageService } from 'primeng/api';
 import { Subscription } from 'rxjs';
 import { Validators } from '@angular/forms';
 import { FieldConfig } from 'src/app/Shared/dynamic-form/models/field-config.interface';
-export interface IHistoryDto {//get all data table
+export interface IHospitalDto {//get all data table
   id: string | undefined;
-  titleAr: string | undefined;
-  titleEn: string | undefined;
-  title: string | undefined;
-  descriptionAr: string | undefined;
-  descriptionEn: string | undefined;
+  name: string | undefined;
   description: string | undefined;
-  patientId: string | undefined;
-  patientName: string | undefined;
-  hospitalId: string | undefined;
-  hospitalName: string | undefined;
-  doctorId: string | undefined;
-  doctorName: string | undefined;
-  departmentId: string | undefined;
-  departmentName: string | undefined;
-  date: string | undefined;
+  categoryId: string | undefined;
+  categoryName: string | undefined;
+  addressId: string | undefined;
+  addressTitle: string | undefined;
+  imagePath: string | undefined;
 
+  
 }
 
 @Component({
-  selector: 'app-History',
-  templateUrl: './History.component.html',
-  styleUrls: ['./History.component.css'],
-  providers: [GlobalService, { provide: Controller, useValue: 'History' }], //controller name
+  selector: 'app-Hospital',
+  templateUrl: './Hospital.component.html',
+  styleUrls: ['./Hospital.component.css'],
+  providers: [GlobalService, { provide: Controller, useValue: 'Hospital' }], //controller name
 })
-export class HistoryComponent implements OnInit, OnDestroy,AfterViewInit {
+export class HospitalComponent implements OnInit, OnDestroy,AfterViewInit {
   SubscriptionList: Subscription[] = []; // for me
-  patientDropDown: IPatientDownModel[] = [];
-  hospitalDropDown: IhospitalDownModel[] = [];
-  DepartmentDropDown: IDepartmentDownModel[] = [];
-  DoctorDropDown: IDoctorDownModel[] = [];
-
-  HistoryList: IHistoryDto[] = []; // dto for data table
+  AddressDropDown: IAddressDownModel[] = [];
+  CategoryDropDown: ICategoryDownModel[] = [];
+  HospitalList: IHospitalDto[] = []; // dto for data table
   cols: any[] = []; // colims in data table
   configInput: FieldConfig[] = []; // input add update
 
   constructor(
     private globalService: GlobalService<any>,
     private messageService: MessageService,
-    private patientService: patientService,
-    private hospitalService: hospitalService,
-    private DepartmentService: DepartmentService,
-    private DoctorService: DoctorService
+    private AddressService: AddressService,
+    private CategoryService: CategoryService
   ) {}
   ngAfterViewInit(): void {
     this.SubscriptionList.push(
-      this.patientService.patientDropDown().subscribe(
+      this.AddressService.AddressDropDown().subscribe(
         (data) => {
 
           if (data.success) {
@@ -78,8 +64,8 @@ export class HistoryComponent implements OnInit, OnDestroy,AfterViewInit {
               // }, []);
 
               //this.DeptList = data.resource as UserDtoClass[];
-              this.patientDropDown = data.resource.reduce((acc: IPatientDownModel[], el) => {
-                let obj = el as IPatientDownModel;
+              this.AddressDropDown = data.resource.reduce((acc: IAddressDownModel[], el) => {
+                let obj = el as IAddressDownModel;
                 acc.push(obj);
                 return acc;
               }, []);
@@ -108,7 +94,7 @@ export class HistoryComponent implements OnInit, OnDestroy,AfterViewInit {
       )
     );
     this.SubscriptionList.push(
-      this.hospitalService.hospitalDropDown().subscribe(
+      this.CategoryService.CategoryDropDown().subscribe(
         (data) => {
 
           if (data.success) {
@@ -127,106 +113,8 @@ export class HistoryComponent implements OnInit, OnDestroy,AfterViewInit {
               // }, []);
 
               //this.DeptList = data.resource as UserDtoClass[];
-              this.hospitalDropDown = data.resource.reduce((acc: IhospitalDownModel[], el) => {
-                let obj = el as IhospitalDownModel;
-                acc.push(obj);
-                return acc;
-              }, []);
-              this.messageService.add({
-                severity: 'success',
-                summary: 'Success',
-                detail: data.message,
-              });
-              this.initConfigInput();
-            }
-          } else {
-            this.messageService.add({
-              severity: 'error',
-              summary: 'Error',
-              detail: data.message,
-            });
-          }
-        },
-        (error) => {
-          this.messageService.add({
-            severity: 'error',
-            summary: 'Error',
-            detail: error.message,
-          });
-        }
-      )
-    );
-    this.SubscriptionList.push(
-      this.DepartmentService.DepartmentDropDown().subscribe(
-        (data) => {
-
-          if (data.success) {
-            if (data.resourceCount == 0) {
-              this.messageService.add({
-                severity: 'success',
-                summary: 'Success',
-                detail: 'No Data found',
-              });
-            } else {
-
-              // this.BloodDropDown = data.resource.reduce((acc: IBloodDropDown[], el:IBloodDropDown) => {
-              //   let obj = { id: el.id, name: el.name} as IBloodDropDown;
-              //   acc.push(obj);
-              //   return acc;
-              // }, []);
-
-              //this.DeptList = data.resource as UserDtoClass[];
-              this.DepartmentDropDown = data.resource.reduce((acc: IDepartmentDownModel[], el) => {
-                let obj = el as IDepartmentDownModel;
-                acc.push(obj);
-                return acc;
-              }, []);
-              this.messageService.add({
-                severity: 'success',
-                summary: 'Success',
-                detail: data.message,
-              });
-              this.initConfigInput();
-            }
-          } else {
-            this.messageService.add({
-              severity: 'error',
-              summary: 'Error',
-              detail: data.message,
-            });
-          }
-        },
-        (error) => {
-          this.messageService.add({
-            severity: 'error',
-            summary: 'Error',
-            detail: error.message,
-          });
-        }
-      )
-    );
-    this.SubscriptionList.push(
-      this.DoctorService.DoctorDropDown().subscribe(
-        (data) => {
-
-          if (data.success) {
-            if (data.resourceCount == 0) {
-              this.messageService.add({
-                severity: 'success',
-                summary: 'Success',
-                detail: 'No Data found',
-              });
-            } else {
-
-              // this.BloodDropDown = data.resource.reduce((acc: IBloodDropDown[], el:IBloodDropDown) => {
-              //   let obj = { id: el.id, name: el.name} as IBloodDropDown;
-              //   acc.push(obj);
-              //   return acc;
-              // }, []);
-
-              //this.DeptList = data.resource as UserDtoClass[];
-              this.DoctorDropDown = data.resource.reduce((acc: IDoctorDownModel[], el) => {
-                let obj = el as IDoctorDownModel;
+              this.CategoryDropDown = data.resource.reduce((acc: ICategoryDownModel[], el) => {
+                let obj = el as ICategoryDownModel;
                 acc.push(obj);
                 return acc;
               }, []);
@@ -329,13 +217,14 @@ export class HistoryComponent implements OnInit, OnDestroy,AfterViewInit {
     ];
 }
   ngOnInit() {
+ 
     this.messageService.add({
       severity: 'success',
       summary: 'Success',
       detail: 'No Data found',
     });
     this.SubscriptionList.push(
-      this.globalService.GetAll<IHistoryDto, null>().subscribe(
+      this.globalService.GetAll<IHospitalDto, null>().subscribe(
         (data) => {
 
           if (data.success) {
@@ -347,8 +236,8 @@ export class HistoryComponent implements OnInit, OnDestroy,AfterViewInit {
               });
             } else {
 
-              this.HistoryList = data.resource.reduce((acc: IHistoryDto[], el) => {
-                let obj = el as IHistoryDto;
+              this.HospitalList = data.resource.reduce((acc: IHospitalDto[], el) => {
+                let obj = el as IHospitalDto;
                 acc.push(obj);
                 return acc;
               }, []);
@@ -379,28 +268,12 @@ export class HistoryComponent implements OnInit, OnDestroy,AfterViewInit {
     );
 
     this.cols = [
-      { field: 'id', header: 'History Id' },
-      { field: 'title', header: 'History title' },
+      { field: 'name', header: 'Hospital Name' },
+      { field: 'description', header: 'Hospital des' },
 
-      { field: 'description', header: 'History description' },
-
-      //{ field: 'patientId', header: 'History patient Id' },
-
-      { field: 'patientName', header: 'History patient name' },
-
-      //{ field: 'hospitalId', header: 'History hospital Id' },
-      { field: 'hospitalName', header: 'History hospital name' },
-
-      //{ field: 'doctorId', header: 'History doctor Id' },
-
-      { field: 'doctorName', header: 'History doctor name' },
-
-     // { field: 'departmentId', header: 'History department Id' },
-
-      { field: 'departmentName', header: 'History department name' },
-      { field: 'date', header: 'History date' },
-
-
+      { field: 'categoryName', header: 'Hospital category name' },
+      { field: 'addressTitle', header: 'Hospital address title' },
+      { field: 'imagePath', header: 'Hospital image' },
 
     ];
   }
