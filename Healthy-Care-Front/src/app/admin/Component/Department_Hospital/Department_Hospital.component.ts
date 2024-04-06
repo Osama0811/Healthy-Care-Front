@@ -48,8 +48,8 @@ export class Department_HospitalComponent implements OnInit, OnDestroy {
         type: 'input',
         label: 'hospitalId',
         name: 'hospitalId',
-        placeholder: 'Enter Department_Hospital hospitalId',
-        validation: [Validators.required, Validators.minLength(4)],
+        placeholder: 'Enter  hospital',
+        validation: [Validators.required],
 
       },
       {
@@ -57,64 +57,34 @@ export class Department_HospitalComponent implements OnInit, OnDestroy {
         label: 'departmentId',
         name: 'departmentId',
         placeholder: 'Enter Department_Hospital departmentId',
-        validation: [Validators.required, Validators.minLength(4)],
+        validation: [Validators.required],
 
       },
       {
         type: 'input',
         label: 'numberOfDoctors',
         name: 'numberOfDoctors',
-        placeholder: 'Enter Department_Hospital numberOfDoctors',
-        validation: [Validators.required, Validators.minLength(4)],
+        textType:"number",
+        placeholder: 'Enter  number Of Doctors',
 
       },
       {
         type: 'input',
         label: 'numderOfBeds',
         name: 'numderOfBeds',
-        placeholder: 'Enter Department_Hospital numderOfBeds',
-        validation: [Validators.required, Validators.minLength(4)],
+        textType:"number",
+        placeholder: 'Enter  numder Of Beds',
 
       },
       {
         type: 'input',
         label: 'numberOfOccupiedBeds',
         name: 'numberOfOccupiedBeds',
-        placeholder: 'Enter Department_Hospital numberOfOccupiedBeds',
-        validation: [Validators.required, Validators.minLength(4)],
+        textType:"number",
+        placeholder: 'Enter  number Of Occupied Beds',
 
       },
-      {
-        type: 'input',
-        label: 'hospitalName',
-        name: 'hospitalName',
-        placeholder: 'Enter Department_Hospital hospitalName',
-        validation: [Validators.required, Validators.minLength(4)],
 
-      },
-      {
-        type: 'input',
-        label: 'departmentName',
-        name: 'departmentName',
-        placeholder: 'Enter Department_Hospital departmentName',
-        validation: [Validators.required, Validators.minLength(4)],
-
-      },
-      {
-        type: 'input',
-        label: 'hospital Count',
-        name: 'hospitalCount',
-        placeholder: 'Enter hospital Count',
-      },
-      {
-        type: 'select',
-        label: 'select ',
-        name: 'option',
-        options: ["jkkj","knl","kn","hbj"],
-        value:[1,2,3,4],
-        placeholder: 'Select an option',
-        validation: [Validators.required]
-      },
     ];
     this.messageService.add({
       severity: 'success',
@@ -166,14 +136,13 @@ export class Department_HospitalComponent implements OnInit, OnDestroy {
     );
 
     this.cols = [
-      { field: 'id', header: 'id' },
-      { field: 'hospitalId', header: 'hospitalId' },
-      { field: 'departmentId', header: 'departmentId' },
+      { field: 'hospitalName', header: 'hospitalName' },
+      { field: 'departmentName', header: 'departmentName' },
       { field: 'numberOfDoctors', header: 'numberOfDoctors' },
       { field: 'numderOfBeds', header: 'numderOfBeds' },
       { field: 'numberOfOccupiedBeds', header: 'numberOfOccupiedBeds' },
-      { field: 'hospitalName', header: 'hospitalName' },
-      { field: 'departmentName', header: 'departmentName' },
+
+
     ];
   }
   ngOnDestroy(): void {

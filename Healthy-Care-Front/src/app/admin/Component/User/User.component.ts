@@ -26,8 +26,6 @@ export interface IUserDto {//get all data table
   addressTitle: string | undefined;
   countryId: string | undefined;
   countryName: string | undefined;
-  imagePath: string | undefined;
-  imageName: string | undefined;
 }
 
 @Component({
@@ -98,14 +96,7 @@ export class UserComponent implements OnInit, OnDestroy,AfterViewInit {
         validation: [Validators.required, Validators.minLength(4)],
 
       },
-      {
-        type: 'input',
-        label: 'roleId',
-        name: 'roleId',
-        placeholder: 'Enter roleId',
-        validation: [Validators.required, Validators.minLength(4)],
 
-      },
       // {
       //   type: 'input',
       //   label: 'roleType',
@@ -162,86 +153,20 @@ export class UserComponent implements OnInit, OnDestroy,AfterViewInit {
         placeholder: 'Enter alterPhone',
         validation: [Validators.required, Validators.minLength(4)],
 
+      }
+      ,{
+        type: 'input',
+        label: 'Imagebase64',
+        name: 'imageBase64',
+        NonVisible:true
       },
       {
         type: 'input',
-        label: 'createdBy',
-        name: 'createdBy',
-        placeholder: 'Enter createdBy',
-        validation: [Validators.required, Validators.minLength(4)],
-
-      },
-      {
-        type: 'input',
-        label: 'bloodTypeId',
-        name: 'bloodTypeId',
-        placeholder: 'Enter bloodTypeId',
-        validation: [Validators.required, Validators.minLength(4)],
-
-      },
-      {
-        type: 'input',
-        label: 'bloodType',
-        name: 'bloodType',
-        placeholder: 'Enter bloodType',
-        validation: [Validators.required, Validators.minLength(4)],
-
-      },
-
-      {
-        type: 'input',
-        label: 'addressTitle',
-        name: 'addressTitle',
-        placeholder: 'Enter addressTitle',
-        validation: [Validators.required, Validators.minLength(4)],
-
-      },
-      {
-        type: 'input',
-        label: 'countryId',
-        name: 'countryId',
-        placeholder: 'Enter countryId',
-        validation: [Validators.required, Validators.minLength(4)],
-
-      },
-      {
-        type: 'input',
-        label: 'countryName',
-        name: 'countryName',
-        placeholder: 'Enter countryName',
-        validation: [Validators.required, Validators.minLength(4)],
-
-      },
-      {
-        type: 'input',
-        label: 'imagePath',
-        name: 'imagePath',
-        placeholder: 'Enter imagePath',
-        validation: [Validators.required, Validators.minLength(4)],
-
-      },
-      {
-        type: 'input',
-        label: 'imageName',
-        name: 'imageName',
-        placeholder: 'Enter imageName',
-        validation: [Validators.required, Validators.minLength(4)],
-
-      },
-      {
-        type: 'input',
-        label: 'hospital Count',
-        name: 'hospitalCount',
-        placeholder: 'Enter hospital Count',
-      },
-      {
-        type: 'select',
-        label: 'select ',
-        name: 'option',
-        options: ["jkkj","knl","kn","hbj"],
-        value:[1,2,3,4],
-        placeholder: 'Select an option',
-        validation: [Validators.required]
+        label: ' FileName',
+        name: 'fileName',
+        textType:'file',
+        placeholder: 'Enter Image',
+        //validation: [Validators.required],
       },
     ];
 }
@@ -266,7 +191,7 @@ export class UserComponent implements OnInit, OnDestroy,AfterViewInit {
             } else {
 
               this.UserList = data.resource.reduce((acc: IUserDto[], el) => {
-                let obj = { id: el.id, userName: el.userName, password: el.password, roleId: el.roleId, roleType: el.roleType, birthDate: el.birthDate, nationalNum: el.nationalNum, email: el.email, phone: el.phone, alterPhone: el.alterPhone, createdBy: el.createdBy, bloodTypeId: el.bloodTypeId, bloodType: el.bloodType, addressTitle: el.addressTitle, countryId: el.countryId, countryName: el.countryName, imagePath: el.imagePath, imageName: el.imageName} as IUserDto;
+                let obj = { id: el.id, userName: el.userName, password: el.password, roleId: el.roleId, roleType: el.roleType, birthDate: el.birthDate, nationalNum: el.nationalNum, email: el.email, phone: el.phone, alterPhone: el.alterPhone, createdBy: el.createdBy, bloodTypeId: el.bloodTypeId, bloodType: el.bloodType, addressTitle: el.addressTitle, countryId: el.countryId, countryName: el.countryName} as IUserDto;
                 acc.push(obj);
                 return acc;
               }, []);
@@ -297,24 +222,14 @@ export class UserComponent implements OnInit, OnDestroy,AfterViewInit {
     );
 
     this.cols = [
-      { field: 'id', header: 'User id' },
       { field: 'userName', header: 'userName' },
-      { field: 'password', header: 'User password' },
-      { field: 'roleId', header: 'User roleId' },
       { field: 'roleType', header: 'User roleType' },
       { field: 'birthDate', header: 'User birthDate' },
       { field: 'nationalNum', header: 'User nationalNum' },
       { field: 'email', header: 'User email' },
       { field: 'phone', header: 'User phone' },
       { field: 'alterPhone', header: 'User alterPhone' },
-      { field: 'createdBy', header: 'User createdBy' },
-      { field: 'bloodTypeId', header: 'User bloodTypeId' },
-      { field: 'bloodType', header: 'User bloodType' },
-      { field: 'addressTitle', header: 'User addressTitle' },
-      { field: 'countryId', header: 'User countryId' },
-      { field: 'countryName', header: 'User countryName' },
-      { field: 'imagePath', header: 'User imagePath' },
-      { field: 'imageName', header: 'User imageName' },
+
     ];
   }
   ngOnDestroy(): void {
