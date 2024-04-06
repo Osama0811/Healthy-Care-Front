@@ -52,6 +52,7 @@ export class CategoryComponent implements OnInit, OnDestroy {
         label: 'hospital Count',
         name: 'hospitalCount',
         placeholder: 'Enter hospital Count',
+        textType:'number',
       },
 
     ];
