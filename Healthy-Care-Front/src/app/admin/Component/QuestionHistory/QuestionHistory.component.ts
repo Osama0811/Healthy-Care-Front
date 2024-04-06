@@ -52,7 +52,7 @@ export class QuestionHistoryComponent implements OnInit, OnDestroy {
         type: 'input',
         label: 'Admin.TitleAr',
         name: 'titleAr',
-        placeholder: 'Enter title in arabic',
+        placeholder: 'Admin.EnterTitleAr',
         validation: [Validators.required, Validators.minLength(4)],
 
       },
@@ -139,7 +139,7 @@ export class QuestionHistoryComponent implements OnInit, OnDestroy {
 
     this.cols = [
       { field: 'title', header: 'Admin.Title' },
-      { field: 'question', header: ' Question' },
+      { field: 'question', header: 'Question' },
       { field: 'ageGroupTitle', header: ' Age Group Title' },
 
 

@@ -12,7 +12,7 @@ import { FieldConfig } from '../../models/field-config.interface';
       [formGroup]="group">
       <label class="form-label" >{{ config.label|translate }}</label>
       <select class="form-select" [formControlName]="config.name" >
-        <option value="">{{ config.placeholder }}</option>
+        <option value="">{{ config.placeholder|translate}}</option>
         <option *ngFor="let option of config.options; let i = index" [value]="config.value[i]">
           {{ option }}
         </option>

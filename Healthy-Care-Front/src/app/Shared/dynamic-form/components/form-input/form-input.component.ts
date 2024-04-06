@@ -16,7 +16,7 @@ import { FieldConfig } from '../../models/field-config.interface';
       <input
       pInputText
         [type]="config.textType"
-        [attr.placeholder]="config.placeholder"
+        [attr.placeholder]="config.placeholder|translate"
         [formControlName]="config.name"
         [type]="config.textType === 'file' ? 'file' : 'text'"
   (change)="onFileSelected($event)" >
