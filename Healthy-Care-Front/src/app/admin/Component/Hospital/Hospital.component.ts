@@ -20,7 +20,7 @@ export interface IHospitalDto {//get all data table
   addressTitle: string | undefined;
   imagePath: string | undefined;
 
-  
+
 }
 
 @Component({
@@ -160,7 +160,7 @@ export class HospitalComponent implements OnInit, OnDestroy,AfterViewInit {
         placeholder: 'Enter Hospital description',
         validation: [Validators.required, Validators.minLength(4)],
 
-      },
+      }
       // {
       //   type: 'input',
       //   label: 'hospital category Id',
@@ -187,7 +187,7 @@ export class HospitalComponent implements OnInit, OnDestroy,AfterViewInit {
         placeholder: 'Enter Image',
         //validation: [Validators.required],
       },
-  
+
       // {
       //   type: 'select',
       //   label: 'select ',
@@ -217,7 +217,7 @@ export class HospitalComponent implements OnInit, OnDestroy,AfterViewInit {
     ];
 }
   ngOnInit() {
- 
+
     this.messageService.add({
       severity: 'success',
       summary: 'Success',

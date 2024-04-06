@@ -1,8 +1,8 @@
 import { DoctorService } from './../../Services/doctor.service';
 import { DepartmentService } from './../../Services/department.service copy';
 import { hospitalService } from './../../Services/hospital.service';
-import { patientService } from './../../Services/patient.service';
-import { IPatientDownModel, patientDropDown, hospitalDropDown, IhospitalDownModel, DepartmentDropDown, IDepartmentDownModel, DoctorDropDown, IDoctorDownModel } from './../../Model/DropDown';
+import { PatientService } from './../../Services/patient.service';
+import { IPatientDownModel, hospitalDropDown, IhospitalDownModel, DepartmentDropDown, IDepartmentDownModel, DoctorDropDown, IDoctorDownModel, AddressDropDown, IAddressDownModel, CategoryDropDown, ICategoryDownModel } from './../../Model/DropDown';
 import { Component, OnDestroy, OnInit, Type, AfterViewInit } from '@angular/core';
 import {
   Controller,
@@ -44,6 +44,8 @@ export class HistoryComponent implements OnInit, OnDestroy,AfterViewInit {
   hospitalDropDown: IhospitalDownModel[] = [];
   DepartmentDropDown: IDepartmentDownModel[] = [];
   DoctorDropDown: IDoctorDownModel[] = [];
+  AddressDropDown: IAddressDownModel[] = [];
+  CategoryDropDown: ICategoryDownModel[] = [];
 
   HistoryList: IHistoryDto[] = []; // dto for data table
   cols: any[] = []; // colims in data table
@@ -52,14 +54,14 @@ export class HistoryComponent implements OnInit, OnDestroy,AfterViewInit {
   constructor(
     private globalService: GlobalService<any>,
     private messageService: MessageService,
-    private patientService: patientService,
+    private patientService: PatientService,
     private hospitalService: hospitalService,
     private DepartmentService: DepartmentService,
     private DoctorService: DoctorService
   ) {}
   ngAfterViewInit(): void {
     this.SubscriptionList.push(
-      this.patientService.patientDropDown().subscribe(
+      this.patientService.PatientDropDown().subscribe(
         (data) => {
 
           if (data.success) {
@@ -272,7 +274,7 @@ export class HistoryComponent implements OnInit, OnDestroy,AfterViewInit {
         placeholder: 'Enter Hospital description',
         validation: [Validators.required, Validators.minLength(4)],
 
-      },
+      }
       // {
       //   type: 'input',
       //   label: 'hospital category Id',
@@ -299,7 +301,7 @@ export class HistoryComponent implements OnInit, OnDestroy,AfterViewInit {
         placeholder: 'Enter Image',
         //validation: [Validators.required],
       },
-  
+
       // {
       //   type: 'select',
       //   label: 'select ',
