@@ -239,9 +239,9 @@ export class AppMenuComponent implements OnInit {
             ]
         },
         {
-            label: 'Hospital Category',
+            label: 'User',
             items: [
-                { label: 'Hospital_Category', icon: 'pi pi-search', routerLink: ['/admin/Hospital_Category'] }
+                { label: 'User', icon: 'pi pi-user', routerLink: ['/admin/User'] }
 
                 //{ label: 'Invalid State', icon: 'pi pi-fw pi-exclamation-circle', routerLink: ['/uikit/invalidstate'] },
 

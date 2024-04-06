@@ -21,6 +21,7 @@ import { DepartmentComponent } from './Component/Department/Department.component
 import { Department_HospitalComponent } from './Component/Department_Hospital/Department_Hospital.component';
 
 import { CategoryComponent } from './Component/Category/Category.component';
+import { UserComponent } from './Component/User/User.component';
 
 const routes: Routes = [
 
@@ -32,6 +33,7 @@ const routes: Routes = [
         { path: 'Profile', loadChildren: () => import('./Component/profile/Profile.module').then(m => m.ProfileModule) },
         { path: 'Index', loadChildren: () => import('./Component/index/index.module').then(m => m.IndexModule) },
         { path: 'Blood', component: BloodComponent },
+        { path: 'User', component: UserComponent },
         { path: 'BloodBank', component: BloodBankComponent },
         { path: 'QuestionHistory', component: QuestionHistoryComponent },
         { path: 'Doctor', component: DoctorComponent },
