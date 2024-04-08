@@ -9,14 +9,14 @@ import { Validators } from '@angular/forms';
 import { FieldConfig } from 'src/app/Shared/dynamic-form/models/field-config.interface';
 export interface IAppointmentDto {//get all data table
   id: string | undefined;
- // patientId: string | undefined;
+  patientId: string | undefined;
   patientName: string | undefined;
   date: string | undefined;
- //hospitalId: string | undefined;
+  hospitalId: string | undefined;
   hospitalName: string | undefined;
-  //departmentId: string | undefined;
+  departmentId: string | undefined;
   departmentName: string | undefined;
-  //doctorId: string | undefined;
+  doctorId: string | undefined;
   doctorName: string | undefined;
   code: number | undefined;
   status: number | undefined;
@@ -141,7 +141,7 @@ export class AppointmentComponent implements OnInit, OnDestroy {
     );
 
     this.cols = [
-      { field: 'id', header: 'Appointment Id' },
+      //{ field: 'id', header: 'Appointment Id' },
      // { field: 'patientId', header: 'Appointment patient Id' },
 
       { field: 'patientName', header: 'Appointment patient Name' },

@@ -269,24 +269,45 @@ export class HistoryComponent implements OnInit, OnDestroy,AfterViewInit {
       },
       {
         type: 'input',
-        label: 'Hospital description',
-        name: 'description',
-        placeholder: 'Enter Hospital description',
-        validation: [Validators.required, Validators.minLength(4)],
+        label: ' title Ar',
+        name: 'titleAr',
+        placeholder: 'Enter  title in Arabic',
+
+
+      },
+      {
+        type: 'input',
+        label: ' title En',
+        name: 'titleEn',
+        placeholder: 'Enter title in English',
+
+
+      },
+      {
+        type: 'input',
+        label: ' description Ar',
+        name: 'descriptionAr',
+        placeholder: 'Enter  description in Arabic',
+
+
+      },
+      {
+        type: 'input',
+        label: ' description En',
+        name: 'descriptionEn',
+        placeholder: 'Enter description in English',
+
+
+      },
+      {
+        type: 'input',
+        label: ' date',
+        name: 'date',
+        placeholder: 'Enter date',
+
 
       }
-      // {
-      //   type: 'input',
-      //   label: 'hospital category Id',
-      //   name: 'categoryId',
-      //   placeholder: 'Enter hospital category Id',
-      // },
-      // {
-      //   type: 'input',
-      //   label: 'hospital address Id',
-      //   name: 'addressId',
-      //   placeholder: 'Enter hospital address Id',
-      // },
+
       ,{
         type: 'input',
         label: 'Imagebase64',
@@ -313,21 +334,37 @@ export class HistoryComponent implements OnInit, OnDestroy,AfterViewInit {
       // },
       {
         type: 'select',
-        label: 'address Id',
-        name: 'addressId',
-        options: this.AddressDropDown.map(el => el.title),
-        value: this.AddressDropDown.map(el => el.id),
+        label: 'patient Id',
+        name: 'patientId',
+        options: this.patientDropDown.map(el => el.userName),
+        value: this.patientDropDown.map(el => el.id),
         placeholder: 'Enter  national number',
         validation: [Validators.required],
     },
       {
         type: 'select',
-        label: 'category Id',
-        name: 'categoryId',
+        label: 'hospital Id',
+        name: 'hospitalId',
         placeholder: 'Chosse hospital',
-        options: this.CategoryDropDown.map(el => el.name),
-        value: this.CategoryDropDown.map(el => el.id),
+        options: this.hospitalDropDown.map(el => el.name),
+        value: this.hospitalDropDown.map(el => el.id),
     },
+    {
+      type: 'select',
+      label: 'doctor Id',
+      name: 'doctorId',
+      placeholder: 'Chosse hospital',
+      options: this.DoctorDropDown.map(el => el.typeName),
+      value: this.DoctorDropDown.map(el => el.id),
+  },
+  {
+    type: 'select',
+    label: 'hospital Id',
+    name: 'hospitalId',
+    placeholder: 'Chosse hospital',
+    options: this.DepartmentDropDown.map(el => el.name),
+    value: this.DepartmentDropDown.map(el => el.id),
+},
     ];
 }
   ngOnInit() {
@@ -381,7 +418,7 @@ export class HistoryComponent implements OnInit, OnDestroy,AfterViewInit {
     );
 
     this.cols = [
-      { field: 'id', header: 'History Id' },
+      //{ field: 'id', header: 'History Id' },
       { field: 'title', header: 'History title' },
 
       { field: 'description', header: 'History description' },

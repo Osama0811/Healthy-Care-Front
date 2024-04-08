@@ -317,7 +317,7 @@ export class PatientComponent implements OnInit, OnDestroy , AfterViewInit {
     );
 
     this.cols = [
-      { field: 'id', header: 'ID' },
+     // { field: 'id', header: 'ID' },
       { field: 'userName', header: ' Name of User' },
       { field: 'birthDate', header: 'Birth date' },
       { field: 'age', header: 'Age' },
