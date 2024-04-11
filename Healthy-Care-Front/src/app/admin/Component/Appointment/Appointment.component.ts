@@ -53,41 +53,41 @@ export class AppointmentComponent implements OnInit, OnDestroy {
       },
       {
         type: 'input',
-        label: 'patient Id',
+        label: 'Admin.patient Id',
         name: 'patientId',
-        placeholder: 'Enter patient Id',
+        placeholder: 'Admin.Enter patient Id',
         validation: [Validators.required, Validators.minLength(4)],
 
       },
       {
         type: 'input',
-        label: 'date',
+        label: 'Admin.date',
         name: 'date',
-        placeholder: 'Enter date',
+        placeholder: 'Admin.Enter date',
       },
       {
         type: 'input',
-        label: 'hospital Id',
+        label: 'Admin.hospital Id',
         name: 'hospitalId',
-        placeholder: 'Enter hospital Id',
+        placeholder: 'Admin.Enter hospital Id',
       },
       {
         type: 'input',
-        label: 'department Id',
+        label: 'Admin.department Id',
         name: 'departmentId',
-        placeholder: 'Enter department Id',
+        placeholder: 'Admin.Enter department Id',
       },
       {
         type: 'input',
-        label: 'doctor Id',
+        label: 'Admin.doctor Id',
         name: 'doctorId',
-        placeholder: 'Enter doctorId',
+        placeholder: 'Admin.Enter doctorId',
       },
       {
         type: 'input',
-        label: 'status',
+        label: 'Admin.status',
         name: 'status',
-        placeholder: 'Enter status',
+        placeholder: 'Admin.Enter status',
       },
 
     ];
@@ -141,19 +141,19 @@ export class AppointmentComponent implements OnInit, OnDestroy {
     );
 
     this.cols = [
-      { field: 'id', header: 'Appointment Id' },
+      { field: 'id', header: 'Admin.Appointment Id' },
      // { field: 'patientId', header: 'Appointment patient Id' },
 
-      { field: 'patientName', header: 'Appointment patient Name' },
-      { field: 'date', header: 'Appointment date' },
+      { field: 'patientName', header: 'Admin.Appointment patient Name' },
+      { field: 'date', header: 'Admin.Appointment date' },
      // { field: 'hospitalId', header: 'Appointment hospital Id' },
-      { field: 'hospitalName', header: 'Appointment hospital Name' },
+      { field: 'hospitalName', header: 'Admin.Appointment hospital Name' },
      // { field: 'departmentId', header: 'Appointment department Id' },
-      { field: 'departmentName', header: 'Appointment department Name' },
+      { field: 'departmentName', header: 'Admin.Appointment department Name' },
      // { field: 'doctorId', header: 'Appointment doctor Id' },
-      { field: 'doctorName', header: 'Appointment doctor Name' },
-      { field: 'code', header: 'Appointment code' },
-      { field: 'status', header: 'Appointment status' },
+      { field: 'doctorName', header: 'Admin.Appointment doctor Name' },
+      { field: 'code', header: 'Admin.Appointment code' },
+      { field: 'status', header: 'Admin.Appointment status' },
 
 
 

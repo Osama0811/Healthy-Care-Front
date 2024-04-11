@@ -46,42 +46,42 @@ export class Department_HospitalComponent implements OnInit, OnDestroy {
       },
       {
         type: 'input',
-        label: 'hospitalId',
+        label: 'Admin.hospitalId',
         name: 'hospitalId',
-        placeholder: 'Enter  hospital',
+        placeholder: 'Admin.Enter  hospital',
         validation: [Validators.required],
 
       },
       {
         type: 'input',
-        label: 'departmentId',
+        label: 'Admin.departmentId',
         name: 'departmentId',
-        placeholder: 'Enter Department_Hospital departmentId',
+        placeholder: 'Admin.Enter departmentId',
         validation: [Validators.required],
 
       },
       {
         type: 'input',
-        label: 'numberOfDoctors',
+        label: 'Admin.numberOfDoctors',
         name: 'numberOfDoctors',
         textType:"number",
-        placeholder: 'Enter  number Of Doctors',
+        placeholder: 'Admin.Enter  number Of Doctors',
 
       },
       {
         type: 'input',
-        label: 'numderOfBeds',
+        label: 'Admin.numderOfBeds',
         name: 'numderOfBeds',
         textType:"number",
-        placeholder: 'Enter  numder Of Beds',
+        placeholder: 'Admin.Enter  numder Of Beds',
 
       },
       {
         type: 'input',
-        label: 'numberOfOccupiedBeds',
+        label: 'Admin.numberOfOccupiedBeds',
         name: 'numberOfOccupiedBeds',
         textType:"number",
-        placeholder: 'Enter  number Of Occupied Beds',
+        placeholder: 'Admin.Enter  number Of Occupied Beds',
 
       },
 
@@ -136,11 +136,11 @@ export class Department_HospitalComponent implements OnInit, OnDestroy {
     );
 
     this.cols = [
-      { field: 'hospitalName', header: 'hospitalName' },
-      { field: 'departmentName', header: 'departmentName' },
-      { field: 'numberOfDoctors', header: 'numberOfDoctors' },
-      { field: 'numderOfBeds', header: 'numderOfBeds' },
-      { field: 'numberOfOccupiedBeds', header: 'numberOfOccupiedBeds' },
+      { field: 'hospitalName', header: 'Admin.hospitalName' },
+      { field: 'departmentName', header: 'Admin.departmentName' },
+      { field: 'numberOfDoctors', header: 'Admin.numberOfDoctors' },
+      { field: 'numderOfBeds', header: 'Admin.numderOfBeds' },
+      { field: 'numberOfOccupiedBeds', header: 'Admin.numberOfOccupiedBeds' },
 
 
     ];

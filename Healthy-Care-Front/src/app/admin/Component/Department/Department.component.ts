@@ -69,9 +69,9 @@ export class DepartmentComponent implements OnInit, OnDestroy ,AfterViewInit {
       },
       {
         type: 'input',
-        label: 'Department name',
+        label: 'Admin.Department name',
         name: 'name',
-        placeholder: 'Enter Department Name',
+        placeholder: 'Admin.Enter Department Name',
         validation: [Validators.required, Validators.minLength(4)],
 
       },
@@ -84,18 +84,18 @@ export class DepartmentComponent implements OnInit, OnDestroy ,AfterViewInit {
       // },
       {
         type: 'select',
-        label: 'specialFlag',
+        label: 'Admin.specialFlag',
         name: 'specialFlag',
         options: this.DepartmentTypeDropDown.map(el => el.key),
         value: this.DepartmentTypeDropDown.map(el => el.value),
-        placeholder: 'Enter  special Flag',
+        placeholder: 'Admin.Enter  special Flag',
         validation: [Validators.required],
     },
       {
         type: 'input',
-        label: 'Department description',
+        label: 'Admin.Department description',
         name: 'description',
-        placeholder: 'Enter Department description',
+        placeholder: 'Admin.Enter Department description',
         validation: [Validators.required, Validators.minLength(4)],
       },{
         type: 'input',
@@ -105,10 +105,10 @@ export class DepartmentComponent implements OnInit, OnDestroy ,AfterViewInit {
       },
       {
         type: 'input',
-        label: ' FileName',
+        label: 'Admin.FileName',
         name: 'fileName',
         textType:'file',
-        placeholder: 'Enter Image',
+        placeholder: 'Admin.Enter Image',
         //validation: [Validators.required],
       },
     ]
@@ -165,9 +165,9 @@ export class DepartmentComponent implements OnInit, OnDestroy ,AfterViewInit {
     );
 
     this.cols = [
-      { field: 'name', header: 'Name' },
-      { field: 'specialFlag', header: 'SpecialFlag' },
-      { field: 'description', header: 'Description' }
+      { field: 'name', header: 'Admin.Name' },
+      { field: 'specialFlag', header: 'Admin.SpecialFlag' },
+      { field: 'description', header: 'Admin.Description' }
     ];
   }
   ngOnDestroy(): void {

@@ -46,24 +46,24 @@ export class Tools_HospitalComponent implements OnInit, OnDestroy {
       },
       {
         type: 'input',
-        label: 'Tools Id',
+        label: 'Admin.Tools Id',
         name: 'toolsId',
-        placeholder: 'Enter Tools Id ',
+        placeholder: 'Admin.Enter Tools Id',
         validation: [Validators.required],
 
       },
       {
         type: 'input',
-        label: 'Hospital Id',
+        label: 'Admin.Hospital Id',
         name: 'hospitalId',
-        placeholder: 'Enter Hospital Id ',
+        placeholder: 'Admin.Enter Hospital Id',
 
       },
       {
         type: 'input',
-        label: 'Quantity',
+        label: 'Admin.Quantity',
         name: 'quantity',
-        placeholder: 'Enter Quantity ',
+        placeholder: 'Admin.Enter Quantity',
 
       },
 
@@ -120,9 +120,9 @@ export class Tools_HospitalComponent implements OnInit, OnDestroy {
     );
 
     this.cols = [
-      { field: 'toolsName', header: 'Tools Name' },
-      { field: 'hospitalName', header: 'Department Name' },
-      { field: 'quantity', header: 'Quantity' },
+      { field: 'toolsName', header: 'Admin.Tools Name' },
+      { field: 'hospitalName', header: 'Admin.Department Name' },
+      { field: 'quantity', header: 'Admin.Quantity' },
 
 
 

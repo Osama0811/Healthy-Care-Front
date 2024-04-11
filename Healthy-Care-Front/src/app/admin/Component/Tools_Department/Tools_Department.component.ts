@@ -45,17 +45,17 @@ export class Tools_DepartmentComponent implements OnInit, OnDestroy {
       },
       {
         type: 'input',
-        label: 'Tools Id',
+        label: 'Admin.Tools Id',
         name: 'toolsId',
-        placeholder: 'Enter Tools Id ',
+        placeholder: 'Admin.Enter Tools Id',
         validation: [Validators.required],
 
       },
       {
         type: 'input',
-        label: 'Department Id',
+        label: 'Admin.Department Id',
         name: 'departmentId',
-        placeholder: 'Enter Department Id ',
+        placeholder: 'Admin.Enter Department Id',
 
       },
 
@@ -112,8 +112,8 @@ export class Tools_DepartmentComponent implements OnInit, OnDestroy {
     );
 
     this.cols = [
-      { field: 'toolsName', header: 'Tools Name' },
-      { field: 'departmentName', header: 'Department Name' },
+      { field: 'toolsName', header: 'Admin.Tools Name' },
+      { field: 'departmentName', header: 'Admin.Department Name' },
 
 
     ];

@@ -45,9 +45,9 @@ export class ToolsComponent implements OnInit, OnDestroy {
       },
       {
         type: 'input',
-        label: 'Name',
+        label: 'Admin.Name',
         name: 'name',
-        placeholder: 'Enter Tools Name ',
+        placeholder: 'Admin.Enter Tools Name',
         validation: [Validators.required],
 
       },
@@ -103,8 +103,8 @@ export class ToolsComponent implements OnInit, OnDestroy {
     );
 
     this.cols = [
-      { field: 'id', header: 'Tools Id' },
-      { field: 'name', header: 'Tools Name' },
+      { field: 'id', header: 'Admin.Tools Id' },
+      { field: 'name', header: 'Admin.Tools Name' },
 
 
     ];

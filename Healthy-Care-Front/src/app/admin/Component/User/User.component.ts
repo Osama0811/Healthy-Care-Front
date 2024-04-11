@@ -82,17 +82,17 @@ export class UserComponent implements OnInit, OnDestroy,AfterViewInit {
       },
       {
         type: 'input',
-        label: 'userNamee',
+        label: 'Admin.userNamee',
         name: 'userNamee',
-        placeholder: 'Enter userName',
+        placeholder: 'Admin.Enter userName',
         validation: [Validators.required, Validators.minLength(4)],
 
       },
       {
         type: 'input',
-        label: 'password',
+        label: 'Admin.password',
         name: 'password',
-        placeholder: 'Enter password',
+        placeholder: 'Admin.Enter password',
         validation: [Validators.required, Validators.minLength(4)],
 
       },
@@ -107,50 +107,50 @@ export class UserComponent implements OnInit, OnDestroy,AfterViewInit {
       // },
       {
         type: 'select',
-        label: 'Role Type',
+        label: 'Admin.Role Type',
         name: 'RoleType',
         options: this.RoleTypeDropDown.map(el => el.key),
         value: this.RoleTypeDropDown.map(el => el.value),
-        placeholder: 'Enter  special Flag',
+        placeholder: 'Admin.Enter  special Flag',
         validation: [Validators.required],
     },
       {
         type: 'input',
-        label: 'birthDate',
+        label: 'Admin.birthDate',
         name: 'birthDate',
-        placeholder: 'Enter birthDate',
+        placeholder: 'Admin.Enter birthDate',
         validation: [Validators.required, Validators.minLength(4)],
 
       },
       {
         type: 'input',
-        label: 'nationalNum',
+        label: 'Admin.nationalNum',
         name: 'nationalNum',
-        placeholder: 'Enter nationalNum',
+        placeholder: 'Admin.Enter nationalNum',
         validation: [Validators.required, Validators.minLength(4)],
 
       },
       {
         type: 'input',
-        label: 'email',
+        label: 'Admin.email',
         name: 'email',
-        placeholder: 'Enter email',
+        placeholder: 'Admin.Enter email',
         validation: [Validators.required, Validators.minLength(4)],
 
       },
       {
         type: 'input',
-        label: 'phone',
+        label: 'Admin.phone',
         name: 'phone',
-        placeholder: 'Enter phone',
+        placeholder: 'Admin.Enter phone',
         validation: [Validators.required, Validators.minLength(4)],
 
       },
       {
         type: 'input',
-        label: 'alterPhone',
+        label: 'Admin.alterPhone',
         name: 'alterPhone',
-        placeholder: 'Enter alterPhone',
+        placeholder: 'Admin.Enter alterPhone',
         validation: [Validators.required, Validators.minLength(4)],
 
       }
@@ -163,10 +163,10 @@ export class UserComponent implements OnInit, OnDestroy,AfterViewInit {
       },
       {
         type: 'input',
-        label: ' FileName',
+        label: 'Admin.FileName',
         name: 'fileName',
         textType:'file',
-        placeholder: 'Enter Image',
+        placeholder: 'Admin.Enter Image',
         //validation: [Validators.required],
       },
     ];
@@ -223,13 +223,13 @@ export class UserComponent implements OnInit, OnDestroy,AfterViewInit {
     );
 
     this.cols = [
-      { field: 'userName', header: 'userName' },
-      { field: 'roleType', header: 'User roleType' },
-      { field: 'birthDate', header: 'User birthDate' },
-      { field: 'nationalNum', header: 'User nationalNum' },
-      { field: 'email', header: 'User email' },
-      { field: 'phone', header: 'User phone' },
-      { field: 'alterPhone', header: 'User alterPhone' },
+      { field: 'userName', header: 'Admin.userName' },
+      { field: 'roleType', header: 'Admin.User roleType' },
+      { field: 'birthDate', header: 'Admin.User birthDate' },
+      { field: 'nationalNum', header: 'Admin.User nationalNum' },
+      { field: 'email', header: 'Admin.User email' },
+      { field: 'phone', header: 'Admin.User phone' },
+      { field: 'alterPhone', header: 'Admin.User alterPhone' },
 
     ];
   }

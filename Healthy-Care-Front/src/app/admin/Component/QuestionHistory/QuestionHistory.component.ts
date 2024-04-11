@@ -83,25 +83,25 @@ initConfigInput(): void {
     },
     {
       type: 'input',
-      label: ' titleEn',
+      label: 'Admin.titleEn',
       name: 'titleEn',
-      placeholder: 'Enter title in english',
+      placeholder: 'Admin.Enter title in english',
       validation: [Validators.required, Validators.minLength(4)],
 
     },
     {
       type: 'input',
-      label: ' questionAr',
+      label: 'Admin.questionAr',
       name: 'questionAr',
-      placeholder: 'Enter title question in arabic',
+      placeholder: 'Admin.Enter title question in arabic',
       validation: [Validators.required, Validators.minLength(4)],
 
     },
     {
       type: 'input',
-      label: ' questionEn',
+      label: 'Admin.questionEn',
       name: 'questionEn',
-      placeholder: 'Enter title question in English',
+      placeholder: 'Admin.Enter title question in English',
       validation: [Validators.required, Validators.minLength(4)],
 
     },
@@ -113,11 +113,11 @@ initConfigInput(): void {
     // },
     {
       type: 'select',
-      label: 'age Group',
+      label: 'Admin.age Group',
       name: 'ageGroup',
       options: this.AgeGroupDropDown.map(el => el.key),
       value: this.AgeGroupDropDown.map(el => el.value),
-      placeholder: 'Enter  special Flag',
+      placeholder: 'Admin.Enter  special Flag',
   },
   ];
 }
@@ -173,8 +173,8 @@ initConfigInput(): void {
 
     this.cols = [
       { field: 'title', header: 'Admin.Title' },
-      { field: 'question', header: 'Question' },
-      { field: 'ageGroupTitle', header: ' Age Group Title' },
+      { field: 'question', header: 'Admin.Question' },
+      { field: 'ageGroupTitle', header: 'Admin.Age Group Title' },
 
 
     ];

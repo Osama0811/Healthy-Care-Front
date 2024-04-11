@@ -269,9 +269,9 @@ export class HistoryComponent implements OnInit, OnDestroy,AfterViewInit {
       },
       {
         type: 'input',
-        label: 'Hospital description',
+        label: 'Admin.Hospital description',
         name: 'description',
-        placeholder: 'Enter Hospital description',
+        placeholder: 'Admin.Enter Hospital description',
         validation: [Validators.required, Validators.minLength(4)],
 
       }
@@ -295,10 +295,10 @@ export class HistoryComponent implements OnInit, OnDestroy,AfterViewInit {
       },
       {
         type: 'input',
-        label: ' FileName',
+        label: 'Admin.FileName',
         name: 'fileName',
         textType:'file',
-        placeholder: 'Enter Image',
+        placeholder: 'Admin.Enter Image',
         //validation: [Validators.required],
       },
 
@@ -313,18 +313,18 @@ export class HistoryComponent implements OnInit, OnDestroy,AfterViewInit {
       // },
       {
         type: 'select',
-        label: 'address Id',
+        label: 'Admin.address Id',
         name: 'addressId',
         options: this.AddressDropDown.map(el => el.title),
         value: this.AddressDropDown.map(el => el.id),
-        placeholder: 'Enter  national number',
+        placeholder: 'Admin.Enter  national number',
         validation: [Validators.required],
     },
       {
         type: 'select',
-        label: 'category Id',
+        label: 'Admin.category Id',
         name: 'categoryId',
-        placeholder: 'Chosse hospital',
+        placeholder: 'Admin.Chosse hospital',
         options: this.CategoryDropDown.map(el => el.name),
         value: this.CategoryDropDown.map(el => el.id),
     },
@@ -381,26 +381,26 @@ export class HistoryComponent implements OnInit, OnDestroy,AfterViewInit {
     );
 
     this.cols = [
-      { field: 'id', header: 'History Id' },
-      { field: 'title', header: 'History title' },
+      { field: 'id', header: 'Admin.History Id' },
+      { field: 'title', header: 'Admin.History title' },
 
-      { field: 'description', header: 'History description' },
+      { field: 'description', header: 'Admin.History description' },
 
       //{ field: 'patientId', header: 'History patient Id' },
 
-      { field: 'patientName', header: 'History patient name' },
+      { field: 'patientName', header: 'Admin.History patient name' },
 
       //{ field: 'hospitalId', header: 'History hospital Id' },
-      { field: 'hospitalName', header: 'History hospital name' },
+      { field: 'hospitalName', header: 'Admin.History hospital name' },
 
       //{ field: 'doctorId', header: 'History doctor Id' },
 
-      { field: 'doctorName', header: 'History doctor name' },
+      { field: 'doctorName', header: 'Admin.History doctor name' },
 
      // { field: 'departmentId', header: 'History department Id' },
 
-      { field: 'departmentName', header: 'History department name' },
-      { field: 'date', header: 'History date' },
+      { field: 'departmentName', header: 'Admin.History department name' },
+      { field: 'date', header: 'Admin.History date' },
 
 
 

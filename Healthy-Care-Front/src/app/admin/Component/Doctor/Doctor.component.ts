@@ -78,26 +78,26 @@ export class DoctorComponent implements OnInit, OnDestroy {
         },
         {
           type: 'input',
-          label: ' User Id',
+          label: 'Admin.User Id',
           name: 'userId',
-          placeholder: 'Enter User Id ',
+          placeholder: 'Admin.Enter User Id',
           validation: [Validators.required],
 
         },
         {
           type: 'input',
-          label: ' Hospital Id',
+          label: 'Admin.Hospital Id',
           name: 'hospitalId',
-          placeholder: 'Enter Hospital Id ',
+          placeholder: 'Admin.Enter Hospital Id',
 
         },
         {
           type: 'select',
-          label: 'Type',
+          label: 'Admin.Type',
           name: 'type',
           options: this.DoctorTypeDropDown.map(el => el.key),
           value: this.DoctorTypeDropDown.map(el => el.value),
-          placeholder: 'Enter Type',
+          placeholder: 'Admin.Enter Type',
           validation: [Validators.required],
       },
     ];
@@ -185,9 +185,9 @@ export class DoctorComponent implements OnInit, OnDestroy {
     );
 
     this.cols = [
-      { field: 'nationalNum', header: 'National Number' },
-      { field: 'hospitalName', header: 'Hospital Name' },
-      { field: 'typeName', header: 'Type Name' },
+      { field: 'nationalNum', header: 'Admin.National Number' },
+      { field: 'hospitalName', header: 'Admin.Hospital Name' },
+      { field: 'typeName', header: 'Admin.Type Name' },
 
 
     ];

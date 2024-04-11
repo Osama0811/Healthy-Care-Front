@@ -48,42 +48,42 @@ export class Doctor_DepartmentComponent implements OnInit, OnDestroy {
       },
       {
         type: 'input',
-        label: 'Doctor Id',
+        label: 'Admin.Doctor Id',
         name: 'doctorId',
-        placeholder: 'Enter Doctor Id ',
+        placeholder: 'Admin.Enter Doctor Id',
         validation: [Validators.required],
 
       },
       {
         type: 'input',
-        label: 'Department Id',
+        label: 'Admin.Department Id',
         name: 'departmentId',
-        placeholder: 'Enter Department Id ',
+        placeholder: 'Admin.Enter Department Id',
         validation: [Validators.required],
 
 
       },
       {
         type: 'input',
-        label: 'Is Active',
+        label: 'Admin.Is Active',
         name: 'isActive',
-        placeholder: 'Enter true/false ',
+        placeholder: 'Admin.Enter true/false',
         validation: [Validators.required],
 
 
       },{
         type: 'input',
-        label: 'Date Start',
+        label: 'Admin.Date Start',
         name: 'dateStart',
-        placeholder: 'Enter Date Start ',
+        placeholder: 'Admin.Enter Date Start',
         validation: [Validators.required],
 
 
       },{
         type: 'input',
-        label: 'Date End',
+        label: 'Admin.Date End',
         name: 'dateEnd',
-        placeholder: 'Enter Date End ',
+        placeholder: 'Admin.Enter Date End',
 
 
       },
@@ -141,11 +141,11 @@ export class Doctor_DepartmentComponent implements OnInit, OnDestroy {
     );
 
     this.cols = [
-      { field: 'doctorName', header: 'Doctor Name' },
-      { field: 'departmentName', header: 'Department Name' },
-      { field: 'isActive', header: 'Is Active' },
-      { field: 'dateStart', header: 'Date Start' },
-      { field: 'dateEnd', header: 'Date End' },
+      { field: 'doctorName', header: 'Admin.Doctor Name' },
+      { field: 'departmentName', header: 'Admin.Department Name' },
+      { field: 'isActive', header: 'Admin.Is Active' },
+      { field: 'dateStart', header: 'Admin.Date Start' },
+      { field: 'dateEnd', header: 'Admin.Date End' },
 
 
 

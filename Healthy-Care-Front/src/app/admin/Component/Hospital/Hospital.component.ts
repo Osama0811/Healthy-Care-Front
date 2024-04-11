@@ -155,9 +155,9 @@ export class HospitalComponent implements OnInit, OnDestroy,AfterViewInit {
       },
       {
         type: 'input',
-        label: 'Hospital description',
+        label: 'Admin.Hospital description',
         name: 'description',
-        placeholder: 'Enter Hospital description',
+        placeholder: 'Admin.Enter Hospital description',
         validation: [Validators.required, Validators.minLength(4)],
 
       }
@@ -181,10 +181,10 @@ export class HospitalComponent implements OnInit, OnDestroy,AfterViewInit {
       },
       {
         type: 'input',
-        label: ' FileName',
+        label: 'Admin.FileName',
         name: 'fileName',
         textType:'file',
-        placeholder: 'Enter Image',
+        placeholder: 'Admin.Enter Image',
         //validation: [Validators.required],
       },
 
@@ -199,18 +199,18 @@ export class HospitalComponent implements OnInit, OnDestroy,AfterViewInit {
       // },
       {
         type: 'select',
-        label: 'address Id',
+        label: 'Admin.address Id',
         name: 'addressId',
         options: this.AddressDropDown.map(el => el.title),
         value: this.AddressDropDown.map(el => el.id),
-        placeholder: 'Enter  national number',
+        placeholder: 'Admin.Enter  national number',
         validation: [Validators.required],
     },
       {
         type: 'select',
-        label: 'category Id',
+        label: 'Admin.category Id',
         name: 'categoryId',
-        placeholder: 'Chosse hospital',
+        placeholder: 'Admin.Chosse hospital',
         options: this.CategoryDropDown.map(el => el.name),
         value: this.CategoryDropDown.map(el => el.id),
     },
@@ -268,12 +268,12 @@ export class HospitalComponent implements OnInit, OnDestroy,AfterViewInit {
     );
 
     this.cols = [
-      { field: 'name', header: 'Hospital Name' },
-      { field: 'description', header: 'Hospital des' },
+      { field: 'name', header: 'Admin.Hospital Name' },
+      { field: 'description', header: 'Admin.Hospital des' },
 
-      { field: 'categoryName', header: 'Hospital category name' },
-      { field: 'addressTitle', header: 'Hospital address title' },
-      { field: 'imagePath', header: 'Hospital image' },
+      { field: 'categoryName', header: 'Admin.Hospital category name' },
+      { field: 'addressTitle', header: 'Admin.Hospital address title' },
+      { field: 'imagePath', header: 'Admin.Hospital image' },
 
     ];
   }

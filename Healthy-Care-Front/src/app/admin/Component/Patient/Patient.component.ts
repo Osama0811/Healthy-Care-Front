@@ -219,28 +219,28 @@ export class PatientComponent implements OnInit, OnDestroy , AfterViewInit {
       },
       {
         type: 'select',
-        label: 'National number',
+        label: 'Admin.National number',
         name: 'userId',
         options: this.userDropDown.map(el => el.nationalNum),
         value: this.userDropDown.map(el => el.id),
-        placeholder: 'Enter  national number',
+        placeholder: 'Admin.Enter  national number',
         validation: [Validators.required],
     },
       {
         type: 'select',
-        label: 'Hospital',
+        label: 'Admin.Hospital',
         name: 'hospitalId',
-        placeholder: 'Chosse hospital',
+        placeholder: 'Admin.Chosse hospital',
         options: this.hospitalDropDown.map(el => el.name),
         value: this.hospitalDropDown.map(el => el.id),
     },
       {
         type: 'select',
-        label: ' blood ',
+        label: 'Admin.blood',
         name: 'bloodId',
         options: this.BloodDropDown.map(el => el.name),
         value: this.BloodDropDown.map(el => el.id),
-        placeholder: 'Enter blood Id',
+        placeholder: 'Admin.Enter blood Id',
     }
     ,{
       type: 'input',
@@ -250,10 +250,10 @@ export class PatientComponent implements OnInit, OnDestroy , AfterViewInit {
     },
     {
       type: 'input',
-      label: ' FileName',
+      label: 'Admin.FileName',
       name: 'fileName',
       textType:'file',
-      placeholder: 'Enter Image',
+      placeholder: 'Admin.Enter Image',
       //validation: [Validators.required],
     },
 
@@ -317,16 +317,16 @@ export class PatientComponent implements OnInit, OnDestroy , AfterViewInit {
     );
 
     this.cols = [
-      { field: 'id', header: 'ID' },
-      { field: 'userName', header: ' Name of User' },
-      { field: 'birthDate', header: 'Birth date' },
-      { field: 'age', header: 'Age' },
-      { field: 'nationalNum', header: 'National number' },
-      { field: 'email', header: 'Email' },
-      { field: 'phone', header: 'Phone' },
-      { field: 'alterPhone', header: 'Alter Phone' },
-      { field: 'bloodType', header: 'Blood Type' },
-      { field: 'hospitalName', header: 'Hospital' },
+      { field: 'id', header: 'Admin.ID' },
+      { field: 'userName', header: 'Admin.Name of User' },
+      { field: 'birthDate', header: 'Admin.Birth date' },
+      { field: 'age', header: 'Admin.Age' },
+      { field: 'nationalNum', header: 'Admin.National number' },
+      { field: 'email', header: 'Admin.Email' },
+      { field: 'phone', header: 'Admin.Phone' },
+      { field: 'alterPhone', header: 'Admin.Alter Phone' },
+      { field: 'bloodType', header: 'Admin.Blood Type' },
+      { field: 'hospitalName', header: 'Admin.Hospital' },
 
     ];
   }

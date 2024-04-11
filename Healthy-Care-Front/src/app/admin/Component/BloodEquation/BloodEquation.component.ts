@@ -108,28 +108,28 @@ export class BloodEquationComponent implements OnInit, OnDestroy,AfterViewInit  
         },
         {
             type: 'select',
-            label: 'blood 1',
+            label: 'Admin.blood 1',
             name: 'bloodFK1',
             options: this.BloodDropDown.map(el => el.name),
             value: this.BloodDropDown.map(el => el.id),
-            placeholder: 'Enter  bloodFK1',
+            placeholder: 'Admin.Enter  bloodFK1',
             validation: [Validators.required],
         },
         {
             type: 'select',
-            label: 'Blood 2',
+            label: 'Admin.Blood 2',
             name: 'bloodFK2',
             options: this.BloodDropDown.map(el => el.name),
             value: this.BloodDropDown.map(el => el.id),
-            placeholder: 'Enter  blood2',
+            placeholder: 'Admin.Enter  blood2',
             validation: [Validators.required],
         },
         {
             type: 'input',
-            label: 'Percentage',
+            label: 'Admin.Percentage',
             name: 'percentage',
             textType: 'number',
-            placeholder: 'Enter Percentage',
+            placeholder: 'Admin.Enter Percentage',
             validation: [Validators.required],
         },
     ];
@@ -225,9 +225,9 @@ export class BloodEquationComponent implements OnInit, OnDestroy,AfterViewInit  
     );
 
     this.cols = [
-      { field: 'fK1Name', header: 'fK1Name' },
-      { field: 'fK2Name', header: 'fK2Name' },
-      { field: 'eqution', header: 'eqution' },
+      { field: 'fK1Name', header: 'Admin.fK1Name' },
+      { field: 'fK2Name', header: 'Admin.fK2Name' },
+      { field: 'eqution', header: 'Admin.eqution' },
     ];
 
   }

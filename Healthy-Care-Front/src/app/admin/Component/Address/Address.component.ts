@@ -115,54 +115,54 @@ export class AddressComponent implements OnInit, OnDestroy,AfterViewInit {
       },
       {
         type: 'input',
-        label: 'title',
+        label: 'Admin.title',
         name: 'title',
-        placeholder: 'Enter title',
+        placeholder: 'Admin.Enter title',
         validation: [Validators.required, Validators.minLength(4)],
       },
       {
         type: 'select',
-        label: 'Country',
+        label: 'Admin.Country',
         name: 'countryId',
         options: this.CountryDropDown.map(el => el.name),
         value: this.CountryDropDown.map(el => el.id),
-        placeholder: 'Chosse Country'
+        placeholder: 'Admin.Chosse Country'
     },
     {
       type: 'select',
-      label: 'City',
+      label: 'Admin.City',
       name: 'cityId',
       options: this.CityDropDown.map(el => el.name),
       value: this.CityDropDown.map(el => el.id),
-      placeholder: 'Chosse City'
+      placeholder: 'Admin.Chosse City'
   },
   {
     type: 'select',
-    label: 'Area',
+    label: 'Admin.Area',
     name: 'areaId',
     options: this.AreaDropDown.map(el => el.name),
     value: this.AreaDropDown.map(el => el.id),
-    placeholder: 'Chosse Area'
+    placeholder: 'Admin.Chosse Area'
 },
       {
         type: 'input',
-        label: 'Latitude',
+        label: 'Admin.Latitude',
         name: 'latitude',
-        placeholder: 'Enter latitude',
+        placeholder: 'Admin.Enter latitude',
         textType:'number'
       },
       {
         type: 'input',
-        label: 'Longitude',
+        label: 'Admin.Longitude',
         name: 'longitude',
-        placeholder: 'Enter longitude',
+        placeholder: 'Admin.Enter longitude',
         textType:'number'
       },
       {
         type: 'input',
-        label: 'Notes',
+        label: 'Admin.Notes',
         name: 'notes',
-        placeholder: 'Enter address notes',
+        placeholder: 'Admin.Enter address notes',
 
       },
 
@@ -217,13 +217,13 @@ export class AddressComponent implements OnInit, OnDestroy,AfterViewInit {
     );
 
     this.cols = [
-      { field: 'title', header: 'Address title' },
-      { field: 'countryName', header: 'Country' },
-      { field: 'cityName', header: 'City' },
-      { field: 'areaName', header: 'Area' },
-      { field: 'latitude', header: 'Address latitude' },
-      { field: 'longitude', header: 'Address longtude' },
-      { field: 'notes', header: 'Address note' },
+      { field: 'title', header: 'Admin.Address title' },
+      { field: 'countryName', header: 'Admin.Country' },
+      { field: 'cityName', header: 'Admin.City' },
+      { field: 'areaName', header: 'Admin.Area' },
+      { field: 'latitude', header: 'Admin.Address latitude' },
+      { field: 'longitude', header: 'Admin.Address longtude' },
+      { field: 'notes', header: 'Admin.Address note' },
     ];
   }
   ngOnDestroy(): void {

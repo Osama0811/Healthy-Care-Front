@@ -40,17 +40,17 @@ export class CategoryComponent implements OnInit, OnDestroy {
       },
       {
         type: 'input',
-        label: 'Category name',
+        label: 'Admin.Category name',
         name: 'name',
-        placeholder: 'Enter Category Name',
+        placeholder: 'Admin.Enter Category Name',
         validation: [Validators.required, Validators.minLength(4)],
 
       },
       {
         type: 'input',
-        label: 'hospital Count',
+        label: 'Admin.hospital Count',
         name: 'hospitalCount',
-        placeholder: 'Enter hospital Count',
+        placeholder: 'Admin.Enter hospital Count',
         textType:'number',
       },
 
@@ -105,8 +105,8 @@ export class CategoryComponent implements OnInit, OnDestroy {
     );
 
     this.cols = [
-      { field: 'name', header: 'Category Name' },
-      { field: 'hospitalCount', header: 'hospital Count' },
+      { field: 'name', header: 'Admin.Category Name' },
+      { field: 'hospitalCount', header: 'Admin.hospital Count' },
 
     ];
   }

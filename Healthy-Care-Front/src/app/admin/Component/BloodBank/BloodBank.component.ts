@@ -52,9 +52,9 @@ export class BloodBankComponent implements OnInit, OnDestroy {
       }
       ,{
         type: 'input',
-        label: 'National Number',
+        label: 'Admin.National Number',
         name: 'nationalNumber',
-        placeholder: 'National Number',
+        placeholder: 'Admin.National Number',
         textType:'number',
         validation: [ Validators.minLength(14)],
       },
@@ -110,10 +110,10 @@ export class BloodBankComponent implements OnInit, OnDestroy {
     );
 
     this.cols = [
-      { field: 'senderName', header: 'Sender Name' },
-      { field: 'receiverName', header: 'Receiver Name' },
-      { field: 'bloodtypeName', header: 'Blood Type' },
-      { field: 'statusName', header: 'Status' },
+      { field: 'senderName', header: 'Admin.Sender Name' },
+      { field: 'receiverName', header: 'Admin.Receiver Name' },
+      { field: 'bloodtypeName', header: 'Admin.Blood Type' },
+      { field: 'statusName', header: 'Admin.Status' },
 
 
     ];
