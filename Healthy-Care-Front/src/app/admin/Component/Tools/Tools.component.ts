@@ -103,7 +103,7 @@ export class ToolsComponent implements OnInit, OnDestroy {
     );
 
     this.cols = [
-      { field: 'id', header: 'Tools Id' },
+      //{ field: 'id', header: 'Tools Id' },
       { field: 'name', header: 'Tools Name' },
 
 
