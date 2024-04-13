@@ -52,7 +52,7 @@ export class UserComponent implements OnInit, OnDestroy,AfterViewInit {
     this.SubscriptionList.push(
       this.EnumService.GetEnumDropDown("GetRoleType").subscribe(
         (data) => {
-
+console.log(data);
           this.RoleTypeDropDown = data.reduce((acc: IEnumDropDown[], el) => {
             let obj = el as IEnumDropDown;
             acc.push(obj);
