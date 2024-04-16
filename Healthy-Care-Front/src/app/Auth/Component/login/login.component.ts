@@ -55,8 +55,10 @@ export class LoginComponent {
             summary: 'Success',
             detail: data.message,
           });
+          if(data.resource.roleId==1){
           localStorage.setItem("Token",data.resource.token)
-          this.router.navigateByUrl('admin/Profile');
+          this.router.navigateByUrl('admin/User');
+          }
          }
         else {
           this.messageService.add({

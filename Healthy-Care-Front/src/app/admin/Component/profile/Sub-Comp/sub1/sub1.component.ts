@@ -1,33 +1,33 @@
 import { MessageService } from 'primeng/api';
 import { Controller, GlobalService } from 'src/app/admin/Services/global-service.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { GeneralResponse } from 'src/app/Shared/GeneralResponse';
 import { Dept } from 'src/app/Auth/Interfaces/auth';
 import { IUserDto, UserDtoClass } from '../../profile.component';
-export interface UserDto{
-  id: string | undefined;
-  userName: string | undefined;
-  password: string | undefined;
-}
+import { MenusMainDetailsService } from 'src/app/admin/Services/MenusMainDetails.service';
+import { IMenusMainDetailsDto } from 'src/app/admin/Model/DropDown';
+import { Subscription } from 'rxjs';
+
 @Component({
   selector: 'app-sub1',
   templateUrl: './sub1.component.html',
   styleUrls: ['./sub1.component.css'],
-  providers:[ GlobalService, { provide: Controller, useValue: 'User' }]
+  providers:[ GlobalService, { provide: Controller, useValue: 'MenusMainDetails' }]
 })
-export class Sub1Component implements OnInit {
+export class Sub1Component implements OnInit,OnDestroy {
   //let body:Dept;
   //body={Id:undefined,Name:"Testts",Description:"Testts"};
-
-  DeptList: UserDto[] = [];
+  SubscriptionList:Subscription[]=[];
+  DeptList: IMenusMainDetailsDto[] = [];
   cols: any[] = [];
   constructor(
-    private globalService: GlobalService<any>,
+    private menusMainDetailsService: MenusMainDetailsService,
     private messageService: MessageService
   ) {}
 
   ngOnInit() {
-    this.globalService.GetAll<UserDto,null>().subscribe(
+this.SubscriptionList.push(
+    this.menusMainDetailsService.GetAll().subscribe(
       (data) => {
         if (data.success) {
           if (data.resourceCount == 0) {
@@ -37,13 +37,12 @@ export class Sub1Component implements OnInit {
               detail: 'No Data found',
             });
           } else {
-            let newBloodList:IUserDto[]=[];
-            this.DeptList=data.resource.reduce((acc: IUserDto[], el) => {
-              let obj = { id: el.id, userName: el.userName ,password:el.password} as IUserDto;
-              acc.push(obj);
-              return acc;
-          }, []);
 
+          this.DeptList = data.resource.reduce((acc: IMenusMainDetailsDto[], el) => {
+            let obj = el as IMenusMainDetailsDto;
+            acc.push(obj);
+            return acc;
+          }, []);
            // this.DeptList = data.resource as IUserDto[];
             //this.DeptList.map(d=>console.log(d ));
             this.messageService.add({
@@ -67,12 +66,20 @@ export class Sub1Component implements OnInit {
           detail: error.message,
         });
       }
-    );
+    ));
 
     this.cols = [
-      { field: 'id', header: 'Id' },
-      { field: 'userName', header: 'userName' },
-      { field: 'password', header: 'password' },
+      { field: 'name', header: 'Name' },
+      { field: 'menuMainName', header: 'Menu Main' },
+      { field: 'parentName', header: 'Parent ' },
+      { field: 'subParentName', header: 'sub Parent' }
+
     ];
+  }
+  ngOnDestroy(): void {
+    if (this.SubscriptionList) {
+      this.SubscriptionList.forEach(subscription => subscription.unsubscribe());
+      this.SubscriptionList = [];
+    }
   }
 }

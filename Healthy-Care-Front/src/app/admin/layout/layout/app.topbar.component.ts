@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { MenuItem } from 'primeng/api';
 import { LayoutService } from "./service/admin.layout.service";
@@ -16,7 +17,7 @@ export class AppTopBarComponent {
 
     @ViewChild('topbarmenu') menu!: ElementRef;
 
-    constructor(public layoutService: LayoutService) { }
+    constructor(public layoutService: LayoutService ,private router: Router) { }
     ChangeLang():void{
       debugger
       if(localStorage.getItem("Lang")=="ar"){
@@ -25,5 +26,9 @@ export class AppTopBarComponent {
         localStorage.setItem("Lang","ar")
       }
       window.location.reload();
+    }
+    Logout():void{
+      localStorage.removeItem("Token")
+      this.router.navigateByUrl('Authentication/Login');
     }
 }

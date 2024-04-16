@@ -7,12 +7,7 @@ export interface LoginResponse {
     userId: string;
     email: string;
     token: string;
-    imagePath: string;
-    fileName: string;
-    clientId: string;
-    clientName: string;
-    employeeId: string;
-    employeeName: string;
+    roleId:number;
   }
 
   export interface ILoginResponse {
@@ -25,6 +20,7 @@ export interface LoginResponse {
     userName: string | undefined;
     guid: string | undefined;
     userID: number;
+    roleId:number;
     isUsingOTP: boolean;
   }
 

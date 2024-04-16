@@ -57,7 +57,7 @@
               </ng-template>
           </p-table>
       </div>
-      <p-dialog [(visible)]="AddDialog||UpdateDialog" [style]="{width: '450px'}" header="Item Details" [modal]="true" class="p-fluid">
+      <p-dialog [(visible)]="AddDialog||UpdateDialog" [style]="{width: '450px'}"  [modal]="true" class="p-fluid">
         <!-- {{selectedItem|json}} -->
 <ng-template [(visible)]="AddDialog">Add</ng-template>
 <ng-template [(visible)]="UpdateDialog">Update</ng-template>
@@ -67,8 +67,7 @@
             #form="dynamicForm"
           >
           </dynamic-form>
-          {{ form.valid }}
-          {{ form.value | json }}
+
         </div>
 
 

@@ -54,6 +54,20 @@ export interface IMenusMainDetailsDownModel {
   id: string | undefined;
   name: string | undefined;
 }
+export interface MenusMainDetailsDto {
+  id: string | undefined;
+  name: string | undefined;
+  menuMainName: string | undefined;
+  parentName: string | undefined;
+  subParentName: string | undefined;
+}
+export interface IMenusMainDetailsDto {
+  id: string | undefined;
+  name: string | undefined;
+  menuMainName: string | undefined;
+  parentName: string | undefined;
+  subParentName: string | undefined;
+}
 export interface AddressDropDown {
   id: string | undefined;
   title: string | undefined;

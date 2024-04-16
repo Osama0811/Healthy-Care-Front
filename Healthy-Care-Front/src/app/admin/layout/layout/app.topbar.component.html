@@ -24,8 +24,8 @@
           <i class="pi pi-user"></i>
           <span> {{'Layout.Profile' | translate }}</span>
       </button>
-      <button class="p-link layout-topbar-button" [routerLink]="'/documentation'">
-          <i class="pi pi-cog"></i>
+      <button class="p-link layout-topbar-button" (click)="Logout()">
+          <i class="pi pi-sign-out"></i>
           <span>{{'Layout.Settings' | translate }}</span>
       </button>
   </div>

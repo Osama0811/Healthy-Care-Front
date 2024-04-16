@@ -44,7 +44,7 @@ import { CustomTranslateLoader } from 'src/app/lang/custom-translate-loader';
         }),
     ],
     providers:[
-      GlobalService, { provide: Controller, useValue: 'User' },MessageService
+      GlobalService, { provide: Controller, useValue: 'Address' },MessageService
     ],
     declarations: [ProfileComponent,Sub1Component],
 })
