@@ -36,8 +36,8 @@ export interface IBloodDropDown {//get all data table
 
 @Component({
   selector: 'app-patient',
-  templateUrl: './patient.component.html',
-  styleUrls: ['./patient.component.css'],
+  templateUrl: './Patient.component.html',
+  styleUrls: ['./Patient.component.css'],
   providers: [GlobalService, { provide: Controller, useValue: 'Patient' }], //controller name
 })
 export class PatientComponent implements OnInit, OnDestroy , AfterViewInit {
