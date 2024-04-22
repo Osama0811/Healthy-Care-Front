@@ -57,7 +57,7 @@ import { CountryComponent } from './Component/country/country.component';
     Hospital_CategoryComponent,
     DepartmentComponent,
     Department_HospitalComponent,
-    PatientComponent,
+    //PatientComponent,
     AddressComponent,
     BloodBankComponent,
     DoctorComponent,
