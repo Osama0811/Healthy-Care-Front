@@ -25,6 +25,7 @@ import { AppointmentComponent } from './Component/Appointment/Appointment.compon
 import { HistoryComponent } from './Component/History/History.component';
 import { HospitalComponent } from './Component/Hospital/Hospital.component';
 import { CategoryComponent } from './Component/Category/Category.component';
+import { AmbulancesComponent } from './Component/Ambulances/Ambulances.component';
 
 const routes: Routes = [
 
@@ -60,6 +61,7 @@ const routes: Routes = [
         { path: 'Appointment', component: AppointmentComponent },
         { path: 'History', component: HistoryComponent },
         { path: 'Hospital', component: HospitalComponent },
+        { path: 'Ambulances', component: AmbulancesComponent },
 
 
 
