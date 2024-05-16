@@ -1,3 +1,4 @@
+import { Booking_X_RayComponent } from './../Component/Booking_X_Ray/Booking_X_Ray.component';
 export interface DropDownModel {
   id: string;
   name: string;
@@ -77,5 +78,14 @@ export interface PatientDropDown {
 export interface IPatientDownModel {
   id: string | undefined;
   userName: string | undefined;
-};
+}
+export interface Booking_X_RayDropDown {
+  x_RayId: string | undefined;
+  x_RayName: string | undefined;
+}
+export interface IBooking_X_RayDownModel {
+  x_RayId: string | undefined;
+  x_RayName: string | undefined;
+}
+;
 

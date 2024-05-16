@@ -282,6 +282,17 @@ export class AppMenuComponent implements OnInit {
 
     ]
 },
+{
+    label: 'X-Ray',
+    items: [
+        { label: 'Booking x-ray', icon: 'pi pi-book', routerLink: ['/admin/Booking_X_Ray'] }
+
+        //{ label: 'Invalid State', icon: 'pi pi-fw pi-exclamation-circle', routerLink: ['/uikit/invalidstate'] },
+
+        //{ label: 'Menu', icon: 'pi pi-fw pi-bars', routerLink: ['/uikit/menu'], routerLinkActiveOptions: { paths: 'subset', queryParams: 'ignored', matrixParams: 'ignored', fragment: 'ignored' } },
+
+    ]
+},
 
 
 

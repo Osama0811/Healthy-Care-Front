@@ -1,3 +1,4 @@
+import { Booking_X_RayComponent } from './Component/Booking_X_Ray/Booking_X_Ray.component';
 import { BloodEquationComponent } from './Component/BloodEquation/BloodEquation.component';
 import { IndexModule } from './Component/index/index.module';
 import { RouterModule, Routes } from '@angular/router';
@@ -60,6 +61,8 @@ const routes: Routes = [
         { path: 'Appointment', component: AppointmentComponent },
         { path: 'History', component: HistoryComponent },
         { path: 'Hospital', component: HospitalComponent },
+        { path: 'Booking_X_Ray', component: Booking_X_RayComponent },
+
 
 
 
