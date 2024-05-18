@@ -33,6 +33,7 @@ import { UserComponent } from './Component/User/User.component';
 import { AppointmentComponent } from './Component/Appointment/Appointment.component';
 import { HistoryComponent } from './Component/History/History.component';
 import { HospitalComponent } from './Component/Hospital/Hospital.component';
+import { Book_AmbulancesComponent } from './Component/Book_Ambulances/Book_Ambulances.component';
 
 @NgModule({
 
@@ -51,7 +52,7 @@ import { HospitalComponent } from './Component/Hospital/Hospital.component';
     }),
   ],
   providers: [MessageService,GlobalService],
-  declarations: [BloodComponent,QuestionHistoryComponent,BloodEquationComponent,Hospital_CategoryComponent,DepartmentComponent,Department_HospitalComponent,PatientComponent,AddressComponent,BloodBankComponent,DoctorComponent,ToolsComponent,Tools_DepartmentComponent,Tools_HospitalComponent,Doctor_DepartmentComponent,Doctor_HospitalComponent,AppointmentComponent,HistoryComponent,HospitalComponent,UserComponent,CategoryComponent,Booking_X_RayComponent]
+  declarations: [BloodComponent,QuestionHistoryComponent,BloodEquationComponent,Hospital_CategoryComponent,DepartmentComponent,Department_HospitalComponent,PatientComponent,AddressComponent,BloodBankComponent,DoctorComponent,ToolsComponent,Tools_DepartmentComponent,Tools_HospitalComponent,Doctor_DepartmentComponent,Doctor_HospitalComponent,AppointmentComponent,HistoryComponent,HospitalComponent,UserComponent,CategoryComponent,Booking_X_RayComponent,Book_AmbulancesComponent]
 })
 export class AdminModule { }
 export function TranslateLoaderFactory(langService: LangService): CustomTranslateLoader {

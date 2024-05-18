@@ -26,6 +26,7 @@ import { AppointmentComponent } from './Component/Appointment/Appointment.compon
 import { HistoryComponent } from './Component/History/History.component';
 import { HospitalComponent } from './Component/Hospital/Hospital.component';
 import { CategoryComponent } from './Component/Category/Category.component';
+import { Book_AmbulancesComponent } from './Component/Book_Ambulances/Book_Ambulances.component';
 
 const routes: Routes = [
 
@@ -62,6 +63,8 @@ const routes: Routes = [
         { path: 'History', component: HistoryComponent },
         { path: 'Hospital', component: HospitalComponent },
         { path: 'Booking_X_Ray', component: Booking_X_RayComponent },
+        { path: 'Book_Ambulances', component: Book_AmbulancesComponent },
+
 
 
 
