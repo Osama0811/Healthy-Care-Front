@@ -1,3 +1,4 @@
+import { Book_AmbulancesComponent } from './Component/Book_Ambulances/Book_Ambulances.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CommonModule } from '@angular/common';
@@ -51,7 +52,8 @@ import { AmbulancesComponent } from './Component/Ambulances/Ambulances.component
     }),
   ],
   providers: [MessageService,GlobalService],
-  declarations: [BloodComponent,QuestionHistoryComponent,BloodEquationComponent,Hospital_CategoryComponent,DepartmentComponent,Department_HospitalComponent,PatientComponent,AddressComponent,BloodBankComponent,DoctorComponent,ToolsComponent,Tools_DepartmentComponent,Tools_HospitalComponent,Doctor_DepartmentComponent,Doctor_HospitalComponent,AppointmentComponent,HistoryComponent,HospitalComponent,UserComponent,CategoryComponent,AmbulancesComponent]
+  declarations: [BloodComponent,QuestionHistoryComponent,BloodEquationComponent,Hospital_CategoryComponent,DepartmentComponent,Department_HospitalComponent,PatientComponent,AddressComponent,BloodBankComponent,DoctorComponent,ToolsComponent,Tools_DepartmentComponent,Tools_HospitalComponent,Doctor_DepartmentComponent,Doctor_HospitalComponent,AppointmentComponent,HistoryComponent,HospitalComponent,UserComponent,CategoryComponent,AmbulancesComponent,Book_AmbulancesComponent]
+
 })
 export class AdminModule { }
 export function TranslateLoaderFactory(langService: LangService): CustomTranslateLoader {

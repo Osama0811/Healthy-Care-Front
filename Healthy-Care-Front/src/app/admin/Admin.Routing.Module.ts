@@ -1,3 +1,4 @@
+import { Book_AmbulancesComponent } from './Component/Book_Ambulances/Book_Ambulances.component';
 import { BloodEquationComponent } from './Component/BloodEquation/BloodEquation.component';
 import { IndexModule } from './Component/index/index.module';
 import { RouterModule, Routes } from '@angular/router';
@@ -46,6 +47,7 @@ const routes: Routes = [
         { path: 'Tools_Hospital', component: Tools_HospitalComponent },
         { path: 'Doctor_Department', component: Doctor_DepartmentComponent },
         { path: 'Doctor_Hospital', component: Doctor_HospitalComponent },
+        { path: 'Book_Ambulances', component: Book_AmbulancesComponent },
 
 
 

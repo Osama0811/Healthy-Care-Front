@@ -293,6 +293,17 @@ export class AppMenuComponent implements OnInit {
 
   ]
 },
+{
+  label: 'Book_Ambulances',
+  items: [
+      { label: 'Book_Ambulances', icon: 'pi pi-car', routerLink: ['/admin/Book_Ambulances'] }
+
+      //{ label: 'Invalid State', icon: 'pi pi-fw pi-exclamation-circle', routerLink: ['/uikit/invalidstate'] },
+
+      //{ label: 'Menu', icon: 'pi pi-fw pi-bars', routerLink: ['/uikit/menu'], routerLinkActiveOptions: { paths: 'subset', queryParams: 'ignored', matrixParams: 'ignored', fragment: 'ignored' } },
+
+  ]
+},
 
 
 
