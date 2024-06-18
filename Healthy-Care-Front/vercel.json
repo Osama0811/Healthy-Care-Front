@@ -1,9 +1,0 @@
-{
-  "version": 2,
-  "builds": [
-    { "src": "dist/healthy-care-front/**/*", "use": "@vercel/static-build" }
-  ],
-  "routes": [
-    { "src": "/(.*)", "dest": "/dist/healthy-care-front/$1" }
-  ]
-}
