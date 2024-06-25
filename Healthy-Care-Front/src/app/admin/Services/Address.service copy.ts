@@ -18,7 +18,7 @@ export class AddressService {
     protected _http: HttpClient,
   ) {}
   AddressDropDown(): Observable<GeneralResponse<AddressDropDown[]>> {
-    _base=BASE_URL+"/hospital";
+    _base=BASE_URL+"/Address";
     let url_ = _base + '/GetAll';
 
     url_ = url_.replace(/[?&]$/, '');

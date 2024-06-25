@@ -1,8 +1,8 @@
-import { DoctorService } from './../../Services/doctor.service';
+
 import { DepartmentService } from './../../Services/department.service copy';
 import { hospitalService } from './../../Services/hospital.service';
 import { PatientService } from './../../Services/patient.service';
-import { IPatientDownModel, hospitalDropDown, IhospitalDownModel, DepartmentDropDown, IDepartmentDownModel, DoctorDropDown, IDoctorDownModel, AddressDropDown, IAddressDownModel, CategoryDropDown, ICategoryDownModel } from './../../Model/DropDown';
+import { IPatientDownModel, hospitalDropDown, IhospitalDownModel, DepartmentDropDown, IDepartmentDownModel, IAddressDownModel, ICategoryDownModel } from './../../Model/DropDown';
 import { Component, OnDestroy, OnInit, Type, AfterViewInit } from '@angular/core';
 import {
   Controller,
@@ -24,8 +24,6 @@ export interface IHistoryDto {//get all data table
   patientName: string | undefined;
   hospitalId: string | undefined;
   hospitalName: string | undefined;
-  doctorId: string | undefined;
-  doctorName: string | undefined;
   departmentId: string | undefined;
   departmentName: string | undefined;
   date: string | undefined;
@@ -43,7 +41,6 @@ export class HistoryComponent implements OnInit, OnDestroy,AfterViewInit {
   patientDropDown: IPatientDownModel[] = [];
   hospitalDropDown: IhospitalDownModel[] = [];
   DepartmentDropDown: IDepartmentDownModel[] = [];
-  DoctorDropDown: IDoctorDownModel[] = [];
   AddressDropDown: IAddressDownModel[] = [];
   CategoryDropDown: ICategoryDownModel[] = [];
 
@@ -57,7 +54,6 @@ export class HistoryComponent implements OnInit, OnDestroy,AfterViewInit {
     private patientService: PatientService,
     private hospitalService: hospitalService,
     private DepartmentService: DepartmentService,
-    private DoctorService: DoctorService
   ) {}
   ngAfterViewInit(): void {
     this.SubscriptionList.push(
@@ -207,55 +203,7 @@ export class HistoryComponent implements OnInit, OnDestroy,AfterViewInit {
         }
       )
     );
-    this.SubscriptionList.push(
-      this.DoctorService.DoctorDropDown().subscribe(
-        (data) => {
 
-          if (data.success) {
-            if (data.resourceCount == 0) {
-              this.messageService.add({
-                severity: 'success',
-                summary: 'Success',
-                detail: 'No Data found',
-              });
-            } else {
-
-              // this.BloodDropDown = data.resource.reduce((acc: IBloodDropDown[], el:IBloodDropDown) => {
-              //   let obj = { id: el.id, name: el.name} as IBloodDropDown;
-              //   acc.push(obj);
-              //   return acc;
-              // }, []);
-
-              //this.DeptList = data.resource as UserDtoClass[];
-              this.DoctorDropDown = data.resource.reduce((acc: IDoctorDownModel[], el) => {
-                let obj = el as IDoctorDownModel;
-                acc.push(obj);
-                return acc;
-              }, []);
-              this.messageService.add({
-                severity: 'success',
-                summary: 'Success',
-                detail: data.message,
-              });
-              this.initConfigInput();
-            }
-          } else {
-            this.messageService.add({
-              severity: 'error',
-              summary: 'Error',
-              detail: data.message,
-            });
-          }
-        },
-        (error) => {
-          this.messageService.add({
-            severity: 'error',
-            summary: 'Error',
-            detail: error.message,
-          });
-        }
-      )
-    );
 
   }
   initConfigInput(): void {
@@ -303,6 +251,7 @@ export class HistoryComponent implements OnInit, OnDestroy,AfterViewInit {
         type: 'input',
         label: ' date',
         name: 'date',
+        textType:"date",
         placeholder: 'Enter date',
 
 
@@ -349,14 +298,7 @@ export class HistoryComponent implements OnInit, OnDestroy,AfterViewInit {
         options: this.hospitalDropDown.map(el => el.name),
         value: this.hospitalDropDown.map(el => el.id),
     },
-    {
-      type: 'select',
-      label: 'doctor Id',
-      name: 'doctorId',
-      placeholder: 'Chosse hospital',
-      options: this.DoctorDropDown.map(el => el.typeName),
-      value: this.DoctorDropDown.map(el => el.id),
-  },
+
   {
     type: 'select',
     label: 'hospital Id',
@@ -432,7 +374,6 @@ export class HistoryComponent implements OnInit, OnDestroy,AfterViewInit {
 
       //{ field: 'doctorId', header: 'History doctor Id' },
 
-      { field: 'doctorName', header: 'Admin.History doctor name' },
 
      // { field: 'departmentId', header: 'History department Id' },
 

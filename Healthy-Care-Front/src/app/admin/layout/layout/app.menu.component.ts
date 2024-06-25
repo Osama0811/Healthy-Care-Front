@@ -29,7 +29,6 @@ export class AppMenuComponent implements OnInit {
                         {
                           label: 'Patient', icon: 'pi pi-circle-fill', routerLink: ['/admin/Patient']
                         },
-                        { label: 'Doctor', icon: 'pi pi-circle-fill', routerLink: ['/admin/Doctor'] },
                     ]
                 },
 
@@ -62,9 +61,7 @@ export class AppMenuComponent implements OnInit {
                     },
                     { label: 'Category', icon: 'pi pi-circle-fill', routerLink: ['/admin/Category'] },
                     { label: 'Department', icon: 'pi pi-circle-fill', routerLink: ['/admin/Department'] },
-                    { label: 'Doctor_Hospital', icon: 'pi pi-circle-fill', routerLink: ['/admin/Doctor_Hospital'] },
                     { label: 'Department_Hospital', icon: 'pi pi-circle-fill', routerLink: ['/admin/Department_Hospital'] },
-                    { label: 'Doctor_Department', icon: 'pi pi-circle-fill', routerLink: ['/admin/Doctor_Department'] },
                 ]
             }
           ]
@@ -92,15 +89,16 @@ export class AppMenuComponent implements OnInit {
 
 
 
-    ,{
-      label: 'Tools',
-      items: [
-          { label: 'Tools', icon: 'pi pi-spin pi-cog', routerLink: ['/admin/Tools'] },
-          { label: 'Tools_Department', icon: 'pi pi-wrench', routerLink: ['/admin/Tools_Department'] },
-          { label: 'Tools_Hospital', icon: 'pi pi-list', routerLink: ['/admin/Tools_Hospital'] },
+  //   ,{
+  //     label: 'Tools',
+  //     items: [
+  //         { label: 'Tools', icon: 'pi pi-spin pi-cog', routerLink: ['/admin/Tools'] },
+  //         { label: 'Tools_Department', icon: 'pi pi-wrench', routerLink: ['/admin/Tools_Department'] },
+  //         { label: 'Tools_Hospital', icon: 'pi pi-list', routerLink: ['/admin/Tools_Hospital'] },
 
-      ]
-  },
+  //     ]
+  // }
+  ,
 
 
             {
@@ -132,17 +130,7 @@ export class AppMenuComponent implements OnInit {
     //         //{ label: 'Menu', icon: 'pi pi-fw pi-bars', routerLink: ['/uikit/menu'], routerLinkActiveOptions: { paths: 'subset', queryParams: 'ignored', matrixParams: 'ignored', fragment: 'ignored' } },
 
 
-  {
-    label: 'Hospital',
-    items: [
-        { label: 'Hospital', icon: 'pi pi-home', routerLink: ['/admin/Hospital'] }
 
-        //{ label: 'Invalid State', icon: 'pi pi-fw pi-exclamation-circle', routerLink: ['/uikit/invalidstate'] },
-
-        //{ label: 'Menu', icon: 'pi pi-fw pi-bars', routerLink: ['/uikit/menu'], routerLinkActiveOptions: { paths: 'subset', queryParams: 'ignored', matrixParams: 'ignored', fragment: 'ignored' } },
-
-    ]
-},
 {
     label: 'X-Ray',
     items: [
@@ -153,16 +141,6 @@ export class AppMenuComponent implements OnInit {
         //{ label: 'Menu', icon: 'pi pi-fw pi-bars', routerLink: ['/uikit/menu'], routerLinkActiveOptions: { paths: 'subset', queryParams: 'ignored', matrixParams: 'ignored', fragment: 'ignored' } },
 
     ]
-},{
-  label: 'Book Ambulances',
-  items: [
-      { label: 'Booking Ambulances', icon: 'pi pi-truck', routerLink: ['/admin/Book_Ambulances'] }
-
-      //{ label: 'Invalid State', icon: 'pi pi-fw pi-exclamation-circle', routerLink: ['/uikit/invalidstate'] },
-
-      //{ label: 'Menu', icon: 'pi pi-fw pi-bars', routerLink: ['/uikit/menu'], routerLinkActiveOptions: { paths: 'subset', queryParams: 'ignored', matrixParams: 'ignored', fragment: 'ignored' } },
-
-  ]
 },
     //     ]
     // },

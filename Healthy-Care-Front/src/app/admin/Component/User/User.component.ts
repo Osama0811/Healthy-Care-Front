@@ -82,8 +82,8 @@ console.log(data);
       },
       {
         type: 'input',
-        label: 'Admin.userNamee',
-        name: 'userNamee',
+        label: 'Admin.userName',
+        name: 'userName',
         placeholder: 'Admin.Enter userName',
         validation: [Validators.required, Validators.minLength(4)],
 
@@ -92,6 +92,7 @@ console.log(data);
         type: 'input',
         label: 'Admin.password',
         name: 'password',
+        textType:"Password",
         placeholder: 'Admin.Enter password',
         validation: [Validators.required, Validators.minLength(4)],
 
@@ -118,6 +119,7 @@ console.log(data);
         type: 'input',
         label: 'Admin.birthDate',
         name: 'birthDate',
+        textType:"Date",
         placeholder: 'Admin.Enter birthDate',
         validation: [Validators.required, Validators.minLength(4)],
 

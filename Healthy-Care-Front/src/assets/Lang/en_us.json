@@ -13,7 +13,6 @@
        {
            "Profile":"الملف الشخصي",
            "Settings":"الاعدادات",
-           "lsdmlkms":"kdckls",
            "Title":"Title",
            "TitleAr":"TitleAr",
            "EnterTitleAr":"Enter TitleAr",
@@ -26,7 +25,7 @@
            "National number":"National number",
            "Email":"Email",
            "Phone":"Phone",
-           "Alter Phone":"Alter Phone",
+           "Alter Phone":"A relative's phone",
            "Blood Type":"Blood Type",
            "Hospital":"Hospital",
            "userName":"userName",
