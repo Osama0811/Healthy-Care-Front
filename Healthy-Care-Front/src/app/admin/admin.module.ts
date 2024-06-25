@@ -73,8 +73,9 @@ import { Book_AmbulancesComponent } from './Component/Book_Ambulances/Book_Ambul
     HospitalComponent,
     UserComponent,
     CategoryComponent,
-     CountryComponent,
-     ,Booking_X_RayComponent,Book_AmbulancesComponent]
+     CountryComponent
+     ,Booking_X_RayComponent
+     ,Book_AmbulancesComponent]
 })
 export class AdminModule { }
 export function TranslateLoaderFactory(langService: LangService): CustomTranslateLoader {
