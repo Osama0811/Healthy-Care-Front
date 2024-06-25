@@ -1,3 +1,4 @@
+import { Booking_X_RayComponent } from './Component/Booking_X_Ray/Booking_X_Ray.component';
 import { BloodEquationComponent } from './Component/BloodEquation/BloodEquation.component';
 import { IndexModule } from './Component/index/index.module';
 import { RouterModule, Routes } from '@angular/router';
@@ -25,6 +26,7 @@ import { AppointmentComponent } from './Component/Appointment/Appointment.compon
 import { HistoryComponent } from './Component/History/History.component';
 import { HospitalComponent } from './Component/Hospital/Hospital.component';
 import { CategoryComponent } from './Component/Category/Category.component';
+import { Book_AmbulancesComponent } from './Component/Book_Ambulances/Book_Ambulances.component';
 
 const routes: Routes = [
 
@@ -60,6 +62,10 @@ const routes: Routes = [
         { path: 'Appointment', component: AppointmentComponent },
         { path: 'History', component: HistoryComponent },
         { path: 'Hospital', component: HospitalComponent },
+        { path: 'Booking_X_Ray', component: Booking_X_RayComponent },
+        { path: 'Book_Ambulances', component: Book_AmbulancesComponent },
+
+
 
 
 

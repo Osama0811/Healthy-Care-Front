@@ -131,6 +131,39 @@ export class AppMenuComponent implements OnInit {
 
     //         //{ label: 'Menu', icon: 'pi pi-fw pi-bars', routerLink: ['/uikit/menu'], routerLinkActiveOptions: { paths: 'subset', queryParams: 'ignored', matrixParams: 'ignored', fragment: 'ignored' } },
 
+  
+  {
+    label: 'Hospital',
+    items: [
+        { label: 'Hospital', icon: 'pi pi-home', routerLink: ['/admin/Hospital'] }
+
+        //{ label: 'Invalid State', icon: 'pi pi-fw pi-exclamation-circle', routerLink: ['/uikit/invalidstate'] },
+
+        //{ label: 'Menu', icon: 'pi pi-fw pi-bars', routerLink: ['/uikit/menu'], routerLinkActiveOptions: { paths: 'subset', queryParams: 'ignored', matrixParams: 'ignored', fragment: 'ignored' } },
+
+    ]
+},
+{
+    label: 'X-Ray',
+    items: [
+        { label: 'Booking x-ray', icon: 'pi pi-book', routerLink: ['/admin/Booking_X_Ray'] }
+
+        //{ label: 'Invalid State', icon: 'pi pi-fw pi-exclamation-circle', routerLink: ['/uikit/invalidstate'] },
+
+        //{ label: 'Menu', icon: 'pi pi-fw pi-bars', routerLink: ['/uikit/menu'], routerLinkActiveOptions: { paths: 'subset', queryParams: 'ignored', matrixParams: 'ignored', fragment: 'ignored' } },
+
+    ]
+},{
+  label: 'Book Ambulances',
+  items: [
+      { label: 'Booking Ambulances', icon: 'pi pi-truck', routerLink: ['/admin/Book_Ambulances'] }
+
+      //{ label: 'Invalid State', icon: 'pi pi-fw pi-exclamation-circle', routerLink: ['/uikit/invalidstate'] },
+
+      //{ label: 'Menu', icon: 'pi pi-fw pi-bars', routerLink: ['/uikit/menu'], routerLinkActiveOptions: { paths: 'subset', queryParams: 'ignored', matrixParams: 'ignored', fragment: 'ignored' } },
+
+  ]
+},
     //     ]
     // },
 
