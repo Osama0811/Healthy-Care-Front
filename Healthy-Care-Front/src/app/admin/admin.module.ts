@@ -1,4 +1,5 @@
 import { Booking_X_RayComponent } from './Component/Booking_X_Ray/Booking_X_Ray.component';
+import { Book_AmbulancesComponent } from './Component/Book_Ambulances/Book_Ambulances.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CommonModule } from '@angular/common';
@@ -35,6 +36,7 @@ import { HistoryComponent } from './Component/History/History.component';
 import { HospitalComponent } from './Component/Hospital/Hospital.component';
 import { CountryComponent } from './Component/country/country.component';
 import { Book_AmbulancesComponent } from './Component/Book_Ambulances/Book_Ambulances.component';
+import { AmbulancesComponent } from './Component/Ambulances/Ambulances.component';
 
 @NgModule({
 
@@ -75,6 +77,8 @@ import { Book_AmbulancesComponent } from './Component/Book_Ambulances/Book_Ambul
     CategoryComponent,
      CountryComponent
      ,Booking_X_RayComponent
+     ,Book_AmbulancesComponent
+     ,AmbulancesComponent
      ,Book_AmbulancesComponent]
 })
 export class AdminModule { }

@@ -7,25 +7,24 @@ import { MessageService } from 'primeng/api';
 import { Subscription } from 'rxjs';
 import { Validators } from '@angular/forms';
 import { FieldConfig } from 'src/app/Shared/dynamic-form/models/field-config.interface';
-export interface IBook_AmbulancesDto {//get all data table
+export interface IAmbulancesDto {//get all data table
   id: string | undefined;
-  patientId: string | undefined;
-  ambulanceId: string | undefined;
+  latitude: number | undefined;
+  longitude: number | undefined;
+  phone: string | undefined;
   status: string | undefined;
-  nationalNum: string | undefined;
-  ambulancePhone: string | undefined;
 }
 
 @Component({
-  selector: 'app-Book_Ambulances',
-  templateUrl: './Book_Ambulances.component.html',
-  styleUrls: ['./Book_Ambulances.component.css'],
-  providers: [GlobalService, { provide: Controller, useValue: 'Book_Ambulances' }], //controller name
+  selector: 'app-Ambulances',
+  templateUrl: './Ambulances.component.html',
+  styleUrls: ['./Ambulances.component.css'],
+  providers: [GlobalService, { provide: Controller, useValue: 'Ambulances' }], //controller name
 })
-export class Book_AmbulancesComponent implements OnInit, OnDestroy {
+export class AmbulancesComponent implements OnInit, OnDestroy {
   SubscriptionList: Subscription[] = []; // for me
 
-  Book_AmbulancesList: IBook_AmbulancesDto[] = []; // dto for data table
+  AmbulancesList: IAmbulancesDto[] = []; // dto for data table
   cols: any[] = []; // colims in data table
   configInput: FieldConfig[] = []; // input add update
 
@@ -44,27 +43,43 @@ export class Book_AmbulancesComponent implements OnInit, OnDestroy {
       },
       {
         type: 'input',
-        label: 'Book_Ambulances name',
-        name: 'name',
-        placeholder: 'Enter Book_Ambulances Name',
-        validation: [Validators.required, Validators.minLength(4)],
-
+        label: 'latitude',
+        name: 'latitude',
+        placeholder: 'Enter latitude',
       },
-      // {
-      //   type: 'input',
-      //   label: 'hospital Count',
-      //   name: 'hospitalCount',
-      //   placeholder: 'Enter hospital Count',
-      // },
-      // {
-      //   type: 'select',
-      //   label: 'select ',
-      //   name: 'option',
-      //   options: ["jkkj","knl","kn","hbj"],
-      //   value:[1,2,3,4],
-      //   placeholder: 'Select an option',
-      //   validation: [Validators.required]
-      // },
+      {
+        type: 'input',
+        label: 'longitude',
+        name: 'longitude',
+        placeholder: 'Enter longitude',
+      },
+      {
+        type: 'input',
+        label: 'phone',
+        name: 'phone',
+        placeholder: 'Enter phone',
+      },
+      {
+        type: 'input',
+        label: 'status',
+        name: 'status',
+        placeholder: 'Enter status',
+      },
+      {
+        type: 'input',
+        label: 'hospital Count',
+        name: 'hospitalCount',
+        placeholder: 'Enter hospital Count',
+      },
+      {
+        type: 'select',
+        label: 'select ',
+        name: 'option',
+        options: ["jkkj","knl","kn","hbj"],
+        value:[1,2,3,4],
+        placeholder: 'Select an option',
+        validation: [Validators.required]
+      },
     ];
     this.messageService.add({
       severity: 'success',
@@ -72,7 +87,7 @@ export class Book_AmbulancesComponent implements OnInit, OnDestroy {
       detail: 'No Data found',
     });
     this.SubscriptionList.push(
-      this.globalService.GetAll<IBook_AmbulancesDto, null>().subscribe(
+      this.globalService.GetAll<IAmbulancesDto, null>().subscribe(
         (data) => {
 
           if (data.success) {
@@ -84,8 +99,8 @@ export class Book_AmbulancesComponent implements OnInit, OnDestroy {
               });
             } else {
 
-              this.Book_AmbulancesList = data.resource.reduce((acc: IBook_AmbulancesDto[], el) => {
-                let obj = { id: el.id, patientId: el.patientId, ambulanceId: el.ambulanceId, status: el.status, nationalNum: el.nationalNum, ambulancePhone: el.ambulancePhone} as IBook_AmbulancesDto;
+              this.AmbulancesList = data.resource.reduce((acc: IAmbulancesDto[], el) => {
+                let obj = { id: el.id, latitude: el.latitude, longitude: el.longitude, phone: el.phone, status: el.status} as IAmbulancesDto;
                 acc.push(obj);
                 return acc;
               }, []);
@@ -117,11 +132,10 @@ export class Book_AmbulancesComponent implements OnInit, OnDestroy {
 
     this.cols = [
       { field: 'id', header: 'id' },
-      { field: 'patientId', header: 'patientId' },
-      { field: 'ambulanceId', header: 'ambulanceId' },
+      { field: 'latitude', header: 'latitude' },
+      { field: 'longitude', header: 'longitude' },
+      { field: 'phone', header: 'phone' },
       { field: 'status', header: 'status' },
-      { field: 'nationalNum', header: 'nationalNum' },
-      { field: 'ambulancePhone', header: 'ambulancePhone' },
     ];
   }
   ngOnDestroy(): void {
