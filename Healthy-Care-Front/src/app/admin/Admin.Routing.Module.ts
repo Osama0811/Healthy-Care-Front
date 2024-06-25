@@ -1,5 +1,4 @@
 import { Booking_X_RayComponent } from './Component/Booking_X_Ray/Booking_X_Ray.component';
-import { Book_AmbulancesComponent } from './Component/Book_Ambulances/Book_Ambulances.component';
 import { BloodEquationComponent } from './Component/BloodEquation/BloodEquation.component';
 import { IndexModule } from './Component/index/index.module';
 import { RouterModule, Routes } from '@angular/router';

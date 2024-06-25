@@ -35,7 +35,6 @@ import { AppointmentComponent } from './Component/Appointment/Appointment.compon
 import { HistoryComponent } from './Component/History/History.component';
 import { HospitalComponent } from './Component/Hospital/Hospital.component';
 import { CountryComponent } from './Component/country/country.component';
-import { Book_AmbulancesComponent } from './Component/Book_Ambulances/Book_Ambulances.component';
 import { AmbulancesComponent } from './Component/Ambulances/Ambulances.component';
 
 @NgModule({
