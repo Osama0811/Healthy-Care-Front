@@ -1,3 +1,4 @@
+import { X_Ray_HospitalComponent } from './Component/X_Ray_Hospital/X_Ray_Hospital.component';
 import { Book_AmbulancesComponent } from './Component/Book_Ambulances/Book_Ambulances.component';
 import { BloodEquationComponent } from './Component/BloodEquation/BloodEquation.component';
 import { IndexModule } from './Component/index/index.module';
@@ -27,6 +28,8 @@ import { HistoryComponent } from './Component/History/History.component';
 import { HospitalComponent } from './Component/Hospital/Hospital.component';
 import { CategoryComponent } from './Component/Category/Category.component';
 import { AmbulancesComponent } from './Component/Ambulances/Ambulances.component';
+import { X_RayComponent } from './Component/X_Ray/X_Ray.component';
+import { X_Ray_DepartmentComponent } from './Component/X_Ray_Department/X_Ray_Department.component';
 
 const routes: Routes = [
 
@@ -48,6 +51,9 @@ const routes: Routes = [
         { path: 'Doctor_Department', component: Doctor_DepartmentComponent },
         { path: 'Doctor_Hospital', component: Doctor_HospitalComponent },
         { path: 'Book_Ambulances', component: Book_AmbulancesComponent },
+        { path: 'X_Ray', component: X_RayComponent },
+        { path: 'X_Ray_Department', component: X_Ray_DepartmentComponent },
+        { path: 'X_Ray_Hospital', component: X_Ray_HospitalComponent },
 
 
 
