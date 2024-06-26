@@ -21,7 +21,8 @@ interface FormControls {
 @Component({
   selector:"app-data-table",
     templateUrl: './crud.component.html',
-    providers: [MessageService]
+    providers: [MessageService],
+    styleUrls: ['./crud.component.css']
 })
 
 export class CrudComponent<T extends WithId> implements OnInit , AfterViewInit {
@@ -77,6 +78,7 @@ export class CrudComponent<T extends WithId> implements OnInit , AfterViewInit {
 
        this.form.setDisabled('submit', true);
      }
+
 
 
     ngOnInit() {
@@ -451,7 +453,7 @@ this.globalService.Add(Input).subscribe((data) => {
     // }
 
 
-
+   
     onGlobalFilter(table: Table, event: Event) {
         table.filterGlobal((event.target as HTMLInputElement).value, 'contains');
     }

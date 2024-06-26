@@ -57,10 +57,9 @@
               </ng-template>
           </p-table>
       </div>
-      <p-dialog [(visible)]="AddDialog||UpdateDialog" [style]="{width: '450px'}"  [modal]="true" class="p-fluid">
+      <p-dialog [(visible)]="AddDialog"   [style]="{width: '450px'}"  [modal]="true" class="p-fluid">
         <!-- {{selectedItem|json}} -->
-<ng-template [(visible)]="AddDialog">Add</ng-template>
-<ng-template [(visible)]="UpdateDialog">Update</ng-template>
+<ng-template >Add</ng-template>
         <div class="app">
           <dynamic-form
             [config]="configInput"
@@ -73,11 +72,28 @@
 
           <ng-template pTemplate="footer">
               <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="hideDialog()"></button>
-              <button pButton pRipple label="Add" icon="pi pi-check" class="p-button-text" *ngIf="AddDialog" (click)="saveItem( form.value)"></button>
-              <button pButton pRipple label="Edit" icon="pi pi-check" class="p-button-text" *ngIf="UpdateDialog" (click)="UpdateItem( form.value)"></button>
+              <button pButton pRipple label="Add" icon="pi pi-check" class="p-button-text"  (click)="saveItem( form.value)"></button>
           </ng-template>
       </p-dialog>
 
+      <p-dialog [(visible)]="UpdateDialog"   [style]="{width: '450px'}"  [modal]="true" class="p-fluid">
+        <!-- {{selectedItem|json}} -->
+<ng-template >Edit</ng-template>
+        <div class="app">
+          <dynamic-form
+            [config]="configInput"
+            #form="dynamicForm"
+          >
+          </dynamic-form>
+
+        </div>
+
+
+          <ng-template pTemplate="footer">
+              <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="hideDialog()"></button>
+              <button pButton pRipple label="Edit" icon="pi pi-check" class="p-button-text"  (click)="UpdateItem( form.value)"></button>
+          </ng-template>
+      </p-dialog>
 
        <p-dialog [(visible)]="deleteItemDialog" header="Confirm" [modal]="true" [style]="{width:'450px'}">
           <div class="flex align-items-center justify-content-center">

@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 import { CommonModule } from '@angular/common';
 
 const routes: Routes = [
-   { path: '', redirectTo: '/app', pathMatch: 'full' },
+   { path: '', redirectTo: '/Authentication/Login', pathMatch: 'full' },
    {
     path: 'admin',
     loadChildren:()=>import('src/app/admin/admin.module').then(m=>m.AdminModule) ,

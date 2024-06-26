@@ -28,6 +28,7 @@ import { HospitalComponent } from './Component/Hospital/Hospital.component';
 import { CategoryComponent } from './Component/Category/Category.component';
 import { Book_AmbulancesComponent } from './Component/Book_Ambulances/Book_Ambulances.component';
 import { AmbulancesComponent } from './Component/Ambulances/Ambulances.component';
+import { authGuard } from '../Auth/Guards/auth-guard.guard';
 
 const routes: Routes = [
 
@@ -35,40 +36,40 @@ const routes: Routes = [
     path: '', component: AppLayoutComponent,
 
     children: [
-        { path: '', loadChildren: () => import('./Component/dashboard/dashboard.module').then(m => m.DashboardModule) },
-        { path: 'Profile', loadChildren: () => import('./Component/profile/Profile.module').then(m => m.ProfileModule) },
-        { path: 'Index', loadChildren: () => import('./Component/index/index.module').then(m => m.IndexModule) },
-        { path: 'Blood', component: BloodComponent },
-        { path: 'User', component: UserComponent },
-        { path: 'BloodBank', component: BloodBankComponent },
-        { path: 'QuestionHistory', component: QuestionHistoryComponent },
-        { path: 'Doctor', component: DoctorComponent },
-        { path: 'Tools', component: ToolsComponent },
-        { path: 'Tools_Department', component: Tools_DepartmentComponent },
-        { path: 'Tools_Hospital', component: Tools_HospitalComponent },
-        { path: 'Doctor_Department', component: Doctor_DepartmentComponent },
-        { path: 'Doctor_Hospital', component: Doctor_HospitalComponent },
-        { path: 'Book_Ambulances', component: Book_AmbulancesComponent },
+        { path: '', loadChildren: () => import('./Component/dashboard/dashboard.module').then(m => m.DashboardModule), canActivate: [authGuard] },
+        { path: 'Profile', loadChildren: () => import('./Component/profile/Profile.module').then(m => m.ProfileModule), canActivate: [authGuard] },
+        { path: 'Index', loadChildren: () => import('./Component/index/index.module').then(m => m.IndexModule), canActivate: [authGuard] },
+        { path: 'Blood', component: BloodComponent , canActivate: [authGuard]},
+        { path: 'User', component: UserComponent , canActivate: [authGuard]},
+        { path: 'BloodBank', component: BloodBankComponent , canActivate: [authGuard]},
+        { path: 'QuestionHistory', component: QuestionHistoryComponent, canActivate: [authGuard] },
+        { path: 'Doctor', component: DoctorComponent , canActivate: [authGuard]},
+        { path: 'Tools', component: ToolsComponent , canActivate: [authGuard]},
+        { path: 'Tools_Department', component: Tools_DepartmentComponent , canActivate: [authGuard]},
+        { path: 'Tools_Hospital', component: Tools_HospitalComponent, canActivate: [authGuard] },
+        { path: 'Doctor_Department', component: Doctor_DepartmentComponent , canActivate: [authGuard]},
+        { path: 'Doctor_Hospital', component: Doctor_HospitalComponent , canActivate: [authGuard]},
+        { path: 'Book_Ambulances', component: Book_AmbulancesComponent , canActivate: [authGuard]},
 
 
 
 
 
-        { path: 'Patient', component: PatientComponent },
-        { path: 'Category', component: CategoryComponent },
-        { path: 'Address', component: AddressComponent },
-        { path: 'BloodEquation', component: BloodEquationComponent },
-        { path: 'Hospital_Category', component: Hospital_CategoryComponent },
-        { path: 'Department', component: DepartmentComponent },
-        { path: 'Department_Hospital', component: Department_HospitalComponent },
-        { path: 'Appointment', component: AppointmentComponent },
-        { path: 'History', component: HistoryComponent },
-        { path: 'Hospital', component: HospitalComponent },
-        { path: 'Booking_X_Ray', component: Booking_X_RayComponent },
-        { path: 'Book_Ambulances', component: Book_AmbulancesComponent },
+        { path: 'Patient', component: PatientComponent , canActivate: [authGuard]},
+        { path: 'Category', component: CategoryComponent, canActivate: [authGuard] },
+        { path: 'Address', component: AddressComponent , canActivate: [authGuard]},
+        { path: 'BloodEquation', component: BloodEquationComponent , canActivate: [authGuard]},
+        { path: 'Hospital_Category', component: Hospital_CategoryComponent, canActivate: [authGuard] },
+        { path: 'Department', component: DepartmentComponent , canActivate: [authGuard]},
+        { path: 'Department_Hospital', component: Department_HospitalComponent , canActivate: [authGuard]},
+        { path: 'Appointment', component: AppointmentComponent, canActivate: [authGuard] },
+        { path: 'History', component: HistoryComponent , canActivate: [authGuard]},
+        { path: 'Hospital', component: HospitalComponent, canActivate: [authGuard] },
+        { path: 'Booking_X_Ray', component: Booking_X_RayComponent, canActivate: [authGuard] },
+        { path: 'Book_Ambulances', component: Book_AmbulancesComponent, canActivate: [authGuard] },
 
 
-        { path: 'Ambulances', component: AmbulancesComponent },
+        { path: 'Ambulances', component: AmbulancesComponent , canActivate: [authGuard]},
 
 
 

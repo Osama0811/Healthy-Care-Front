@@ -1,0 +1,8 @@
+.p-dialog-header-icons
+{
+display: none;
+}
+
+.p-dialog .p-dialog-header-icons{
+  display: none;
+}

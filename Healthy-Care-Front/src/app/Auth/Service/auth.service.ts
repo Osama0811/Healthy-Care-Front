@@ -32,7 +32,10 @@ export class AuthService {
       return this.http.post<GeneralResponse<LoginResponse>>(`${this.baseUrl}/Auth/Login`,JSON.stringify(Input) ,this.httpOption);
   }
 
-
+  isLoggedIn(): boolean {
+    const token = localStorage.getItem('Token');
+    return !!token;
+  }
   // login(LoginReq: ILoginRequest): Observable<ILoginResponse> {
   //   return this.http.get<ILoginResponse>(`${this.baseUrl}?nationalNum=${email}`);
   // }

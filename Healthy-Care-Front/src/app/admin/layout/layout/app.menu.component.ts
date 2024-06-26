@@ -1,7 +1,7 @@
 import { OnInit } from '@angular/core';
 import { Component } from '@angular/core';
 import { LayoutService } from './service/admin.layout.service';
-
+import { TranslateService } from '@ngx-translate/core';
 @Component({
     selector: 'app-menu',
     templateUrl: './app.menu.component.html'
@@ -10,21 +10,22 @@ export class AppMenuComponent implements OnInit {
 
     model: any[] = [];
 
-    constructor(public layoutService: LayoutService) { }
+    constructor(public layoutService: LayoutService,private readonly translateService: TranslateService){
+      translateService.use(localStorage.getItem("Lang")??"en_us"); }
 
     ngOnInit() {
         this.model = [
           {
-            label: 'System Setting',
+            label: 'Admin.System Setting',
             icon: 'pi pi-spin pi-spinner',
             items: [
 
                 {
-                    label: 'Users',
+                    label: 'Admin.Users',
                     icon: 'pi pi-fw pi-user',
                     items: [
                         {
-                          label: 'User', icon: 'pi pi-circle-fill', routerLink: ['/admin/User']
+                          label: 'Admin.Users', icon: 'pi pi-circle-fill', routerLink: ['/admin/User']
                         },
                         {
                           label: 'Patient', icon: 'pi pi-circle-fill', routerLink: ['/admin/Patient']
