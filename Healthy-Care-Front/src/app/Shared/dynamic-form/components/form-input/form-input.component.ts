@@ -15,6 +15,7 @@ import { FieldConfig } from '../../models/field-config.interface';
       <label>{{ config.label==undefined?"":config.label|translate}}</label>
       <input
       pInputText
+      data-date-format="DD MMMM YYYY"
         [type]="config.textType"
         [attr.placeholder]="config.placeholder==undefined?'':config.placeholder|translate"
         [formControlName]="config.name"

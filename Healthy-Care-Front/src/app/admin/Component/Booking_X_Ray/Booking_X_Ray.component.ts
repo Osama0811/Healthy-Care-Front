@@ -112,7 +112,7 @@ export class Booking_X_RayComponent implements OnInit, OnDestroy ,AfterViewInit 
         NonVisible:true
       },
       {
-        type: 'input',
+        type: 'select',
         label: 'hospital Id',
         name: 'hospitalId',
         options: this.hospitalDropDown.map(el => el.name),
@@ -125,6 +125,7 @@ export class Booking_X_RayComponent implements OnInit, OnDestroy ,AfterViewInit 
         type: 'input',
         label: 'date',
         name: 'date',
+        textType:'date',
         placeholder: 'Enter The date',
         validation: [Validators.required, Validators.minLength(4)],
 
