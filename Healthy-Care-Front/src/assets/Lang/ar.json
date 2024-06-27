@@ -182,7 +182,21 @@
             "Enter User Id":"ادخل الرقم القومى للمستخدم",
             "Type":"النوع",
             "Enter Type":"ادخل النوع",
-            "Users":"المستخدمين"
+            "Users":"المستخدمين",
+            "Patient":"المريض",
+            "BloodSetting":"اعدادات الدم",
+            "BloodEquation":"معادلة الدم",
+            "BloodBank":"بنك الدم",
+            "Address":"العنوان",
+            "HospitalSetting":"اعدادات المستشفى",
+            "Category":"الفئة",
+            "Department":"القسم",
+            "Department_Hospital":"قسم المستشفى",
+            "Book_Ambulances":"حجز سيارة إسعاف",
+            "Ambulances":"سيارات الإسعاف",
+            "Booking x-ray":"حجز الأشعة",
+            "X-Ray":"الأشعة",
+            "Question History":" أسئلة التاريخ المرضى"
 
        }
 }

@@ -181,7 +181,24 @@
            "User Id":"User",
            "Enter User Id":"Enter User",
            "Type":"Type",
-           "Enter Type":"Enter Type"
+           "Enter Type":"Enter Type",
+           "Users":"users",
+           "Patient":"patient",
+           "BloodSetting":"Blood Setting", 
+           "BloodEquation":" Blood Equation",
+           "BloodBank":"BloodBank ",
+           "Address":"Address",
+           "HospitalSetting":"Hospital Setting ",
+           "Category":"Category",
+           "Department":"Department",
+           "Department_Hospital":" Department Hospital",
+           "Book_Ambulances":"Book Ambulances",
+           "Ambulances":"Ambulances",
+           "Booking x-ray":"Booking x ray",
+           "X-Ray":"X Ray",
+           "Question History":"Question History"
+
+
 
        }
 }

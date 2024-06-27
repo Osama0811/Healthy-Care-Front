@@ -16,7 +16,7 @@ export class AppMenuComponent implements OnInit {
     ngOnInit() {
         this.model = [
           {
-            label: 'Admin.System Setting',
+            label: 'Admin.SystemSetting',
             icon: 'pi pi-spin pi-spinner',
             items: [
 
@@ -28,41 +28,40 @@ export class AppMenuComponent implements OnInit {
                           label: 'Admin.Users', icon: 'pi pi-circle-fill', routerLink: ['/admin/User']
                         },
                         {
-                          label: 'Patient', icon: 'pi pi-circle-fill', routerLink: ['/admin/Patient']
+                          label: 'Admin.Patient', icon: 'pi pi-circle-fill', routerLink: ['/admin/Patient']
                         },
                     ]
                 },
 
               {
-                label: 'Blood Setting',
+                label: 'Admin.BloodSetting',
                 icon: 'pi pi-spin pi-spinner',
                 items: [
-                  { label: 'Blood1', icon: 'pi pi-circle-fill', routerLink: ['/admin/Blood'] },
-                    { label: 'BloodEquation', icon: 'pi pi-circle-fill', routerLink: ['/admin/BloodEquation'] },
-                    { label: 'BloodBank', icon: 'pi pi-circle-fill', routerLink: ['/admin/BloodBank'] },
+                    { label: 'Admin.BloodEquation', icon: 'pi pi-circle-fill', routerLink: ['/admin/BloodEquation'] },
+                    { label: 'Admin.BloodBank', icon: 'pi pi-circle-fill', routerLink: ['/admin/BloodBank'] },
                 ]
             },
-            { label: 'Address', icon: 'pi pi-flag', routerLink: ['/admin/Address'] }
+            { label: 'Admin.Address', icon: 'pi pi-flag', routerLink: ['/admin/Address'] }
             ]
         },
         {
-          label: 'Hospital Setting',
+          label: 'Admin.HospitalSetting',
           icon: 'pi pi-spin pi-spinner',
           items: [
 
 
 
               {
-                label: 'Hospital Setting',
+                label: 'Admin.HospitalSetting',
                 icon: 'pi pi-fw pi-home',
                 items: [
                     {
 
-                       label: 'Hospital', icon: 'pi pi-circle-fill', routerLink: ['/admin/Hospital']
+                       label: 'Admin.Hospital', icon: 'pi pi-circle-fill', routerLink: ['/admin/Hospital']
                     },
-                    { label: 'Category', icon: 'pi pi-circle-fill', routerLink: ['/admin/Category'] },
-                    { label: 'Department', icon: 'pi pi-circle-fill', routerLink: ['/admin/Department'] },
-                    { label: 'Department_Hospital', icon: 'pi pi-circle-fill', routerLink: ['/admin/Department_Hospital'] },
+                    { label: 'Admin.Category', icon: 'pi pi-circle-fill', routerLink: ['/admin/Category'] },
+                    { label: 'Admin.Department', icon: 'pi pi-circle-fill', routerLink: ['/admin/Department'] },
+                    { label: 'Admin.Department_Hospital', icon: 'pi pi-circle-fill', routerLink: ['/admin/Department_Hospital'] },
                 ]
             }
           ]
@@ -103,10 +102,10 @@ export class AppMenuComponent implements OnInit {
 
 
             {
-              label: 'History',
+              label: 'Admin.History',
               items: [
-                  { label: 'Question History', icon: 'pi pi-question-circle', routerLink: ['/admin/QuestionHistory'] },
-                  { label: 'History', icon: 'pi pi-hourglass', routerLink: ['/admin/History'] }
+                  { label: 'Admin.Question History', icon: 'pi pi-question-circle', routerLink: ['/admin/QuestionHistory'] },
+                  { label: 'Admin.History', icon: 'pi pi-hourglass', routerLink: ['/admin/History'] }
                   //{ label: 'Invalid State', icon: 'pi pi-fw pi-exclamation-circle', routerLink: ['/uikit/invalidstate'] },
 
                   //{ label: 'Menu', icon: 'pi pi-fw pi-bars', routerLink: ['/uikit/menu'], routerLinkActiveOptions: { paths: 'subset', queryParams: 'ignored', matrixParams: 'ignored', fragment: 'ignored' } },
@@ -133,9 +132,9 @@ export class AppMenuComponent implements OnInit {
 
 
 {
-    label: 'X-Ray',
+    label: 'Admin.X-Ray',
     items: [
-        { label: 'Booking x-ray', icon: 'pi pi-book', routerLink: ['/admin/Booking_X_Ray'] }
+        { label: 'Admin.Booking x-ray', icon: 'pi pi-book', routerLink: ['/admin/Booking_X_Ray'] }
 
         //{ label: 'Invalid State', icon: 'pi pi-fw pi-exclamation-circle', routerLink: ['/uikit/invalidstate'] },
 
@@ -148,9 +147,9 @@ export class AppMenuComponent implements OnInit {
 
 
 {
-  label: 'Ambulances',
+  label: 'Admin.Ambulances',
   items: [
-      { label: 'Ambulances', icon: 'pi pi-car', routerLink: ['/admin/Ambulances'] }
+      { label: 'Admin.Ambulances', icon: 'pi pi-car', routerLink: ['/admin/Ambulances'] }
 
       //{ label: 'Invalid State', icon: 'pi pi-fw pi-exclamation-circle', routerLink: ['/uikit/invalidstate'] },
 
@@ -159,9 +158,9 @@ export class AppMenuComponent implements OnInit {
   ]
 },
 {
-  label: 'Book_Ambulances',
+  label: 'Admin.Book_Ambulances',
   items: [
-      { label: 'Book_Ambulances', icon: 'pi pi-car', routerLink: ['/admin/Book_Ambulances'] }
+      { label: 'Admin.Book_Ambulances', icon: 'pi pi-car', routerLink: ['/admin/Book_Ambulances'] }
 
       //{ label: 'Invalid State', icon: 'pi pi-fw pi-exclamation-circle', routerLink: ['/uikit/invalidstate'] },
 
