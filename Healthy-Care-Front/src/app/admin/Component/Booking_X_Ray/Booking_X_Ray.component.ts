@@ -42,6 +42,7 @@ export class Booking_X_RayComponent implements OnInit, OnDestroy ,AfterViewInit 
   hospitalDropDown: IhospitalDownModel[] = [];
   cols: any[] = []; // colims in data table
   configInput: FieldConfig[] = []; // input add update
+  Booking_X_RayDropDown: any;
 
   constructor(
     private globalService: GlobalService<any>,
@@ -106,11 +107,20 @@ export class Booking_X_RayComponent implements OnInit, OnDestroy ,AfterViewInit 
     this.configInput = [
       {
         type: 'input',
-        label: 'x_RayId',
-        name: 'x_RayId',
-        placeholder: 'Enter x_Ray Id',
-        NonVisible:true
+        label: 'id',
+        name: 'id',
+        placeholder: 'Enter your id',
+        NonVisible:true,
+
       },
+      // {
+      //   type: 'input',
+      //   label: 'x_RayId',
+      //   name: 'x_RayId',
+      //   placeholder: 'Enter x_Ray Id',
+      //   validation: [Validators.required],
+
+      // },
       {
         type: 'select',
         label: 'hospital Id',
@@ -122,14 +132,16 @@ export class Booking_X_RayComponent implements OnInit, OnDestroy ,AfterViewInit 
 
       },
       {
-        type: 'input',
-        label: 'date',
-        name: 'date',
-        textType:'date',
-        placeholder: 'Enter The date',
-        validation: [Validators.required, Validators.minLength(4)],
+        type: 'select',
+        label: '"x_RayId',
+        name: '"x_RayId',
+        options: this.Booking_X_RayDropDown.map(el => el.x_RayName),
+        value: this.Booking_X_RayDropDown.map(el => el.x_RayId),
+        placeholder: 'Enter x-Ray Id',
+        // validation: [Validators.required, Validators.minLength(4)],
 
       },
+
       // {
       //   type: 'input',
       //   label: 'Booking_X_Ray specialFlag',
