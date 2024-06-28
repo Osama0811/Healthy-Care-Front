@@ -37,16 +37,16 @@ export class Book_AmbulancesComponent implements OnInit, OnDestroy {
     this.configInput = [
       {
         type: 'input',
-        label: 'Id',
+        label: 'Admin.Id',
         name: 'id',
-        placeholder: 'Id',
+        placeholder: 'Admin.Id',
         NonVisible:true
       },
       {
         type: 'input',
-        label: 'Book_Ambulances name',
+        label: 'Admin.Book_Ambulances name',
         name: 'name',
-        placeholder: 'Enter Book_Ambulances Name',
+        placeholder: 'Admin.Enter Book_Ambulances Name',
         validation: [Validators.required, Validators.minLength(4)],
 
       },

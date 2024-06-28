@@ -70,10 +70,10 @@ export class Department_HospitalComponent implements OnInit, OnDestroy {
       },
       {
         type: 'input',
-        label: 'Admin.numderOfBeds',
-        name: 'numderOfBeds',
+        label: 'Admin.numberOfBeds',
+        name: 'numberOfBeds',
         textType:"number",
-        placeholder: 'Admin.Enter  numder Of Beds',
+        placeholder: 'Admin.Enter number Of Beds',
 
       },
       {
@@ -81,7 +81,7 @@ export class Department_HospitalComponent implements OnInit, OnDestroy {
         label: 'Admin.numberOfOccupiedBeds',
         name: 'numberOfOccupiedBeds',
         textType:"number",
-        placeholder: 'Admin.Enter  number Of Occupied Beds',
+        placeholder: 'Admin.Enter number Of Occupied Beds',
 
       },
 

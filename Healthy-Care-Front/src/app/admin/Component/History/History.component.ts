@@ -210,56 +210,56 @@ export class HistoryComponent implements OnInit, OnDestroy,AfterViewInit {
     this.configInput = [
       {
         type: 'input',
-        label: 'Id',
+        label: 'Admin.Id',
         name: 'id',
-        placeholder: 'Id',
+        placeholder: 'Admin.Id',
         NonVisible:true
       },
       {
         type: 'input',
-        label: ' title Ar',
+        label: 'Admin.title Ar',
         name: 'titleAr',
-        placeholder: 'Enter  title in Arabic',
+        placeholder: 'Admin.Enter  title in Arabic',
 
 
       },
       {
         type: 'input',
-        label: ' title En',
+        label: 'Admin.title En',
         name: 'titleEn',
-        placeholder: 'Enter title in English',
+        placeholder: 'Admin.Enter title in English',
 
 
       },
       {
         type: 'input',
-        label: ' description Ar',
+        label: 'Admin.description Ar',
         name: 'descriptionAr',
-        placeholder: 'Enter  description in Arabic',
+        placeholder: 'Admin.Enter description in Arabic',
 
 
       },
       {
         type: 'input',
-        label: ' description En',
+        label: 'Admin.description En',
         name: 'descriptionEn',
-        placeholder: 'Enter description in English',
+        placeholder: 'Admin.Enter description in English',
 
 
       },
       {
         type: 'input',
-        label: ' date',
+        label: 'Admin.date',
         name: 'date',
         textType:"date",
-        placeholder: 'Enter date',
+        placeholder: 'Admin.Enter date',
 
 
       }
 
       ,{
         type: 'input',
-        label: 'Imagebase64',
+        label: 'Admin.Imagebase64',
         name: 'imageBase64',
         NonVisible:true
       },
@@ -283,30 +283,30 @@ export class HistoryComponent implements OnInit, OnDestroy,AfterViewInit {
       // },
       {
         type: 'select',
-        label: 'address Id',
+        label: 'Admin.address Id',
         name: 'addressId',
         options: this.AddressDropDown.map(el => el.title),
         value: this.AddressDropDown.map(el => el.id),
-        placeholder: 'Enter  national number',
+        placeholder: 'Admin.Enter  national number',
         validation: [Validators.required],
     },
       {
         type: 'select',
-        label: 'hospital Id',
+        label: 'Admin.hospital Id',
         name: 'hospitalId',
-        placeholder: 'Chosse hospital',
+        placeholder: 'Admin.choose hospital',
         options: this.hospitalDropDown.map(el => el.name),
         value: this.hospitalDropDown.map(el => el.id),
     },
 
-  {
-    type: 'select',
-    label: 'hospital Id',
-    name: 'hospitalId',
-    placeholder: 'Chosse hospital',
-    options: this.DepartmentDropDown.map(el => el.name),
-    value: this.DepartmentDropDown.map(el => el.id),
-},
+//   {
+//     type: 'select',
+//     label: 'Admin.hospital Id',
+//     name: 'hospitalId',
+//     placeholder: 'Admin.Chosse hospital',
+//     options: this.DepartmentDropDown.map(el => el.name),
+//     value: this.DepartmentDropDown.map(el => el.id),
+// },
     ];
 }
   ngOnInit() {

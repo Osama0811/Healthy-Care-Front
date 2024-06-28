@@ -36,50 +36,50 @@ export class AmbulancesComponent implements OnInit, OnDestroy {
     this.configInput = [
       {
         type: 'input',
-        label: 'Id',
+        label: 'Admin.Id',
         name: 'id',
-        placeholder: 'Id',
+        placeholder: 'Admin.Id',
         NonVisible:true
       },
       {
         type: 'input',
-        label: 'latitude',
+        label: 'Admin.latitude',
         name: 'latitude',
-        placeholder: 'Enter latitude',
+        placeholder: 'Admin.Enter latitude',
       },
       {
         type: 'input',
-        label: 'longitude',
+        label: 'Admin.longitude',
         name: 'longitude',
-        placeholder: 'Enter longitude',
+        placeholder: 'Admin.Enter longitude',
       },
       {
         type: 'input',
-        label: 'phone',
+        label: 'Admin.phone',
         name: 'phone',
-        placeholder: 'Enter phone',
+        placeholder: 'Admin.Enter phone',
       },
       {
         type: 'input',
-        label: 'status',
+        label: 'Admin.status',
         name: 'status',
-        placeholder: 'Enter status',
+        placeholder: 'Admin.Enter status',
       },
       {
         type: 'input',
-        label: 'hospital Count',
+        label: 'Admin.hospital Count',
         name: 'hospitalCount',
-        placeholder: 'Enter hospital Count',
+        placeholder: 'Admin.Enter hospital Count',
       },
-      {
-        type: 'select',
-        label: 'select ',
-        name: 'option',
-        options: ["jkkj","knl","kn","hbj"],
-        value:[1,2,3,4],
-        placeholder: 'Select an option',
-        validation: [Validators.required]
-      },
+      // {
+      //   type: 'select',
+      //   label: 'select ',
+      //   name: 'option',
+      //   options: ["jkkj","knl","kn","hbj"],
+      //   value:[1,2,3,4],
+      //   placeholder: 'Select an option',
+      //   validation: [Validators.required]
+      // },
     ];
     this.messageService.add({
       severity: 'success',

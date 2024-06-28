@@ -6,7 +6,7 @@
        "Layout":
        {
            "Profile":"الملف الشخصي",
-           "Settings":"الاعدادات",
+           "Settings":"تسجيل الخروج",
            "Lang":"EN"
        },
         "Admin":
@@ -46,14 +46,19 @@
             "Hospital category name":"اسم فئة المستشفى",
             "Hospital address title":"عنوان المستشفى",
             "Hospital image":"صورة المستشفى",
-            "History Id":"التاريخ",
-            "History title":"عنوان التاريخ",
-            "History description":"وصف التاريخ",
-            "History patient name":"تاريخ المريض",
-            "History hospital name":"تاريخ المستشفى",
+            "History":"السجل المرضى",
+            "History Id":"الرقم التعريفى للسجل",
+            "History title":"عنوان السجل مرضى",
+            "History description":"وصف السجل المرضى",
+            "History patient name":"السجل المرضى للمريض",
+            "History hospital name":"السجل المرضى للمستشفى",
             "History doctor name":"تاريخ اسم الدكتور",
-            "History department name":"تاريخ اسم القسم",
+            "History department name":"السجل المرضى للقسم ",
             "History date":"التاريخ",
+            "title Ar":"العنوان بالعربى",
+            "title En":"العنوان بالانجليزية",
+            "description Ar":"الوصف بالعربى",
+            "description En":"الوصف بالانجليزى",
             "Appointment Id":"الموعد",
             "Appointment patient Name":"ميعاد حجز المريض",
             "Appointment date":"تاريخ الحجز",
@@ -132,6 +137,8 @@
             "Enter  number Of Doctors":"ادخل عدد الاطباء",
             "Enter  numder Of Beds":"ادخل عدد الأسرة",
             "Enter  number Of Occupied Beds":"ادخل عدد الأسرة المحجوزة",
+            "Enter number Of Occupied Beds":"أدخل عدد الأسرّة المشغولة",
+            "Enter number Of Beds":"أدخل عدد الأسرّة ",
             "Department name":"اسم القسم",
             "Enter Department Name":"ادخل اسم القسم",
             "specialFlag":"حالة خاصة",
@@ -195,8 +202,30 @@
             "Book_Ambulances":"حجز سيارة إسعاف",
             "Ambulances":"سيارات الإسعاف",
             "Booking x-ray":"حجز الأشعة",
-            "X-Ray":"الأشعة",
-            "Question History":" أسئلة التاريخ المرضى"
+            "Question History":" أسئلة التاريخ المرضى",
+            "X_Ray":"المعمل",
+            "X_Ray notes":"ملاحظات المعمل",
+            "X_Ray title":"عنوان المعمل",
+            "X_Ray_Department":"معمل القسم",
+            "X_Ray_Hospital":"معمل المستشفى",
+            "Department id":"الرقم التعريفى للقسم",
+            "hospital id":"الرقم التعريفى للمستشفى",
+            "X_Ray id":"الرقم التعريفى للمعمل",
+            "choose hospital":"اختر مستشفى",
+            "Enter description in English":"ادخل الوصف بالانجليزى",
+            "Enter description in Arabic":"ادخل الوصف بالعربى",
+            "Enter title in English":"ادخل العنوان بالانجليزى",
+            "Enter  title in Arabic":"ادخل العنوان بالعربى",
+            "longitude":"خطوط الطول",
+            "latitude":"خطوط العرض",
+            "Enter Book_Ambulances Name":"ادخل اسم طلب سيارة اسعاف",
+            "Book_Ambulances name":"اسم حجز سيارة الاسعاف",
+
+            "Enter X_Ray notes":"ادخل ملاحظات الاشعة",
+            "Enter X_Ray title":"ادخل عنوان الاشعة",
+            "X-Ray":"المعامل",
+            "SystemSetting":"اعدادات النظام"
+
 
        }
 }

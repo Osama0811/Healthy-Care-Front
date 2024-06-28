@@ -1,4 +1,7 @@
-import { Component, OnDestroy, OnInit, Type } from '@angular/core';
+import { hospitalService } from './../../Services/hospital.service';
+import { X_RayService } from '../../Services/x_Ray.service';
+import { X_RayDropDown,IX_RayDownModel, IhospitalDownModel, hospitalDropDown } from './../../Model/DropDown';
+import { AfterViewInit, Component, OnDestroy, OnInit, Type } from '@angular/core';
 import {
   Controller,
   GlobalService,
@@ -22,17 +25,126 @@ export interface IX_Ray_HospitalDto {//get all data table
   styleUrls: ['./X_Ray_Hospital.component.css'],
   providers: [GlobalService, { provide: Controller, useValue: 'X_Ray_Hospital' }], //controller name
 })
-export class X_Ray_HospitalComponent implements OnInit, OnDestroy {
+export class X_Ray_HospitalComponent implements OnInit, OnDestroy,AfterViewInit {
   SubscriptionList: Subscription[] = []; // for me
+  X_RayDropDown: IX_RayDownModel[] = [];
+  hospitalDropDown: IhospitalDownModel[] = [];
 
   X_Ray_HospitalList: IX_Ray_HospitalDto[] = []; // dto for data table
   cols: any[] = []; // colims in data table
   configInput: FieldConfig[] = []; // input add update
+  //x_RayService: any;
 
   constructor(
     private globalService: GlobalService<any>,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private X_RayService: X_RayService,
+    private hospitalService: hospitalService
   ) {}
+  ngAfterViewInit(): void {
+    this.SubscriptionList.push(
+      this.hospitalService.hospitalDropDown().subscribe(
+        (data) => {
+
+          if (data.success) {
+            if (data.resourceCount == 0) {
+              this.messageService.add({
+                severity: 'success',
+                summary: 'Success',
+                detail: 'No Data found',
+              });
+            } else {
+
+              // this.BloodDropDown = data.resource.reduce((acc: IBloodDropDown[], el:IBloodDropDown) => {
+              //   let obj = { id: el.id, name: el.name} as IBloodDropDown;
+              //   acc.push(obj);
+              //   return acc;
+              // }, []);
+
+              //this.DeptList = data.resource as UserDtoClass[];
+              this.hospitalDropDown = data.resource.reduce((acc: IhospitalDownModel[], el) => {
+                let obj = el as IhospitalDownModel;
+                acc.push(obj);
+                return acc;
+              }, []);
+              this.messageService.add({
+                severity: 'success',
+                summary: 'Success',
+                detail: data.message,
+              });
+              this.initConfigInput();
+            }
+          } else {
+            this.messageService.add({
+              severity: 'error',
+              summary: 'Error',
+              detail: data.message,
+            });
+          }
+        },
+        (error) => {
+          this.messageService.add({
+            severity: 'error',
+            summary: 'Error',
+            detail: error.message,
+          });
+        }
+      )
+    );
+  this.SubscriptionList.push(
+      this.X_RayService.X_RayDropDown().subscribe(
+        (data) => {
+
+          if (data.success) {
+            if (data.resourceCount == 0) {
+              this.messageService.add({
+                severity: 'success',
+                summary: 'Success',
+                detail: 'No Data found',
+              });
+            } else {
+
+              // this.BloodDropDown = data.resource.reduce((acc: IBloodDropDown[], el:IBloodDropDown) => {
+              //   let obj = { id: el.id, name: el.name} as IBloodDropDown;
+              //   acc.push(obj);
+              //   return acc;
+              // }, []);
+
+              //this.DeptList = data.resource as UserDtoClass[];
+              this.X_RayDropDown = data.resource.reduce((acc: IX_RayDownModel[], el) => {
+                let obj = el as IX_RayDownModel;
+                acc.push(obj);
+                return acc;
+              }, []);
+              this.messageService.add({
+                severity: 'success',
+                summary: 'Success',
+                detail: data.message,
+              });
+              this.initConfigInput();
+            }
+          } else {
+            this.messageService.add({
+              severity: 'error',
+              summary: 'Error',
+              detail: data.message,
+            });
+          }
+        },
+        (error) => {
+          this.messageService.add({
+            severity: 'error',
+            summary: 'Error',
+            detail: error.message,
+          });
+        }
+      )
+    );
+
+}
+  initConfigInput() {
+    throw new Error('Method not implemented.');
+  }
   ngOnInit() {
     this.configInput = [
       {
@@ -43,19 +155,23 @@ export class X_Ray_HospitalComponent implements OnInit, OnDestroy {
         NonVisible:true
       },
       {
-        type: 'input',
-        label: 'x_RayId',
+        type: 'select',
+        label: 'Admin.X_Ray id',
         name: 'x_RayId',
-        placeholder: 'Enter x_RayId',
-        validation: [Validators.required, Validators.minLength(4)],
+        options: this.X_RayDropDown.map(el => el.title),
+        value: this.X_RayDropDown.map(el => el.id),
+        placeholder: 'Admin.Enter x-Ray Id',
+         validation: [Validators.required],
 
       },
       {
-        type: 'input',
-        label: 'hospitalId',
+        type: 'select',
+        label: 'Admin.hospital id',
         name: 'hospitalId',
-        placeholder: 'Enter hospitalId',
-        validation: [Validators.required, Validators.minLength(4)],
+        options: this.hospitalDropDown.map(el => el.name),
+        value: this.hospitalDropDown.map(el => el.id),
+        placeholder: 'Admin.Enter x-hospital Id',
+        validation: [Validators.required],
 
       },
       // {
@@ -64,15 +180,15 @@ export class X_Ray_HospitalComponent implements OnInit, OnDestroy {
       //   name: 'hospitalCount',
       //   placeholder: 'Enter hospital Count',
       // },
-      {
-        type: 'select',
-        label: 'select ',
-        name: 'option',
-        options: ["jkkj","knl","kn","hbj"],
-        value:[1,2,3,4],
-        placeholder: 'Select an option',
-        validation: [Validators.required]
-      },
+      // {
+      //   type: 'select',
+      //   label: 'select ',
+      //   name: 'option',
+      //   options: ["jkkj","knl","kn","hbj"],
+      //   value:[1,2,3,4],
+      //   placeholder: 'Select an option',
+      //   validation: [Validators.required]
+      // },
     ];
     this.messageService.add({
       severity: 'success',

@@ -41,17 +41,17 @@ export class X_RayComponent implements OnInit, OnDestroy {
       },
       {
         type: 'input',
-        label: 'X_Ray title',
+        label: 'Admin.X_Ray title',
         name: 'title',
-        placeholder: 'Enter X_Ray title',
+        placeholder: 'Admin.Enter X_Ray title',
         validation: [Validators.required, Validators.minLength(4)],
 
       },
       {
         type: 'input',
-        label: 'X_Ray notes',
+        label: 'Admin.X_Ray notes',
         name: 'notes',
-        placeholder: 'Enter X_Ray notes',
+        placeholder: 'Admin.Enter X_Ray notes',
         validation: [Validators.required, Validators.minLength(4)],
 
       },
@@ -61,15 +61,15 @@ export class X_RayComponent implements OnInit, OnDestroy {
       //   name: 'hospitalCount',
       //   placeholder: 'Enter hospital Count',
       // },
-      {
-        type: 'select',
-        label: 'select ',
-        name: 'option',
-        options: ["jkkj","knl","kn","hbj"],
-        value:[1,2,3,4],
-        placeholder: 'Select an option',
-        validation: [Validators.required]
-      },
+      // {
+      //   type: 'select',
+      //   label: 'select ',
+      //   name: 'option',
+      //   options: ["jkkj","knl","kn","hbj"],
+      //   value:[1,2,3,4],
+      //   placeholder: 'Select an option',
+      //   validation: [Validators.required]
+      // },
     ];
     this.messageService.add({
       severity: 'success',

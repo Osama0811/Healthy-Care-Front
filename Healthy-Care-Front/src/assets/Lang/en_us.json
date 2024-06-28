@@ -6,7 +6,7 @@
         "Layout":
        {
            "Profile":"Profile",
-           "Settings":"Settings",
+           "Settings":"Log Out",
            "Lang":"Ar"
        },
          "Admin":
@@ -45,7 +45,8 @@
            "Hospital category name":"Hospital category name",
            "Hospital address title":"Hospital address title",
            "Hospital image":"Hospital image",
-           "History Id":"History",
+           "History":"History",
+           "History Id":"History id",
            "History title":"History title",
            "History description":"History description",
            "History patient name":"History patient name",
@@ -53,6 +54,10 @@
            "History doctor name":"History doctor name",
            "History department name":"History department name",
            "History date":"History date",
+           "title Ar":"title with arabic",
+           "title En":"title with english",
+           "description Ar":"description with arabic",
+           "description En":"description with english",
            "Appointment Id":"Appointment",
            "Appointment patient Name":"Appointment patient Name",
            "Appointment date":"Appointment date",
@@ -64,8 +69,10 @@
            "hospitalName":"hospitalName",
            "departmentName":"departmentName",
            "numberOfDoctors":"numberOfDoctors",
-           "numderOfBeds":"numderOfBeds",
-           "numberOfOccupiedBeds":"numberOfOccupiedBeds",
+           "numberOfBeds":"numberOfBeds",
+           "numberOfOccupiedBeds":"number Of Occupied Beds",
+           "Enter number Of Occupied Beds":"Enter number Of Occupied Beds",
+           "Enter number Of Beds":"Enter number Of Beds",
            "Name":"Name",
            "SpecialFlag":"SpecialFlag",
            "Description":"Description",
@@ -184,7 +191,7 @@
            "Enter Type":"Enter Type",
            "Users":"users",
            "Patient":"patient",
-           "BloodSetting":"Blood Setting", 
+           "BloodSetting":"Blood Setting",
            "BloodEquation":" Blood Equation",
            "BloodBank":"BloodBank ",
            "Address":"Address",
@@ -195,8 +202,30 @@
            "Book_Ambulances":"Book Ambulances",
            "Ambulances":"Ambulances",
            "Booking x-ray":"Booking x ray",
-           "X-Ray":"X Ray",
-           "Question History":"Question History"
+           "Question History":"Question History",
+           "X_Ray":"Lab",
+           "X_Ray_Department":"Lab department",
+           "X_Ray_Hospital":"Lab hospital",
+           "X_Ray notes":"Lab notes",
+           "X_Ray title":"Lab titles",
+           "Department id":"Department id",
+           "hospital id":"hospital id",
+           "X_Ray id":"X_Ray id",
+           "choose hospital":"choose hospital",
+           "Enter description in English":"Enter description in English",
+           "Enter description in Arabic":"Enter description in Arabic",
+           "Enter title in English":"Enter title in English",
+           "Enter  title in Arabic":"Enter  title in Arabic",
+           "longitude":"longitude",
+           "latitude":"latitude",
+           "Enter Book_Ambulances Name":"Enter Book Ambulances Name",
+           "Book_Ambulances name":"Book ambulances name",
+           "Enter X_Ray notes":"Enter X Ray notes",
+           "Enter X_Ray title":"Enter X Ray title",
+           "X-Ray":"Labs",
+
+           "SystemSetting":"System Setting"
+
 
 
 

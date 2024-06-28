@@ -28,7 +28,6 @@ import { AppointmentComponent } from './Component/Appointment/Appointment.compon
 import { HistoryComponent } from './Component/History/History.component';
 import { HospitalComponent } from './Component/Hospital/Hospital.component';
 import { CategoryComponent } from './Component/Category/Category.component';
-import { Book_AmbulancesComponent } from './Component/Book_Ambulances/Book_Ambulances.component';
 import { AmbulancesComponent } from './Component/Ambulances/Ambulances.component';
 import { authGuard } from '../Auth/Guards/auth-guard.guard';
 import { X_RayComponent } from './Component/X_Ray/X_Ray.component';

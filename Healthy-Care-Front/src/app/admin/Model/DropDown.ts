@@ -31,6 +31,14 @@ export interface IhospitalDownModel {
   id: string | undefined;
   name: string | undefined;
 }
+export interface X_RayDropDown {
+  id: string | undefined;
+  title: string | undefined;
+}
+export interface IX_RayDownModel {
+  id: string | undefined;
+  title: string | undefined;
+}
 export interface CategoryDropDown {
   id: string | undefined;
   name: string | undefined;

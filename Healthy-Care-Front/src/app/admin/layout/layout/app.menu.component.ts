@@ -169,9 +169,9 @@ export class AppMenuComponent implements OnInit {
   ]
 },
 {
-  label: 'X_Ray',
+  label: 'Admin.X_Ray',
   items: [
-      { label: 'X_Ray', icon: 'pi pi-exclamation-triangle', routerLink: ['/admin/X_Ray'] }
+      { label: 'Admin.X_Ray', icon: 'pi pi-exclamation-triangle', routerLink: ['/admin/X_Ray'] }
 
       //{ label: 'Invalid State', icon: 'pi pi-fw pi-exclamation-circle', routerLink: ['/uikit/invalidstate'] },
 
@@ -180,9 +180,9 @@ export class AppMenuComponent implements OnInit {
   ]
 },
 {
-  label: 'X_Ray_Department',
+  label: 'Admin.X_Ray_Department',
   items: [
-      { label: 'X_Ray_Department', icon: 'pi pi-bars', routerLink: ['/admin/X_Ray_Department'] }
+      { label: 'Admin.X_Ray_Department', icon: 'pi pi-bars', routerLink: ['/admin/X_Ray_Department'] }
 
       //{ label: 'Invalid State', icon: 'pi pi-fw pi-exclamation-circle', routerLink: ['/uikit/invalidstate'] },
 
@@ -191,9 +191,9 @@ export class AppMenuComponent implements OnInit {
   ]
 },
 {
-  label: 'X_Ray_Hospital',
+  label: 'Admin.X_Ray_Hospital',
   items: [
-      { label: 'X_Ray_Hospital', icon: 'pi pi-home', routerLink: ['/admin/X_Ray_Hospital'] }
+      { label: 'Admin.X_Ray_Hospital', icon: 'pi pi-home', routerLink: ['/admin/X_Ray_Hospital'] }
 
       //{ label: 'Invalid State', icon: 'pi pi-fw pi-exclamation-circle', routerLink: ['/uikit/invalidstate'] },
 

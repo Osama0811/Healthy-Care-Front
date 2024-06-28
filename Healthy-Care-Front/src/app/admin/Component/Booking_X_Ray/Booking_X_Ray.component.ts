@@ -1,8 +1,8 @@
 import { hospitalService } from './../../Services/hospital.service';
-import { BookingService } from './../../Services/Booking.service';
+//import { BookingService } from './../../Services/Booking.service';
 import { EnumService } from '../../Services/enum.service';
 import { AfterViewInit, Component, OnDestroy, OnInit, Type } from '@angular/core';
-import { IhospitalDownModel, hospitalDropDown, Booking_X_RayDropDown, IBooking_X_RayDownModel } from './../../Model/DropDown';
+import { IhospitalDownModel, hospitalDropDown, X_RayDropDown, IX_RayDownModel } from './../../Model/DropDown';
 import {
   Controller,
   GlobalService,
@@ -11,6 +11,7 @@ import { MessageService } from 'primeng/api';
 import { Subscription } from 'rxjs';
 import { Validators } from '@angular/forms';
 import { FieldConfig } from 'src/app/Shared/dynamic-form/models/field-config.interface';
+import { X_RayService } from '../../Services/x_Ray.service';
 export interface IBoooking_X_RayDto {//get all data table
   id: string | undefined;
   x_RayId: string | undefined;
@@ -37,17 +38,17 @@ export interface IBoooking_X_RayDto {//get all data table
 })
 export class Booking_X_RayComponent implements OnInit, OnDestroy ,AfterViewInit {
   SubscriptionList: Subscription[] = []; // for me
-
-  Booking_X_RayList: IBoooking_X_RayDto[] = []; // dto for data table
+  Booking_X_RayList: IBoooking_X_RayDto[] = []; // dto for data table: IDepartmentDto[] = []; // dto for data table
+  X_RayDropDown: IX_RayDownModel[] = []; // dto for data table
   hospitalDropDown: IhospitalDownModel[] = [];
   cols: any[] = []; // colims in data table
   configInput: FieldConfig[] = []; // input add update
-  Booking_X_RayDropDown: any;
+
 
   constructor(
     private globalService: GlobalService<any>,
     private messageService: MessageService,
-    private BookingService:BookingService,
+    private x_RayService:X_RayService,
     private hospitalService:hospitalService
   ) {}
   ngAfterViewInit(): void {
@@ -100,7 +101,55 @@ export class Booking_X_RayComponent implements OnInit, OnDestroy ,AfterViewInit 
         }
       )
     );
+  this.SubscriptionList.push(
+      this.x_RayService.X_RayDropDown().subscribe(
+        (data) => {
 
+          if (data.success) {
+            if (data.resourceCount == 0) {
+              this.messageService.add({
+                severity: 'success',
+                summary: 'Success',
+                detail: 'No Data found',
+              });
+            } else {
+
+              // this.BloodDropDown = data.resource.reduce((acc: IBloodDropDown[], el:IBloodDropDown) => {
+              //   let obj = { id: el.id, name: el.name} as IBloodDropDown;
+              //   acc.push(obj);
+              //   return acc;
+              // }, []);
+
+              //this.DeptList = data.resource as UserDtoClass[];
+              this.X_RayDropDown = data.resource.reduce((acc: IX_RayDownModel[], el) => {
+                let obj = el as IX_RayDownModel;
+                acc.push(obj);
+                return acc;
+              }, []);
+              this.messageService.add({
+                severity: 'success',
+                summary: 'Success',
+                detail: data.message,
+              });
+              this.initConfigInput();
+            }
+          } else {
+            this.messageService.add({
+              severity: 'error',
+              summary: 'Error',
+              detail: data.message,
+            });
+          }
+        },
+        (error) => {
+          this.messageService.add({
+            severity: 'error',
+            summary: 'Error',
+            detail: error.message,
+          });
+        }
+      )
+    );
 
   }
   initConfigInput(): void {
@@ -123,22 +172,22 @@ export class Booking_X_RayComponent implements OnInit, OnDestroy ,AfterViewInit 
       // },
       {
         type: 'select',
-        label: 'hospital Id',
+        label: 'Admin.hospital id',
         name: 'hospitalId',
         options: this.hospitalDropDown.map(el => el.name),
         value: this.hospitalDropDown.map(el => el.id),
-        placeholder: 'Enter hospital Id',
-        // validation: [Validators.required, Validators.minLength(4)],
+        placeholder: 'Admin.Enter x-hospital Id',
+        validation: [Validators.required],
 
       },
       {
         type: 'select',
-        label: '"x_RayId',
-        name: '"x_RayId',
-        options: this.Booking_X_RayDropDown.map(el => el.x_RayName),
-        value: this.Booking_X_RayDropDown.map(el => el.x_RayId),
-        placeholder: 'Enter x-Ray Id',
-        // validation: [Validators.required, Validators.minLength(4)],
+        label: 'Admin.X_Ray id',
+        name: 'x_RayId',
+        options: this.X_RayDropDown.map(el => el.title),
+        value: this.X_RayDropDown.map(el => el.id),
+        placeholder: 'Admin.Enter x-Ray Id',
+         validation: [Validators.required],
 
       },
 
