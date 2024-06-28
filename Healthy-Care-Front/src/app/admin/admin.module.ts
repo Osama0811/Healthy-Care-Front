@@ -36,6 +36,9 @@ import { HistoryComponent } from './Component/History/History.component';
 import { HospitalComponent } from './Component/Hospital/Hospital.component';
 import { CountryComponent } from './Component/country/country.component';
 import { AmbulancesComponent } from './Component/Ambulances/Ambulances.component';
+import { X_RayComponent } from './Component/X_Ray/X_Ray.component';
+import { X_Ray_DepartmentComponent } from './Component/X_Ray_Department/X_Ray_Department.component';
+import { X_Ray_HospitalComponent } from './Component/X_Ray_Hospital/X_Ray_Hospital.component';
 
 @NgModule({
 
@@ -54,31 +57,8 @@ import { AmbulancesComponent } from './Component/Ambulances/Ambulances.component
     }),
   ],
   providers: [MessageService,GlobalService],
-  declarations: [BloodComponent
-    ,QuestionHistoryComponent
-    ,BloodEquationComponent,
-    Hospital_CategoryComponent,
-    DepartmentComponent,
-    Department_HospitalComponent,
-    PatientComponent,
-    AddressComponent,
-    BloodBankComponent,
-    DoctorComponent,
-    ToolsComponent,
-    Tools_DepartmentComponent,
-    Tools_HospitalComponent,
-    Doctor_DepartmentComponent,
-    Doctor_HospitalComponent,
-    AppointmentComponent,
-    HistoryComponent,
-    HospitalComponent,
-    UserComponent,
-    CategoryComponent,
-     CountryComponent
-     ,Booking_X_RayComponent
-     ,Book_AmbulancesComponent
-     ,AmbulancesComponent
-     ,Book_AmbulancesComponent]
+  declarations: [BloodComponent,QuestionHistoryComponent,BloodEquationComponent,Hospital_CategoryComponent,DepartmentComponent,Department_HospitalComponent,PatientComponent,AddressComponent,BloodBankComponent,DoctorComponent,ToolsComponent,Tools_DepartmentComponent,Tools_HospitalComponent,Doctor_DepartmentComponent,Doctor_HospitalComponent,AppointmentComponent,HistoryComponent,HospitalComponent,UserComponent,CategoryComponent,AmbulancesComponent,Book_AmbulancesComponent]
+
 })
 export class AdminModule { }
 export function TranslateLoaderFactory(langService: LangService): CustomTranslateLoader {

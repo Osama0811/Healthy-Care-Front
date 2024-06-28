@@ -168,6 +168,39 @@ export class AppMenuComponent implements OnInit {
 
   ]
 },
+{
+  label: 'X_Ray',
+  items: [
+      { label: 'X_Ray', icon: 'pi pi-exclamation-triangle', routerLink: ['/admin/X_Ray'] }
+
+      //{ label: 'Invalid State', icon: 'pi pi-fw pi-exclamation-circle', routerLink: ['/uikit/invalidstate'] },
+
+      //{ label: 'Menu', icon: 'pi pi-fw pi-bars', routerLink: ['/uikit/menu'], routerLinkActiveOptions: { paths: 'subset', queryParams: 'ignored', matrixParams: 'ignored', fragment: 'ignored' } },
+
+  ]
+},
+{
+  label: 'X_Ray_Department',
+  items: [
+      { label: 'X_Ray_Department', icon: 'pi pi-bars', routerLink: ['/admin/X_Ray_Department'] }
+
+      //{ label: 'Invalid State', icon: 'pi pi-fw pi-exclamation-circle', routerLink: ['/uikit/invalidstate'] },
+
+      //{ label: 'Menu', icon: 'pi pi-fw pi-bars', routerLink: ['/uikit/menu'], routerLinkActiveOptions: { paths: 'subset', queryParams: 'ignored', matrixParams: 'ignored', fragment: 'ignored' } },
+
+  ]
+},
+{
+  label: 'X_Ray_Hospital',
+  items: [
+      { label: 'X_Ray_Hospital', icon: 'pi pi-home', routerLink: ['/admin/X_Ray_Hospital'] }
+
+      //{ label: 'Invalid State', icon: 'pi pi-fw pi-exclamation-circle', routerLink: ['/uikit/invalidstate'] },
+
+      //{ label: 'Menu', icon: 'pi pi-fw pi-bars', routerLink: ['/uikit/menu'], routerLinkActiveOptions: { paths: 'subset', queryParams: 'ignored', matrixParams: 'ignored', fragment: 'ignored' } },
+
+  ]
+},
 
 
 
