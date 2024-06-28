@@ -15,6 +15,7 @@ import { LangService } from 'src/app/lang/services/lang.service';
   imports: [
     CommonModule,
     ReactiveFormsModule,
+    
     InputTextModule,
     TranslateModule.forRoot({
       loader: {
