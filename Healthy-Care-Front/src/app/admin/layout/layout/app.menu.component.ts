@@ -37,7 +37,7 @@ export class AppMenuComponent implements OnInit {
                 label: 'Admin.BloodSetting',
                 icon: 'pi pi-spin pi-spinner',
                 items: [
-                    { label: 'Admin.Blood', icon: 'pi pi-circle-fill', routerLink: ['/admin/Blood'] },
+                    { label: 'Admin.blood', icon: 'pi pi-circle-fill', routerLink: ['/admin/Blood'] },
                     { label: 'Admin.BloodEquation', icon: 'pi pi-circle-fill', routerLink: ['/admin/BloodEquation'] },
                     { label: 'Admin.BloodBank', icon: 'pi pi-circle-fill', routerLink: ['/admin/BloodBank'] },
                 ]
