@@ -13,9 +13,13 @@ import { CommonModule } from '@angular/common';
 import { ToastModule } from 'primeng/toast';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DynamicFormModule } from './Shared/dynamic-form/dynamic-form.module';
+import { UserHistoryComponent } from './user-history/user-history.component';
+
+import { AccordionModule } from 'primeng/accordion';
 @NgModule({
   declarations: [
     AppComponent,
+    UserHistoryComponent,
 
   ],
   imports: [
@@ -26,6 +30,8 @@ import { DynamicFormModule } from './Shared/dynamic-form/dynamic-form.module';
     DynamicFormModule,
     HttpClientModule,
     ToastModule,
+    AccordionModule, 
+    CommonModule,
     BrowserAnimationsModule,
     TranslateModule.forRoot({
       loader: {

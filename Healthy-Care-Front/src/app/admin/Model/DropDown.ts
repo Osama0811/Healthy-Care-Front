@@ -101,6 +101,38 @@ export interface IPatientDownModel {
   id: string | undefined;
   userName: string | undefined;
 }
+export interface PatientHistoryInfo {
+ 
+  userName: string | undefined;
+  age: number | undefined;
+  phone: string | undefined;
+  alterPhone: string | undefined;
+  imagePath: string | undefined;
+}
+export interface IPatientHistoryInfo {
+  userName: string | undefined;
+  age: number | undefined;
+  phone: string | undefined;
+  alterPhone: string | undefined;
+  imagePath: string | undefined;
+}
+export interface HistoryInfo {
+ 
+  title: string | undefined;
+  description: string | undefined;
+  hospitalName: string | undefined;
+  doctorName: string | undefined;
+  departmentName: string | undefined;
+  date: string | undefined;
+}
+export interface IHistoryInfo {
+  title: string | undefined;
+  description: string | undefined;
+  hospitalName: string | undefined;
+  doctorName: string | undefined;
+  departmentName: string | undefined;
+  date: string | undefined;
+}
 export interface Booking_X_RayDropDown {
   x_RayId: string | undefined;
   x_RayName: string | undefined;

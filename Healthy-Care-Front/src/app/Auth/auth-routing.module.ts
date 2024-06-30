@@ -5,6 +5,7 @@ import { PageNotFoundComponent } from '../exceptions/page-not-found/page-not-fou
 
 const routes: Routes = [
   { path: '', redirectTo: '/app', pathMatch: 'full' },
+  {path:'Login/:PatientId',component:LoginComponent},
   {path:'Login',component:LoginComponent},
   {path: '**', component: PageNotFoundComponent }
 ];

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+
 import {
   FormBuilder,
   FormControl,
@@ -40,8 +41,15 @@ export class LoginComponent {
   get f() {
     return this.loginForm.controls;
   }
+  userId: string = '';
+
 
   onSubmit() {
+     this.userId = this.route.snapshot.paramMap.get('PatientId') || '';
+
+     this.route.paramMap.subscribe(params => {
+       this.userId = params.get('PatientId') || '';
+     });
     this.submitted = true;
 
     if (this.loginForm.invalid) {
@@ -57,7 +65,11 @@ export class LoginComponent {
           });
           if(data.resource.roleId==1){
           localStorage.setItem("Token",data.resource.token)
+          if(this.userId==''){
           this.router.navigateByUrl('admin/User');
+          }else{
+            this.router.navigateByUrl('UserHistory/'+this.userId);
+          }
           }
          }
         else {
