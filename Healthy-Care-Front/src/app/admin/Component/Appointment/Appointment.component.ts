@@ -46,9 +46,9 @@ export class AppointmentComponent implements OnInit, OnDestroy {
     this.configInput = [
       {
         type: 'input',
-        label: 'Id',
+        label: 'Admin.Id',
         name: 'id',
-        placeholder: 'Id',
+        placeholder: 'Admin.Id',
         NonVisible:true
       },
       {

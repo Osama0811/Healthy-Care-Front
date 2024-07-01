@@ -101,9 +101,9 @@ export class BloodEquationComponent implements OnInit, OnDestroy,AfterViewInit  
     this.configInput = [
         {
             type: 'input',
-            label: 'Id',
+            label: 'Admin.Id',
             name: 'id',
-            placeholder: 'Id',
+            placeholder: 'Admin.Id',
             NonVisible: true
         },
         {
@@ -112,7 +112,7 @@ export class BloodEquationComponent implements OnInit, OnDestroy,AfterViewInit  
             name: 'bloodFK1',
             options: this.BloodDropDown.map(el => el.name),
             value: this.BloodDropDown.map(el => el.id),
-            placeholder: 'Admin.Enter  bloodFK1',
+            placeholder: 'Admin.Enter bloodFK1',
             validation: [Validators.required],
         },
         {

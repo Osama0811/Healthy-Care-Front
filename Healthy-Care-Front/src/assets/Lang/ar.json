@@ -224,7 +224,8 @@
             "Enter X_Ray notes":"ادخل ملاحظات الاشعة",
             "Enter X_Ray title":"ادخل عنوان الاشعة",
             "X-Ray":"المعامل",
-            "SystemSetting":"اعدادات النظام"
+            "SystemSetting":"اعدادات النظام",
+            "Enter x-Ray Id":"ادخل الرقم التعريفى للأشعة"
 
 
        }
