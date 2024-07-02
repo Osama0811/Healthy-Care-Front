@@ -65,6 +65,7 @@ export class LoginComponent {
           });
           if(data.resource.roleId==1){
           localStorage.setItem("Token",data.resource.token)
+          localStorage.setItem("UserId",data.resource.userId)
           if(this.userId==''){
           this.router.navigateByUrl('admin/User');
           }else{

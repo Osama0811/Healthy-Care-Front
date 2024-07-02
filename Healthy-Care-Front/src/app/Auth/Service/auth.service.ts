@@ -28,7 +28,7 @@ export class AuthService {
 
 
   login(Input: ILoginRequest):Observable<GeneralResponse<LoginResponse>> {
-   debugger;
+
       return this.http.post<GeneralResponse<LoginResponse>>(`${this.baseUrl}/Auth/Login`,JSON.stringify(Input) ,this.httpOption);
   }
 

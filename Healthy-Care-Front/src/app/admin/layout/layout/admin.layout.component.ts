@@ -1,4 +1,4 @@
-import { Component, OnDestroy, Renderer2, ViewChild } from '@angular/core';
+import { Component, OnDestroy, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { filter, Subscription } from 'rxjs';
 import { LayoutService } from "./service/admin.layout.service";
@@ -6,24 +6,29 @@ import { AppSidebarComponent } from "./app.sidebar.component";
 import { AppTopBarComponent } from './app.topbar.component';
 import { AppLayoutModule } from './admin.layout.module'; // Adjust the path
 import { TranslateService } from '@ngx-translate/core';
+import { SignalRService } from '../../Services/SignalR.Service ';
+import { MessageService } from 'primeng/api';
 
 @Component({
     selector: 'app-layout',
     templateUrl: './admin.layout.component.html'
 })
-export class AppLayoutComponent implements OnDestroy {
+export class AppLayoutComponent implements OnDestroy , OnInit {
 
     overlayMenuOpenSubscription: Subscription;
 
     menuOutsideClickListener: any;
+      userId!: string | null ; 
 
+      visible: boolean = false;
     profileMenuOutsideClickListener: any;
 
     @ViewChild(AppSidebarComponent) appSidebar!: AppSidebarComponent;
 
     @ViewChild(AppTopBarComponent) appTopbar!: AppTopBarComponent;
 
-    constructor(public layoutService: LayoutService, public renderer: Renderer2, public router: Router,private readonly translateService: TranslateService) {
+    constructor(public layoutService: LayoutService, public renderer: Renderer2, public router: Router,private readonly translateService: TranslateService
+        ,private signalRService: SignalRService,private messageService:MessageService) {
       translateService.use(localStorage.getItem("Lang")??"en_us");
         this.overlayMenuOpenSubscription = this.layoutService.overlayOpen$.subscribe(() => {
             if (!this.menuOutsideClickListener) {
@@ -113,7 +118,41 @@ export class AppLayoutComponent implements OnDestroy {
         }
     }
 
+    ngOnInit() {
+        
+        this.userId=localStorage.getItem('UserId');
+        debugger
+        if (this.userId) {
+        this.signalRService.startConnection(this.userId);
+    
+        // this.signalRService.get('SendMessageToUser')
+        //   .then(data => {
+        //     this.messageService.add({
+        //         severity: 'Warn',
+        //         summary: 'Warning',
+        //         detail: data,
+        //       });
+        //     console.log('Data received from hub:', data);
+        //   })
+        //   .catch(error => {
+        //     console.error('Error getting data from hub:', error);
+        //   });
+    
+        this.signalRService.on('SendMessageToUser', (data) => {
+       
+              this.messageService.add({ key: 'confirm', sticky: true, severity: 'custom', summary: data });
+          console.log('Real-time message received:', data);
+        });
+    } else {
+        console.error('User ID is required to start SignalR connection.');
+      }
+      }
+      onCloseng() {
+        this.visible = false;
+    }
     ngOnDestroy() {
+            this.signalRService.stopConnection();
+          
         if (this.overlayMenuOpenSubscription) {
             this.overlayMenuOpenSubscription.unsubscribe();
         }

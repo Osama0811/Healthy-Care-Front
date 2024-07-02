@@ -24,6 +24,8 @@ import { CommonModule } from '@angular/common';
 import { AdminModule } from '../../admin.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { GlobalService } from '../../Services/global-service.service';
+import { MessageService } from 'primeng/api';
+import { Toast, ToastModule } from 'primeng/toast';
 @NgModule({
     declarations: [
         AppMenuitemComponent,
@@ -46,7 +48,7 @@ import { GlobalService } from '../../Services/global-service.service';
       RippleModule,
       RouterModule,
       AppConfigModule,
-
+      ToastModule,
         TranslateModule.forRoot({
           loader: {
             provide: TranslateLoader,
@@ -56,6 +58,6 @@ import { GlobalService } from '../../Services/global-service.service';
         })
     ],
     exports: [AppLayoutComponent],
-    providers:[GlobalService]
+    providers:[GlobalService,MessageService]
 })
 export class AppLayoutModule { }

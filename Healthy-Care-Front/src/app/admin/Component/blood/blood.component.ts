@@ -59,8 +59,8 @@ export class BloodComponent implements OnInit, OnDestroy {
           if (data.success) {
             if (data.resourceCount == 0) {
               this.messageService.add({
-                severity: 'success',
-                summary: 'Success',
+                severity: 'Warn',
+                summary: 'Warn',
                 detail: 'No Data found',
               });
             } else {
@@ -73,8 +73,8 @@ export class BloodComponent implements OnInit, OnDestroy {
               //this.DeptList = data.resource as UserDtoClass[];
               console.log('done');
               this.messageService.add({
-                severity: 'success',
-                summary: 'Success',
+                severity: 'Warn',
+                summary: 'Warn',
                 detail: data.message,
               });
             }

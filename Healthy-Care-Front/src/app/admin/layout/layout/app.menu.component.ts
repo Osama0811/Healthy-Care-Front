@@ -8,13 +8,14 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class AppMenuComponent implements OnInit {
 
-    model: any[] = [];
+  modellist: any[] = [];
 
     constructor(public layoutService: LayoutService,private readonly translateService: TranslateService){
       translateService.use(localStorage.getItem("Lang")??"en_us"); }
 
     ngOnInit() {
-        this.model = [
+      debugger
+        this.modellist = [
           {
             label: 'Admin.SystemSetting',
             icon: 'pi pi-spin pi-spinner',
