@@ -10,7 +10,7 @@ import { Subscription } from 'rxjs';
 import { Validators } from '@angular/forms';
 import { FieldConfig } from 'src/app/Shared/dynamic-form/models/field-config.interface';
 import { IX_RayDownModel } from '../../Model/DropDown';
-import { X_RayService } from '../../Services/x_Ray.service';
+import { X_RayService } from '../../Services/X_Ray.service';
 export interface IX_Ray_DepartmentDto {//get all data table
   id: string | undefined;
   x_RayId: string | undefined;

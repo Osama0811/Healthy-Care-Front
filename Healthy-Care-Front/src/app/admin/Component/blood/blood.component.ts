@@ -41,26 +41,11 @@ export class BloodComponent implements OnInit, OnDestroy {
       {
         type: 'input',
         label: 'Blood name',
-        name: 'name',
+        name: 'title',
         placeholder: 'Enter Blood Name',
         validation: [Validators.required, Validators.minLength(4)],
 
-      },
-      {
-        type: 'input',
-        label: 'hospital Count',
-        name: 'hospitalCount',
-        placeholder: 'Enter hospital Count',
-      },
-      {
-        type: 'select',
-        label: 'select ',
-        name: 'option',
-        options: ["jkkj","knl","kn","hbj"],
-        value:[1,2,3,4],
-        placeholder: 'Select an option',
-        validation: [Validators.required]
-      },
+      }
     ];
     this.messageService.add({
       severity: 'success',
@@ -74,8 +59,8 @@ export class BloodComponent implements OnInit, OnDestroy {
           if (data.success) {
             if (data.resourceCount == 0) {
               this.messageService.add({
-                severity: 'success',
-                summary: 'Success',
+                severity: 'Warn',
+                summary: 'Warn',
                 detail: 'No Data found',
               });
             } else {
@@ -88,8 +73,8 @@ export class BloodComponent implements OnInit, OnDestroy {
               //this.DeptList = data.resource as UserDtoClass[];
               console.log('done');
               this.messageService.add({
-                severity: 'success',
-                summary: 'Success',
+                severity: 'Warn',
+                summary: 'Warn',
                 detail: data.message,
               });
             }

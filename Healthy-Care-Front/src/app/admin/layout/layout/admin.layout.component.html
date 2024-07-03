@@ -1,4 +1,22 @@
-
+<p-toast 
+position="top-center" 
+key="confirm" 
+(onClose)="onCloseng()" 
+[baseZIndex]="5000">
+    <ng-template let-message pTemplate="headless" let-closeFn="closeFn">
+        <section class="flex p-3 gap-3 w-full bg-black-alpha-90 shadow-2" style="border-radius: 10px">
+            <i class="pi pi-car text-primary-500 text-2xl"></i>
+            <div class="flex flex-column gap-3 w-full">
+                
+                <p class="m-0 text-base text-700">
+                    {{ message.summary }}
+                </p>
+              
+                  
+            </div>
+        </section>
+    </ng-template>
+</p-toast>
 <div class="layout-wrapper" [ngClass]="containerClass">
   <app-topbar></app-topbar>
   <div class="layout-sidebar">

@@ -53,9 +53,9 @@ const routes: Routes = [
         { path: 'Doctor_Department', component: Doctor_DepartmentComponent , canActivate: [authGuard]},
         { path: 'Doctor_Hospital', component: Doctor_HospitalComponent , canActivate: [authGuard]},
         { path: 'Book_Ambulances', component: Book_AmbulancesComponent , canActivate: [authGuard]},
-        { path: 'X_Ray', component: X_RayComponent },
-        { path: 'X_Ray_Department', component: X_Ray_DepartmentComponent },
-        { path: 'X_Ray_Hospital', component: X_Ray_HospitalComponent },
+        { path: 'X_Ray', component: X_RayComponent, canActivate: [authGuard] },
+        { path: 'X_Ray_Department', component: X_Ray_DepartmentComponent , canActivate: [authGuard]},
+        { path: 'X_Ray_Hospital', component: X_Ray_HospitalComponent, canActivate: [authGuard] },
 
 
 

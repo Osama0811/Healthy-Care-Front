@@ -1,8 +1,9 @@
 import { hospitalService } from './../../Services/hospital.service';
-//import { BookingService } from './../../Services/Booking.service';
-import { EnumService } from '../../Services/enum.service';
 import { AfterViewInit, Component, OnDestroy, OnInit, Type } from '@angular/core';
 import { IhospitalDownModel, hospitalDropDown, X_RayDropDown, IX_RayDownModel } from './../../Model/DropDown';
+
+import { X_RayService } from '../../Services/X_Ray.service';
+
 import {
   Controller,
   GlobalService,
@@ -11,7 +12,7 @@ import { MessageService } from 'primeng/api';
 import { Subscription } from 'rxjs';
 import { Validators } from '@angular/forms';
 import { FieldConfig } from 'src/app/Shared/dynamic-form/models/field-config.interface';
-import { X_RayService } from '../../Services/x_Ray.service';
+
 export interface IBoooking_X_RayDto {//get all data table
   id: string | undefined;
   x_RayId: string | undefined;

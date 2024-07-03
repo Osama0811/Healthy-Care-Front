@@ -8,13 +8,14 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class AppMenuComponent implements OnInit {
 
-    model: any[] = [];
+  modellist: any[] = [];
 
     constructor(public layoutService: LayoutService,private readonly translateService: TranslateService){
       translateService.use(localStorage.getItem("Lang")??"en_us"); }
 
     ngOnInit() {
-        this.model = [
+      debugger
+        this.modellist = [
           {
             label: 'Admin.SystemSetting',
             icon: 'pi pi-spin pi-spinner',
@@ -37,6 +38,7 @@ export class AppMenuComponent implements OnInit {
                 label: 'Admin.BloodSetting',
                 icon: 'pi pi-spin pi-spinner',
                 items: [
+                    { label: 'Admin.blood', icon: 'pi pi-circle-fill', routerLink: ['/admin/Blood'] },
                     { label: 'Admin.BloodEquation', icon: 'pi pi-circle-fill', routerLink: ['/admin/BloodEquation'] },
                     { label: 'Admin.BloodBank', icon: 'pi pi-circle-fill', routerLink: ['/admin/BloodBank'] },
                 ]

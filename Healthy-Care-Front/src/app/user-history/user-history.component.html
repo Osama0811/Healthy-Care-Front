@@ -1,0 +1,46 @@
+<div>
+    <div class="layout-topbar" style="position: relative;">
+    <a class="layout-topbar-logo" >
+   
+          <img src="assets/layout/images/logo-dark.png" alt="logo">
+         <span>Health Care</span>
+     </a>
+   
+   </div>
+<div style="margin: 20px;" class="card">
+    <p>Name:{{userInfo?.userName}}</p> 
+    <p>Age:{{userInfo?.age}}</p> 
+    <p>Phone:{{userInfo?.phone}}</p> 
+    <p>family phone:{{userInfo?.alterPhone}}</p> 
+</div >
+   <div class="card" *ngIf="isAuthenticated">
+    <p-accordion [activeIndex]="0">
+        <p-accordionTab [header]="tab.title" *ngFor="let tab of tabs">
+          
+            <p class="m-0" *ngIf="tab.hospitalName!=null">
+               Hospital : {{ tab.hospitalName }}
+            </p>
+            <p class="m-0" *ngIf="tab.doctorName!=null">
+                doctor : {{ tab.doctorName }}
+             </p>
+             <p class="m-0" *ngIf="tab.departmentName!=null">
+                departmentName : {{ tab.departmentName }}
+             </p>
+             <p class="m-0" *ngIf="tab.date!=null">
+                Date : {{ tab.date }}
+             </p>
+            <p class="m-0">
+                {{ tab.description }}
+            </p>
+        </p-accordionTab>
+    </p-accordion>
+</div>
+<div *ngIf="!isAuthenticated" style="    display: flex;
+justify-content: center;">
+<button class="btn btn-primary btn-ghost" (click)="Login()" >
+    <span>See More Details by login</span>
+</button>
+</div>  
+</div>
+   
+   

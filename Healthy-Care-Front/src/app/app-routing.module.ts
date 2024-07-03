@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { PageNotFoundComponent } from './exceptions/page-not-found/page-not-found.component';
 import { AppComponent } from './app.component';
 import { CommonModule } from '@angular/common';
+import { UserHistoryComponent } from './user-history/user-history.component';
 
 const routes: Routes = [
    { path: '', redirectTo: '/Authentication/Login', pathMatch: 'full' },
@@ -25,6 +26,8 @@ const routes: Routes = [
     //canLoad: [adminGuard]
   },
   {path: 'App', component: AppComponent },
+  {path: 'UserHistory/:PatientId', component: UserHistoryComponent },
+  {path: 'UserHistory', component: UserHistoryComponent },
   {path: '**', component: PageNotFoundComponent }
 ];
 

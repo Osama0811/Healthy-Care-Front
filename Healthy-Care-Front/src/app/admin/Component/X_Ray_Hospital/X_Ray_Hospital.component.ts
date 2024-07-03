@@ -1,6 +1,6 @@
 import { hospitalService } from './../../Services/hospital.service';
-import { X_RayService } from '../../Services/x_Ray.service';
-import { X_RayDropDown,IX_RayDownModel, IhospitalDownModel, hospitalDropDown } from './../../Model/DropDown';
+import { X_RayService } from '../../Services/X_Ray.service';
+import { IX_RayDownModel, IhospitalDownModel } from './../../Model/DropDown';
 import { AfterViewInit, Component, OnDestroy, OnInit, Type } from '@angular/core';
 import {
   Controller,
