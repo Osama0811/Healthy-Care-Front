@@ -91,13 +91,7 @@ export class AmbulancesComponent implements OnInit, OnDestroy {
         (data) => {
 
           if (data.success) {
-            if (data.resourceCount == 0) {
-              this.messageService.add({
-                severity: 'success',
-                summary: 'Success',
-                detail: 'No Data found',
-              });
-            } else {
+           
 
               this.AmbulancesList = data.resource.reduce((acc: IAmbulancesDto[], el) => {
                 let obj = { id: el.id, latitude: el.latitude, longitude: el.longitude, phone: el.phone, status: el.status} as IAmbulancesDto;
@@ -111,7 +105,7 @@ export class AmbulancesComponent implements OnInit, OnDestroy {
                 summary: 'Success',
                 detail: data.message,
               });
-            }
+
           } else {
             this.messageService.add({
               severity: 'error',

@@ -39,6 +39,7 @@ import { AmbulancesComponent } from './Component/Ambulances/Ambulances.component
 import { X_RayComponent } from './Component/X_Ray/X_Ray.component';
 import { X_Ray_DepartmentComponent } from './Component/X_Ray_Department/X_Ray_Department.component';
 import { X_Ray_HospitalComponent } from './Component/X_Ray_Hospital/X_Ray_Hospital.component';
+import { Admin_HospitalComponent } from './Component/Admin_Hospital/Admin_Hospital.component';
 
 @NgModule({
 
@@ -70,7 +71,8 @@ import { X_Ray_HospitalComponent } from './Component/X_Ray_Hospital/X_Ray_Hospit
     X_RayComponent,
     X_Ray_DepartmentComponent,
     X_Ray_HospitalComponent,
-    Booking_X_RayComponent]
+    Booking_X_RayComponent,
+    Admin_HospitalComponent]
 
 })
 export class AdminModule { }

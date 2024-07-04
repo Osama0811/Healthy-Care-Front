@@ -37,8 +37,7 @@ export class CrudComponent<T extends WithId> implements OnInit , AfterViewInit {
 
 
     Item: object={} ;
-    AddDialog: boolean = false;
-    UpdateDialog: boolean = false;
+    isDialogVisible: boolean = false;
 
     deleteItemDialog: boolean = false;
 
@@ -106,7 +105,7 @@ this.Item=  this.ItemsList;
 console.log(this.form.form.value);
         this.Item = {} as T;
         this.submitted = false;
-        this.AddDialog = true;
+        this.isDialogVisible = true;
     }
 
     deleteSelectedItems() {
@@ -116,13 +115,11 @@ console.log(this.form.form.value);
     editItem(id: string) {
       this.globalService.GetById<T>(id).subscribe((data) => {
         if(data.success){
-          this.messageService.add({
-            severity: 'success',
-            summary: 'Success',
-            detail: data.message,
-          });
+
 
         this.selectedItem  = data.resource ;
+        console.log(data.resource);
+        console.log(this.form.form);
         this.form.form.patchValue(this.selectedItem);
         }else{
           this.messageService.add({
@@ -146,7 +143,7 @@ console.log(this.form.form.value);
       }
       );
 
-        this.UpdateDialog = true;
+        this.isDialogVisible = true;
     }
 
     deleteItem(Item: T) {
@@ -237,13 +234,7 @@ console.log(this.form.form.value);
               (data) => {
 
                 if (data.success) {
-                  if (data.resourceCount == 0) {
-                    this.messageService.add({
-                      severity: 'success',
-                      summary: 'Success',
-                      detail: 'No Data found',
-                    });
-                  } else {
+
                     this.ItemsList = data.resource.reduce((acc: T[], el) => {
                       let obj = el as T;
                       acc.push(obj);
@@ -256,7 +247,7 @@ console.log(this.form.form.value);
                       summary: 'Success',
                       detail: data.message,
                     });
-                  }
+
                 } else {
                   this.messageService.add({
                     severity: 'error',
@@ -293,8 +284,8 @@ console.log(this.form.form.value);
     }
 
     hideDialog() {
-        this.AddDialog = false;
-        this.UpdateDialog = false;
+        this.isDialogVisible = false;
+        this.isDialogVisible = false;
         this.submitted = false;
     }
 
@@ -311,13 +302,7 @@ this.globalService.Add(Input).subscribe((data) => {
       (data) => {
 
         if (data.success) {
-          if (data.resourceCount == 0) {
-            this.messageService.add({
-              severity: 'success',
-              summary: 'Success',
-              detail: 'No Data found',
-            });
-          } else {
+
             this.ItemsList = data.resource.reduce((acc: T[], el) => {
               let obj = el as T;
               acc.push(obj);
@@ -330,7 +315,7 @@ this.globalService.Add(Input).subscribe((data) => {
               summary: 'Success',
               detail: data.message,
             });
-          }
+
         } else {
           this.messageService.add({
             severity: 'error',
@@ -364,7 +349,7 @@ this.globalService.Add(Input).subscribe((data) => {
 }
 );
 
-            this.AddDialog = false;
+            this.isDialogVisible = false;
             this.Item = {} as T;
         //}
     }
@@ -382,13 +367,7 @@ this.globalService.Add(Input).subscribe((data) => {
             (data) => {
 
               if (data.success) {
-                if (data.resourceCount == 0) {
-                  this.messageService.add({
-                    severity: 'success',
-                    summary: 'Success',
-                    detail: 'No Data found',
-                  });
-                } else {
+
                   this.ItemsList = data.resource.reduce((acc: T[], el) => {
                     let obj = el as T;
                     acc.push(obj);
@@ -401,7 +380,7 @@ this.globalService.Add(Input).subscribe((data) => {
                     summary: 'Success',
                     detail: data.message,
                   });
-                }
+
               } else {
                 this.messageService.add({
                   severity: 'error',
@@ -435,7 +414,7 @@ this.globalService.Add(Input).subscribe((data) => {
       }
       );
 
-      this.UpdateDialog = false;
+      this.isDialogVisible = false;
           this.Item = {} as T;
       //}
   }
@@ -453,7 +432,7 @@ this.globalService.Add(Input).subscribe((data) => {
     // }
 
 
-   
+
     onGlobalFilter(table: Table, event: Event) {
         table.filterGlobal((event.target as HTMLInputElement).value, 'contains');
     }

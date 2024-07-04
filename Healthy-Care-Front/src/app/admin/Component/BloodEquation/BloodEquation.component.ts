@@ -49,13 +49,7 @@ export class BloodEquationComponent implements OnInit, OnDestroy,AfterViewInit  
         (data) => {
 
           if (data.success) {
-            if (data.resourceCount == 0) {
-              this.messageService.add({
-                severity: 'success',
-                summary: 'Success',
-                detail: 'No Data found',
-              });
-            } else {
+
 
               // this.BloodDropDown = data.resource.reduce((acc: IBloodDropDown[], el:IBloodDropDown) => {
               //   let obj = { id: el.id, name: el.name} as IBloodDropDown;
@@ -77,7 +71,7 @@ export class BloodEquationComponent implements OnInit, OnDestroy,AfterViewInit  
                 detail: data.message,
               });
               this.initConfigInput();
-            }
+
           } else {
             this.messageService.add({
               severity: 'error',
@@ -113,15 +107,6 @@ export class BloodEquationComponent implements OnInit, OnDestroy,AfterViewInit  
             options: this.BloodDropDown.map(el => el.name),
             value: this.BloodDropDown.map(el => el.id),
             placeholder: 'Admin.Enter bloodFK1',
-            validation: [Validators.required],
-        },
-        {
-            type: 'select',
-            label: 'Admin.Blood 2',
-            name: 'bloodFK2',
-            options: this.BloodDropDown.map(el => el.name),
-            value: this.BloodDropDown.map(el => el.id),
-            placeholder: 'Admin.Enter  blood2',
             validation: [Validators.required],
         },
         {
@@ -226,7 +211,6 @@ export class BloodEquationComponent implements OnInit, OnDestroy,AfterViewInit  
 
     this.cols = [
       { field: 'fK1Name', header: 'Admin.fK1Name' },
-      { field: 'fK2Name', header: 'Admin.fK2Name' },
       { field: 'eqution', header: 'Admin.eqution' },
     ];
 

@@ -1,3 +1,4 @@
+import { style } from '@angular/animations';
 import { ValidatorFn } from '@angular/forms';
 
 export interface FieldConfig {
@@ -10,5 +11,7 @@ export interface FieldConfig {
   type: string,
   validation?: ValidatorFn[],
   value?: any,
-  textType?:string
+  textType?:string,
+  class?:string,
+
 }

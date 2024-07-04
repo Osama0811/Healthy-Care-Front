@@ -11,11 +11,12 @@ import { InputTextModule } from 'primeng/inputtext';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateLoaderFactory } from 'src/app/app.module';
 import { LangService } from 'src/app/lang/services/lang.service';
+import { DropdownModule } from 'primeng/dropdown';
 @NgModule({
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    
+    DropdownModule,
     InputTextModule,
     TranslateModule.forRoot({
       loader: {

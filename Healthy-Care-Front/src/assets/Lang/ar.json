@@ -178,13 +178,13 @@
             "Enter Hospital Id":"ادخل البطاقة التعريفية للمستشفى",
             "Enter Quantity":"ادخل الكمية",
             "Department Id":"البطاقة التعريفية للقسم",
-            "Enter Department Id":"ادخل البطاقة التعريفية للقسم",
+            "Enter Department Id":"اختر البطاقة التعريفية للقسم",
             "Enter Tools Name":"ادخل اسم الادوات",
             "Doctor Id":"الطبيب",
-            "Enter Doctor Id":"ادخل الطبيب",
+            "Enter Doctor Id":"اختر الطبيب",
             "Enter Date Start":"ادخل تاريخ البدء",
             "Enter Date End":"ادخل تاريخ النهاية",
-            "Enter true/false":"ادخل صح/خطأ",
+            "Enter true/false":"اختر صح/خطأ",
             "User Id":"الرقم القومى للمستخدم",
             "Enter User Id":"ادخل الرقم القومى للمستخدم",
             "Type":"النوع",
@@ -225,7 +225,14 @@
             "Enter X_Ray title":"ادخل عنوان الاشعة",
             "X-Ray":"المعامل",
             "SystemSetting":"اعدادات النظام",
-            "Enter x-Ray Id":"ادخل الرقم التعريفى للأشعة"
+            "Enter x-Ray Id":"اختر الرقم التعريفى للأشعة",
+            "user Id":"الرقم التعريفى للمستخدم",
+            "national number":"الرقم القومى",
+            "user name":"اسم المستخدم",
+            "hospital Name":"اسم المستشفى",
+            "Enter patient number":"ادخل رقم المريض",
+            "Enter hospital id":"اختر الرقم التعريفى للمستشفى",
+            "Enter user id":"اختر الرقم التعريفى"
 
 
        }

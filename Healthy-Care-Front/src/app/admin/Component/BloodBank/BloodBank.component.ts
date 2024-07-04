@@ -70,13 +70,7 @@ export class BloodBankComponent implements OnInit, OnDestroy {
         (data) => {
 
           if (data.success) {
-            if (data.resourceCount == 0) {
-              this.messageService.add({
-                severity: 'success',
-                summary: 'Success',
-                detail: 'No Data found',
-              });
-            } else {
+
               let newBloodBankList: IBloodBankDto[] = [];
               this.BloodBankList = data.resource.reduce((acc: IBloodBankDto[], el) => {
                 let obj = el as IBloodBankDto;
@@ -90,7 +84,7 @@ export class BloodBankComponent implements OnInit, OnDestroy {
                 summary: 'Success',
                 detail: data.message,
               });
-            }
+
           } else {
             this.messageService.add({
               severity: 'error',

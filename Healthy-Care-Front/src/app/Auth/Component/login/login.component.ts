@@ -58,11 +58,7 @@ export class LoginComponent {
     this.authService.login(this.loginForm.value).subscribe(
       (data) => {
          if (data.success) {
-          this.messageService.add({
-            severity: 'success',
-            summary: 'Success',
-            detail: data.message,
-          });
+
           if(data.resource.roleId==1){
           localStorage.setItem("Token",data.resource.token)
           localStorage.setItem("UserId",data.resource.userId)
@@ -71,6 +67,13 @@ export class LoginComponent {
           }else{
             this.router.navigateByUrl('UserHistory/'+this.userId);
           }
+          }
+          else{
+            this.messageService.add({
+              severity: 'error',
+              summary: 'Error',
+              detail: "Your Are Not Admin",
+            });
           }
          }
         else {

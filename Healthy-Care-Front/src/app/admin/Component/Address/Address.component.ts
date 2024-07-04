@@ -51,13 +51,7 @@ export class AddressComponent implements OnInit, OnDestroy,AfterViewInit {
       (data) => {
 
         if (data.success) {
-          if (data.resourceCount == 0) {
-            this.messageService.add({
-              severity: 'success',
-              summary: 'Success',
-              detail: 'No Data found',
-            });
-          } else {
+
 
             // this.BloodDropDown = data.resource.reduce((acc: IBloodDropDown[], el:IBloodDropDown) => {
             //   let obj = { id: el.id, name: el.name} as IBloodDropDown;
@@ -84,7 +78,7 @@ export class AddressComponent implements OnInit, OnDestroy,AfterViewInit {
               detail: data.message,
             });
             this.initConfigInput();
-          }
+          
         } else {
           this.messageService.add({
             severity: 'error',

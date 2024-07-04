@@ -109,7 +109,7 @@ console.log(data);
       {
         type: 'select',
         label: 'Admin.Role Type',
-        name: 'RoleType',
+        name: 'roleId',
         options: this.RoleTypeDropDown.map(el => el.key),
         value: this.RoleTypeDropDown.map(el => el.value),
         placeholder: 'Admin.Enter  special Flag',

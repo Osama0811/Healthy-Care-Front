@@ -101,13 +101,7 @@ export class AppointmentComponent implements OnInit, OnDestroy {
         (data) => {
 
           if (data.success) {
-            if (data.resourceCount == 0) {
-              this.messageService.add({
-                severity: 'success',
-                summary: 'Success',
-                detail: 'No Data found',
-              });
-            } else {
+
 
               this.AppointmentList = data.resource.reduce((acc: IAppointmentDto[], el) => {
                 let obj = el as IAppointmentDto;
@@ -121,7 +115,7 @@ export class AppointmentComponent implements OnInit, OnDestroy {
                 summary: 'Success',
                 detail: data.message,
               });
-            }
+
           } else {
             this.messageService.add({
               severity: 'error',

@@ -1,3 +1,4 @@
+import { AddressService } from './../../Services/Address.service copy';
 
 import { DepartmentService } from './../../Services/department.service copy';
 import { hospitalService } from './../../Services/hospital.service';
@@ -54,6 +55,7 @@ export class HistoryComponent implements OnInit, OnDestroy,AfterViewInit {
     private patientService: PatientService,
     private hospitalService: hospitalService,
     private DepartmentService: DepartmentService,
+    private AddressService: AddressService,
   ) {}
   ngAfterViewInit(): void {
     this.SubscriptionList.push(
@@ -78,6 +80,55 @@ export class HistoryComponent implements OnInit, OnDestroy,AfterViewInit {
               //this.DeptList = data.resource as UserDtoClass[];
               this.patientDropDown = data.resource.reduce((acc: IPatientDownModel[], el) => {
                 let obj = el as IPatientDownModel;
+                acc.push(obj);
+                return acc;
+              }, []);
+              this.messageService.add({
+                severity: 'success',
+                summary: 'Success',
+                detail: data.message,
+              });
+              this.initConfigInput();
+            }
+          } else {
+            this.messageService.add({
+              severity: 'error',
+              summary: 'Error',
+              detail: data.message,
+            });
+          }
+        },
+        (error) => {
+          this.messageService.add({
+            severity: 'error',
+            summary: 'Error',
+            detail: error.message,
+          });
+        }
+      )
+    );
+    this.SubscriptionList.push(
+      this.AddressService.AddressDropDown().subscribe(
+        (data) => {
+
+          if (data.success) {
+            if (data.resourceCount == 0) {
+              this.messageService.add({
+                severity: 'success',
+                summary: 'Success',
+                detail: 'No Data found',
+              });
+            } else {
+
+              // this.BloodDropDown = data.resource.reduce((acc: IBloodDropDown[], el:IBloodDropDown) => {
+              //   let obj = { id: el.id, name: el.name} as IBloodDropDown;
+              //   acc.push(obj);
+              //   return acc;
+              // }, []);
+
+              //this.DeptList = data.resource as UserDtoClass[];
+              this.AddressDropDown = data.resource.reduce((acc: IAddressDownModel[], el) => {
+                let obj = el as IAddressDownModel;
                 acc.push(obj);
                 return acc;
               }, []);
@@ -287,9 +338,18 @@ export class HistoryComponent implements OnInit, OnDestroy,AfterViewInit {
         name: 'addressId',
         options: this.AddressDropDown.map(el => el.title),
         value: this.AddressDropDown.map(el => el.id),
-        placeholder: 'Admin.Enter  national number',
+        placeholder: 'Admin.Enter ',
         validation: [Validators.required],
     },
+    {
+      type: 'select',
+      label: 'Admin.patient Id',
+      name: 'patientId',
+      options: this.patientDropDown.map(el => el.userName),
+      value: this.patientDropDown.map(el => el.id),
+      placeholder: 'Admin.Enter patient number',
+      validation: [Validators.required],
+  },
       {
         type: 'select',
         label: 'Admin.hospital Id',

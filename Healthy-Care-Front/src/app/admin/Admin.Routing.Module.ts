@@ -32,6 +32,7 @@ import { AmbulancesComponent } from './Component/Ambulances/Ambulances.component
 import { authGuard } from '../Auth/Guards/auth-guard.guard';
 import { X_RayComponent } from './Component/X_Ray/X_Ray.component';
 import { X_Ray_DepartmentComponent } from './Component/X_Ray_Department/X_Ray_Department.component';
+import { Admin_HospitalComponent } from './Component/Admin_Hospital/Admin_Hospital.component';
 
 const routes: Routes = [
 
@@ -76,6 +77,7 @@ const routes: Routes = [
 
 
         { path: 'Ambulances', component: AmbulancesComponent , canActivate: [authGuard]},
+        { path: 'Admin_Hospital', component: Admin_HospitalComponent , canActivate: [authGuard]},
 
 
 

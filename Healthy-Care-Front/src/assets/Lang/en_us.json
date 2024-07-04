@@ -225,7 +225,14 @@
            "X-Ray":"Labs",
 
            "SystemSetting":"System Setting",
-           "Enter x-Ray Id":"Enter x-Ray id"
+           "Enter x-Ray Id":"Enter x-Ray id",
+           "user Id":"user Id",
+           "national number":"national number",
+           "user name":"user name",
+           "hospital Name":"hospital Name",
+           "Enter patient number":"Enter patient number",
+           "Enter hospital id":"Enter hospital id",
+           "Enter user id":"Enter user id"
 
 
 

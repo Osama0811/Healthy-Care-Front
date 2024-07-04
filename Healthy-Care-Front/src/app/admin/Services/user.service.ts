@@ -34,6 +34,23 @@ export class userService {
     };
     return this.sendRequest(url_, options);
   }
+  AdminDropDown(): Observable<GeneralResponse<userDownModel[]>> {
+    _base=BASE_URL+"/user";
+    let url_ = _base + '/GetAdmins';
+
+    url_ = url_.replace(/[?&]$/, '');
+    const options: RequestInit = {
+      method: 'GET',
+
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'text/plain',
+        'Authorization': 'Bearer ' + localStorage.getItem('Token'),
+      },
+
+    };
+    return this.sendRequest(url_, options);
+  }
   private sendRequest(url: string, options: RequestInit): Observable<GeneralResponse<userDownModel[]>> {
     console.log(url);
     return new Observable<GeneralResponse<userDownModel[]>>(observer => {
