@@ -18,7 +18,7 @@ export class AppLayoutComponent implements OnDestroy , OnInit {
     overlayMenuOpenSubscription: Subscription;
 
     menuOutsideClickListener: any;
-      userId!: string | null ; 
+      userId!: string | null ;
 
       visible: boolean = false;
     profileMenuOutsideClickListener: any;
@@ -119,13 +119,13 @@ export class AppLayoutComponent implements OnDestroy , OnInit {
     }
 
     ngOnInit() {
-        
+
         this.userId=localStorage.getItem('UserId');
         debugger
         if (this.userId) {
         this.signalRService.startConnection(this.userId);
-    
-        // this.signalRService.get('SendMessageToUser')
+
+        // this.signalRService.get('OrderAmbulance')
         //   .then(data => {
         //     this.messageService.add({
         //         severity: 'Warn',
@@ -137,9 +137,9 @@ export class AppLayoutComponent implements OnDestroy , OnInit {
         //   .catch(error => {
         //     console.error('Error getting data from hub:', error);
         //   });
-    
-        this.signalRService.on('SendMessageToUser', (data) => {
-       
+
+        this.signalRService.on('OrderAmbulance', (data) => {
+
               this.messageService.add({ key: 'confirm', sticky: true, severity: 'custom', summary: data });
           console.log('Real-time message received:', data);
         });
@@ -152,7 +152,7 @@ export class AppLayoutComponent implements OnDestroy , OnInit {
     }
     ngOnDestroy() {
             this.signalRService.stopConnection();
-          
+
         if (this.overlayMenuOpenSubscription) {
             this.overlayMenuOpenSubscription.unsubscribe();
         }
