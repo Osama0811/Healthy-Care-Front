@@ -31,6 +31,9 @@ export class CrudComponent<T extends WithId> implements OnInit , AfterViewInit {
 
   @Input() ItemsList: T[] = [];
   @Input()  cols: ColsType[] = [];
+  @Input()  AddFlag: boolean = true;
+  @Input()  EditFlag: boolean = true;
+  @Input()  DeletedFlag: boolean = true;
   @Input()  configInput: FieldConfig[] = [];
   //@Input()  configUpdateInput: FieldConfig[] = [];
 
@@ -38,6 +41,8 @@ export class CrudComponent<T extends WithId> implements OnInit , AfterViewInit {
 
     Item: object={} ;
     isDialogVisible: boolean = false;
+    IsAdd: boolean = false;
+    IsUpdate: boolean = false;
 
     deleteItemDialog: boolean = false;
 
@@ -106,6 +111,7 @@ console.log(this.form.form.value);
         this.Item = {} as T;
         this.submitted = false;
         this.isDialogVisible = true;
+        this.IsAdd=true;
     }
 
     deleteSelectedItems() {
@@ -144,6 +150,7 @@ console.log(this.form.form.value);
       );
 
         this.isDialogVisible = true;
+        this.IsUpdate = true;
     }
 
     deleteItem(Item: T) {
@@ -286,6 +293,9 @@ console.log(this.form.form.value);
     hideDialog() {
         this.isDialogVisible = false;
         this.isDialogVisible = false;
+        this.IsAdd = false;
+        this.IsUpdate = false;
+
         this.submitted = false;
     }
 
@@ -350,6 +360,7 @@ this.globalService.Add(Input).subscribe((data) => {
 );
 
             this.isDialogVisible = false;
+            this.IsAdd = false;
             this.Item = {} as T;
         //}
     }
@@ -415,6 +426,7 @@ this.globalService.Add(Input).subscribe((data) => {
       );
 
       this.isDialogVisible = false;
+      this.IsUpdate = false;
           this.Item = {} as T;
       //}
   }

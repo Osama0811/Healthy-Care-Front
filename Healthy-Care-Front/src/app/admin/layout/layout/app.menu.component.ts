@@ -52,7 +52,7 @@ this.AdminExist =true;
                 items: [
                     { label: 'Admin.blood', icon: 'pi pi-circle-fill', routerLink: ['/admin/Blood'] , visible:this.AdminExist },
                     { label: 'Admin.BloodEquation', icon: 'pi pi-circle-fill', routerLink: ['/admin/BloodEquation'] , visible:this.AdminExist },
-                    { label: 'Admin.BloodBank', icon: 'pi pi-circle-fill', routerLink: ['/admin/BloodBank'], visible:!this.AdminExist  },
+                    { label: 'Admin.BloodBank', icon: 'pi pi-circle-fill', routerLink: ['/admin/BloodBank'], visible:this.AdminExist==true?false:true  },
                 ]
             },
             { label: 'Admin.Address', icon: 'pi pi-flag', routerLink: ['/admin/Address'], visible:this.AdminExist }

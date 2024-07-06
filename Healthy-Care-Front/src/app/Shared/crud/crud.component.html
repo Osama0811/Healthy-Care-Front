@@ -6,8 +6,8 @@
           <p-toolbar styleClass="mb-4">
               <ng-template pTemplate="left">
                   <div class="my-2">
-                      <button pButton pRipple label="New" icon="pi pi-plus" class="p-button-success mr-2" (click)="openNew()"></button>
-                      <button pButton pRipple label="Delete" icon="pi pi-trash" class="p-button-danger" (click)="deleteSelectedItems()" [disabled]="!selectedItems || !selectedItems.length"></button>
+                      <button pButton pRipple label="New" icon="pi pi-plus" class="p-button-success mr-2" (click)="openNew()" *ngIf="AddFlag"></button>
+                      <button pButton pRipple label="Delete" icon="pi pi-trash" class="p-button-danger" (click)="deleteSelectedItems()" [disabled]="!selectedItems || !selectedItems.length" *ngIf="DeletedFlag"></button>
                   </div>
               </ng-template>
 
@@ -17,7 +17,6 @@
                   <button pButton pRipple label="Export" icon="pi pi-upload" class="p-button-help" (click)="dt.exportCSV()"></button>
               </ng-template>
           </p-toolbar>
-
           <p-table #dt [value]="ItemsList" [columns]="cols" responsiveLayout="scroll" [rows]="10" [globalFilterFields]="['name','country.name','representative.name','status']" [paginator]="true" [rowsPerPageOptions]="rowsPerPageOptions" [showCurrentPageReport]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [(selection)]="selectedItems" selectionMode="multiple" [rowHover]="true" dataKey="id">
               <ng-template pTemplate="caption">
                   <div class="flex flex-column md:flex-row md:justify-content-between md:align-items-center">
@@ -30,8 +29,9 @@
               </ng-template>
               <ng-template pTemplate="header">
                   <tr>
-                      <th style="width: 3rem">
-                          <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+                      <th style="width: 3rem" >
+
+                          <p-tableHeaderCheckbox ></p-tableHeaderCheckbox>
                       </th>
                       <th *ngFor="let col of cols" pSortableColumn="{{col.field}}"> {{col.header|translate}} <p-sortIcon field="{{col.field}}"></p-sortIcon></th>
                       <th></th>
@@ -49,8 +49,8 @@
 
                       <td>
                           <div class="flex">
-                              <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success mr-2" (click)="editItem( Item.id)"></button>
-                              <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning" (click)="deleteItem(Item)"></button>
+                              <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success mr-2" (click)="editItem( Item.id)" *ngIf="EditFlag"></button>
+                              <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning" (click)="deleteItem(Item)" *ngIf="DeletedFlag"></button>
                           </div>
                       </td>
                   </tr>
@@ -61,7 +61,8 @@
 
       <p-dialog [(visible)]=" isDialogVisible" [modal]="true" class="p-fluid">
         <!-- {{selectedItem|json}} -->
-<ng-template >Edit</ng-template>
+<ng-template *ngIf="IsUpdate">Edit</ng-template>
+<ng-template *ngIf="IsAdd">Add</ng-template>
         <div class="app">
           <dynamic-form
             [config]="configInput"
@@ -74,7 +75,8 @@
 
           <ng-template pTemplate="footer">
               <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="hideDialog()"></button>
-              <button pButton pRipple label="Edit" icon="pi pi-check" class="p-button-text"  (click)="UpdateItem( form.value)"></button>
+              <button pButton pRipple label="Edit" icon="pi pi-check" class="p-button-text"  (click)="UpdateItem( form.value)" *ngIf="IsUpdate"></button>
+              <button pButton pRipple label="Add" icon="pi pi-check" class="p-button-text"  (click)="saveItem( form.value)" *ngIf="IsAdd"></button>
           </ng-template>
 
       </p-dialog>

@@ -233,7 +233,8 @@
             "Enter patient number":"ادخل رقم المريض",
             "Enter hospital id":"اختر الرقم التعريفى للمستشفى",
             "Enter user id":"اختر الرقم التعريفى",
-            "Admin_Hospital":"مشرف المستشفى"
+            "Admin_Hospital":"مشرف المستشفى",
+            "code":"شفرة"
 
 
        }

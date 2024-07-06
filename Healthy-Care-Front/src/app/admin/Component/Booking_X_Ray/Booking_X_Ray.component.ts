@@ -17,8 +17,8 @@ export interface IBoooking_X_RayDto {//get all data table
   id: string | undefined;
   x_RayId: string | undefined;
   x_RayName: string | undefined;
-  Booking_X_RayId: string | undefined;
-  Booking_X_RayNationalNum: string | undefined;
+  patientId: string | undefined;
+  patientNationalNum: string | undefined;
   date: string | undefined;
 
   hospitalId: string | undefined;
@@ -208,26 +208,7 @@ export class Booking_X_RayComponent implements OnInit, OnDestroy ,AfterViewInit 
     //     placeholder: 'Enter  special Flag',
     //     validation: [Validators.required],
     // },
-    //   {
-    //     type: 'input',
-    //     label: 'Booking_X_Ray description',
-    //     name: 'description',
-    //     placeholder: 'Enter Booking_X_Ray description',
-    //     validation: [Validators.required, Validators.minLength(4)],
-    //   },{
-    //     type: 'input',
-    //     label: 'Imagebase64',
-    //     name: 'imageBase64',
-    //     NonVisible:true
-    //   },
-    //   {
-    //     type: 'input',
-    //     label: ' FileName',
-    //     name: 'fileName',
-    //     textType:'file',
-    //     placeholder: 'Enter Image',
-    //     //validation: [Validators.required],
-    //   },
+
     ]
 }
 ngOnInit() {
@@ -279,15 +260,16 @@ ngOnInit() {
 
   this.cols = [
    // { field: 'id', header: 'ID' },
-    { field: 'userName', header: ' Name of User' },
-    { field: 'birthDate', header: 'Birth date' },
-    { field: 'age', header: 'Age' },
-    { field: 'nationalNum', header: 'National number' },
-    { field: 'email', header: 'Email' },
-    { field: 'phone', header: 'Phone' },
-    { field: 'alterPhone', header: 'Alter Phone' },
-    { field: 'bloodType', header: 'Blood Type' },
-    { field: 'hospitalName', header: 'Hospital' },
+    // { field: 'id', header: 'Admin. id' },
+    // { field: 'x_RayId', header: 'Admin.x_Ray Id' },
+    { field: 'x_RayName', header: 'Admin.x_Ray name' },
+    // { field: 'patientId', header: 'Admin.patient id' },
+    { field: 'patientNationalNum', header: 'Admin.National number of patient' },
+    { field: 'date', header: 'Admin.Birth date' },
+    // { field: 'hospitalId', header: 'Admin.hospital Id' },
+    { field: 'hospitalName', header: 'Admin.hospital name' },
+    { field: 'code', header: 'Admin.code' },
+    { field: 'status', header: 'Admin.status' },
 
   ];
 }

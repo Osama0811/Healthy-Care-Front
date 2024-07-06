@@ -116,12 +116,12 @@ export class Book_AmbulancesComponent implements OnInit, OnDestroy {
     );
 
     this.cols = [
-      { field: 'id', header: 'id' },
-      { field: 'patientId', header: 'patientId' },
-      { field: 'ambulanceId', header: 'ambulanceId' },
-      { field: 'status', header: 'status' },
-      { field: 'nationalNum', header: 'nationalNum' },
-      { field: 'ambulancePhone', header: 'ambulancePhone' },
+      { field: 'id', header: 'Admin.id' },
+      { field: 'patientId', header: 'Admin.patientId' },
+      { field: 'ambulanceId', header: 'Admin.ambulanceId' },
+      { field: 'status', header: 'Admin.status' },
+      { field: 'nationalNum', header: 'Admin.national num' },
+      { field: 'ambulancePhone', header: 'Admin.ambulance Phone' },
     ];
   }
   ngOnDestroy(): void {

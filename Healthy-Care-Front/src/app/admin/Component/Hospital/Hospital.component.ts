@@ -36,7 +36,9 @@ export class HospitalComponent implements OnInit, OnDestroy,AfterViewInit {
   HospitalList: IHospitalDto[] = []; // dto for data table
   cols: any[] = []; // colims in data table
   configInput: FieldConfig[] = []; // input add update
-
+  AdminList: string[] = [];
+  AdminExist: boolean= false;
+  userId!: string | null ;
   constructor(
     private globalService: GlobalService<any>,
     private messageService: MessageService,
@@ -217,7 +219,13 @@ export class HospitalComponent implements OnInit, OnDestroy,AfterViewInit {
     ];
 }
   ngOnInit() {
-
+    this.AdminList=["6e70869a-15d6-44a3-0809-08dc2ce2a623"];
+    this.userId=localStorage.getItem('UserId');
+    if( this.AdminList.find(d=>d==this.userId)!=null)
+      {
+        debugger
+this.AdminExist =true;
+      }
     this.messageService.add({
       severity: 'success',
       summary: 'Success',

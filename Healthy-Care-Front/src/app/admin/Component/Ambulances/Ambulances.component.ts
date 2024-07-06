@@ -1,4 +1,5 @@
-import { Component, OnDestroy, OnInit, Type } from '@angular/core';
+import { EnumService } from './../../Services/enum.service';
+import { AfterViewInit, Component, OnDestroy, OnInit, Type } from '@angular/core';
 import {
   Controller,
   GlobalService,
@@ -7,6 +8,7 @@ import { MessageService } from 'primeng/api';
 import { Subscription } from 'rxjs';
 import { Validators } from '@angular/forms';
 import { FieldConfig } from 'src/app/Shared/dynamic-form/models/field-config.interface';
+import { IEnumDropDown } from '../../Model/DropDown';
 export interface IAmbulancesDto {//get all data table
   id: string | undefined;
   latitude: number | undefined;
@@ -21,18 +23,42 @@ export interface IAmbulancesDto {//get all data table
   styleUrls: ['./Ambulances.component.css'],
   providers: [GlobalService, { provide: Controller, useValue: 'Ambulances' }], //controller name
 })
-export class AmbulancesComponent implements OnInit, OnDestroy {
+export class AmbulancesComponent implements OnInit, OnDestroy,AfterViewInit {
   SubscriptionList: Subscription[] = []; // for me
-
+  AmbulancestatusDropDown: IEnumDropDown[] = [];
   AmbulancesList: IAmbulancesDto[] = []; // dto for data table
   cols: any[] = []; // colims in data table
   configInput: FieldConfig[] = []; // input add update
 
   constructor(
     private globalService: GlobalService<any>,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private enumService:EnumService
   ) {}
-  ngOnInit() {
+  ngAfterViewInit(): void { //This Will return my drop data from service
+    this.SubscriptionList.push(
+      this.enumService.GetEnumDropDown("GetBook_AmbulancessStatus").subscribe(
+        (data) => {
+
+          this.AmbulancestatusDropDown = data.reduce((acc: IEnumDropDown[], el) => {
+            let obj = el as IEnumDropDown;
+            acc.push(obj);
+            return acc;
+          }, []);
+          this.initConfigInput();
+        },
+        (error) => {
+          this.messageService.add({
+            severity: 'error',
+            summary: 'Error',
+            detail: error.message,
+          });
+        }
+      )
+    );
+
+  }
+  initConfigInput(): void {
     this.configInput = [
       {
         type: 'input',
@@ -60,17 +86,26 @@ export class AmbulancesComponent implements OnInit, OnDestroy {
         placeholder: 'Admin.Enter phone',
       },
       {
-        type: 'input',
+        type: 'select',
         label: 'Admin.status',
         name: 'status',
+        options: this.AmbulancestatusDropDown.map(el => el.key),
+        value: this.AmbulancestatusDropDown.map(el => el.value),
         placeholder: 'Admin.Enter status',
-      },
-      {
-        type: 'input',
-        label: 'Admin.hospital Count',
-        name: 'hospitalCount',
-        placeholder: 'Admin.Enter hospital Count',
-      },
+        validation: [Validators.required],
+    },
+      // {
+      //   type: 'input',
+      //   label: 'Admin.status',
+      //   name: 'status',
+      //   placeholder: 'Admin.Enter status',
+      // },
+      // {
+      //   type: 'input',
+      //   label: 'Admin.hospital Count',
+      //   name: 'hospitalCount',
+      //   placeholder: 'Admin.Enter hospital Count',
+      // },
       // {
       //   type: 'select',
       //   label: 'select ',
@@ -81,6 +116,9 @@ export class AmbulancesComponent implements OnInit, OnDestroy {
       //   validation: [Validators.required]
       // },
     ];
+}
+  ngOnInit() {
+
     this.messageService.add({
       severity: 'success',
       summary: 'Success',
@@ -91,7 +129,7 @@ export class AmbulancesComponent implements OnInit, OnDestroy {
         (data) => {
 
           if (data.success) {
-           
+
 
               this.AmbulancesList = data.resource.reduce((acc: IAmbulancesDto[], el) => {
                 let obj = { id: el.id, latitude: el.latitude, longitude: el.longitude, phone: el.phone, status: el.status} as IAmbulancesDto;
@@ -125,7 +163,7 @@ export class AmbulancesComponent implements OnInit, OnDestroy {
     );
 
     this.cols = [
-      { field: 'id', header: 'id' },
+      // { field: 'id', header: 'id' },
       { field: 'latitude', header: 'latitude' },
       { field: 'longitude', header: 'longitude' },
       { field: 'phone', header: 'phone' },

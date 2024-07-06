@@ -8,15 +8,14 @@ import { FieldConfig } from '../../models/field-config.interface';
   selector: 'form-select',
   template: `
     <div
-    class="dynamic-field "
+    class="dynamic-field  "
       [formGroup]="group">
       <label class="form-label" >{{ config.label==undefined?"":config.label|translate}}</label>
       <select class="form-select"
       filter="true" [formControlName]="config.name" >
         <option value=0>{{ config.placeholder==undefined?"":config.placeholder|translate}}</option>
-        <option *ngFor="let option of config.options; let i = index" [value]="config.value[i]" style="font-size:15px; width:200px;
-padding:20px;
-height: 150px;" >
+        <option *ngFor="let option of config.options; let i = index" [value]="config.value[i]" style="font-size:15px;
+padding:20px;" >
           {{ option }}
         </option>
       </select>

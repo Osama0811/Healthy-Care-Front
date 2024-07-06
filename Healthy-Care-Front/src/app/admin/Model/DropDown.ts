@@ -102,7 +102,7 @@ export interface IPatientDownModel {
   userName: string | undefined;
 }
 export interface PatientHistoryInfo {
- 
+
   userName: string | undefined;
   age: number | undefined;
   phone: string | undefined;
@@ -117,7 +117,7 @@ export interface IPatientHistoryInfo {
   imagePath: string | undefined;
 }
 export interface HistoryInfo {
- 
+
   title: string | undefined;
   description: string | undefined;
   hospitalName: string | undefined;
@@ -140,6 +140,14 @@ export interface Booking_X_RayDropDown {
 export interface IBooking_X_RayDownModel {
   x_RayId: string | undefined;
   x_RayName: string | undefined;
+}
+export interface appointmentDropDown {
+  id: string | undefined;
+  code: string | undefined;
+}
+export interface IappointmentDownModel {
+  id: string | undefined;
+  code: string | undefined;
 }
 ;
 
